@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.util.StringBuilderFormattable;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -35,4 +32,7 @@ public class Employee {
     String status;
     Boolean deleted;
 
+    @ManyToOne()
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "employee_company.fk"))
+    private Company company;
 }

@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,4 +25,16 @@ public class Document {
     String content;
     String type;
     Date created_date;
+
+    @ManyToOne()
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "document_company_fk"))
+    private Company company;
+
+    @ManyToOne()
+    @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id",nullable = false, foreignKey=@ForeignKey(name = "document_contract_fk"))
+    private Contract contract;
+
+    @ManyToOne()
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "document_employee_fk"))
+    private Employee employee;
 }
