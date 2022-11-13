@@ -20,6 +20,7 @@ public class Contract {
     @Column(name = "contract_id", updatable = false, nullable = false)
     UUID contract_id;
 
+
     String description;
     Date start_date;
     Date end_date;
@@ -30,5 +31,10 @@ public class Contract {
             name = "ToBeLinked",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id"))
-    List<Company> companies;
+    List<Company> companies;   
+
+    @ManyToOne()
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
+    private Employee Employee;
+
 }

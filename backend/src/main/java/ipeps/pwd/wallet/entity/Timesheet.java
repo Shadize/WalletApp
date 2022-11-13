@@ -29,4 +29,9 @@ public class Timesheet {
     @ManyToOne()
     @JoinColumn(name = "contract_fk",nullable = false, referencedColumnName = "contract_id",foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
     Contract contract;
+
+    @ManyToOne()
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "timesheet_employee_fk"))
+    private Employee employee;
+
 }
