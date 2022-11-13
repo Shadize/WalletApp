@@ -33,6 +33,6 @@ public class Employee {
     Date birthday;
     String ssin;
     String status;
-    String deleted;
+    Boolean deleted;
 
 }
