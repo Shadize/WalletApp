@@ -33,6 +33,6 @@ public class Employee {
     Boolean deleted;
 
     @ManyToOne()
-    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "employee_company.fk"))
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "employee_company_fk"))
     private Company company;
 }
