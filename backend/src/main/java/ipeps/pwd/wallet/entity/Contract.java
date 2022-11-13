@@ -26,5 +26,5 @@ public class Contract {
 
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
-    private Employee Employee;
+    private Employee employee;
 }
