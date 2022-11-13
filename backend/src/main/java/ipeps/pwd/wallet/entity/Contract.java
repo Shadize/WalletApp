@@ -25,5 +25,5 @@ public class Contract {
     String  description;
     Date    start_date;
     Date    end_date;
-    Integer nb_hours_by_week;
+    Float   nb_hours_by_week;
 }
