@@ -5,11 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +21,8 @@ public class Organization {
 
     String name;
     String description;
+
+    @ManyToOne()
+    @JoinColumn(name = "company_fk", referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "organisation_company_fk"))
+    Company company;
 }
