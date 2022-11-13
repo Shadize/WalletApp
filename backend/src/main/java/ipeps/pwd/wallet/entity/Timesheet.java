@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,4 +25,8 @@ public class Timesheet {
     Date    end_hours;
     String  comment;
     String  timesheet_type;
+
+    @ManyToOne()
+    @JoinColumn(name = "contract_fk",nullable = false, referencedColumnName = "contract_id",foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
+    Contract contract;
 }
