@@ -3,3 +3,5 @@
 .idea/misc.xml
 WalletApp/angular.json
 WalletApp/package-lock.json
+
+backend/src/main/resources/application.properties
