@@ -31,12 +31,12 @@ public class EmployeeServiceImpl  implements EmployeeService {
     }
 
     @Override
-    public Company create(EmployeeCreatePayload payload) {
+    public Employee create(EmployeeCreatePayload payload) {
         return null;
     }
 
     @Override
-    public Company update(EmployeeUpdatePayload payload) {
+    public Employee update(EmployeeUpdatePayload payload) {
         return null;
     }
 
