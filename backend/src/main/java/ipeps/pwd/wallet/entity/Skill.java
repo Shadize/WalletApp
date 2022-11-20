@@ -22,4 +22,10 @@ public class Skill {
 
     String title;
     String description;
+
+    public Skill(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
 }
