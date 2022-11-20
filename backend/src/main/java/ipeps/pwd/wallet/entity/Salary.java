@@ -28,4 +28,11 @@ public class Salary {
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "salary_employee_fk"))
     private Employee employee;
+
+    public Salary(Date create_date, String title, String comment, Float amount) {
+        this.create_date = create_date;
+        this.title = title;
+        this.comment = comment;
+        this.amount = amount;
+    }
 }

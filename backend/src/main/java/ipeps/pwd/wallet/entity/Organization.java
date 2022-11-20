@@ -25,4 +25,9 @@ public class Organization {
     @ManyToOne()
     @JoinColumn(name = "company_fk", referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "organisation_company_fk"))
     Company company;
+
+    public Organization(String name, String description){
+        this.name = name;
+        this.description = description;
+    }
 }

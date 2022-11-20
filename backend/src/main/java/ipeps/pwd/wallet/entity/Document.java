@@ -37,4 +37,12 @@ public class Document {
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "document_employee_fk"))
     private Employee employee;
+
+    public Document(String title, String path, String content, String type, Date created_date) {
+        this.title = title;
+        this.path = path;
+        this.content = content;
+        this.type = type;
+        this.created_date = created_date;
+    }
 }
