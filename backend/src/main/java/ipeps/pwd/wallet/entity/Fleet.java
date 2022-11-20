@@ -26,4 +26,11 @@ public class Fleet {
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "fleet_employee_fk"))
     private Employee employee;
+
+    public Fleet(String title, String description, String type, Float cost) {
+        this.title = title;
+        this.description = description;
+        this.type = type;
+        this.cost = cost;
+    }
 }
