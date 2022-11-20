@@ -35,4 +35,19 @@ public class Employee {
     @ManyToOne()
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "employee_company_fk"))
     private Company company;
+
+    public Employee(String lastname, String firstname, Boolean active, String deleted_by,
+                    String address, String gender, Date birthday, String ssin,String status, Boolean deleted)
+    {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.active = active;
+        this.deleted_by = deleted_by;
+        this.address = address;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.ssin = ssin;
+        this.status = status;
+        this.deleted = deleted;
+    }
 }

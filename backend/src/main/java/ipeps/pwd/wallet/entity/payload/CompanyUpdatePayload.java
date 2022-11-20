@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompanyCreatePayload {
+public class CompanyUpdatePayload {
+    UUID companyID;
     String name;
     String description;
     String address;

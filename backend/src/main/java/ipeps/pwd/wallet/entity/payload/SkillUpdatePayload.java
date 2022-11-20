@@ -4,15 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class CompanyCreatePayload {
-    String name;
+@NoArgsConstructor
+public class SkillUpdatePayload {
+    UUID skill_id;
+
+    String title;
     String description;
-    String address;
-    boolean isManaged;
-    boolean isActive;
-    boolean isDeleted;
-    String deletedBy;
 }

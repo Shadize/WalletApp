@@ -14,6 +14,17 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Company {
+
+    public Company(String name, String description, String address, boolean isManaged, boolean isActive, boolean isDeleted, String deletedBy) {
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.isManaged = isManaged;
+        this.isActive = isActive;
+        this.isDeleted = isDeleted;
+        this.deletedBy = deletedBy;
+    }
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -23,11 +34,12 @@ public class Company {
     String name;
     String description;
     String address;
-    boolean is_managed;
-    boolean active;
-    boolean deleted;
-    String deleted_by;
+    boolean isManaged;
+    boolean isActive;
+    boolean isDeleted;
+    String deletedBy;
 
     @ManyToMany(mappedBy = "companies")
     List<Contract> contracts;
+
 }
