@@ -1,6 +1,9 @@
 package ipeps.pwd.wallet.service;
 
+
 import ipeps.pwd.wallet.entity.Company;
+import ipeps.pwd.wallet.entity.payload.CompanyCreatePayload;
+import ipeps.pwd.wallet.entity.payload.CompanyUpdatePayload;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,9 +13,9 @@ public interface CompanyService {
 
     public Company detail(UUID companyId);
 
-    // public Company create(PersonCreatePayload payload);
+    public Company create(CompanyCreatePayload payload);
 
-    // public Company update(PersonUpdatePayload payload);
+    public Company  update(CompanyUpdatePayload payload);
 
-    public boolean delete(UUID personId);
+    public boolean delete(UUID companyId);
 }

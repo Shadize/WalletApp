@@ -14,26 +14,35 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 public class Contract {
+
+    public Contract(String description, Date startDate, Date endDate, Integer nbHoursByWeek) {
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.nbHoursByWeek = nbHoursByWeek;
+    }
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "contract_id", updatable = false, nullable = false)
-    UUID contract_id;
+    UUID contractId;
 
 
     String description;
-    Date start_date;
-    Date end_date;
-    Integer nb_hours_by_week;
+    Date startDate;
+    Date endDate;
+    Integer nbHoursByWeek;
 
     @ManyToMany()
     @JoinTable(
             name = "ToBeLinked",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id"))
-    List<Company> companies;   
+    List<Company> companies;
 
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
     private Employee employee;
+
 }
