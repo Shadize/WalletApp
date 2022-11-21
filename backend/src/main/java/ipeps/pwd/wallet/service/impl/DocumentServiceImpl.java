@@ -5,7 +5,6 @@ import ipeps.pwd.wallet.entity.builder.DocumentBuilder;
 import ipeps.pwd.wallet.entity.payload.DocumentCreatePayload;
 import ipeps.pwd.wallet.entity.payload.DocumentUpdatePayload;
 import ipeps.pwd.wallet.repository.DocumentRepository;
-import ipeps.pwd.wallet.repository.OrganizationRepository;
 import ipeps.pwd.wallet.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

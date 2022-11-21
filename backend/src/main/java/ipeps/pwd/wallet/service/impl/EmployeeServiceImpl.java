@@ -1,7 +1,6 @@
 package ipeps.pwd.wallet.service.impl;
 
 
-import ipeps.pwd.wallet.entity.Company;
 import ipeps.pwd.wallet.entity.Employee;
 import ipeps.pwd.wallet.entity.Salary;
 import ipeps.pwd.wallet.entity.builder.EmployeeBuilder;
