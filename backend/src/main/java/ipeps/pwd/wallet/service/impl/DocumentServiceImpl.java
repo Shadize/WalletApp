@@ -31,15 +31,19 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public Document create(DocumentCreatePayload payload) {
         try{
-            Document document = new DocumentBuilder()
+            Document document = this.documentRepository.save(new DocumentBuilder()
                     .setTitle(payload.getTitle())
                     .setPath(payload.getPath())
                     .setContent(payload.getContent())
                     .setType(payload.getType())
                     .setCreateDate(payload.getCreateDate())
-                    .build();
-            return this.documentRepository.save(document);
+                    .setCompany(payload.getCompany())
+                    .setContract(payload.getContract())
+                    .setEmployee(payload.getEmployee())
+                    .build());
+            return this.detail(document.getDocument_id());
         }catch(Exception e){
+            e.printStackTrace();
             return null;
         }
     }
@@ -53,6 +57,9 @@ public class DocumentServiceImpl implements DocumentService {
             detail.setContent(payload.getContent());
             detail.setType(payload.getType());
             detail.setCreateDate(payload.getCreateDate());
+            detail.setCompany(payload.getCompany());
+            detail.setContract(payload.getContract());
+            detail.setEmployee(payload.getEmployee());
             return this.documentRepository.save(detail);
         }
         return detail;

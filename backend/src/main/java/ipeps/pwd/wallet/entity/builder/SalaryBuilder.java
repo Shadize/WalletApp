@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.entity.builder;
 
+import ipeps.pwd.wallet.entity.Employee;
 import ipeps.pwd.wallet.entity.Salary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class SalaryBuilder implements CreateBuilder {
     String  title;
     String  comment;
     Float   amount;
+    Employee employee;
 
     public SalaryBuilder setCreatedDate(Date create_date){
         this.createDate = createDate;
@@ -36,8 +38,13 @@ public class SalaryBuilder implements CreateBuilder {
         return this;
     }
 
+    public SalaryBuilder setEmployee(Employee employee){
+        this.employee = employee;
+        return this;
+    }
+
     @Override
     public Salary build() {
-        return new Salary(this.createDate, this.title, this.comment, this.amount);
+        return new Salary(this.createDate, this.title, this.comment, this.amount, this.employee);
     }
 }

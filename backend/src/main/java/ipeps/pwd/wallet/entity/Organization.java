@@ -26,8 +26,9 @@ public class Organization {
     @JoinColumn(name = "company_fk", referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "organisation_company_fk"))
     Company company;
 
-    public Organization(String name, String description){
+    public Organization(String name, String description, Company company){
         this.name = name;
         this.description = description;
+        this.company = company;
     }
 }

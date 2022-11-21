@@ -6,7 +6,6 @@ import ipeps.pwd.wallet.entity.Organization;
 import ipeps.pwd.wallet.entity.payload.OrganizationCreatePayload;
 import ipeps.pwd.wallet.entity.payload.OrganizationUpdatePayload;
 import ipeps.pwd.wallet.service.OrganizationService;
-import ipeps.pwd.wallet.service.impl.OrganizationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +27,9 @@ public class OrganizationController {
     }
 
     @GetMapping("detail/{id}")
-    public ApiResponse getDetail(@PathVariable("id") UUID person_id) {
+    public ApiResponse getDetail(@PathVariable("id") UUID organization_id) {
         try {
-            Organization detail = this.organizationService.detail(person_id);
+            Organization detail = this.organizationService.detail(organization_id);
             if(detail != null){
                 return new ApiResponse(true, detail, ApiCode.ORGANIZATION_DETAIL_SUCCESS);
             }
@@ -52,9 +51,9 @@ public class OrganizationController {
     @PutMapping("update")
     public ApiResponse update(@RequestBody() OrganizationUpdatePayload payload) {
         try {
-            Organization personUpdated = this.organizationService.update(payload);
-            if(personUpdated != null){
-                return new ApiResponse(true, personUpdated, ApiCode.ORGANIZATION_UPDATE_SUCCESS);
+            Organization organizationUpdated = this.organizationService.update(payload);
+            if(organizationUpdated != null){
+                return new ApiResponse(true, organizationUpdated, ApiCode.ORGANIZATION_UPDATE_SUCCESS);
             }
             return new ApiResponse(true, this.organizationService.update(payload), ApiCode.ORGANIZATION_UPDATE_NOT_FOUND);
         } catch (Exception e) {
@@ -63,8 +62,8 @@ public class OrganizationController {
     }
 
     @DeleteMapping("delete/{id}")
-    public ApiResponse delete(@PathVariable("id") UUID person_id) {
-        if (this.organizationService.delete(person_id)) {
+    public ApiResponse delete(@PathVariable("id") UUID organization_id) {
+        if (this.organizationService.delete(organization_id)) {
             return new ApiResponse(true, "", ApiCode.ORGANIZATION_DELETE_SUCCESS);
         }
         return new ApiResponse(false, "", ApiCode.ORGANIZATION_DELETE_ERROR);

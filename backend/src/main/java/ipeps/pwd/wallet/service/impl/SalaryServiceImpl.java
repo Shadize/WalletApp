@@ -31,14 +31,16 @@ public class SalaryServiceImpl implements SalaryService {
     @Override
     public Salary create(SalaryCreatePayload payload) {
         try{
-            Salary salary = new SalaryBuilder()
+            Salary salary = this.salaryRepository.save(new SalaryBuilder()
                     .setCreatedDate(payload.getCreateDate())
                     .setTitle(payload.getTitle())
                     .setComment(payload.getComment())
                     .setAmount(payload.getAmount())
-                    .build();
-            return this.salaryRepository.save(salary);
+                    .setEmployee(payload.getEmployee())
+                    .build());
+            return this.detail(salary.getSalary_id());
         }catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }
@@ -51,6 +53,7 @@ public class SalaryServiceImpl implements SalaryService {
             detail.setTitle(payload.getTitle());
             detail.setComment(payload.getComment());
             detail.setAmount(payload.getAmount());
+            detail.setEmployee(payload.getEmployee());
             return this.salaryRepository.save(detail);
         }
         return detail;

@@ -29,10 +29,11 @@ public class Salary {
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "salary_employee_fk"))
     private Employee employee;
 
-    public Salary(Date createDate, String title, String comment, Float amount) {
+    public Salary(Date createDate, String title, String comment, Float amount, Employee employee) {
         this.createDate = createDate;
         this.title = title;
         this.comment = comment;
         this.amount = amount;
+        this.employee = employee;
     }
 }
