@@ -6,6 +6,7 @@ import ipeps.pwd.wallet.entity.Organization;
 import ipeps.pwd.wallet.entity.payload.OrganizationCreatePayload;
 import ipeps.pwd.wallet.entity.payload.OrganizationUpdatePayload;
 import ipeps.pwd.wallet.service.OrganizationService;
+import ipeps.pwd.wallet.service.impl.OrganizationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
