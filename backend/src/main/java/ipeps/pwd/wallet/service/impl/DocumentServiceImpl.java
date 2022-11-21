@@ -37,7 +37,7 @@ public class DocumentServiceImpl implements DocumentService {
                     .setPath(payload.getPath())
                     .setContent(payload.getContent())
                     .setType(payload.getType())
-                    .setCreated_date(payload.getCreated_date())
+                    .setCreateDate(payload.getCreateDate())
                     .build();
             return this.documentRepository.save(document);
         }catch(Exception e){
@@ -53,7 +53,7 @@ public class DocumentServiceImpl implements DocumentService {
             detail.setPath(payload.getPath());
             detail.setContent(payload.getContent());
             detail.setType(payload.getType());
-            detail.setCreated_date(payload.getCreated_date());
+            detail.setCreateDate(payload.getCreateDate());
             return this.documentRepository.save(detail);
         }
         return detail;

@@ -16,5 +16,5 @@ public class DocumentUpdatePayload {
     String path;
     String content;
     String type;
-    Date created_date;
+    Date createDate;
 }

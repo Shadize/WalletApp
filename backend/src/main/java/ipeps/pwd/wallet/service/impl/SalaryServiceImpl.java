@@ -18,7 +18,6 @@ public class SalaryServiceImpl implements SalaryService {
     @Autowired
     SalaryRepository salaryRepository;
 
-
     @Override
     public List<Salary> list() {
         return salaryRepository.findAll();
@@ -33,7 +32,7 @@ public class SalaryServiceImpl implements SalaryService {
     public Salary create(SalaryCreatePayload payload) {
         try{
             Salary salary = new SalaryBuilder()
-                    .setCreated_date(payload.getCreate_date())
+                    .setCreatedDate(payload.getCreateDate())
                     .setTitle(payload.getTitle())
                     .setComment(payload.getComment())
                     .setAmount(payload.getAmount())
@@ -48,7 +47,7 @@ public class SalaryServiceImpl implements SalaryService {
     public Salary update(SalaryUpdatePayload payload) {
         Salary detail = this.detail(payload.getSalaryId());
         if(detail != null){
-            detail.setCreate_date(payload.getCreate_date());
+            detail.setCreateDate(payload.getCreateDate());
             detail.setTitle(payload.getTitle());
             detail.setComment(payload.getComment());
             detail.setAmount(payload.getAmount());

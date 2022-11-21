@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class SalaryUpdatePayload {
     UUID salaryId;
-    Date create_date;
+    Date createDate;
     String  title;
     String  comment;
     Float   amount;

@@ -24,7 +24,7 @@ public class Document {
     String path;
     String content;
     String type;
-    Date created_date;
+    Date createDate;
 
     @ManyToOne()
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "document_company_fk"))
@@ -38,11 +38,11 @@ public class Document {
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "document_employee_fk"))
     private Employee employee;
 
-    public Document(String title, String path, String content, String type, Date created_date) {
+    public Document(String title, String path, String content, String type, Date createDate) {
         this.title = title;
         this.path = path;
         this.content = content;
         this.type = type;
-        this.created_date = created_date;
+        this.createDate = createDate;
     }
 }

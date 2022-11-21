@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SalaryCreatePayload {
-    Date create_date;
+    Date createDate;
     String  title;
     String  comment;
     Float   amount;

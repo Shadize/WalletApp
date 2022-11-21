@@ -11,13 +11,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SalaryBuilder implements CreateBuilder {
-    Date create_date;
+    Date createDate;
     String  title;
     String  comment;
     Float   amount;
 
-    public SalaryBuilder setCreated_date(Date create_date){
-        this.create_date = create_date;
+    public SalaryBuilder setCreatedDate(Date create_date){
+        this.createDate = createDate;
         return this;
     }
 
@@ -38,6 +38,6 @@ public class SalaryBuilder implements CreateBuilder {
 
     @Override
     public Salary build() {
-        return new Salary(this.create_date, this.title, this.comment, this.amount);
+        return new Salary(this.createDate, this.title, this.comment, this.amount);
     }
 }

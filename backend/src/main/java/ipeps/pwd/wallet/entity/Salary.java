@@ -20,7 +20,7 @@ public class Salary {
     @Column(name = "salary_id", updatable = false, nullable = false)
     UUID    salary_id;
 
-    Date    create_date;
+    Date    createDate;
     String  title;
     String  comment;
     Float   amount;
@@ -29,8 +29,8 @@ public class Salary {
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "salary_employee_fk"))
     private Employee employee;
 
-    public Salary(Date create_date, String title, String comment, Float amount) {
-        this.create_date = create_date;
+    public Salary(Date createDate, String title, String comment, Float amount) {
+        this.createDate = createDate;
         this.title = title;
         this.comment = comment;
         this.amount = amount;

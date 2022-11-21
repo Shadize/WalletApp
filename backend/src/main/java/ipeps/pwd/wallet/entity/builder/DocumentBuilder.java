@@ -15,7 +15,7 @@ public class DocumentBuilder implements  CreateBuilder{
     String path;
     String content;
     String type;
-    Date created_date;
+    Date createDate;
 
     public DocumentBuilder setTitle(String title) {
         this.title = title;
@@ -37,12 +37,12 @@ public class DocumentBuilder implements  CreateBuilder{
         return this;
     }
 
-    public DocumentBuilder setCreated_date(Date createdDate) {
-        this.created_date = createdDate;
+    public DocumentBuilder setCreateDate(Date createdDate) {
+        this.createDate = createDate;
         return this;
     }
     @Override
     public Document build() {
-        return new Document(this.title, this.path, this.content, this.type, this.created_date);
+        return new Document(this.title, this.path, this.content, this.type, this.createDate);
     }
 }

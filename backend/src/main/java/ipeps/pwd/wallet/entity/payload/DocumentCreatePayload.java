@@ -14,5 +14,5 @@ public class DocumentCreatePayload {
     String path;
     String content;
     String type;
-    Date created_date;
+    Date createDate;
 }
