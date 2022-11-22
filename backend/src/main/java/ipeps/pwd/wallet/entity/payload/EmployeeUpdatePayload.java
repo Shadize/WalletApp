@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.entity.payload;
 
+import ipeps.pwd.wallet.entity.Company;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,5 @@ public class EmployeeUpdatePayload {
     String ssin;
     String status;
     Boolean deleted;
+    Company company;
 }

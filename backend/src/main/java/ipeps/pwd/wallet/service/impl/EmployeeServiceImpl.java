@@ -23,12 +23,12 @@ public class EmployeeServiceImpl  implements EmployeeService {
     EmployeeRepository employeeRepository;
 
     @Override
-    public List<Employee> list() {
-        return employeeRepository.findAll();
-    }
+    public List<Employee> list() { return employeeRepository.findAll(); }
 
     @Override
-    public Employee detail(UUID employeeId) {
+    public Employee detail(UUID employeeId)
+    {
+
         return employeeRepository.findById(employeeId).orElse(null);
     }
     @Override
@@ -36,7 +36,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
     {
         try
         {
-            Employee employee = new EmployeeBuilder()
+            Employee employee = this.employeeRepository.save(new EmployeeBuilder()
                     .setLastname(payload.getLastname())
                     .setFirstname(payload.getFirstname())
                     .setActive(payload.getActive())
@@ -47,12 +47,13 @@ public class EmployeeServiceImpl  implements EmployeeService {
                     .setSsin(payload.getSsin())
                     .setStatus(payload.getStatus())
                     .setDeleted(payload.getDeleted())
-                    .build();
-            return this.employeeRepository.save(employee);
-
+                    .setCompany(payload.getCompany())
+                    .build());
+            return this.detail(employee.getEmployee_id());
         }
         catch (Exception e)
         {
+            e.printStackTrace();
             return null;
         }
     }

@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.entity.builder;
 
+import ipeps.pwd.wallet.entity.Company;
 import ipeps.pwd.wallet.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class EmployeeBuilder implements CreateBuilder<Employee>{
     String ssin;
     String status;
     Boolean deleted;
+    Company company;
 
     public EmployeeBuilder setLastname(String lastname)
     {
@@ -74,6 +76,12 @@ public class EmployeeBuilder implements CreateBuilder<Employee>{
     public EmployeeBuilder setDeleted(Boolean deleted)
     {
         this.deleted = deleted;
+        return this;
+    }
+
+    public EmployeeBuilder setCompany(Company company)
+    {
+        this.company = company;
         return this;
     }
 
