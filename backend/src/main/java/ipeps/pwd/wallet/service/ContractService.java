@@ -18,8 +18,6 @@ public interface ContractService {
 
     public Contract create(ContractCreatePayload payload);
 
-    Contract create(ContractUpdatePayload payload);
-
     public Contract  update(ContractUpdatePayload payload);
 
     public boolean delete(UUID contractId);
