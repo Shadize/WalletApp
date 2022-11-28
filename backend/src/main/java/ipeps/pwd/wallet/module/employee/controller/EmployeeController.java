@@ -63,7 +63,6 @@ public class EmployeeController {
             if(employeeUpdated != null){
                 return new ApiResponse(true, employeeUpdated, ApiCode.EMPLOYEE_UPDATE_SUCCESS);
             }
-
             return new ApiResponse(false, null, ApiCode.EMPLOYEE_UPDATE_NOT_FOUND);
            // return new ApiResponse(true, this.employeeService.update(payload), ApiCode.EMPLOYEE_UPDATE_NOT_FOUND);
         } catch (Exception e) {

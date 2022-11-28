@@ -25,13 +25,14 @@ public class Fleet {
     Float cost;
 
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "fleet_employee_fk"))
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "fleet_employee_fk"))
     private Employee employee;
 
-    public Fleet(String title, String description, String type, Float cost) {
+    public Fleet(String title, String description, String type, Float cost, Employee employee) {
         this.title = title;
         this.description = description;
         this.type = type;
         this.cost = cost;
+        this.employee = employee;
     }
 }

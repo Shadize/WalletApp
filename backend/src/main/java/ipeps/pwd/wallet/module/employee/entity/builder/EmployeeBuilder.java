@@ -3,11 +3,13 @@ package ipeps.pwd.wallet.module.employee.entity.builder;
 import ipeps.pwd.wallet.common.model.CreateBuilder;
 import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
+import ipeps.pwd.wallet.module.skill.entity.Skill;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,6 +27,7 @@ public class EmployeeBuilder implements CreateBuilder<Employee> {
     String status;
     Boolean deleted;
     Company company;
+    List<Skill> skills;
 
     public EmployeeBuilder setLastname(String lastname)
     {
@@ -86,7 +89,13 @@ public class EmployeeBuilder implements CreateBuilder<Employee> {
         return this;
     }
 
+    public EmployeeBuilder setSkills(List<Skill> skills)
+    {
+        this.skills = skills;
+        return this;
+    }
+
 
     public Employee build(){ return new Employee(this.lastname, this.firstname, this.active, this.deleted_by,
-                            this.address, this.gender, this.birthday,this.ssin, this.status, this.deleted, this.company);}
+                            this.address, this.gender, this.birthday,this.ssin, this.status, this.deleted, this.company, this.skills);}
 }

@@ -37,6 +37,7 @@ public class SkillServiceImpl implements SkillService {
             Skill skill = new SkillBuilder()
                     .setTitle(payload.getTitle())
                     .setDescription(payload.getDescription())
+                    .setEmployees(payload.getEmployees())
                     .build();
             return this.skillRepository.save(skill);
         }
@@ -54,6 +55,7 @@ public class SkillServiceImpl implements SkillService {
         {
             detail.setDescription(payload.getDescription());
             detail.setTitle(payload.getTitle());
+            detail.setEmployees(payload.getEmployees());
             return this.skillRepository.save(detail);
         }
         return detail;

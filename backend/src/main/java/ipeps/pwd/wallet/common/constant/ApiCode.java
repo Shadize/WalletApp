@@ -64,6 +64,7 @@ public class ApiCode {
 
     // @Area fleet api code ------------------------------------------
     public static String FLEET_LIST_SUCCESS="api.fleet.list.success";
+    public static String FLEET_LIST_NOT_FOUND="api.fleet.list.not-found";
     public static String FLEET_LIST_ERROR="api.fleet.list.error";
     public static String FLEET_DETAIL_SUCCESS="api.fleet.detail.success";
     public static String FLEET_DETAIL_ERROR="api.fleet.detail.error";
@@ -109,6 +110,7 @@ public class ApiCode {
 
     // @Area skill api code ------------------------------------------
     public static String SKILL_LIST_SUCCESS="api.skill.list.success";
+    public static String SKILL_LIST_NOT_FOUND="api.skill.list.not-found";
     public static String SKILL_LIST_ERROR="api.skill.list.error";
     public static String SKILL_DETAIL_SUCCESS="api.skill.detail.success";
     public static String SKILL_DETAIL_ERROR="api.skill.detail.error";

@@ -1,6 +1,8 @@
 package ipeps.pwd.wallet.module.fleet.entity.builder;
 
 import ipeps.pwd.wallet.common.model.CreateBuilder;
+import ipeps.pwd.wallet.module.employee.entity.Employee;
+import ipeps.pwd.wallet.module.employee.entity.builder.EmployeeBuilder;
 import ipeps.pwd.wallet.module.fleet.entity.Fleet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +17,7 @@ public class FleetBuilder implements CreateBuilder<Fleet> {
     String description;
     String type;
     Float cost;
+    Employee employee;
 
     public FleetBuilder setTitle(String title)
     {
@@ -36,10 +39,15 @@ public class FleetBuilder implements CreateBuilder<Fleet> {
         this.cost = cost;
         return this;
     }
+    public FleetBuilder setEmployee(Employee employee)
+    {
+        this.employee = employee;
+        return this;
+    }
 
 
 
     @Override
-    public Fleet build() {return new Fleet(this.title, this.description, this.type, this.cost);}
+    public Fleet build() {return new Fleet(this.title, this.description, this.type, this.cost, this.employee);}
 
 }
