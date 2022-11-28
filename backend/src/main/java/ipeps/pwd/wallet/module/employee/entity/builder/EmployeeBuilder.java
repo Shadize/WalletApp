@@ -88,5 +88,5 @@ public class EmployeeBuilder implements CreateBuilder<Employee> {
 
 
     public Employee build(){ return new Employee(this.lastname, this.firstname, this.active, this.deleted_by,
-                            this.address, this.gender, this.birthday,this.ssin, this.status, this.deleted);}
+                            this.address, this.gender, this.birthday,this.ssin, this.status, this.deleted, this.company);}
 }
