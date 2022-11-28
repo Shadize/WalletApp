@@ -55,7 +55,7 @@ public class OrganizationController {
             if(organizationUpdated != null){
                 return new ApiResponse(true, organizationUpdated, ApiCode.ORGANIZATION_UPDATE_SUCCESS);
             }
-            return new ApiResponse(true, this.organizationService.update(payload), ApiCode.ORGANIZATION_UPDATE_NOT_FOUND);
+            return new ApiResponse(true, null, ApiCode.ORGANIZATION_UPDATE_NOT_FOUND);
         } catch (Exception e) {
             return new ApiResponse(false, e.getMessage(), ApiCode.ORGANIZATION_UPDATE_ERROR);
         }

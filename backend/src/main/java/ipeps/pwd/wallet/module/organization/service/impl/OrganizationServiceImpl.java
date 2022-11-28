@@ -33,8 +33,7 @@ public class OrganizationServiceImpl implements OrganizationService {
                     .build());
             return this.detail(organization.getOrganization_id());
         }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException("error with object");
         }
     }
 
