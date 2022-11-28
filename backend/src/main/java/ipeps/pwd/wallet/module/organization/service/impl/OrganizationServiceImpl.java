@@ -43,7 +43,9 @@ public class OrganizationServiceImpl implements OrganizationService {
         if(detail != null){
             detail.setName(payload.getName());
             detail.setDescription(payload.getDescription());
-            detail.setCompany(payload.getCompany());
+            if(payload.getCompany() != null)
+                detail.setCompany(payload.getCompany());
+
             return this.organizationRepository.save(detail);
         }
         return detail;
@@ -55,8 +57,9 @@ public class OrganizationServiceImpl implements OrganizationService {
             Organization detail = this.detail(organizationId);
             if(detail != null){
                 this.organizationRepository.delete(detail);
+                return true;
             }
-            return true;
+            return false;
         }catch(Exception e){
             return false;
         }
