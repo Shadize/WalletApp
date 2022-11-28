@@ -7,6 +7,7 @@ import ipeps.pwd.wallet.module.employee.entity.payload.EmployeeCreatePayload;
 import ipeps.pwd.wallet.module.employee.entity.payload.EmployeeUpdatePayload;
 import ipeps.pwd.wallet.module.employee.repository.EmployeeRepository;
 import ipeps.pwd.wallet.module.employee.service.EmployeeService;
+import ipeps.pwd.wallet.module.organization.entity.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,6 @@ public class EmployeeServiceImpl  implements EmployeeService {
     @Override
     public Employee detail(UUID employeeId)
     {
-
         return employeeRepository.findById(employeeId).orElse(null);
     }
     @Override
@@ -50,8 +50,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
         }
         catch (Exception e)
         {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException("error with object");
         }
     }
 
@@ -71,6 +70,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
             detail.setSsin(payload.getSsin());
             detail.setStatus(payload.getStatus());
             detail.setDeleted(payload.getDeleted());
+            detail.setCompany(payload.getCompany());
             return this.employeeRepository.save(detail);
         }
         return detail;

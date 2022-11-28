@@ -33,11 +33,12 @@ public class Employee {
     Boolean deleted;
 
     @ManyToOne()
-    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "employee_company_fk"))
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "employee_company_fk"))
     private Company company;
 
     public Employee(String lastname, String firstname, Boolean active, String deleted_by,
-                    String address, String gender, Date birthday, String ssin,String status, Boolean deleted)
+                    String address, String gender, Date birthday, String ssin,String status,
+                    Boolean deleted, Company company)
     {
         this.lastname = lastname;
         this.firstname = firstname;
@@ -49,5 +50,6 @@ public class Employee {
         this.ssin = ssin;
         this.status = status;
         this.deleted = deleted;
+        this.company = company;
     }
 }

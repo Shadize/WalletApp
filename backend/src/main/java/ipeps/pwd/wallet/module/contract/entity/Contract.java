@@ -38,7 +38,7 @@ public class Contract {
 
     @ManyToMany()
     @JoinTable(
-            name = "ToBeLinked",
+            name = "ControctsBetweenCompany",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id"))
     List<Company> companies;

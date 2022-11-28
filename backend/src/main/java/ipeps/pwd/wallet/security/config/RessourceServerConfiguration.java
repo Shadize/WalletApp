@@ -10,7 +10,10 @@ public class RessourceServerConfiguration extends ResourceServerConfigurerAdapte
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
-        http.authorizeRequests().antMatchers("/login","/oauth/token", "/account/signup", "/account/signin","/account/refresh", "/salary/list","/salary/create", "/salary/update", "/salary/detail/{id}", "/salary/delete/{id}").permitAll();
+        // http.authorizeRequests().antMatchers("/login","/oauth/token", "/account/signup", "/account/signin","/account/refresh", "/salary/list","/salary/create", "/salary/update", "/salary/detail/{id}", "/salary/delete/{id}").permitAll();
+        http.authorizeRequests().antMatchers("/login","/oauth/token", "/account/signup", "/account/signin","/account/refresh", "/salary/list","/salary/create", "/salary/update", "/salary/detail/{id}", "/salary/delete/{id}",
+                                            "/employee/list","/employee/create", "/employee/update", "/employee/detail/{id}", "/employee/delete/{id}").permitAll();
+
         http.authorizeRequests().anyRequest().authenticated();
     }
 }
