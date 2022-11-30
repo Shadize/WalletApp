@@ -10,7 +10,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CompanyUpdatePayload {
-    UUID companyID;
+    UUID companyId;
     String name;
     String description;
     String address;
