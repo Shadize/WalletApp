@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.timesheet.entity;
 
+import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import lombok.AllArgsConstructor;
@@ -17,12 +18,14 @@ import java.util.UUID;
 @Entity
 public class Timesheet {
 
-    public Timesheet(Date startDate, Date startHours, Date endHours, String comment, String timesheetType) {
+    public Timesheet(Date startDate, Date startHours, Date endHours, String comment, String timesheetType, Employee employee, Contract contract) {
         this.startDate = startDate;
         this.startHours = startHours;
         this.endHours = endHours;
         this.comment = comment;
         this.timesheetType = timesheetType;
+        this.employee = employee;
+        this.contract = contract;
     }
 
     @Id

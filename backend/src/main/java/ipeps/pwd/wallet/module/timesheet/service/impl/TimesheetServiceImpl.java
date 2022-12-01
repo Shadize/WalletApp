@@ -36,6 +36,7 @@ public class TimesheetServiceImpl implements TimesheetService {
                     .setStartHours(payload.getStartHours())
                     .setEndHours(payload.getEndHours())
                     .setTimesheetType(payload.getTimesheetType())
+                    .setComment((payload.getComment()))
                     .build();
             return this.timesheetRepository.save(timesheet);
         }catch(Exception e){

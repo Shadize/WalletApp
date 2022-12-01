@@ -48,7 +48,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company update(CompanyUpdatePayload payload) {
-        Company detail = this.detail(payload.getCompanyID());
+        Company detail = this.detail(payload.getCompanyId());
         if(detail != null){
             detail.setName(payload.getName());
             detail.setDescription(payload.getDescription());

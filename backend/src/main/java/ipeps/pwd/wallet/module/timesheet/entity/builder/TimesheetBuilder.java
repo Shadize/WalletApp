@@ -1,6 +1,9 @@
 package ipeps.pwd.wallet.module.timesheet.entity.builder;
 
 import ipeps.pwd.wallet.common.model.CreateBuilder;
+import ipeps.pwd.wallet.module.company.entity.Company;
+import ipeps.pwd.wallet.module.contract.entity.Contract;
+import ipeps.pwd.wallet.module.employee.entity.Employee;
 import ipeps.pwd.wallet.module.timesheet.entity.Timesheet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +21,8 @@ public class TimesheetBuilder implements CreateBuilder<Timesheet> {
     Date    endHours;
     String  comment;
     String  timesheetType;
+    Contract contract;
+    Employee employee;
 
     public TimesheetBuilder setStartDate(Date startDate) {
         this.startDate = startDate;
@@ -43,8 +48,22 @@ public class TimesheetBuilder implements CreateBuilder<Timesheet> {
         this.timesheetType = timesheetType;
         return this;
     }
+
+    public TimesheetBuilder setContract(Contract contract){
+        this.contract = contract;
+        return this;
+    }
+
+
+    public TimesheetBuilder setEmployee(Employee employee){
+        this.employee = employee;
+        return this;
+    }
+
+
+
     @Override
     public Timesheet build() {
-        return new Timesheet(this.startDate, this.startHours, this.endHours, this.comment, this.timesheetType);
+        return new Timesheet(this.startDate, this.startHours, this.endHours, this.comment, this.timesheetType, this.employee, this.contract);
     }
 }
