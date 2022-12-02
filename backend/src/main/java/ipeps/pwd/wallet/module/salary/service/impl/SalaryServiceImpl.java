@@ -40,8 +40,7 @@ public class SalaryServiceImpl implements SalaryService {
                     .build());
             return this.detail(salary.getSalary_id());
         }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException("error with object");
         }
     }
 
@@ -53,7 +52,9 @@ public class SalaryServiceImpl implements SalaryService {
             detail.setTitle(payload.getTitle());
             detail.setComment(payload.getComment());
             detail.setAmount(payload.getAmount());
-            detail.setEmployee(payload.getEmployee());
+            if(payload.getEmployee() != null)
+                detail.setEmployee(payload.getEmployee());
+
             return this.salaryRepository.save(detail);
         }
         return detail;

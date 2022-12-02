@@ -55,7 +55,7 @@ public class SalaryController {
             if(salaryUpdated != null){
                 return new ApiResponse(true, salaryUpdated, ApiCode.SALARY_UPDATE_SUCCESS);
             }
-            return new ApiResponse(true, this.salaryService.update(payload), ApiCode.SALARY_UPDATE_NOT_FOUND);
+            return new ApiResponse(true,null, ApiCode.SALARY_UPDATE_NOT_FOUND);
         } catch (Exception e) {
             return new ApiResponse(false, e.getMessage(), ApiCode.SALARY_UPDATE_ERROR);
         }

@@ -55,7 +55,7 @@ public class DocumentController {
             if(documentUpdated != null){
                 return new ApiResponse(true, documentUpdated, ApiCode.DOCUMENT_UPDATE_SUCCESS);
             }
-            return new ApiResponse(true, this.documentService.update(payload), ApiCode.DOCUMENT_UPDATE_NOT_FOUND);
+            return new ApiResponse(true, null, ApiCode.DOCUMENT_UPDATE_NOT_FOUND);
         } catch (Exception e) {
             return new ApiResponse(false, e.getMessage(), ApiCode.DOCUMENT_UPDATE_ERROR);
         }

@@ -43,8 +43,7 @@ public class DocumentServiceImpl implements DocumentService {
                     .build());
             return this.detail(document.getDocument_id());
         }catch(Exception e){
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException("error with object");
         }
     }
 
@@ -57,9 +56,13 @@ public class DocumentServiceImpl implements DocumentService {
             detail.setContent(payload.getContent());
             detail.setType(payload.getType());
             detail.setCreateDate(payload.getCreateDate());
-            detail.setCompany(payload.getCompany());
-            detail.setContract(payload.getContract());
-            detail.setEmployee(payload.getEmployee());
+            if(payload.getCompany() != null)
+                detail.setCompany(payload.getCompany());
+            if(payload.getContract() != null)
+                detail.setContract(payload.getContract());
+            if(payload.getEmployee() != null)
+                detail.setEmployee(payload.getEmployee());
+
             return this.documentRepository.save(detail);
         }
         return detail;
