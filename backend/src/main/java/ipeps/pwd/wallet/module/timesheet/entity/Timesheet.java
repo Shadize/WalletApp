@@ -41,7 +41,7 @@ public class Timesheet {
     String  timesheetType;
 
     @ManyToOne()
-    @JoinColumn(name = "contract_fk",nullable = false, referencedColumnName = "contract_id",foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
+    @JoinColumn(name = "contract_fk", referencedColumnName = "contract_id", nullable = false, foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
     Contract contract;
 
     @ManyToOne()
