@@ -1,6 +1,6 @@
 package ipeps.pwd.wallet.security.controller;
 
-import ipeps.pwd.wallet.common.entity.response.ApiResponse;
+import ipeps.pwd.wallet.common.entity.ApiResponse;
 import ipeps.pwd.wallet.security.entity.Credential;
 import ipeps.pwd.wallet.security.entity.payload.RefreshTokenRequest;
 import ipeps.pwd.wallet.security.entity.payload.SignupRequest;

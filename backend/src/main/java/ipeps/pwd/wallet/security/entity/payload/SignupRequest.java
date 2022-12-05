@@ -1,5 +1,5 @@
 package ipeps.pwd.wallet.security.entity.payload;
-import ipeps.pwd.wallet.common.entity.response.ApiResponse;
+import ipeps.pwd.wallet.common.entity.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
