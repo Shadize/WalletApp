@@ -44,15 +44,15 @@ public class Contract {
     List<Company> companies;
 
 //    @ManyToOne()
-//    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "contract_company_fk"))
+//    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_company_fk"))
 //    Company company;
 //
 //    @ManyToOne()
-//    @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "contract_client_fk"))
+//    @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_client_fk"))
 //    Company client;
 
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "contract_employee_fk"))
     private Employee employee;
 
 }
