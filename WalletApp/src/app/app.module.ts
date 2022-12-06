@@ -6,10 +6,12 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
+import { FabianCompComponent } from './modules/fabian-comp/fabian-comp.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FabianCompComponent
   ],
   imports: [
     BrowserModule,
