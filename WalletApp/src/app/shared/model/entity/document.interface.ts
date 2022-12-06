@@ -1,5 +1,5 @@
 interface Document{
-  documentId : string;
+  documentId? : string;
   title : string;
   content : string;
   type : string;

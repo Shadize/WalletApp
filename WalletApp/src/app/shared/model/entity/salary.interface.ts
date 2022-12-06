@@ -1,5 +1,5 @@
 interface Salary{
-  salaryId : string;
+  salaryId? : string;
   createDate : Date;
   title : string;
   comment : string;

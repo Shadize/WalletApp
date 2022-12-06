@@ -19,7 +19,7 @@ public class Salary {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "salary_id", updatable = false, nullable = false)
-    UUID    salary_id;
+    UUID    salaryId;
 
     Date    createDate;
     String  title;

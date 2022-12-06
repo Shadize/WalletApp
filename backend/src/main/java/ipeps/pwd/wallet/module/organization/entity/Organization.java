@@ -18,7 +18,7 @@ public class Organization {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "organization_id", updatable = false, nullable = false)
-    UUID organization_id;
+    UUID organizationId;
 
     String name;
     String description;
