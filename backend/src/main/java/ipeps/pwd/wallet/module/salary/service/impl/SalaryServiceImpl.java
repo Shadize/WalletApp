@@ -38,7 +38,7 @@ public class SalaryServiceImpl implements SalaryService {
                     .setAmount(payload.getAmount())
                     .setEmployee(payload.getEmployee())
                     .build());
-            return this.detail(salary.getSalary_id());
+            return this.detail(salary.getSalaryId());
         }catch (Exception e){
             throw new RuntimeException("error with object");
         }

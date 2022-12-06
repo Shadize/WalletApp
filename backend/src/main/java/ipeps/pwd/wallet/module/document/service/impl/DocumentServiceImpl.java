@@ -41,7 +41,7 @@ public class DocumentServiceImpl implements DocumentService {
                     .setContract(payload.getContract())
                     .setEmployee(payload.getEmployee())
                     .build());
-            return this.detail(document.getDocument_id());
+            return this.detail(document.getDocumentId());
         }catch(Exception e){
             throw new RuntimeException("error with object");
         }

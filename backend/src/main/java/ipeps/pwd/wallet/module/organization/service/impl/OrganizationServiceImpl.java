@@ -31,7 +31,7 @@ public class OrganizationServiceImpl implements OrganizationService {
                     .setDescription(payload.getDescription())
                     .setCompany(payload.getCompany())
                     .build());
-            return this.detail(organization.getOrganization_id());
+            return this.detail(organization.getOrganizationId());
         }catch (Exception e){
             throw new RuntimeException("error with object");
         }
@@ -39,7 +39,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public Organization update(OrganizationUpdatePayload payload){
-        Organization detail = this.detail(payload.getOrganization_id());
+        Organization detail = this.detail(payload.getOrganizationId());
         if(detail != null){
             detail.setName(payload.getName());
             detail.setDescription(payload.getDescription());
