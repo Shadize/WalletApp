@@ -4,4 +4,5 @@ interface Salary{
   title : string;
   comment : string;
   amount : number;
+  employee : Employee;
 }
