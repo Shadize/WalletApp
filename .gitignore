@@ -1,7 +1,4 @@
 
 .idea/IPEPS-PWD-2022-GR05.iml
 .idea/misc.xml
-WalletApp/angular.json
 WalletApp/package-lock.json
-
-backend/src/main/resources/application.properties
