@@ -14,11 +14,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Data
 public class EmployeeUpdatePayload {
-    UUID employee_id;
+    UUID employeeId;
     String lastname;
     String firstname;
     Boolean active;
-    String deleted_by;
+    String deletedBy;
     String address;
     String gender;
     Date birthday;

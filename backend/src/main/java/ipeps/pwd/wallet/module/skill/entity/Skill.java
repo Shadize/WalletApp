@@ -20,7 +20,7 @@ public class Skill {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "skill_id", updatable = false, nullable = false)
-    UUID skill_id;
+    UUID skillId;
 
     String title;
     String description;

@@ -48,7 +48,7 @@ public class FleetServiceImpl implements FleetService {
     @Override
     public Fleet update(FleetUpdatePayload payload)
     {
-        Fleet detail = this.detail(payload.getFleet_id());
+        Fleet detail = this.detail(payload.getFleetId());
         if (detail != null)
         {
             detail.setTitle(payload.getTitle());

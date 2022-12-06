@@ -21,12 +21,12 @@ public class Employee {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "employee_id", updatable = false, nullable = false)
-    UUID employee_id;
+    UUID employeeId;
 
     String lastname;
     String firstname;
     Boolean active;
-    String deleted_by;
+    String deletedBy;
     String address;
     String gender;
     Date birthday;
@@ -45,14 +45,14 @@ public class Employee {
             inverseJoinColumns = @JoinColumn(name = "skill_id"))
     List<Skill> skills;
 
-    public Employee(String lastname, String firstname, Boolean active, String deleted_by,
+    public Employee(String lastname, String firstname, Boolean active, String deletedBy,
                     String address, String gender, Date birthday, String ssin,String status,
                     Boolean deleted, Company company, List<Skill> skills)
     {
         this.lastname = lastname;
         this.firstname = firstname;
         this.active = active;
-        this.deleted_by = deleted_by;
+        this.deletedBy = deletedBy;
         this.address = address;
         this.gender = gender;
         this.birthday = birthday;

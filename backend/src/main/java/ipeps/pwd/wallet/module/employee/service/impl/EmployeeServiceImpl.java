@@ -37,7 +37,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
                     .setLastname(payload.getLastname())
                     .setFirstname(payload.getFirstname())
                     .setActive(payload.getActive())
-                    .setDeleted_by(payload.getDeleted_by())
+                    .setDeletedBy(payload.getDeletedBy())
                     .setAddress(payload.getAddress())
                     .setGender(payload.getGender())
                     .setBirthday(payload.getBirthday())
@@ -47,7 +47,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
                     .setCompany(payload.getCompany())
                     .setSkills(payload.getSkills())
                     .build());
-            return this.detail(employee.getEmployee_id());
+            return this.detail(employee.getEmployeeId());
         }
         catch (Exception e)
         {
@@ -60,13 +60,13 @@ public class EmployeeServiceImpl  implements EmployeeService {
     {
         try
         {
-            Employee detail = this.detail(payload.getEmployee_id());
+            Employee detail = this.detail(payload.getEmployeeId());
             if(detail != null)
             {
                 detail.setLastname(payload.getLastname());
                 detail.setFirstname(payload.getFirstname());
                 detail.setActive(payload.getActive());
-                detail.setDeleted_by(payload.getDeleted_by());
+                detail.setDeletedBy(payload.getDeletedBy());
                 detail.setAddress(payload.getAddress());
                 detail.setGender(payload.getGender());
                 detail.setBirthday(payload.getBirthday());
