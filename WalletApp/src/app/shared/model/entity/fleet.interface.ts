@@ -1,4 +1,4 @@
-interface fleet{
+interface Fleet{
   fleetId?: string;
   tittle: string;
   description: string;
