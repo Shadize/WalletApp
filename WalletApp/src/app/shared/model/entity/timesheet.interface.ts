@@ -1,4 +1,7 @@
-interface Timesheet {
+import {Contract} from "@shared/model/entity/contract.interface";
+import {Employee} from "@shared/model/entity/employee.interface";
+
+export interface Timesheet {
   timesheetId?: string;
   startDate: Date;
   startHours: Date;

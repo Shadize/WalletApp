@@ -1,4 +1,7 @@
-interface Employee{
+import {Company} from "@shared/model/entity/company.interface";
+import {Skill} from "@shared/model/entity/skill.interface";
+
+export interface Employee{
   employeeId?: string;
   lastname: string;
   firstname: string;
