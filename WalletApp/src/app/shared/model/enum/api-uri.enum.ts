@@ -4,7 +4,6 @@ export enum ApiUriEnum {
     ME = 'account/me',
     REFRESH_TOKEN = 'account/refresh',
 
-  // Organization
 
-  ORGANIZATION_GET = 'organization/list'
+
 }
