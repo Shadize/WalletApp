@@ -19,7 +19,7 @@ public class EmployeeBuilder implements CreateBuilder<Employee> {
     String lastname;
     String firstname;
     Boolean active;
-    String deleted_by;
+    String deletedBy;
     String address;
     String gender;
     Date birthday;
@@ -44,9 +44,9 @@ public class EmployeeBuilder implements CreateBuilder<Employee> {
         this.active = active;
         return this;
     }
-    public EmployeeBuilder setDeleted_by(String deleted_by)
+    public EmployeeBuilder setDeletedBy(String deletedBy)
     {
-        this.deleted_by = deleted_by;
+        this.deletedBy = deletedBy;
         return this;
     }
     public EmployeeBuilder setAddress(String address)
@@ -96,6 +96,6 @@ public class EmployeeBuilder implements CreateBuilder<Employee> {
     }
 
 
-    public Employee build(){ return new Employee(this.lastname, this.firstname, this.active, this.deleted_by,
+    public Employee build(){ return new Employee(this.lastname, this.firstname, this.active, this.deletedBy,
                             this.address, this.gender, this.birthday,this.ssin, this.status, this.deleted, this.company, this.skills);}
 }

@@ -50,7 +50,7 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public Skill update(SkillUpdatePayload payload)
     {
-        Skill detail = this.detail(payload.getSkill_id());
+        Skill detail = this.detail(payload.getSkillId());
         if (detail != null)
         {
             detail.setDescription(payload.getDescription());

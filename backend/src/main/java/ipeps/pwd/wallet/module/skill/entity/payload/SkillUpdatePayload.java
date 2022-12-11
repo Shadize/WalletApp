@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SkillUpdatePayload {
-    UUID skill_id;
+    UUID skillId;
 
     String title;
     String description;

@@ -18,7 +18,7 @@ public class Fleet {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "fleet_id", updatable = false, nullable = false)
-    UUID fleet_id;
+    UUID fleetId;
     String title;
     String description;
     String type;

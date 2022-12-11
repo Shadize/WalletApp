@@ -17,7 +17,7 @@ public class EmployeeCreatePayload {
     String lastname;
     String firstname;
     Boolean active;
-    String deleted_by;
+    String deletedBy;
     String address;
     String gender;
     Date birthday;
