@@ -10,4 +10,6 @@ export interface CrudServiceInterface {
   update(updatePayload: PayloadInterface): Observable<ApiResponse>;
 
   delete(id: string | number): Observable<ApiResponse>;
+
+  detail(id: string | number): Observable<ApiResponse>;
 }
