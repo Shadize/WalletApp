@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PublicGuard, SecurityGuard} from '@security/guard';
 import {FabianCompComponent} from "./modules/fabian-comp/fabian-comp.component";
+import {TestsComponent} from "./modules/tests/tests.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'test',
     component: FabianCompComponent
+  },
+  {
+    path: 'test2',
+    component: TestsComponent
   }
 
 ];

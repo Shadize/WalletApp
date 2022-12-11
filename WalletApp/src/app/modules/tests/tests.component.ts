@@ -3,7 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import {ApiResponse} from "@shared/model";
-// import {Skill} from '@shared/model/'
+import {Skill} from "@shared/model/entity/skill.interface";
+import {HttpService} from "@shared/service";
 
 @Component({
   selector: 'app-tests',
@@ -23,25 +24,26 @@ export class TestsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // let res = this.createSkill("helo", "hello").pipe(
-    //   catchError((error: { error: { message: any; }; status: any; message: any; }) => {
-    //     return this.errorHandler(error);
-    //   }),)
-    //
-    // console.log("Creating skill");
-    // console.log(res);
+    let $res = this.listSkills(this.api)
+
+    $res.subscribe(data => {
+      console.log(data);
+    })
+
+    console.log("Listing skill");
+    console.log($res);
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
-  api: string = "localhost:2022/api/skill/create"
+  api: string = "http://localhost:2022/api/skill/list"
 
   skillObject = {
     title: "Hello",
     description: "Test"
   }
 
-  // createSkill = (title: string, description: string) => {
-  //   return this.http.get<Skill>(this.api, this.skillObject);
-  // }
+  listSkills = (url: string) : Observable<Skill> => {
+    return this.http.get(url + "");
+  }
 }
