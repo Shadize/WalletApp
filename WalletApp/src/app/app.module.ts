@@ -6,12 +6,12 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
-import { TestComponent } from './modules/test/test.component';
+import { TestsComponent } from './modules/tests/tests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestsComponent
   ],
   imports: [
     BrowserModule,
