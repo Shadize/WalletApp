@@ -3,7 +3,7 @@ import {PayloadInterface} from './payload.interface';
 import {ApiResponse} from './api-response.interface';
 
 export interface CrudServiceInterface {
-  list(): void;
+  list(): Observable<ApiResponse>;
 
   create(addPayload: PayloadInterface): Observable<ApiResponse>;
 

@@ -46,4 +46,8 @@ export class TestsComponent implements OnInit{
   listSkills = (url: string) : Observable<Skill> => {
     return this.http.get(url + "");
   }
+
+
+
+
 }
