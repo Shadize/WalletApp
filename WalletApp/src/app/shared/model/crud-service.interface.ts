@@ -5,7 +5,7 @@ import {ApiResponse} from './api-response.interface';
 export interface CrudServiceInterface {
   list(): void;
 
-  add(addPayload: PayloadInterface): Observable<ApiResponse>;
+  create(addPayload: PayloadInterface): Observable<ApiResponse>;
 
   update(updatePayload: PayloadInterface): Observable<ApiResponse>;
 
