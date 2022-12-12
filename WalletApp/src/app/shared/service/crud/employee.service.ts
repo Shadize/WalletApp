@@ -5,32 +5,50 @@ import {ApiService, HttpService} from "@shared/service";
 import {Contract} from "@shared/model/dto/contract.interface";
 import {map} from "rxjs/operators";
 import {Employee} from "@shared/model/dto/employee.interface";
+import any = jasmine.any;
 
 @Injectable()
 export class EmployeeService extends ApiService implements CrudServiceInterface{
 
+    detail(id: string | number): Observable<Employee> {
+    return this.get(`employee/detail/${id}`).pipe(
+      map((response: ApiResponse) => {
+      return (response.result) ? response.data as Employee : {} as Employee;
+      })
+    )
+  }
 
-  list = () : Observable<Employee[]> =>  {
-    return this.get(`/contract/list`).pipe(map((response: ApiResponse) => {
+  list() : Observable<Employee[]>{
+    return this.get(`/contract/list`).pipe(
+      map((response: ApiResponse) => {
       return (response.result) ? response.data as Employee[] : [];
-    }));
+      })
+    )
   }
 
-  create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.post(this.api.baseUrl + "employee/create" , addPayload);
+  create(addPayload: PayloadInterface): Observable<Employee> {
+    return this.post("employee/create", addPayload).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Employee : {} as Employee
+      })
+    )
   }
 
-  delete(id: string | number): Observable<ApiResponse> {
-    return this.api.http.delete(this.api.baseUrl + `employee/delete/${id}`);
+  update(updatePayload: PayloadInterface): Observable<Employee> {
+    return this.put( "employee/update/", updatePayload).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Employee : {} as Employee
+      })
+    )
+  }
+
+  delete(id: string | number): Observable<Employee> {
+    return this.delete(`employee/delete/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Employee : {} as Employee
+      })
+    )
   }
 
 
-
-  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.put(this.api.baseUrl + "employee/update/", updatePayload);
-  }
-
-  detail(id: string | number): Observable<ApiResponse> {
-    return this.api.http.get(this.api.baseUrl + `employee/detail/${id}`);
-  }
 }

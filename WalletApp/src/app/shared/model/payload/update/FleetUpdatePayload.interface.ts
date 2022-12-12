@@ -1,7 +1,7 @@
 import {Employee} from "@shared/model/dto/employee.interface";
-import {DtoInterface} from "@shared/model";
+import {PayloadInterface} from "@shared/model";
 
-export interface Fleet extends DtoInterface{
+export interface FleetUpdatePayloadInterface extends PayloadInterface{
   fleetId?: string;
   tittle: string;
   description: string;
