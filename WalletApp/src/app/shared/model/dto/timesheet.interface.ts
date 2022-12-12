@@ -1,5 +1,5 @@
-import {Contract} from "@shared/model/entity/contract.interface";
-import {Employee} from "@shared/model/entity/employee.interface";
+import {Contract} from "@shared/model/dto/contract.interface";
+import {Employee} from "@shared/model/dto/employee.interface";
 
 export interface Timesheet {
   timesheetId?: string;

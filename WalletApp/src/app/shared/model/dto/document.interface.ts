@@ -1,6 +1,6 @@
-import {Company} from "@shared/model/entity/company.interface";
-import {Contract} from "@shared/model/entity/contract.interface";
-import {Employee} from "@shared/model/entity/employee.interface";
+import {Company} from "@shared/model/dto/company.interface";
+import {Contract} from "@shared/model/dto/contract.interface";
+import {Employee} from "@shared/model/dto/employee.interface";
 
 export interface Document{
   documentId? : string;

@@ -2,19 +2,23 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {ApiService} from "@shared/service";
 import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
+import {Contract} from "@shared/model/dto/contract.interface";
+import {map} from "rxjs/operators";
 
 @Injectable()
-export class ContractService implements CrudServiceInterface{
+export class ContractService extends ApiService implements CrudServiceInterface {
 
-  constructor(private api: ApiService) {
+
+
+  list = () : Observable<Contract[]> =>  {
+    return this.get(`/contract/list`).pipe(map((response: ApiResponse) => {
+      return (response.result) ? response.data as Contract[] : [];
+    }));
   }
 
-  list = () : Observable<ApiResponse> => {
-    return this.api.http.get(this.api.baseUrl + `/contract/list`);
-  }
 
   detail = (id: string | number) : Observable<ApiResponse> => {
-    return this.api.http.delete(this.api.baseUrl + `contract/delete/${id}`);
+    return this.delete(this.api.baseUrl + `contract/delete/${id}`);
   }
 
   create(addPayload: PayloadInterface): Observable<ApiResponse> {

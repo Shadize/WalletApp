@@ -1,4 +1,4 @@
-import {Contract} from "@shared/model/entity/contract.interface";
+import {Contract} from "@shared/model/dto/contract.interface";
 export interface Company{
   companyId?: string;
   name: string;

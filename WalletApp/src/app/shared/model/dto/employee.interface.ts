@@ -1,5 +1,5 @@
-import {Company} from "@shared/model/entity/company.interface";
-import {Skill} from "@shared/model/entity/skill.interface";
+import {Company} from "@shared/model/dto/company.interface";
+import {Skill} from "@shared/model/dto/skill.interface";
 
 export interface Employee{
   employeeId?: string;
