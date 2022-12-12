@@ -9,10 +9,9 @@ export interface CrudServiceInterface {
 
   detail(id: string | number): Observable<DtoInterface>;
 
-  create(addPayload: PayloadInterface): boolean;
+  create(addPayload: PayloadInterface): Observable<boolean>;
 
-  update(updatePayload: PayloadInterface): boolean;
+  update(updatePayload: PayloadInterface): Observable<boolean>;
 
-  delete(id: string | number): boolean;
-
+  remove(id: string | number): Observable<boolean>;
 }
