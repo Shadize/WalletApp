@@ -1,14 +1,27 @@
 import {Observable} from "rxjs";
-import {Skill} from "@shared/model/entity/skill.interface";
 import {Injectable} from "@angular/core";
-import {HttpService} from "@shared/service";
+import {ApiService} from "@shared/service";
+import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 
 @Injectable()
-export class CompanyService {
+export class CompanyService implements CrudServiceInterface{
 
-  constructor(private http: HttpService) {
+  constructor(private api: ApiService) {
   }
-  list = (url: string) : Observable<Skill> => {
-    return this.http.get(url + "");
+
+  list = () : Observable<ApiResponse> => {
+    return this.api.http.get(`/company/list`);
+  }
+
+  create(addPayload: PayloadInterface): Observable<ApiResponse> {
+    return this.api.http.post(`/company/create`, addPayload);
+  }
+
+  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
+    return this.api.http.put(`/company/update`, updatePayload);
+  }
+
+  delete(id: string | number): Observable<ApiResponse> {
+    return this.api.http.delete(`/company/delete/${id}`);
   }
 }
