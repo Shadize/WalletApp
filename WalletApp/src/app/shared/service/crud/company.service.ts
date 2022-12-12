@@ -10,18 +10,22 @@ export class CompanyService implements CrudServiceInterface{
   }
 
   list = () : Observable<ApiResponse> => {
-    return this.api.http.get(`/company/list`);
+    return this.api.http.get(this.api.baseUrl + `/company/list`);
+  }
+
+  detail(id: string | number): Observable<ApiResponse> {
+    return this.api.http.get(this.api.baseUrl + `company/detail/${id}`);
   }
 
   create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.post(`/company/create`, addPayload);
+    return this.api.http.post(this.api.baseUrl +`/company/create`, addPayload);
   }
 
   update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.put(`/company/update`, updatePayload);
+    return this.api.http.put(this.api.baseUrl +`/company/update`, updatePayload);
   }
 
   delete(id: string | number): Observable<ApiResponse> {
-    return this.api.http.delete(`/company/delete/${id}`);
+    return this.api.http.delete(this.api.baseUrl +`/company/delete/${id}`);
   }
 }

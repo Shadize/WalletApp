@@ -10,18 +10,22 @@ export class ContractService implements CrudServiceInterface{
   }
 
   list = () : Observable<ApiResponse> => {
-    return this.api.http.get(`/contract/list`);
+    return this.api.http.get(this.api.baseUrl + `/contract/list`);
+  }
+
+  detail = (id: string | number) : Observable<ApiResponse> => {
+    return this.api.http.delete(this.api.baseUrl + `contract/delete/${id}`);
   }
 
   create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.post(`/contract/create`, addPayload);
+    return this.api.http.post(this.api.baseUrl + `/contract/create`, addPayload);
   }
 
   update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.put(`/contract/update`, updatePayload);
+    return this.api.http.put(this.api.baseUrl + `/contract/update`, updatePayload);
   }
 
   delete(id: string | number): Observable<ApiResponse> {
-    return this.api.http.delete(`/contract/delete/${id}`);
+    return this.api.http.delete(this.api.baseUrl + `/contract/delete/${id}`);
   }
 }
