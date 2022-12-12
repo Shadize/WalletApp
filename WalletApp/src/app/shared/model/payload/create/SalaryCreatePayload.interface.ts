@@ -1,7 +1,7 @@
+import { PayloadInterface} from "@shared/model";
 import {Employee} from "@shared/model/dto/employee.interface";
-import {DtoInterface} from "@shared/model";
 
-export interface Salary extends DtoInterface{
+export interface SalaryCreatePayloadInterface extends PayloadInterface{
   salaryId? : string;
   createDate : Date;
   title : string;

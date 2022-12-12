@@ -1,7 +1,7 @@
+import {PayloadInterface} from "@shared/model";
 import {Company} from "@shared/model/dto/company.interface";
-import {DtoInterface} from "@shared/model";
 
-export interface Organization extends DtoInterface{
+export interface OrganizationUpdatePayloadInterface extends PayloadInterface{
   organizationId?: string;
   name : string;
   description : string;
