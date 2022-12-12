@@ -1,7 +1,8 @@
 import {Company} from "@shared/model/dto/company.interface";
 import {Skill} from "@shared/model/dto/skill.interface";
+import {DtoInterface} from "@shared/model";
 
-export interface Employee{
+export interface Employee extends DtoInterface{
   employeeId?: string;
   lastname: string;
   firstname: string;
