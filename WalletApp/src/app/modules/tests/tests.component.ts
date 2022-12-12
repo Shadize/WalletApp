@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import {ApiResponse} from "@shared/model";
-import {Skill} from "@shared/model/entity/skill.interface";
+import {Skill} from "@shared/model/dto/skill.interface";
 import {HttpService} from "@shared/service";
 
 @Component({

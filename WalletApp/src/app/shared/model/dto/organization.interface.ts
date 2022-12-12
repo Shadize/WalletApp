@@ -1,4 +1,4 @@
-import {Company} from "@shared/model/entity/company.interface";
+import {Company} from "@shared/model/dto/company.interface";
 
 export interface Organization{
   organizationId?: string;
