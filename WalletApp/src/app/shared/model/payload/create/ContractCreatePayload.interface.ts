@@ -1,4 +1,4 @@
-import {DtoInterface, PayloadInterface} from "@shared/model";
+import {PayloadInterface} from "@shared/model";
 import {Company} from "@shared/model/dto/company.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 

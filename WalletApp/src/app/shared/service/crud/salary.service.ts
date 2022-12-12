@@ -2,31 +2,46 @@ import { Injectable } from '@angular/core';
 import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
+import {map} from "rxjs/operators";
+import {Salary} from "@shared/model/dto/salary.interface";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SalaryService implements CrudServiceInterface{
+export class SalaryService extends ApiService implements CrudServiceInterface{
 
-  constructor(public apiService: ApiService) { }
-
-  create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.apiService.http.post(this.apiService.baseUrl + `salary/create`, addPayload);
+  list(): Observable<Salary[]> {
+    return this.get(`salary/list`)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result) ? response.data as Salary[] : [];
+      }));
   }
 
-  delete(id: string | number): Observable<ApiResponse> {
-    return this.apiService.http.delete(this.apiService.baseUrl + `salary/delete/${id}`);
+
+  detail(id: string | number) : Observable<Salary>{
+    return this.get(`salary/detail/${id}`)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result) ? response.data as Salary : {} as Salary;
+      }));
   }
 
-  detail(id: string | number): Observable<ApiResponse> {
-    return this.apiService.http.get(this.apiService.baseUrl + `salary/detail/${id}`);
+  create(addPayload: PayloadInterface): Observable<boolean> {
+    return this.post(`salary/create`, addPayload)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result);
+      }));
   }
 
-  list(): Observable<ApiResponse> {
-    return this.apiService.http.get(this.apiService.baseUrl + `salary/list`);
+  update(updatePayload: PayloadInterface): Observable<boolean> {
+    return this.put(`salary/update`, updatePayload)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result);
+      }));
   }
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.apiService.http.put(this.apiService.baseUrl + `salary/update`, updatePayload);
+  remove(id: string | number): Observable<boolean> {
+    return this.delete(`salary/delete/${id}`).pipe(map((response: ApiResponse) => {
+      return (response.result);
+    }));
   }
 }

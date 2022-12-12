@@ -3,7 +3,6 @@ import {ApiResponse, ApiUriEnum, CrudServiceInterface, PayloadInterface} from "@
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
 import {Organization} from "@shared/model/dto/organization.interface";
-import {Contract} from "@shared/model/dto/contract.interface";
 import {map} from "rxjs/operators";
 
 @Injectable({
@@ -13,36 +12,37 @@ export class OrganizationService extends ApiService implements CrudServiceInterf
 
 
   list(): Observable<Organization[]> {
-    return this.get(`/organization/list`)
+    return this.get(`organization/list`)
       .pipe(map((response: ApiResponse) => {
         return (response.result) ? response.data as Organization[] : [];
     }));
   }
 
 
-  detail = (id: string | number) : Observable<Organization> => {
-    return this.get(`contract/delete/${id}`)
+  detail(id: string | number) : Observable<Organization>{
+    return this.get(`organization/detail/${id}`)
       .pipe(map((response: ApiResponse) => {
         return (response.result) ? response.data as Organization : {} as Organization;
     }));
   }
 
-  create(addPayload: PayloadInterface): Observable<Organization> {
-    return this.post(`contract/create`, addPayload)
+  create(addPayload: PayloadInterface): Observable<boolean> {
+    return this.post(`organization/create`, addPayload)
       .pipe(map((response: ApiResponse) => {
-        return (response.data as Organization);
+        return (response.result);
     }));
   }
 
-  update(updatePayload: PayloadInterface): Observable<Organization> {
-    return this.put(`/contract/update`, updatePayload)
+  update(updatePayload: PayloadInterface): Observable<boolean> {
+    return this.put(`organization/update`, updatePayload)
       .pipe(map((response: ApiResponse) => {
-        return (response.data as Organization);
+        return (response.result);
     }));
   }
 
-
-  del(id: string | number): Observable<ApiResponse> {
-    return this.delete(`contract/delete/${id}`);
+   remove(id: string | number): Observable<boolean> {
+    return this.delete(`organization/delete/${id}`).pipe(map((response: ApiResponse) => {
+      return (response.result);
+    }));
   }
 }
