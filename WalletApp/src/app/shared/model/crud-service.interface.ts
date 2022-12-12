@@ -12,5 +12,4 @@ export interface CrudServiceInterface {
   update(updatePayload: PayloadInterface): Observable<boolean>;
 
   remove(id: string | number): Observable<boolean>;
-
 }
