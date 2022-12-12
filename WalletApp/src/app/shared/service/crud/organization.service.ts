@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ApiResponse, ApiUriEnum, CrudServiceInterface, PayloadInterface} from "@shared/model";
+import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
 import {Organization} from "@shared/model/dto/organization.interface";
