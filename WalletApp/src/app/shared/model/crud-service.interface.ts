@@ -7,11 +7,12 @@ import {DtoInterface} from "@shared/model/dto.interface";
 export interface CrudServiceInterface {
   list(): Observable<DtoInterface[]>;
 
-  create(addPayload: PayloadInterface): Observable<ApiResponse>;
+  detail(id: string | number): Observable<DtoInterface>;
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse>;
+  create(addPayload: PayloadInterface): boolean;
 
-  delete(id: string | number): Observable<ApiResponse>;
+  update(updatePayload: PayloadInterface): boolean;
 
-  detail(id: string | number): Observable<ApiResponse>;
+  delete(id: string | number): boolean;
+
 }

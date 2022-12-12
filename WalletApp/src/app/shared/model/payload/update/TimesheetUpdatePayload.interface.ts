@@ -1,8 +1,8 @@
 import {Contract} from "@shared/model/dto/contract.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
-import {DtoInterface} from "@shared/model";
+import {PayloadInterface} from "@shared/model";
 
-export interface Timesheet extends DtoInterface{
+export interface TimesheetUpdatePayload extends PayloadInterface {
   timesheetId?: string;
   startDate: Date;
   startHours: Date;

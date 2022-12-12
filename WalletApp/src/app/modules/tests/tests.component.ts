@@ -27,7 +27,9 @@ export class TestsComponent implements OnInit{
     let $res = this.listSkills(this.api)
 
     $res.subscribe(data => {
+      JSON.parse(data);
       console.log(data);
+
     })
 
     console.log("Listing skill");
@@ -43,7 +45,7 @@ export class TestsComponent implements OnInit{
     description: "Test"
   }
 
-  listSkills = (url: string) : Observable<Skill> => {
+  listSkills = (url: string) : Observable<ApiResponse> => {
     return this.http.get(url + "");
   }
 
