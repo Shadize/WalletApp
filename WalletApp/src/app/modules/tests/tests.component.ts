@@ -1,9 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import {ApiResponse} from "@shared/model";
-import {Skill} from "@shared/model/dto/skill.interface";
 import {HttpService} from "@shared/service";
 
 @Component({
@@ -27,7 +24,6 @@ export class TestsComponent implements OnInit{
     let $res = this.listSkills(this.api)
 
     $res.subscribe(data => {
-      JSON.parse(data);
       console.log(data);
 
     })
