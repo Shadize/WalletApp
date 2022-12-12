@@ -11,14 +11,18 @@ export class ContractService extends ApiService implements CrudServiceInterface 
 
 
   list = () : Observable<Contract[]> =>  {
-    return this.get(`/contract/list`).pipe(map((response: ApiResponse) => {
-      return (response.result) ? response.data as Contract[] : [];
-    }));
+    return this.get(`/contract/list`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Contract[] : [];
+      })
+    )
   }
-
-
-  detail = (id: string | number) : Observable<ApiResponse> => {
-    return this.delete(this.api.baseUrl + `contract/delete/${id}`);
+  detail = (id: string | number) : Observable<Contract> => {
+    return this.get(`/contract/detail/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Contract : {} as Contract;
+      })
+    )
   }
 
   create(addPayload: PayloadInterface): Observable<ApiResponse> {
