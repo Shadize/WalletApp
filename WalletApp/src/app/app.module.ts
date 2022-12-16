@@ -8,6 +8,11 @@ import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
 import {TestsComponent} from "./modules/tests/tests.component";
 
+//Material
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatButtonModule} from "@angular/material/button";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +21,12 @@ import {TestsComponent} from "./modules/tests/tests.component";
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    //Material
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatButtonModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true

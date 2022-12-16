@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
-import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
+import {ApiResponse, CrudServiceInterface} from "@shared/model";
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
-import {Fleet} from "@shared/model/dto/fleet.interface";
 import {map} from "rxjs/operators";
-import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
-import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
 import {Skill} from "@shared/model/dto/skill.interface";
 import {SkillUpdatePayloadInterface} from "@shared/model/payload/update/SkillUpdatePayload.interface";
 import {SkillCreatePayloadInterface} from "@shared/model/payload/create/SkillCreatePayload.interface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SkillService extends ApiService implements CrudServiceInterface{
 
   detail(id: string | number): Observable<Skill> {

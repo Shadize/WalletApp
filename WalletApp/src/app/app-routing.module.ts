@@ -15,10 +15,9 @@ const routes: Routes = [
     loadChildren: () => import('./security/security.module').then(m => m.SecurityModule)
   },
   {
-    path: 'test2',
+    path: 'tests',
     component: TestsComponent
   }
-
 ];
 
 @NgModule({
