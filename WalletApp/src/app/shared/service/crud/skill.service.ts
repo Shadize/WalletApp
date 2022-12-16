@@ -2,30 +2,55 @@ import {Injectable} from '@angular/core';
 import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
+import {Fleet} from "@shared/model/dto/fleet.interface";
+import {map} from "rxjs/operators";
+import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
+import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
+import {Skill} from "@shared/model/dto/skill.interface";
+import {SkillUpdatePayloadInterface} from "@shared/model/payload/update/SkillUpdatePayload.interface";
+import {SkillCreatePayloadInterface} from "@shared/model/payload/create/SkillCreatePayload.interface";
 
 @Injectable()
-export class SkillService implements CrudServiceInterface{
+export class SkillService extends ApiService implements CrudServiceInterface{
 
-  constructor(private api: ApiService) {
+  detail(id: string | number): Observable<Skill> {
+    return this.get(`skill/detail/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Skill : {} as Skill;
+      })
+    )
   }
 
-  create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.post(this.api.baseUrl + "skill/create" , addPayload);
+  list() : Observable<Skill[]>{
+    return this.get(`skill/list`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Skill[] : [];
+      })
+    )
   }
 
-  delete(id: string | number): Observable<ApiResponse> {
-    return this.api.http.delete(this.api.baseUrl + `skill/delete/${id}`);
+  create(addPayload: SkillCreatePayloadInterface): Observable<boolean>{
+    return this.post("skill/create", addPayload).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 
-  list(): Observable<ApiResponse> {
-    return this.api.http.get(this.api.baseUrl + "skill/list");
+  update(updatePayload: SkillUpdatePayloadInterface): Observable<boolean> {
+    return this.put("skill/update/", updatePayload).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.put(this.api.baseUrl + "skill/update/", updatePayload);
-  }
 
-  detail(id: string | number): Observable<ApiResponse> {
-    return this.api.http.get(this.api.baseUrl + `skill/detail/${id}`);
+  remove(id: string | number): Observable<boolean> {
+    return this.delete(`skill/delete/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 }

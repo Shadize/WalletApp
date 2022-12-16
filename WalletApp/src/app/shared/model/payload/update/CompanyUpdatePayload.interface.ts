@@ -1,5 +1,6 @@
-import {Contract} from "@shared/model/entity/contract.interface";
-export interface Company{
+import {Contract} from "@shared/model/dto/contract.interface";
+import {PayloadInterface} from "@shared/model";
+export interface CompanyUpdatePayload extends PayloadInterface{
   companyId?: string;
   name: string;
   description: string;

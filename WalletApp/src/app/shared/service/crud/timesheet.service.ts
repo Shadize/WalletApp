@@ -1,32 +1,52 @@
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {ApiService} from "@shared/service";
-import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
+import {ApiResponse, CrudServiceInterface} from "@shared/model";
+import {map} from "rxjs/operators";
+import {Timesheet} from "@shared/model/dto/timesheet.interface";
+import {TimesheetCreatePayload} from "@shared/model/payload/create/TimesheetCreatePayload.interface";
+import {TimesheetUpdatePayload} from "@shared/model/payload/update/TimesheetUpdatePayload.interface";
 
 @Injectable()
-export class TimesheetService implements CrudServiceInterface{
+export class TimesheetService extends ApiService implements CrudServiceInterface {
 
-  constructor(private api: ApiService) {
+  list = () : Observable<Timesheet[]> =>  {
+    return this.get(`timesheet/list`).pipe(
+      map((response: ApiResponse) => {
+        return response.result ? response.data as Timesheet[] : [];
+      })
+    )
   }
 
-  list = () : Observable<ApiResponse> => {
-    return this.api.http.get(`/timesheet/list`);
+  detail = (id: string | number) : Observable<Timesheet> => {
+    return this.get(`timesheet/detail/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return response.result ? response.data as Timesheet : {} as Timesheet;
+      })
+    )
   }
 
-  detail(id: string | number): Observable<ApiResponse> {
-    return this.api.http.get(this.api.baseUrl + `/timesheet/detail/${id}`);
+  create(payload: TimesheetCreatePayload): Observable<boolean> {
+    return this.post(`timesheet/create/`, payload).pipe(
+      map((response: ApiResponse) => {
+        return response.result;
+      })
+    )
   }
 
-  create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.post(`/timesheet/create`, addPayload);
+  update(payload: TimesheetUpdatePayload): Observable<boolean> {
+    return this.put('timesheet/update/', payload).pipe(
+      map((response: ApiResponse) => {
+        return response.result
+      })
+    )
   }
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.put(`/timesheet/update`, updatePayload);
-  }
-
-
-  delete(id: string | number): Observable<ApiResponse> {
-    return this.api.http.delete(`/timesheet/delete/${id}`);
+  remove(id: string | number): Observable<boolean> {
+    return this.delete(`timesheet/delete/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 }

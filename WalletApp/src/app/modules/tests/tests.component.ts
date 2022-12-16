@@ -1,9 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import {ApiResponse} from "@shared/model";
-import {Skill} from "@shared/model/entity/skill.interface";
 import {HttpService} from "@shared/service";
 
 @Component({
@@ -28,6 +25,7 @@ export class TestsComponent implements OnInit{
 
     $res.subscribe(data => {
       console.log(data);
+
     })
 
     console.log("Listing skill");
@@ -43,7 +41,7 @@ export class TestsComponent implements OnInit{
     description: "Test"
   }
 
-  listSkills = (url: string) : Observable<Skill> => {
+  listSkills = (url: string) : Observable<ApiResponse> => {
     return this.http.get(url + "");
   }
 

@@ -1,15 +1,15 @@
 import {Observable} from 'rxjs';
 import {PayloadInterface} from './payload.interface';
-import {ApiResponse} from './api-response.interface';
+import {DtoInterface} from "@shared/model/dto.interface";
 
 export interface CrudServiceInterface {
-  list(): Observable<ApiResponse>;
+  list(): Observable<DtoInterface[]>;
 
-  create(addPayload: PayloadInterface): Observable<ApiResponse>;
+  detail(id: string | number): Observable<DtoInterface>;
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse>;
+  create(addPayload: PayloadInterface):Observable<boolean>;
 
-  delete(id: string | number): Observable<ApiResponse>;
+  update(updatePayload: PayloadInterface): Observable<boolean>;
 
-  detail(id: string | number): Observable<ApiResponse>;
+  remove(id: string | number): Observable<boolean>;
 }

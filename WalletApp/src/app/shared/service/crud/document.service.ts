@@ -2,31 +2,46 @@ import { Injectable } from '@angular/core';
 import {ApiService} from "@shared/service";
 import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {Document} from "@shared/model/dto/document.interface";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DocumentService implements CrudServiceInterface {
+export class DocumentService extends ApiService implements CrudServiceInterface {
 
-  constructor(public apiService: ApiService) { }
-
-  create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.apiService.http.post(this.apiService.baseUrl + `document/create`, addPayload);
+  list(): Observable<Document[]> {
+    return this.get(`document/list`)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result) ? response.data as Document[] : [];
+      }));
   }
 
-  delete(id: string | number): Observable<ApiResponse> {
-    return this.apiService.http.delete(this.apiService.baseUrl + `document/delete/${id}`);
+
+  detail(id: string | number) : Observable<Document>{
+    return this.get(`document/detail/${id}`)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result) ? response.data as Document : {} as Document;
+      }));
   }
 
-  detail(id: string | number): Observable<ApiResponse> {
-    return this.apiService.http.get(this.apiService.baseUrl + `document/detail/${id}`);
+  create(addPayload: PayloadInterface): Observable<boolean> {
+    return this.post(`document/create`, addPayload)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result);
+      }));
   }
 
-  list(): Observable<ApiResponse> {
-    return this.apiService.http.get(this.apiService.baseUrl + `document/list`);
+  update(updatePayload: PayloadInterface): Observable<boolean> {
+    return this.put(`document/update`, updatePayload)
+      .pipe(map((response: ApiResponse) => {
+        return (response.result);
+      }));
   }
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.apiService.http.put(this.apiService.baseUrl + `document/update`, updatePayload);
+  remove(id: string | number): Observable<boolean> {
+    return this.delete(`document/delete/${id}`).pipe(map((response: ApiResponse) => {
+      return (response.result);
+    }));
   }
 }

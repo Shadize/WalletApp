@@ -2,30 +2,55 @@ import {Injectable} from '@angular/core';
 import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
+import {Employee} from "@shared/model/dto/employee.interface";
+import {map} from "rxjs/operators";
+import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
+import {EmployeeUpdatePayloadInterface} from "@shared/model/payload/update/EmployeeUpdatePayload.interface";
+import {Fleet} from "@shared/model/dto/fleet.interface";
+import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
+import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
 
 @Injectable()
-export class FleetService implements CrudServiceInterface{
+export class FleetService extends ApiService implements CrudServiceInterface{
 
-  constructor(private api: ApiService) {
+  detail(id: string | number): Observable<Fleet> {
+    return this.get(`fleet/detail/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Fleet : {} as Fleet;
+      })
+    )
   }
 
-  create(addPayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.post(this.api.baseUrl + "fleet/create" , addPayload);
+  list() : Observable<Fleet[]>{
+    return this.get(`fleet/list`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result) ? response.data as Fleet[] : [];
+      })
+    )
   }
 
-  delete(id: string | number): Observable<ApiResponse> {
-    return this.api.http.delete(this.api.baseUrl + `fleet/delete/${id}`);
+  create(addPayload: FleetCreatePayloadInterface): Observable<boolean>{
+    return this.post("fleet/create", addPayload).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 
-  list(): Observable<ApiResponse> {
-    return this.api.http.get(this.api.baseUrl + "fleet/list");
+  update(updatePayload: FleetUpdatePayloadInterface): Observable<boolean> {
+    return this.put("fleet/update/", updatePayload).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 
-  update(updatePayload: PayloadInterface): Observable<ApiResponse> {
-    return this.api.http.put(this.api.baseUrl + "fleet/update/", updatePayload);
-  }
 
-  detail(id: string | number): Observable<ApiResponse> {
-    return this.api.http.get(this.api.baseUrl + `fleet/detail/${id}`);
+  remove(id: string | number): Observable<boolean> {
+    return this.delete(`fleet/delete/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
   }
 }
