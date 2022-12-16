@@ -13,6 +13,10 @@ export class ContractService implements CrudServiceInterface{
     return this.api.http.get(`/contract/list`);
   }
 
+  detail(id: string | number): Observable<ApiResponse> {
+    return this.api.http.get(this.api.baseUrl + `contract/detail/${id}`);
+  }
+
   create(addPayload: PayloadInterface): Observable<ApiResponse> {
     return this.api.http.post(`/contract/create`, addPayload);
   }
