@@ -1,3 +1,9 @@
 .skills-container {
-  height: 1000px;
+  width: 100%;
+}
+
+mat-table{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }

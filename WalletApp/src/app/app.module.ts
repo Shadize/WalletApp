@@ -19,14 +19,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
-import { HomepageComponent } from './pages/homepage/homepage.component';
+import {CdkTableModule} from "@angular/cdk/table";
+import {MatTooltipModule} from "@angular/material/tooltip";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     SkillsComponent,
-    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,9 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     MatIconModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    CdkTableModule,
+    MatTooltipModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true

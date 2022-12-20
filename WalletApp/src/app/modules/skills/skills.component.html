@@ -1,3 +1,28 @@
 <div class="skills-container">
-  <p>skills works!</p>
+  <mat-table [dataSource]="dataSource" class="table-container">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>
+        Title
+      </mat-header-cell>
+      <mat-cell *matCellDef="let skill">{{skill.title}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>
+        Description
+      </mat-header-cell>
+      <mat-cell *matCellDef="let skill">{{skill.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                                                   color="primary" (click)="edit(element)">
+        <mat-icon>more_horiz</mat-icon>
+      </button> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let skill; columns: columnsToDisplay"></mat-row>
+  </mat-table>
+<!--  <button (click)="log()">Log</button>-->
 </div>

@@ -4,14 +4,12 @@
 }
 
 .drawer-container {
-  width: 100%;  
+  width: 100%;
   height: calc(100vh - 64px);
 }
 
 .drawer-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .sidenav {
