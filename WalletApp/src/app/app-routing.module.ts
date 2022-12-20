@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PublicGuard, SecurityGuard} from '@security/guard';
-import {TestsComponent} from "./modules/tests/tests.component";
+import {SidenavComponent} from "./modules/sidenav/sidenav.component";
+import {SkillsComponent} from "./modules/skills/skills.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'tests',
-    component: TestsComponent
+    component: SidenavComponent
+  },
+  {
+    path: 'skills',
+    component: SkillsComponent
   }
 ];
 
