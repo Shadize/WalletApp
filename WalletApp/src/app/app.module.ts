@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
-import { SkillsComponent } from './modules/skill/page/skills.component';
+import { SkillsComponent } from './modules/skill/page/skill/skills.component';
 
 //Material
 import {MatSidenavModule} from '@angular/material/sidenav';
