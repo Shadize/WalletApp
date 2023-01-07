@@ -3,13 +3,15 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>PronHub</span>
+    <a [routerLink]="['/dashboard/home']" id="title">
+      <h1>PronHub</h1>
+    </a>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+      <mat-icon>settings</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>logout</mat-icon>
     </button>
   </mat-toolbar>
 </div>
@@ -25,25 +27,39 @@
           </mat-list-item>
         </a>
         <mat-list-item>
-          <mat-icon class="sidenav-icon">search</mat-icon>
-          Search
+          <mat-icon class="sidenav-icon">apartment</mat-icon>
+          Enterprise
         </mat-list-item>
         <mat-list-item>
-          <mat-icon class="sidenav-icon">share</mat-icon>
-          Share
+          <mat-icon class="sidenav-icon">diversity_3</mat-icon>
+          Employees
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="sidenav-icon">description</mat-icon>
+          Contracts
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="sidenav-icon">folder_open</mat-icon>
+          Documents
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="sidenav-icon">schedule</mat-icon>
+          Timesheet
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="sidenav-icon">groups</mat-icon>
+          Fleets
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="sidenav-icon">paid</mat-icon>
+          Salary
         </mat-list-item>
         <a [routerLink]="['/dashboard/skills']">
           <mat-list-item>
-            <mat-icon class="sidenav-icon">
-              format_list_bulleted
-            </mat-icon>
+            <mat-icon class="sidenav-icon">square_foot</mat-icon>
             Skills
           </mat-list-item>
         </a>
-        <mat-list-item>
-          <mat-icon class="sidenav-icon">settings</mat-icon>
-          Settings
-        </mat-list-item>
       </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content class="drawer-content">
