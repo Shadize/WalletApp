@@ -6,8 +6,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
-import {SidenavComponent} from "./modules/sidenav/sidenav.component";
-import { SkillsComponent } from './modules/skills/skills.component';
+import { SkillsComponent } from './modules/skill/page/skills.component';
 
 //Material
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -26,7 +25,6 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent,
     SkillsComponent,
   ],
   imports: [
