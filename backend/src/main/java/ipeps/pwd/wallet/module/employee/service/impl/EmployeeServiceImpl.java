@@ -22,15 +22,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
     EmployeeRepository employeeRepository;
 
     @Override
-    public List<Employee> list()
-    {
-        List<Employee> temp = new ArrayList<Employee>();
-        for(Employee e : employeeRepository.findAll()) {
-            e.serialize();
-            temp.add(e);
-        }
-        return temp;
-    }
+    public List<Employee> list() { return employeeRepository.findAll();}
 
     @Override
     public Employee detail(UUID employeeId)
