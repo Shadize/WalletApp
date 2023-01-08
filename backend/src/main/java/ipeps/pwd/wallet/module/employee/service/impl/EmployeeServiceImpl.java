@@ -11,6 +11,7 @@ import ipeps.pwd.wallet.module.organization.entity.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,15 @@ public class EmployeeServiceImpl  implements EmployeeService {
     EmployeeRepository employeeRepository;
 
     @Override
-    public List<Employee> list() { return employeeRepository.findAll(); }
+    public List<Employee> list()
+    {
+        List<Employee> temp = new ArrayList<Employee>();
+        for(Employee e : employeeRepository.findAll()) {
+            e.serialize();
+            temp.add(e);
+        }
+        return temp;
+    }
 
     @Override
     public Employee detail(UUID employeeId)
@@ -75,6 +84,8 @@ public class EmployeeServiceImpl  implements EmployeeService {
                 detail.setDeleted(payload.getDeleted());
                 if(payload.getCompany() != null)
                     detail.setCompany(payload.getCompany());
+                else
+                    detail.setCompany(detail.getCompany());
                 detail.setSkills(payload.getSkills());
 
                 return this.employeeRepository.save(detail);
