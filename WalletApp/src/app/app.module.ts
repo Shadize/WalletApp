@@ -20,12 +20,14 @@ import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {ObsCompComponent} from "@shared/test/obs-comp/obs-comp.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SkillsComponent,
+    ObsCompComponent
   ],
   imports: [
     BrowserModule,

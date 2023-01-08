@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {DashboardComponent} from './page';
 import {SkillsComponent} from "../skill/page/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
-import {BasicFormComponent} from "@shared/form/basic-form/basic-form.component";
+import {ObsCompComponent} from "@shared/test/obs-comp/obs-comp.component";
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
       },
       {
         path:'test',
-        component: BasicFormComponent
+        component: ObsCompComponent
       }
     ]
   }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasicFormComponent } from './basic-form.component';
+import { ObsCompComponent } from './obs-comp.component';
 
-describe('BasicFormComponent', () => {
-  let component: BasicFormComponent;
-  let fixture: ComponentFixture<BasicFormComponent>;
+describe('ObsCompComponent', () => {
+  let component: ObsCompComponent;
+  let fixture: ComponentFixture<ObsCompComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BasicFormComponent ]
+      declarations: [ ObsCompComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BasicFormComponent);
+    fixture = TestBed.createComponent(ObsCompComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
