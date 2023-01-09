@@ -7,11 +7,8 @@ import ipeps.pwd.wallet.module.employee.entity.payload.EmployeeCreatePayload;
 import ipeps.pwd.wallet.module.employee.entity.payload.EmployeeUpdatePayload;
 import ipeps.pwd.wallet.module.employee.repository.EmployeeRepository;
 import ipeps.pwd.wallet.module.employee.service.EmployeeService;
-import ipeps.pwd.wallet.module.organization.entity.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,6 +44,11 @@ public class EmployeeServiceImpl  implements EmployeeService {
                     .setDeleted(payload.getDeleted())
                     .setCompany(payload.getCompany())
                     .setSkills(payload.getSkills())
+                    .setTimesheets(payload.getTimesheets())
+                    .setDocuments(payload.getDocuments())
+                    .setContracts(payload.getContracts())
+                    .setFleets(payload.getFleets())
+                    .setSalaries(payload.getSalaries())
                     .build());
             return this.detail(employee.getEmployeeId());
         }
@@ -79,6 +81,11 @@ public class EmployeeServiceImpl  implements EmployeeService {
                 else
                     detail.setCompany(detail.getCompany());
                 detail.setSkills(payload.getSkills());
+                detail.setTimesheets(payload.getTimesheets());
+                detail.setDocuments(payload.getDocuments());
+                detail.setContracts(payload.getContracts());
+                detail.setFleets(payload.getFleets());
+                detail.setSalaries(payload.getSalaries());
 
                 return this.employeeRepository.save(detail);
             }

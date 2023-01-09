@@ -35,6 +35,8 @@ public class ContractServiceImpl implements ContractService {
                     .setStartDate(payload.getStartDate())
                     .setEndDate(payload.getEndDate())
                     .setNbHoursByWeek(payload.getNbHoursByWeek())
+                    .setDocuments(payload.getDocuments())
+                    .setTimesheets(payload.getTimesheets())
                     .build();
             return this.contractRepository.save(contract);
         }catch(Exception e){

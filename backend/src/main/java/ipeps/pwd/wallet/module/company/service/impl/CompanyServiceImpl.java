@@ -39,6 +39,11 @@ public class CompanyServiceImpl implements CompanyService {
                     .setActive(payload.isActive())
                     .setDeleted(payload.isDeleted())
                     .setDeletedBy(payload.getDeletedBy())
+                    .setEmployees(payload.getEmployees())
+                    .setOrganizations(payload.getOrganizations())
+                    .setDocuments(payload.getDocuments())
+                    .setContractsBusiness(payload.getContractsBusiness())
+                    .setContractsClient(payload.getContractsClient())
                     .build();
             return this.companyRepository.save(company);
         }catch(Exception e){
@@ -57,6 +62,11 @@ public class CompanyServiceImpl implements CompanyService {
             detail.setActive(payload.isActive());
             detail.setDeleted(payload.isDeleted());
             detail.setDeletedBy(payload.getDeletedBy());
+            detail.setEmployees(payload.getEmployees());
+            detail.setOrganizations(payload.getOrganizations());
+            detail.setDocuments(payload.getDocuments());
+            detail.setContractsBusiness(payload.getContractsBusiness());
+            detail.setContractsClient(payload.getContractsClient());
             return this.companyRepository.save(detail);
         }
         return detail;
