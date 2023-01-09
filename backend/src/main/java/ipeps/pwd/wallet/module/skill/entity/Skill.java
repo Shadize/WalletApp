@@ -1,5 +1,7 @@
 package ipeps.pwd.wallet.module.skill.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import lombok.AllArgsConstructor;
@@ -25,6 +27,7 @@ public class Skill {
     String title;
     String description;
 
+    @JsonIgnoreProperties("skills")
     @ManyToMany(mappedBy = "skills")
     List<Employee> employees;
 

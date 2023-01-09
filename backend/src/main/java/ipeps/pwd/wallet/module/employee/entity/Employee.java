@@ -1,5 +1,7 @@
 package ipeps.pwd.wallet.module.employee.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.skill.entity.Skill;
 import lombok.AllArgsConstructor;
@@ -38,6 +40,7 @@ public class Employee {
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "employee_company_fk"))
     private Company company;
 
+    @JsonIgnoreProperties("employees")
     @ManyToMany()
     @JoinTable(
             name = "Employee_Skill",

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Skill} from "@shared/model/dto/skill.interface";
 import {SkillService} from "@shared/service/crud/skill.service";
+import {SkillCreatePayloadInterface} from "@shared/model/payload/create/SkillCreatePayload.interface"
+import {Employee} from "@shared/model/dto/employee.interface";
 
 @Component({
   selector: 'app-skills',
@@ -17,15 +19,31 @@ export class SkillsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-     this.skillService.list().subscribe(data => {
-       console.log("Data in obs");
-       console.log(data);
-       this.dataSource = data;
+    //Loading list
+
+          this.skillService.list().subscribe(data => {
+          this.dataSource = data
      })
   }
 
-  edit(element: Skill){
-    console.log(element);
+
+  insertSkill(title: string, description: string){
+    const employees: Employee[] = []
+    const skill: SkillCreatePayloadInterface = {title, description, employees }
+    let result = this.skillService.create(skill);
+    result.subscribe(r => {
+      console.log(r)
+    })
+  }
+
+  edit(skill: Skill){
+    console.log(skill)
+  }
+
+  delete(skill: Skill){
+    this.skillService.remove(skill.skillId!).subscribe(response => {
+      console.log(response)
+    })
   }
 
   // dataSource: Skill[] = [
@@ -35,6 +53,6 @@ export class SkillsComponent implements OnInit{
   //   {title: "Math", description: "Blabla", employees: []},
   // ]
 
-  columnsToDisplay: string[] = ['title', 'description', 'edit'];
+  columnsToDisplay: string[] = ['title', 'description', 'employees', 'edit'];
 
 }

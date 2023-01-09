@@ -1,3 +1,4 @@
+
 .skills-container {
   width: 100%;
 }
@@ -7,3 +8,17 @@ mat-table{
   table-layout: fixed;
   width: 100%;
 }
+
+
+
+.form {
+  max-width: 500px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  margin-bottom: -1.25em;
+}
+
