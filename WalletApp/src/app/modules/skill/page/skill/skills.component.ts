@@ -27,7 +27,7 @@ export class SkillsComponent implements OnInit{
   }
 
 
-  insertSkill(title: string, description: string){
+  insert(title: string, description: string){
     const employees: Employee[] = []
     const skill: SkillCreatePayloadInterface = {title, description, employees }
     let result = this.skillService.create(skill);
