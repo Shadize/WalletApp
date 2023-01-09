@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SkillsComponent} from "./page/skills.component";
+import {SkillsComponent} from "./page/skill/skills.component";
 
 const routes: Routes = [
   {
