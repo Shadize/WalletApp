@@ -1,6 +1,5 @@
 package ipeps.pwd.wallet.module.timesheet.entity.payload;
 
-import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import lombok.AllArgsConstructor;

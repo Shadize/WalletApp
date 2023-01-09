@@ -1,6 +1,10 @@
 package ipeps.pwd.wallet.module.company.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
+import ipeps.pwd.wallet.module.document.entity.Document;
+import ipeps.pwd.wallet.module.employee.entity.Employee;
+import ipeps.pwd.wallet.module.organization.entity.Organization;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,16 +20,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Company {
 
-    public Company(String name, String description, String address, boolean isManaged, boolean isActive, boolean isDeleted, String deletedBy) {
-        this.name = name;
-        this.description = description;
-        this.address = address;
-        this.isManaged = isManaged;
-        this.isActive = isActive;
-        this.isDeleted = isDeleted;
-        this.deletedBy = deletedBy;
-    }
-
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -40,7 +34,42 @@ public class Company {
     boolean isDeleted;
     String deletedBy;
 
-    @ManyToMany(mappedBy = "companies")
-    List<Contract> contracts;
+    @JsonIgnoreProperties({"company"})
+    @OneToMany(mappedBy = "company")
+    List<Employee> employees;
+    @JsonIgnoreProperties({"company"})
+    @OneToMany(mappedBy = "company")
+    List<Organization> organizations;
+    @JsonIgnoreProperties({"company"})
+    @OneToMany(mappedBy = "company")
+    List<Document> documents;
+
+//    @ManyToMany(mappedBy = "companies")
+//    List<Contract> contracts;
+    @JsonIgnoreProperties({"company"})
+    @OneToMany(mappedBy = "companyBusiness")
+    List<Contract> contractsBusiness;
+    @JsonIgnoreProperties({"company"})
+    @OneToMany(mappedBy = "companyClient")
+    List<Contract> contractsClient;
+
+    public Company(String name, String description, String address, boolean isManaged,
+                   boolean isActive, boolean isDeleted, String deletedBy,
+                   List<Employee> employees, List<Organization> organizations,
+                   List<Document> documents,List<Contract> contractsClient,
+                   List<Contract> contractsBusiness) {
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.isManaged = isManaged;
+        this.isActive = isActive;
+        this.isDeleted = isDeleted;
+        this.deletedBy = deletedBy;
+        this.employees = employees;
+        this.organizations =organizations;
+        this.documents = documents;
+        this.contractsClient = contractsClient;
+        this.contractsBusiness = contractsBusiness;
+    }
 
 }

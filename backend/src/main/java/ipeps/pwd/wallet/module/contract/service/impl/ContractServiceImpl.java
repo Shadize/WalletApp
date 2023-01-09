@@ -35,6 +35,11 @@ public class ContractServiceImpl implements ContractService {
                     .setStartDate(payload.getStartDate())
                     .setEndDate(payload.getEndDate())
                     .setNbHoursByWeek(payload.getNbHoursByWeek())
+                    .setDocuments(payload.getDocuments())
+                    .setTimesheets(payload.getTimesheets())
+                    .setEmployee(payload.getEmployee())
+                    .setCompanyBusiness(payload.getCompanyBusiness())
+                    .setCompanyClient(payload.getCompanyClient())
                     .build();
             return this.contractRepository.save(contract);
         }catch(Exception e){
@@ -50,6 +55,12 @@ public class ContractServiceImpl implements ContractService {
             detail.setStartDate(payload.getStartDate());
             detail.setEndDate(payload.getEndDate());
             detail.setNbHoursByWeek(payload.getNbHoursByWeek());
+            if(payload.getEmployee() != null)
+                detail.setEmployee(payload.getEmployee());
+            else
+                detail.setEmployee(detail.getEmployee());
+            detail.setCompanyBusiness(payload.getCompanyBusiness());
+            detail.setCompanyClient(payload.getCompanyClient());
             return this.contractRepository.save(detail);
         }
         return detail;

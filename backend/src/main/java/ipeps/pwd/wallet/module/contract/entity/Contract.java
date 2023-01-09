@@ -1,6 +1,9 @@
 package ipeps.pwd.wallet.module.contract.entity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import ipeps.pwd.wallet.module.document.entity.Document;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import ipeps.pwd.wallet.module.company.entity.Company;
+import ipeps.pwd.wallet.module.timesheet.entity.Timesheet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,43 +19,60 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 public class Contract {
-
-    public Contract(String description, Date startDate, Date endDate, Integer nbHoursByWeek) {
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.nbHoursByWeek = nbHoursByWeek;
-    }
-
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "contract_id", updatable = false, nullable = false)
     UUID contractId;
-
-
     String description;
     Date startDate;
     Date endDate;
     Integer nbHoursByWeek;
+    @JsonIgnoreProperties({"contract"})
+    @OneToMany(mappedBy = "contract")
+    List<Document> documents;
+    @JsonIgnoreProperties({"contract"})
+    @OneToMany(mappedBy = "contract")
+    List<Timesheet> timesheets;
 
-    @ManyToMany()
-    @JoinTable(
-            name = "ContractsBetweenCompany",
-            joinColumns = @JoinColumn(name = "contract_id"),
-            inverseJoinColumns = @JoinColumn(name = "company_id"))
-    List<Company> companies;
-
-//    @ManyToOne()
-//    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_company_fk"))
-//    Company company;
-//
-//    @ManyToOne()
-//    @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_client_fk"))
-//    Company client;
-
+    @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "contract_employee_fk"))
-    private Employee employee;
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "contract_business_fk"))
+    Company companyBusiness;
+
+    @JsonIgnoreProperties({"contracts"})
+    @ManyToOne()
+    @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "contract_client_fk"))
+    Company companyClient;
+
+    @JsonIgnoreProperties({"contracts"})
+    @ManyToOne()
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
+    Employee employee;
+
+
+
+
+    //    @ManyToMany()
+//    @JoinTable(
+//            name = "ContractsBetweenCompany",
+//            joinColumns = @JoinColumn(name = "contract_id"),
+//            inverseJoinColumns = @JoinColumn(name = "company_id"))
+//    List<Company> companies;
+
+
+    public Contract(String description, Date startDate, Date endDate, Integer nbHoursByWeek,
+                    List<Document> documents, List<Timesheet> timesheets, Employee employee,
+                    Company companyBusiness, Company companyClient) {
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.nbHoursByWeek = nbHoursByWeek;
+        this.documents = documents;
+        this.timesheets = timesheets;
+        this.employee = employee;
+        this.companyBusiness = companyBusiness;
+        this.companyClient = companyClient;
+    }
 
 }

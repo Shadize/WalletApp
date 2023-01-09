@@ -52,6 +52,17 @@ public class TimesheetServiceImpl implements TimesheetService {
             detail.setStartHours(payload.getStartHours());
             detail.setEndHours(payload.getEndHours());
             detail.setTimesheetType(payload.getTimesheetType());
+
+            if(payload.getEmployee() != null)
+                detail.setEmployee(payload.getEmployee());
+            else
+                detail.setEmployee(detail.getEmployee());
+
+            if(payload.getContract() != null)
+                detail.setContract(payload.getContract());
+            else
+                detail.setContract(detail.getContract());
+
             return this.timesheetRepository.save(detail);
         }
         return detail;

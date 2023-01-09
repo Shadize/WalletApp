@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.organization.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.company.entity.Company;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Organization {
     String name;
     String description;
 
+    @JsonIgnoreProperties({"organizations"})
     @ManyToOne()
     @JoinColumn(name = "company_fk", referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "organisation_company_fk"))
     Company company;

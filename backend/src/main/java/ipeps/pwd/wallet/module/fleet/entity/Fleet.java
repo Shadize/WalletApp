@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.fleet.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,7 @@ public class Fleet {
     String description;
     String type;
     Float cost;
-
+    @JsonIgnoreProperties({"fleets"})
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "fleet_employee_fk"))
     private Employee employee;

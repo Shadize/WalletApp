@@ -56,12 +56,9 @@ public class DocumentServiceImpl implements DocumentService {
             detail.setContent(payload.getContent());
             detail.setType(payload.getType());
             detail.setCreateDate(payload.getCreateDate());
-            if(payload.getCompany() != null)
-                detail.setCompany(payload.getCompany());
-            if(payload.getContract() != null)
-                detail.setContract(payload.getContract());
-            if(payload.getEmployee() != null)
-                detail.setEmployee(payload.getEmployee());
+            detail.setCompany(payload.getCompany());
+            detail.setContract(payload.getContract());
+            detail.setEmployee(payload.getEmployee());
 
             return this.documentRepository.save(detail);
         }

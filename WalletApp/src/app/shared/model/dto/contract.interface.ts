@@ -1,6 +1,7 @@
 import {Company} from "@shared/model/dto/company.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {DtoInterface} from "@shared/model";
+import {Timesheet} from "@shared/model/dto/timesheet.interface";
 
 export interface Contract extends DtoInterface{
   contractId?: string;
@@ -8,8 +9,12 @@ export interface Contract extends DtoInterface{
   startDate: Date;
   endDate: Date;
   nbHoursByWeek: number;
-  companies: Company[];
+  documents: Document[];
+  timesheets: Timesheet[];
   employee: Employee;
+  companyClient: Company;
+  companyBusiness: Company;
+
 }
 
 

@@ -5,7 +5,6 @@ import {ApiService, HttpService} from "@shared/service";
 import {Contract} from "@shared/model/dto/contract.interface";
 import {map} from "rxjs/operators";
 import {Employee} from "@shared/model/dto/employee.interface";
-import any = jasmine.any;
 import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
 import {EmployeeUpdatePayloadInterface} from "@shared/model/payload/update/EmployeeUpdatePayload.interface";
 

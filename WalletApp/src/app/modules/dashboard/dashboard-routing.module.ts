@@ -4,6 +4,7 @@ import {DashboardComponent} from './page';
 import {SkillsComponent} from "../skill/page/skill/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
 
+
 const routes: Routes = [
   {
     path: '',
