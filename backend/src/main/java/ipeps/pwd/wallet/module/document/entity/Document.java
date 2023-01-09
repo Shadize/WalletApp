@@ -23,7 +23,6 @@ public class Document {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "document_id", updatable = false, nullable = false)
     UUID documentId;
-
     String title;
     String path;
     String content;
