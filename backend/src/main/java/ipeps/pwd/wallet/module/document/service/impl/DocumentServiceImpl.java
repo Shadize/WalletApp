@@ -2,8 +2,8 @@ package ipeps.pwd.wallet.module.document.service.impl;
 
 import ipeps.pwd.wallet.module.document.entity.Document;
 import ipeps.pwd.wallet.module.document.entity.builder.DocumentBuilder;
-import ipeps.pwd.wallet.module.document.entity.payload.entity.payload.DocumentCreatePayload;
-import ipeps.pwd.wallet.module.document.entity.payload.entity.payload.DocumentUpdatePayload;
+import ipeps.pwd.wallet.module.document.entity.payload.DocumentCreatePayload;
+import ipeps.pwd.wallet.module.document.entity.payload.DocumentUpdatePayload;
 import ipeps.pwd.wallet.module.document.repository.DocumentRepository;
 import ipeps.pwd.wallet.module.document.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;

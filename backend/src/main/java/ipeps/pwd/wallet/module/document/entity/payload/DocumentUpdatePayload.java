@@ -1,4 +1,4 @@
-package ipeps.pwd.wallet.module.document.entity.payload.entity.payload;
+package ipeps.pwd.wallet.module.document.entity.payload;
 
 import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
