@@ -3,6 +3,7 @@ package ipeps.pwd.wallet.module.contract.entity.builder;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.common.model.CreateBuilder;
 import ipeps.pwd.wallet.module.document.entity.Document;
+import ipeps.pwd.wallet.module.employee.entity.Employee;
 import ipeps.pwd.wallet.module.timesheet.entity.Timesheet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,9 @@ public class ContractBuilder implements CreateBuilder<Contract> {
     Date endDate;
     Integer nbHoursByWeek;
     List<Document> documents;
+    Employee employee;
+
+
 
     public ContractBuilder setDocuments(List<Document> documents) {
         this.documents = documents;
@@ -53,8 +57,13 @@ public class ContractBuilder implements CreateBuilder<Contract> {
         return this;
     }
 
+    public ContractBuilder setEmployee(Employee employee) {
+        this.employee = employee;
+        return this;
+    }
+
     @Override
     public Contract build() {
-        return new Contract(this.description, this.startDate, this.endDate, this.nbHoursByWeek, this.documents, this.timesheets);
+        return new Contract(this.description, this.startDate, this.endDate, this.nbHoursByWeek, this.documents, this.timesheets, this.employee);
     }
 }

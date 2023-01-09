@@ -45,6 +45,8 @@ public class OrganizationServiceImpl implements OrganizationService {
             detail.setDescription(payload.getDescription());
             if(payload.getCompany() != null)
                 detail.setCompany(payload.getCompany());
+            else
+                detail.setCompany(detail.getCompany());
 
             return this.organizationRepository.save(detail);
         }
