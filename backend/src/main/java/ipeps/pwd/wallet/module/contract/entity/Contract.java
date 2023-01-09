@@ -37,17 +37,17 @@ public class Contract {
 
     @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
-    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_business_fk"))
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "contract_business_fk"))
     Company companyBusiness;
 
     @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
-    @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_client_fk"))
+    @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "contract_client_fk"))
     Company companyClient;
 
     @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "contract_employee_fk"))
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
     Employee employee;
 
 
