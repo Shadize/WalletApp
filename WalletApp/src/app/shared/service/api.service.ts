@@ -18,7 +18,6 @@ export class ApiService {
   }
 
   post(partUrl: string, payload: PayloadInterface): Observable<ApiResponse> {
-    console.log('url ', `${this.baseUrl}${partUrl}`);
     return this.http.post(`${this.baseUrl}${partUrl}`, payload).pipe(map((response: any) => response as ApiResponse));
   }
 
@@ -27,6 +26,8 @@ export class ApiService {
   }
 
   delete(partUrl: string): Observable<ApiResponse> {
+    console.log(`${this.baseUrl}${partUrl}`)
+    console.log("hey i'm deleting")
     return this.http.delete(`${this.baseUrl}${partUrl}`).pipe(map((response: any) => response as ApiResponse));
   }
 }
