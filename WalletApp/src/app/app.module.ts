@@ -20,6 +20,11 @@ import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
+import {SharedModule} from "@shared/shared.module";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 
@@ -46,7 +51,12 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatListModule,
     MatTableModule,
     CdkTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    SharedModule,
+    MatMenuModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
