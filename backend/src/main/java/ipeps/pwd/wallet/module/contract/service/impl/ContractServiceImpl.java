@@ -38,6 +38,8 @@ public class ContractServiceImpl implements ContractService {
                     .setDocuments(payload.getDocuments())
                     .setTimesheets(payload.getTimesheets())
                     .setEmployee(payload.getEmployee())
+                    .setCompanyBusiness(payload.getCompanyBusiness())
+                    .setCompanyClient(payload.getCompanyClient())
                     .build();
             return this.contractRepository.save(contract);
         }catch(Exception e){
@@ -57,6 +59,8 @@ public class ContractServiceImpl implements ContractService {
                 detail.setEmployee(payload.getEmployee());
             else
                 detail.setEmployee(detail.getEmployee());
+            detail.setCompanyBusiness(payload.getCompanyBusiness());
+            detail.setCompanyClient(payload.getCompanyClient());
             return this.contractRepository.save(detail);
         }
         return detail;

@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.contract.entity.payload;
 
+import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.document.entity.Document;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import ipeps.pwd.wallet.module.timesheet.entity.Timesheet;
@@ -21,4 +22,6 @@ public class ContractCreatePayload {
     List<Document> documents;
     List<Timesheet> timesheets;
     Employee employee;
+    Company companyClient;
+    Company companyBusiness;
 }

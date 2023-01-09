@@ -9,6 +9,6 @@ export interface Timesheet extends DtoInterface{
   endHours: Date;
   comment: string;
   timesheetType: string;
-  contracts: Contract[];
+  contract: Contract;
   employee: Employee;
 }

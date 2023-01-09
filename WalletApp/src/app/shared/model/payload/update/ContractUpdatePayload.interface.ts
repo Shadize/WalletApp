@@ -1,6 +1,7 @@
 import {Company} from "@shared/model/dto/company.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {PayloadInterface} from "@shared/model";
+import {Timesheet} from "@shared/model/dto/timesheet.interface";
 
 export interface ContractUpdatePayload extends PayloadInterface{
   contractId?: string;
@@ -8,8 +9,11 @@ export interface ContractUpdatePayload extends PayloadInterface{
   startDate: Date;
   endDate: Date;
   nbHoursByWeek: number;
-  companies: Company[];
+  documents: Document[];
+  timesheets: Timesheet[];
   employee: Employee;
+  companyClient: Company;
+  companyBusiness: Company;
 }
 
 

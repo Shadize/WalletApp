@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.contract.entity.builder;
 
+import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.common.model.CreateBuilder;
 import ipeps.pwd.wallet.module.document.entity.Document;
@@ -21,9 +22,20 @@ public class ContractBuilder implements CreateBuilder<Contract> {
     Date endDate;
     Integer nbHoursByWeek;
     List<Document> documents;
+    List<Timesheet> timesheets;
     Employee employee;
+    Company companyClient;
+    Company companyBusiness;
 
+    public ContractBuilder setCompanyClient(Company companyClient) {
+        this.companyClient = companyClient;
+        return this;
+    }
 
+    public ContractBuilder setCompanyBusiness(Company companyBusiness) {
+        this.companyBusiness = companyBusiness;
+        return this;
+    }
 
     public ContractBuilder setDocuments(List<Document> documents) {
         this.documents = documents;
@@ -35,7 +47,7 @@ public class ContractBuilder implements CreateBuilder<Contract> {
         return this;
     }
 
-    List<Timesheet> timesheets;
+
 
     public ContractBuilder setDescription(String description) {
         this.description = description;
@@ -64,6 +76,7 @@ public class ContractBuilder implements CreateBuilder<Contract> {
 
     @Override
     public Contract build() {
-        return new Contract(this.description, this.startDate, this.endDate, this.nbHoursByWeek, this.documents, this.timesheets, this.employee);
+        return new Contract(this.description, this.startDate, this.endDate, this.nbHoursByWeek, this.documents,
+                            this.timesheets, this.employee, this.companyBusiness, this.companyClient);
     }
 }

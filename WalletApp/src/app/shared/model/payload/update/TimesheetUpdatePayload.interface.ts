@@ -9,6 +9,6 @@ export interface TimesheetUpdatePayload extends PayloadInterface {
   endHours: Date;
   comment: string;
   timesheetType: string;
-  contracts: Contract[];
+  contract: Contract;
   employee: Employee;
 }

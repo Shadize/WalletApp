@@ -62,7 +62,8 @@ public class Contract {
 
 
     public Contract(String description, Date startDate, Date endDate, Integer nbHoursByWeek,
-                    List<Document> documents, List<Timesheet> timesheets, Employee employee) {
+                    List<Document> documents, List<Timesheet> timesheets, Employee employee,
+                    Company companyBusiness, Company companyClient) {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -70,6 +71,8 @@ public class Contract {
         this.documents = documents;
         this.timesheets = timesheets;
         this.employee = employee;
+        this.companyBusiness = companyBusiness;
+        this.companyClient = companyClient;
     }
 
 }
