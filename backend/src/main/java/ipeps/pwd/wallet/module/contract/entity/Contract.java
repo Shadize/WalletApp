@@ -1,4 +1,5 @@
 package ipeps.pwd.wallet.module.contract.entity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.document.entity.Document;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import ipeps.pwd.wallet.module.company.entity.Company;
@@ -27,20 +28,24 @@ public class Contract {
     Date startDate;
     Date endDate;
     Integer nbHoursByWeek;
-
+    @JsonIgnoreProperties({"contract"})
     @OneToMany(mappedBy = "contract")
     List<Document> documents;
+    @JsonIgnoreProperties({"contract"})
     @OneToMany(mappedBy = "contract")
     List<Timesheet> timesheets;
 
+    @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_business_fk"))
     Company companyBusiness;
 
+    @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
     @JoinColumn(name = "client_FK",referencedColumnName = "company_id", nullable = true, foreignKey=@ForeignKey(name = "contract_client_fk"))
     Company companyClient;
 
+    @JsonIgnoreProperties({"contracts"})
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "contract_employee_fk"))
     Employee employee;

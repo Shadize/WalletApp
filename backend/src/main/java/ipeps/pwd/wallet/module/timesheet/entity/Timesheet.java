@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.timesheet.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
@@ -40,6 +41,7 @@ public class Timesheet {
     String  comment;
     String  timesheetType;
 
+    @JsonIgnoreProperties({"timesheets"})
     @ManyToOne()
     @JoinColumn(name = "contract_fk", referencedColumnName = "contract_id", nullable = false, foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
     Contract contract;

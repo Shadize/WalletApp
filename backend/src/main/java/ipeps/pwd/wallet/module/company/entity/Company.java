@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.company.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
 import ipeps.pwd.wallet.module.document.entity.Document;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
@@ -33,17 +34,22 @@ public class Company {
     boolean isDeleted;
     String deletedBy;
 
+    @JsonIgnoreProperties({"company"})
     @OneToMany(mappedBy = "company")
     List<Employee> employees;
+    @JsonIgnoreProperties({"company"})
     @OneToMany(mappedBy = "company")
     List<Organization> organizations;
+    @JsonIgnoreProperties({"company"})
     @OneToMany(mappedBy = "company")
     List<Document> documents;
 
 //    @ManyToMany(mappedBy = "companies")
 //    List<Contract> contracts;
+    @JsonIgnoreProperties({"company"})
     @OneToMany(mappedBy = "companyBusiness")
     List<Contract> contractsBusiness;
+    @JsonIgnoreProperties({"company"})
     @OneToMany(mappedBy = "companyClient")
     List<Contract> contractsClient;
 

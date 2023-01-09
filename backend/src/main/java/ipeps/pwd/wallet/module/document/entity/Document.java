@@ -1,5 +1,6 @@
 package ipeps.pwd.wallet.module.document.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ipeps.pwd.wallet.module.employee.entity.Employee;
 import ipeps.pwd.wallet.module.company.entity.Company;
 import ipeps.pwd.wallet.module.contract.entity.Contract;
@@ -28,15 +29,17 @@ public class Document {
     String content;
     String type;
     Date createDate;
-
+    @JsonIgnoreProperties({"documents"})
     @ManyToOne()
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = true, foreignKey=@ForeignKey(name = "document_company_fk"))
     private Company company;
 
+    @JsonIgnoreProperties({"documents"})
     @ManyToOne()
     @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id",nullable = true, foreignKey=@ForeignKey(name = "document_contract_fk"))
     private Contract contract;
 
+    @JsonIgnoreProperties({"documents"})
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "document_employee_fk"))
     private Employee employee;
