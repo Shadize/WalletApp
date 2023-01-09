@@ -27,7 +27,7 @@ public class Skill {
     String title;
     String description;
 
-    @JsonIgnoreProperties("skills")
+    @JsonIgnoreProperties({"skills","company"})
     @ManyToMany(mappedBy = "skills")
     List<Employee> employees;
 
