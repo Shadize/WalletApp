@@ -54,6 +54,8 @@ public class SalaryServiceImpl implements SalaryService {
             detail.setAmount(payload.getAmount());
             if(payload.getEmployee() != null)
                 detail.setEmployee(payload.getEmployee());
+            else
+                detail.setEmployee(detail.getEmployee());
 
             return this.salaryRepository.save(detail);
         }
