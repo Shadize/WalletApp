@@ -25,6 +25,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
+import {SkillModule} from "./modules/skill/skill.module";
+
+
 
 
 
@@ -32,6 +35,7 @@ import {MatMenuModule} from "@angular/material/menu";
   declarations: [
     AppComponent,
     SkillsComponent
+
   ],
   imports: [
     BrowserModule,

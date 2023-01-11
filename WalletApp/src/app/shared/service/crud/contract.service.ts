@@ -29,7 +29,7 @@ export class ContractService extends ApiService implements CrudServiceInterface 
   }
 
   create(payload: ContractCreatePayload): Observable<boolean> {
-    return this.post(`contract/create/`, payload).pipe(
+    return this.post(`contract/create`, payload).pipe(
       map((response: ApiResponse) => {
         return response.result;
       })
@@ -37,7 +37,7 @@ export class ContractService extends ApiService implements CrudServiceInterface 
   }
 
   update(payload: ContractUpdatePayload): Observable<boolean> {
-    return this.put('contract/update/', payload).pipe(
+    return this.put('contract/update', payload).pipe(
       map((response: ApiResponse) => {
         return response.result
       })

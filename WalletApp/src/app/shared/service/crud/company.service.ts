@@ -29,7 +29,7 @@ export class CompanyService extends ApiService implements CrudServiceInterface {
   }
 
   create(payload: CompanyCreatePayload): Observable<boolean> {
-    return this.post(`company/create/`, payload).pipe(
+    return this.post(`company/create`, payload).pipe(
       map((response: ApiResponse) => {
         return response.result;
       })
@@ -37,7 +37,7 @@ export class CompanyService extends ApiService implements CrudServiceInterface {
   }
 
   update(payload: CompanyUpdatePayload): Observable<boolean> {
-    return this.put('company/update/', payload).pipe(
+    return this.put('company/update', payload).pipe(
       map((response: ApiResponse) => {
         return response.result
       })

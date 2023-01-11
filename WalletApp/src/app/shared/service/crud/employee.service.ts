@@ -36,7 +36,7 @@ export class EmployeeService extends ApiService implements CrudServiceInterface{
   }
 
   update(updatePayload: EmployeeUpdatePayloadInterface): Observable<boolean> {
-    return this.put("employee/update/", updatePayload).pipe(
+    return this.put("employee/update", updatePayload).pipe(
       map((response: ApiResponse) => {
         return (response.result)
       })

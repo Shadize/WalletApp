@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
-import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
+import {ApiResponse, CrudServiceInterface} from "@shared/model";
 import {Observable} from "rxjs";
 import {ApiService} from "@shared/service";
-import {Employee} from "@shared/model/dto/employee.interface";
 import {map} from "rxjs/operators";
-import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
-import {EmployeeUpdatePayloadInterface} from "@shared/model/payload/update/EmployeeUpdatePayload.interface";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
 import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class FleetService extends ApiService implements CrudServiceInterface{
 
   detail(id: string | number): Observable<Fleet> {
@@ -38,7 +35,7 @@ export class FleetService extends ApiService implements CrudServiceInterface{
   }
 
   update(updatePayload: FleetUpdatePayloadInterface): Observable<boolean> {
-    return this.put("fleet/update/", updatePayload).pipe(
+    return this.put("fleet/update", updatePayload).pipe(
       map((response: ApiResponse) => {
         return (response.result)
       })
