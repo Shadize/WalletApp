@@ -1,1 +1,27 @@
-<p>fleet works!</p>
+<h2>Test</h2>
+
+<p *ngFor="let fleet of fleetList">
+  {{fleet.fleetId}}  |  {{fleet.description}}   |  {{fleet.description}}   | {{fleet.cost}}
+</p>
+
+<br>
+
+<h2>Insert</h2>
+
+<label>title</label><br>
+<input #boxTitle value="56"><br>
+
+
+<label>description</label><br>
+<input #boxDescription value="56"><br>
+
+
+<label>type</label><br>
+<input #boxType value="56"><br>
+
+
+<label>cost</label><br>
+
+<input #boxCost value="56"><br>
+<button (click)="insert(boxTitle.value, boxDescription.value, boxType.value, boxCost.value  )">Click me</button>
+

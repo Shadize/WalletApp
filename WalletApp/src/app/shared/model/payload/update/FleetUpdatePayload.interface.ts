@@ -3,7 +3,7 @@ import {PayloadInterface} from "@shared/model";
 
 export interface FleetUpdatePayloadInterface extends PayloadInterface{
   fleetId?: string;
-  tittle: string;
+  title: string;
   description: string;
   type: string;
   cost: number;

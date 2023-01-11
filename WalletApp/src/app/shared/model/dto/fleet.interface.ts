@@ -3,7 +3,7 @@ import {DtoInterface} from "@shared/model";
 
 export interface Fleet extends DtoInterface{
   fleetId?: string;
-  tittle: string;
+  title: string;
   description: string;
   type: string;
   cost: number;
