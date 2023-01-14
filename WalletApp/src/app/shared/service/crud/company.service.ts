@@ -9,7 +9,9 @@ import {
   CompanyUpdatePayload
 } from "@shared/model/payload/update/CompanyUpdatePayload.interface";
 
-@Injectable()
+@Injectable(
+  {providedIn: 'root'}
+)
 export class CompanyService extends ApiService implements CrudServiceInterface {
 
   list = () : Observable<Company[]> =>  {

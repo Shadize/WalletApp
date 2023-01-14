@@ -21,34 +21,41 @@ export class FleetComponent implements OnInit
   fleetList: Fleet[] = [];
 
   ngOnInit(): void {
-    this.fleetService.list().subscribe(data =>
-    {
+    this.fleetService.fleetList$.subscribe( data =>{
       this.fleetList = data;
-      console.log(data);
-    })
-
-    // list$.pipe(
-    //   map
-    //   (
-    //     (response:Fleet[]) =>
-    //     {
-    //       this.fleetList = response;
-    //     }
-    //  )
-    // ).subscribe()
+      }
+    )
+    this.fleetList.
   }
 
   insert(title: string, description: string, type: string, cost: string)
   {
-
     let payload: FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost)}
-
-    this.fleetService.create(payload).subscribe(data =>
-    {
-
-    })
-
-
-  }
+    this.fleetService.create(payload).subscribe(data => {});
+  };
 
 }
+
+
+
+
+
+// ngOnInit(): void {
+//   this.fleetService.list().subscribe(data =>
+//   {
+//     this.fleetList = data;
+//     console.log(data);
+//   })
+//
+//   list$.pipe(
+//     map
+//     (
+//       (response:Fleet[]) =>
+//       {
+//         this.fleetList = response;
+//       }
+//     )
+//   ).subscribe()
+// }
+//
+
