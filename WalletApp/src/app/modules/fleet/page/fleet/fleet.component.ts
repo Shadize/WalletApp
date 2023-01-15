@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
-import {interval, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-fleet',
@@ -20,13 +20,11 @@ export class FleetComponent implements OnInit, OnDestroy
   ngOnInit(): void {
     this.subList.push(
       this.fleetService.fleetList$$.asObservable().subscribe(data =>{
-      this.fleetList = data
+        this.fleetList = data
+        this.refreshList();
       })
     )
-    this.fleetService.list2();
 
-
-   let test = interval(1000);
   }
 
   ngOnDestroy(): void {
@@ -37,23 +35,22 @@ export class FleetComponent implements OnInit, OnDestroy
 
   insert(title: string, description: string, type: string, cost: string)
   {
-    let payload: FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost)}
+    let payload: FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost)};
 
     this.subList.push(
       this.fleetService.create(payload).subscribe(data => {
-      console.log(data.result);
-      this.fleetService.list2();
+      if(data.result)
+      {
+        // Afficher un truc "Success"
+      }
+      this.refreshList();
       })
     );
 
   };
 
-  refresh() {
-    console.log(this.subList);
-    console.log(this.fleetList);
+  refreshList() {
     this.fleetService.list2();
-    console.log(this.subList);
-    console.log(this.fleetList);
   }
 
 }

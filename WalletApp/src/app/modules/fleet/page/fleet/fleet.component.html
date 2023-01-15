@@ -1,10 +1,54 @@
-<h2>Test</h2>
+<div class="fleets-container">
+  <mat-table [dataSource]="fleetList" class="table-container">
+    <p>test</p>
+<!--    <ng-container matColumnDef="title">-->
+<!--      <mat-header-cell *matHeaderCellDef>-->
+<!--        Title-->
+<!--      </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let fleet">{{fleet.title}}</mat-cell>-->
+<!--    </ng-container>-->
+<!--    <ng-container matColumnDef="description">-->
+<!--      <mat-header-cell *matHeaderCellDef>-->
+<!--        Description-->
+<!--      </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let fleet">{{fleet.description}}</mat-cell>-->
+<!--    </ng-container>-->
 
-<p *ngFor="let fleet of fleetList">
-  {{fleet.title}} | {{fleet.description}}   |  {{fleet.description}}   | {{fleet.cost}}
-</p>
+<!--    <ng-container matColumnDef="employees">-->
+<!--      <mat-header-cell *matHeaderCellDef>-->
+<!--        Employees-->
+<!--      </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let skill" class="employees-cell">-->
+<!--        <mat-form-field appearance="fill" class="employees-form">-->
+<!--          <mat-label>Employees</mat-label>-->
+<!--          <mat-select class="employees-select" >-->
+<!--            <mat-option class="employees-option" *ngFor="let employee of skill.employees" [value]="employee.lastname">-->
+<!--              {{employee.lastname }} {{employee.firstname}}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--      </mat-cell>-->
+<!--    </ng-container>-->
 
-<br>
+<!--    <ng-container matColumnDef="edit">-->
+<!--      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let element">-->
+<!--        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">-->
+<!--          <mat-icon>more_horiz</mat-icon>-->
+<!--        </button>-->
+<!--        <mat-menu #menu="matMenu">-->
+<!--          <form>-->
+<!--            <button mat-menu-item (click)="edit(element)">Edit</button>-->
+<!--            <button type="submit" mat-menu-item (click)="delete(element)">Delete</button>-->
+<!--          </form>-->
+<!--        </mat-menu>-->
+<!--      </mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>-->
+<!--    <mat-row *matRowDef="let skill; columns: columnsToDisplay"></mat-row>-->
+  </mat-table>
+</div>
 
 <h2>Insert</h2>
 
@@ -27,4 +71,4 @@
 <button (click)="insert(boxTitle.value, boxDescription.value, boxType.value, boxCost.value  )">Click me</button>
 
 <br><br><br>
-<button (click)="refresh()"> Refresh</button>
+<button (click)="refreshList()"> Refresh</button>
