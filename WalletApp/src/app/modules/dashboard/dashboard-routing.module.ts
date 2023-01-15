@@ -4,6 +4,7 @@ import {DashboardComponent} from './page';
 import {SkillsComponent} from "../skill/page/skill/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
 import {SalaryComponent} from "../salary/page/salary/salary.component";
+import {FleetComponent} from "../fleet/page/fleet/fleet.component";
 
 
 const routes: Routes = [
@@ -18,14 +19,18 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent
-      } ,
+      },
       {
-        path: 'skills',
-        component: SkillsComponent
+        path: 'fleets',
+        loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
       },
       {
         path: 'salary',
         component: SalaryComponent
+      },
+      {
+        path: 'skills',
+        component: SkillsComponent
       }
     ]
   }

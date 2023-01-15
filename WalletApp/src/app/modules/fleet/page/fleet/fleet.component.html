@@ -1,7 +1,7 @@
 <h2>Test</h2>
 
 <p *ngFor="let fleet of fleetList">
-  {{fleet.fleetId}}  |  {{fleet.description}}   |  {{fleet.description}}   | {{fleet.cost}}
+  {{fleet.title}} | {{fleet.description}}   |  {{fleet.description}}   | {{fleet.cost}}
 </p>
 
 <br>
@@ -26,3 +26,5 @@
 <input #boxCost value="56"><br>
 <button (click)="insert(boxTitle.value, boxDescription.value, boxType.value, boxCost.value  )">Click me</button>
 
+<br><br><br>
+<button (click)="refresh()"> Refresh</button>

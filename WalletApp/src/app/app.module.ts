@@ -28,6 +28,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { SalaryComponent } from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
 
 
 
@@ -35,6 +36,7 @@ import {MatNativeDateModule} from "@angular/material/core";
   declarations: [
     AppComponent,
     SkillsComponent,
+    FleetComponent,
     SalaryComponent
   ],
   imports: [

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {ApiResponse, CrudServiceInterface} from "@shared/model";
 import {BehaviorSubject, Observable} from "rxjs";
 import {ApiService} from "@shared/service";
@@ -11,17 +11,15 @@ import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpd
 @Injectable(
   {providedIn: 'root'}
 )
-export class FleetService extends ApiService {//implements CrudServiceInterface{
+export class FleetService extends ApiService { //implements CrudServiceInterface{
 
-  fleetList$: BehaviorSubject<Fleet[]> = new BehaviorSubject<Fleet[]>([]);
-  fleet$: BehaviorSubject<Fleet> = new BehaviorSubject<Fleet>({});
+  fleetList$$: BehaviorSubject<Fleet[]> = new BehaviorSubject<Fleet[]>([]);
+  fleet$$: BehaviorSubject<Fleet> = new BehaviorSubject<Fleet>({});
 
-  list2(id: string): void{
-    this.get(`fleet/list`).pipe(
-      map((response: ApiResponse) =>{
-        this.fleetList$.next((response.data) ? response.data as Fleet[] : [] as Fleet[]);
-      })
-    ).subscribe()
+  list2(): void{
+    this.get(`fleet/list`).subscribe( data => {
+      this.fleetList$$.next((data.data) ? data.data as Fleet[] : [] as Fleet[]);
+    })
   }
 
   detail(id: string | number): Observable<Fleet> {
@@ -40,13 +38,17 @@ export class FleetService extends ApiService {//implements CrudServiceInterface{
     )
   }
 
-  create(addPayload: FleetCreatePayloadInterface): Observable<boolean>{
-    return this.post("fleet/create", addPayload).pipe(
-      map((response: ApiResponse) => {
-        return (response.result)
-      })
-    )
+  create(addPayload: FleetCreatePayloadInterface): Observable<ApiResponse>{
+    this.fleet$$.next(addPayload);
+    return this.post("fleet/create", addPayload);
+
+    // return this.post("fleet/create", addPayload).pipe(
+    //   map((response: ApiResponse) => {
+    //     return (response.result)
+    //   })
+    // )
   }
+
   //
   // update(updatePayload: FleetUpdatePayloadInterface): Observable<boolean> {
   //   return this.put("fleet/update", updatePayload).pipe(
