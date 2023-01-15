@@ -8,9 +8,9 @@ import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
 import {EmployeeUpdatePayloadInterface} from "@shared/model/payload/update/EmployeeUpdatePayload.interface";
 
-@Injectable(
-  {providedIn: 'root'}
-)
+@Injectable({
+  providedIn: 'root'
+})
 export class EmployeeService extends ApiService implements CrudServiceInterface{
 
     detail(id: string | number): Observable<Employee> {
@@ -38,7 +38,7 @@ export class EmployeeService extends ApiService implements CrudServiceInterface{
   }
 
   update(updatePayload: EmployeeUpdatePayloadInterface): Observable<boolean> {
-    return this.put("employee/update", updatePayload).pipe(
+    return this.put("employee/update/", updatePayload).pipe(
       map((response: ApiResponse) => {
         return (response.result)
       })

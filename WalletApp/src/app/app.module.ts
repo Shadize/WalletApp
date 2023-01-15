@@ -25,17 +25,17 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
-import {SkillModule} from "./modules/skill/skill.module";
-
-
+import { SalaryComponent } from './modules/salary/page/salary/salary.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SkillsComponent
-
+    SkillsComponent,
+    SalaryComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +60,9 @@ import {SkillModule} from "./modules/skill/skill.module";
     ReactiveFormsModule,
     MatSelectModule,
     SharedModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true

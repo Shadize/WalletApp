@@ -8,13 +8,12 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './page/home/home.component';
-import {FleetComponent} from "../fleet/page/fleet/fleet.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    HomeComponent,
-    FleetComponent
+    HomeComponent
   ],
   imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule],
   providers: []

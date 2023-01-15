@@ -3,9 +3,7 @@ import {NgModule} from '@angular/core';
 import {DashboardComponent} from './page';
 import {SkillsComponent} from "../skill/page/skill/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
-import {FleetComponent} from "../fleet/page/fleet/fleet.component";
-import * as module from "module";
-
+import {SalaryComponent} from "../salary/page/salary/salary.component";
 
 
 const routes: Routes = [
@@ -26,8 +24,8 @@ const routes: Routes = [
         component: SkillsComponent
       },
       {
-        path: 'fleets',
-        loadChildren: () => import('../fleet/fleet.module').then(m => m.FleetModule)
+        path: 'salary',
+        component: SalaryComponent
       }
     ]
   }

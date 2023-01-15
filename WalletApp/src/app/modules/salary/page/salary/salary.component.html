@@ -1,0 +1,45 @@
+<div class="form-container">
+  <form class="form" (submit)="insert(date.value, title.value, comment.value, amount.value, selectedEmployee ); $event.preventDefault()">
+    <h1>Insert a new salary</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input #date matInput  [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>title</mat-label>
+      <input #title matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>comment</mat-label>
+      <input #comment matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>amount</mat-label>
+      <input #amount matInput>
+    </mat-form-field>
+    <ng-container matColumnDef="employees">
+      <mat-header-cell *matHeaderCellDef>
+        Employees
+      </mat-header-cell>
+      <mat-cell class="employees-cell">
+        <mat-form-field appearance="fill" class="employees-form">
+          <mat-label>Employees</mat-label>
+          <mat-select class="employees-select" [(value)]="selectedEmployee" >
+            <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee.lastname">
+              {{employee.lastname }} {{employee.firstname}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <button mat-raised-button type="submit" color="primary">Insert Salary</button>
+  </form>
+</div>
+
+
+
+
+<!--<app-grid-view [headerColumns]="['Title', 'Description', 'Employees', 'Edit']" [rows]="dataSource"></app-grid-view>-->

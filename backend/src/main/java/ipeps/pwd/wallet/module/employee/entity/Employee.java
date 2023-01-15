@@ -45,7 +45,7 @@ public class Employee {
     String status;
     Boolean deleted;
 
-    @JsonIgnoreProperties({"employees"})
+    @JsonIgnoreProperties({"employees", "organizations", "documents", "timesheets", "contracts", "fleets", "salaries", "skills", "contractsBusiness", "contractsClient"})
     @ManyToOne()
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "employee_company_fk"))
     private Company company;
@@ -54,11 +54,11 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     List<Timesheet> timesheets;
 
-    @JsonIgnoreProperties({"employee"})
+    @JsonIgnoreProperties({"employee", "company", "contract"})
     @OneToMany(mappedBy = "employee")
     List<Document> documents;
 
-    @JsonIgnoreProperties({"employee"})
+    @JsonIgnoreProperties({"employee", "companyClient", "companyBusiness", "timesheets", "documents"})
     @OneToMany(mappedBy = "employee")
     List<Contract> contracts;
 

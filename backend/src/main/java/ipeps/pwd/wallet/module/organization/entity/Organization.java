@@ -24,7 +24,8 @@ public class Organization {
     String name;
     String description;
 
-    @JsonIgnoreProperties({"organizations"})
+    @JsonIgnoreProperties({"organizations", "employees","documents","contractsBusiness","contractsClient"
+    })
     @ManyToOne()
     @JoinColumn(name = "company_fk", referencedColumnName = "company_id", nullable = false, foreignKey=@ForeignKey(name = "organisation_company_fk"))
     Company company;

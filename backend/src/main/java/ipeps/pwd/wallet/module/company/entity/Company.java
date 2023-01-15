@@ -34,22 +34,22 @@ public class Company {
     boolean isDeleted;
     String deletedBy;
 
-    @JsonIgnoreProperties({"company"})
+    @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @OneToMany(mappedBy = "company")
     List<Employee> employees;
     @JsonIgnoreProperties({"company"})
     @OneToMany(mappedBy = "company")
     List<Organization> organizations;
-    @JsonIgnoreProperties({"company"})
+    @JsonIgnoreProperties({"company", "contract", "employee"})
     @OneToMany(mappedBy = "company")
     List<Document> documents;
 
 //    @ManyToMany(mappedBy = "companies")
 //    List<Contract> contracts;
-    @JsonIgnoreProperties({"company"})
+    @JsonIgnoreProperties({"company", "documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @OneToMany(mappedBy = "companyBusiness")
     List<Contract> contractsBusiness;
-    @JsonIgnoreProperties({"company"})
+    @JsonIgnoreProperties({"company",  "documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @OneToMany(mappedBy = "companyClient")
     List<Contract> contractsClient;
 

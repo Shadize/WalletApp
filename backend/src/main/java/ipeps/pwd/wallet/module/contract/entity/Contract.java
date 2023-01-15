@@ -28,24 +28,24 @@ public class Contract {
     Date startDate;
     Date endDate;
     Integer nbHoursByWeek;
-    @JsonIgnoreProperties({"contract"})
+    @JsonIgnoreProperties({"contract", "company", "contract", "employee"})
     @OneToMany(mappedBy = "contract")
     List<Document> documents;
-    @JsonIgnoreProperties({"contract"})
+    @JsonIgnoreProperties({"contract", "employee"})
     @OneToMany(mappedBy = "contract")
     List<Timesheet> timesheets;
 
-    @JsonIgnoreProperties({"contracts"})
+    @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
     @ManyToOne()
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id", foreignKey=@ForeignKey(name = "contract_business_fk"))
     Company companyBusiness;
 
-    @JsonIgnoreProperties({"contracts"})
+    @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
     @ManyToOne()
     @JoinColumn(name = "client_FK",referencedColumnName = "company_id", foreignKey=@ForeignKey(name = "contract_client_fk"))
     Company companyClient;
 
-    @JsonIgnoreProperties({"contracts"})
+    @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id", foreignKey=@ForeignKey(name = "contract_employee_fk"))
     Employee employee;

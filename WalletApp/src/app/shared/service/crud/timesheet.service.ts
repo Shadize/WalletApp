@@ -7,9 +7,9 @@ import {Timesheet} from "@shared/model/dto/timesheet.interface";
 import {TimesheetCreatePayload} from "@shared/model/payload/create/TimesheetCreatePayload.interface";
 import {TimesheetUpdatePayload} from "@shared/model/payload/update/TimesheetUpdatePayload.interface";
 
-@Injectable(
-  {providedIn: 'root'}
-)
+@Injectable({
+  providedIn: 'root'
+})
 export class TimesheetService extends ApiService implements CrudServiceInterface {
 
   list = () : Observable<Timesheet[]> =>  {
@@ -29,7 +29,7 @@ export class TimesheetService extends ApiService implements CrudServiceInterface
   }
 
   create(payload: TimesheetCreatePayload): Observable<boolean> {
-    return this.post(`timesheet/create`, payload).pipe(
+    return this.post(`timesheet/create/`, payload).pipe(
       map((response: ApiResponse) => {
         return response.result;
       })
@@ -37,7 +37,7 @@ export class TimesheetService extends ApiService implements CrudServiceInterface
   }
 
   update(payload: TimesheetUpdatePayload): Observable<boolean> {
-    return this.put('timesheet/update', payload).pipe(
+    return this.put('timesheet/update/', payload).pipe(
       map((response: ApiResponse) => {
         return response.result
       })
