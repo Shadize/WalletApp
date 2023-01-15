@@ -37,6 +37,7 @@ public class DocumentServiceImpl implements DocumentService {
                     .setContent(payload.getContent())
                     .setType(payload.getType())
                     .setCreateDate(payload.getCreateDate());
+
                     if(payload.getCompany() != null)
                         builder.setCompany(payload.getCompany());
                     if(payload.getContract() != null)
@@ -45,7 +46,6 @@ public class DocumentServiceImpl implements DocumentService {
                         builder.setEmployee(payload.getEmployee());
             Document document = this.documentRepository.save(builder.build());
             return document;
-
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
