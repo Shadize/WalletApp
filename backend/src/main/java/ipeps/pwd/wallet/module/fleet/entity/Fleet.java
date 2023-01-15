@@ -24,7 +24,7 @@ public class Fleet {
     String description;
     String type;
     Float cost;
-    @JsonIgnoreProperties({"fleets"})
+    @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "fleet_employee_fk"))
     private Employee employee;

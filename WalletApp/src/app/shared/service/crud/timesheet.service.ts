@@ -7,7 +7,9 @@ import {Timesheet} from "@shared/model/dto/timesheet.interface";
 import {TimesheetCreatePayload} from "@shared/model/payload/create/TimesheetCreatePayload.interface";
 import {TimesheetUpdatePayload} from "@shared/model/payload/update/TimesheetUpdatePayload.interface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TimesheetService extends ApiService implements CrudServiceInterface {
 
   list = () : Observable<Timesheet[]> =>  {
