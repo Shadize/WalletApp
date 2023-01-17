@@ -24,19 +24,22 @@ export class FleetComponent implements OnInit, OnDestroy
     this.subList.push(
       this.fleetService.fleetList$$.asObservable().subscribe(data =>{
         this.fleetList = data
-        this.refreshList();
       })
     )
+    this.refreshList();
 
     console.log(this.displayedColumns, this.referenceColumns);
-
-
+    console.log(this.fleetList)
   }
 
   ngOnDestroy(): void {
     this.subList.forEach(e => {
       e.unsubscribe()
     })
+  }
+
+  refreshList() {
+    this.fleetService.list();
   }
 
   insert(title: string, description: string, type: string, cost: string)
@@ -55,8 +58,15 @@ export class FleetComponent implements OnInit, OnDestroy
 
   };
 
-  refreshList() {
-    this.fleetService.list2();
+
+
+  delete(fleet: Fleet){
+    console.log(fleet)
+    this.fleetService.remove(fleet.fleetId!).subscribe( data => {
+      console.log(data);
+      this.refreshList();
+    });
+
   }
 
 }

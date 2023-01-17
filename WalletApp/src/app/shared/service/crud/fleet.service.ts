@@ -16,7 +16,7 @@ export class FleetService extends ApiService { //implements CrudServiceInterface
   fleetList$$: BehaviorSubject<Fleet[]> = new BehaviorSubject<Fleet[]>([]);
   fleet$$: BehaviorSubject<Fleet> = new BehaviorSubject<Fleet>({});
 
-  list2(): void{
+  list(): void{
     this.get(`fleet/list`).subscribe( data => {
       this.fleetList$$.next((data.data) ? data.data as Fleet[] : [] as Fleet[]);
     })
@@ -30,7 +30,7 @@ export class FleetService extends ApiService { //implements CrudServiceInterface
     )
   }
 
-  list() : Observable<Fleet[]>{
+  list2() : Observable<Fleet[]>{
     return this.get(`fleet/list`).pipe(
       map((response: ApiResponse) => {
         return (response.result) ? response.data as Fleet[] : [];
@@ -49,21 +49,20 @@ export class FleetService extends ApiService { //implements CrudServiceInterface
     // )
   }
 
-  //
-  // update(updatePayload: FleetUpdatePayloadInterface): Observable<boolean> {
-  //   return this.put("fleet/update", updatePayload).pipe(
-  //     map((response: ApiResponse) => {
-  //       return (response.result)
-  //     })
-  //   )
-  // }
-  //
-  //
-  // remove(id: string | number): Observable<boolean> {
-  //   return this.delete(`fleet/delete/${id}`).pipe(
-  //     map((response: ApiResponse) => {
-  //       return (response.result)
-  //     })
-  //   )
-  // }
+  remove(id: string | number): Observable<ApiResponse>{
+    return this.delete(`fleet/delete/${id}`).pipe(
+      map((response: ApiResponse) => {
+        console.log(response.data);
+        return response;
+      })
+    )
+  }
+
+  remove2(id: string | number): Observable<boolean> {
+    return this.delete(`fleet/delete/${id}`).pipe(
+      map((response: ApiResponse) => {
+        return (response.result)
+      })
+    )
+  }
 }
