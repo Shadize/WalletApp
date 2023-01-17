@@ -13,6 +13,9 @@ export class FleetComponent implements OnInit, OnDestroy
 {
   fleetList: Fleet[] = [];
   subList: Subscription[] = [];
+  test: String= "Bonjour"
+  displayedColumns: string[] = ['title','description','type','cost','employee','option'];
+  referenceColumns: String[] = this.displayedColumns.slice();
 
   constructor(public fleetService: FleetService) {
   }
@@ -24,6 +27,9 @@ export class FleetComponent implements OnInit, OnDestroy
         this.refreshList();
       })
     )
+
+    console.log(this.displayedColumns, this.referenceColumns);
+
 
   }
 
@@ -54,27 +60,3 @@ export class FleetComponent implements OnInit, OnDestroy
   }
 
 }
-
-
-
-
-
-// ngOnInit(): void {
-//   this.fleetService.list().subscribe(data =>
-//   {
-//     this.fleetList = data;
-//     console.log(data);
-//   })
-//
-//   list$.pipe(
-//     map
-//     (
-//       (response:Fleet[]) =>
-//       {
-//         this.fleetList = response;
-//       }
-//     )
-//   ).subscribe()
-// }
-//
-

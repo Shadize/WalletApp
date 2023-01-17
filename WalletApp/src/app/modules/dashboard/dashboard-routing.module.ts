@@ -7,6 +7,7 @@ import {SalaryComponent} from "../salary/page/salary/salary.component";
 import {FleetComponent} from "../fleet/page/fleet/fleet.component";
 
 
+
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +23,8 @@ const routes: Routes = [
       },
       {
         path: 'fleets',
-        loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
+        component: FleetComponent
+        //loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
       },
       {
         path: 'salary',
