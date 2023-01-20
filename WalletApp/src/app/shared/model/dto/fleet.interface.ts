@@ -8,4 +8,5 @@ export interface Fleet extends DtoInterface{
   type?: string;
   cost?: number;
   employee?: Employee;
+
 }
