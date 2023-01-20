@@ -21,7 +21,7 @@ import {MatTableModule} from "@angular/material/table";
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
@@ -37,33 +37,34 @@ import {MatNativeDateModule} from "@angular/material/core";
     SkillsComponent,
     SalaryComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
 
-    //Material
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    CdkTableModule,
-    MatTooltipModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    SharedModule,
-    MatMenuModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+        //Material
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSlideToggleModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        CdkTableModule,
+        MatTooltipModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        SharedModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },

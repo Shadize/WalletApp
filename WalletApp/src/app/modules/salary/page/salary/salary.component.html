@@ -27,19 +27,155 @@
         <mat-form-field appearance="fill" class="employees-form">
           <mat-label>Employees</mat-label>
           <mat-select class="employees-select" [(value)]="selectedEmployee" >
-            <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee.lastname">
+            <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee">
               {{employee.lastname }} {{employee.firstname}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </mat-cell>
     </ng-container>
-
     <button mat-raised-button type="submit" color="primary">Insert Salary</button>
   </form>
 </div>
 
+<div class="salaries-container">
+  <mat-table [dataSource]="salaries" class="table-container">
+    <ng-container matColumnDef="createDate">
+      <mat-header-cell *matHeaderCellDef>
+        Create Date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let salary">{{salary.createDate}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>
+        Title
+      </mat-header-cell>
+      <mat-cell *matCellDef="let salary">{{salary.title}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="comment">
+      <mat-header-cell *matHeaderCellDef>
+        Comment
+      </mat-header-cell>
+      <mat-cell *matCellDef="let salary">{{salary.comment}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef>
+        Amount
+      </mat-header-cell>
+      <mat-cell *matCellDef="let salary">{{salary.amount}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="employees">
+      <mat-header-cell *matHeaderCellDef>
+        Employees
+      </mat-header-cell>
+      <mat-cell *matCellDef="let salary" class="employees-cell">{{salary.employee.lastname +" "+salary.employee.firstname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEdition(element)">Edit</button>
+            <button mat-menu-item (click)="delete(element)">Delete</button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let salary; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>
+
+<div class="edit-form-container" *ngIf="edited">
+  <form class="form" >
+    <h1>Edit Salary</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input [(ngModel)]="editSalary.title" [name]="editSalary.title" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Comment</mat-label>
+      <input [(ngModel)]="editSalary.comment" [name]="editSalary.comment" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Employee</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let employee of employees" [value]="employee" >
+          {{employee.lastname }} {{employee.firstname}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="edit(editSalary)" mat-raised-button type="submit" color="primary">Update Salary</button>
+    <button (click)="cancelEdit()" mat-raised-button type="button" color="warn">Cancel</button>
+  </form>
+</div>
+
+<!--
+
+
+<div class="edit-form-container" *ngIf="edited">
+  <form class="form" [formGroup]="formGroup">
+    <h1>Edit Salary</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input formControlName="createDate" [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="formGroup.get('createDate').hasError('required')">
+        Date is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" [(ngModel)]="editSalary.title" [name]="editSalary.title" matInput>
+      <mat-error *ngIf="formGroup.get('title').hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Comment</mat-label>
+      <input formControlName="comment" [(ngModel)]="editSalary.comment" [name]="editSalary.comment" matInput>
+      <mat-error *ngIf="formGroup.get('comment').hasError('required')">
+        Comment is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input formControlName="amount" [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" matInput>
+      <mat-error *ngIf="formGroup.get('amount').hasError('required')">
+        Amount is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Employees</mat-label>
+      <mat-select formControlName="employee">
+        <mat-option *ngFor="let employee of employees" [value]="employee" >
+          {{employee.lastname }} {{employee.firstname}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formGroup.get('employee').hasError('required')">
+        Employee is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button (click)="edit(editSalary)" mat-raised-button type="submit" color="primary">Update Salary</button>
+    <button (click)="cancelEdit()" mat-raised-button type="button" color="warn">Cancel</button>
+  </form>
+</div>
+
+-->
 
 
 
-<!--<app-grid-view [headerColumns]="['Title', 'Description', 'Employees', 'Edit']" [rows]="dataSource"></app-grid-view>-->

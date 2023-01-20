@@ -4,6 +4,8 @@ import {SalaryService} from "@shared/service/crud/salary.service";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
+import {SalaryCreatePayloadInterface} from "@shared/model/payload/create/SalaryCreatePayload.interface";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-salary',
@@ -12,100 +14,89 @@ import {EmployeeService} from "@shared/service/crud/employee.service";
 })
 export class SalaryComponent implements OnInit{
 
-  dataSource: Salary[] = [];
-  // employees: Employee[] = [];
+  salaries: Salary[] = [];
+  employees: Employee[] = [];
+  selectedEmployee!: Employee;
+  displayedColumns: string[] = ['createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
+  editSalary!: Salary;
+  edited!: boolean;
+  formGroup!: FormGroup;
+  selected = new FormControl('employee', [Validators.required, Validators.pattern('employee')]);
 
-  columnsToDisplay: string[] = ['date', 'title', 'comment', 'amount', 'employee', 'edit'];
 
-  constructor(private salaryService: SalaryService, private employeeService: EmployeeService) {
+
+  constructor(private salaryService: SalaryService,
+              private employeeService: EmployeeService,
+              private formBuilder: FormBuilder) {
   }
 
-  ngOnInit(): void {
 /*
-      this.employeeService.list().subscribe(data => {
-        this.employees = data
-      })
+  this.formGroup = this.formBuilder.group({
+    createDate: [this.editSalary.createDate, Validators.required],
+    title: [this.editSalary.title, Validators.required],
+    comment: [this.editSalary.comment, Validators.required],
+    amount: [this.editSalary.amount, Validators.required],
+    employee: [this.editSalary.employee, Validators.required]
+  });
 
  */
+
+
+  ngOnInit(): void {
+    this.employeeService.list().subscribe(data => {
+      this.employees = data
+      })
+    this.salaryService.list().subscribe(data => {
+      this.salaries = data;
+    })
+    this.edited = false;
   }
 
-  edit(skill: Skill){
-    console.log(skill)
+
+
+  insert(newDate: string, title: string, comment: string, createdAmount: string, employee: Employee) {
+    // Conversion du string en date
+
+    let createDate = new Date(newDate);
+
+    // Conversion du string en Number
+    const amount = parseInt(createdAmount);
+
+    const newSalary: SalaryCreatePayloadInterface = {createDate, title, comment, amount,employee}
+    let result = this.salaryService.create(newSalary);
+    result.subscribe(r =>{
+      console.log(r)
+      this.RefreshData()
+      })
+
   }
 
-  delete(skill: Skill){
-    this.salaryService.remove(skill.skillId!).subscribe(response => {
+
+  edit(salary: Salary){
+    console.log(salary)
+  }
+
+  delete(salary: Salary){
+    this.salaryService.remove(salary.salaryId!).subscribe(response => {
       console.log(response)
+      this.RefreshData()
     })
   }
 
-  insert(date: string, title: string, comment: string, amount: string, employee: Employee) {
-      const newdate = new Date(date);
-      console.log(this.selectedEmployee.firstname);
+  RefreshData(){
+    this.salaryService.list().subscribe(data => {
+      this.salaries = data;
+    })
   }
 
+  cancelEdit() {
+    this.edited = !this.edited;
+  }
 
+  openEdition(element: Salary) {
 
+    this.editSalary = element;
+    this.edited = true;
 
-   employees: ({ birthday: Date; firstname: string; address: string; gender: string; documents: null; active: boolean; fleets: null; contracts: null; deletedBy: string; lastname: string; skills: null; ssin: string; deleted: boolean; salaries: null; timesheets: null; company: null; status: string } | { birthday: Date; firstname: string; address: string; gender: string; documents: null; active: boolean; fleets: null; contracts: null; deletedBy: string; lastname: string; skills: null; ssin: string; deleted: boolean; salaries: null; timesheets: null; company: null; status: string } | { birthday: Date; firstname: string; address: string; gender: string; documents: null; active: boolean; fleets: null; contracts: null; deletedBy: string; lastname: string; skills: null; ssin: string; deleted: boolean; salaries: null; timesheets: null; company: null; status: string })[] = [
-    {
-      lastname: "Smith",
-      firstname: "John",
-      active: true,
-      deletedBy: "",
-      address: "123 Main St",
-      gender: "male",
-      birthday: new Date("1990-01-01"),
-      ssin: "123-45-6789",
-      status: "active",
-      deleted: false,
-      company: null,
-      skills: null,
-      timesheets: null,
-      documents: null,
-      contracts: null,
-      fleets: null,
-      salaries: null
-    },
-    {
-      lastname: "Johnson",
-      firstname: "Jane",
-      active: true,
-      deletedBy: "",
-      address: "456 Park Ave",
-      gender: "female",
-      birthday: new Date("1995-07-07"),
-      ssin: "987-65-4321",
-      status: "active",
-      deleted: false,
-      company: null,
-      skills: null,
-      timesheets: null,
-      documents: null,
-      contracts: null,
-      fleets: null,
-      salaries: null
-    },
-    {
-      lastname: "Williams",
-      firstname: "Bob",
-      active: true,
-      deletedBy: "",
-      address: "789 Elm St",
-      gender: "male",
-      birthday: new Date("1985-12-12"),
-      ssin: "111-11-1111",
-      status: "active",
-      deleted: false,
-      company: null,
-      skills: null,
-      timesheets: null,
-      documents: null,
-      contracts: null,
-      fleets: null,
-      salaries: null
-    }
-  ];
-  selectedEmployee!: Employee;
-
+  }
 }
