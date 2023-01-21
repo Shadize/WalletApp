@@ -29,7 +29,7 @@ public class Contract {
     Date endDate;
     Integer nbHoursByWeek;
     @JsonIgnoreProperties({"contract", "company", "contract", "employee"})
-    @OneToMany(mappedBy = "contract")
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Document> documents;
     @JsonIgnoreProperties({"contract", "employee"})
     @OneToMany(mappedBy = "contract")
