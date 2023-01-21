@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Skill} from "@shared/model/dto/skill.interface";
 import {SkillService} from "@shared/service/crud/skill.service";
 import {SkillCreatePayloadInterface} from "@shared/model/payload/create/SkillCreatePayload.interface"
 import {Employee} from "@shared/model/dto/employee.interface";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {SkillDialogComponent} from "../../skill-dialog/skill-dialog.component";
 
 @Component({
   selector: 'app-skills',
@@ -14,8 +16,10 @@ import {Employee} from "@shared/model/dto/employee.interface";
 export class SkillsComponent implements OnInit{
 
   dataSource: Skill[] = [];
+  columnsToDisplay: string[] = ['title', 'description', 'employees', 'edit'];
 
-  constructor(private skillService: SkillService) {
+
+  constructor(private skillService: SkillService, public dialog: MatDialog ) {
   }
 
   ngOnInit(): void {
@@ -25,7 +29,6 @@ export class SkillsComponent implements OnInit{
           this.dataSource = data
      })
   }
-
 
   insert(title: string, description: string){
     const employees: Employee[] = []
@@ -46,13 +49,15 @@ export class SkillsComponent implements OnInit{
     })
   }
 
-  // dataSource: Skill[] = [
-  //   {title: "Programming", description: "Blabla", employees: []},
-  //   {title: "Cooking", description: "Blabla", employees: []},
-  //   {title: "Manager", description: "Blabla", employees: []},
-  //   {title: "Math", description: "Blabla", employees: []},
-  // ]
+  openDialog(skill: Skill){
+    let dialogRef = this.dialog.open(SkillDialogComponent, {width: '800px', height: '600px', data: {
+       skill: skill
+      }})
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("open")
+      console.log(result)
+    })
+  }
 
-  columnsToDisplay: string[] = ['title', 'description', 'employees', 'edit'];
 
 }

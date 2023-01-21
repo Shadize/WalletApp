@@ -16,12 +16,14 @@
 
 <div class="skills-container">
   <mat-table [dataSource]="dataSource" class="table-container">
+
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef>
         Title
       </mat-header-cell>
       <mat-cell *matCellDef="let skill">{{skill.title}}</mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>
         Description
@@ -48,7 +50,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+        <button (click)="openDialog(element)" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">

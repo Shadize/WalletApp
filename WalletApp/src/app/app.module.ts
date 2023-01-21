@@ -25,13 +25,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
-
-
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {SkillDialogComponent} from "./modules/skill/skill-dialog/skill-dialog.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SkillsComponent
+    SkillsComponent,
+    SkillDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,10 +58,12 @@ import {MatMenuModule} from "@angular/material/menu";
     ReactiveFormsModule,
     MatSelectModule,
     SharedModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
+    provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true,
   },
     AuthService],
   bootstrap: [AppComponent]
