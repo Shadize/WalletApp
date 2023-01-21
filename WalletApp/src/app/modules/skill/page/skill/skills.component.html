@@ -1,20 +1,11 @@
-<div class="form-container">
-  <form class="form">
-    <h1>Insert a new skill</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input #title matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <input #description matInput>
-    </mat-form-field>
-    <button mat-raised-button type="submit" color="primary" (click)="insert(title.value, description.value)">Insert Skill</button>
-  </form>
-</div>
+
+
 
 
 <div class="skills-container">
+  <div class="insert-skill-button-container">
+    <button class="insert-skill-button" mat-raised-button color="primary" (click)="openInsertDialog()">Add</button>
+  </div>
   <mat-table [dataSource]="dataSource" class="table-container">
 
     <ng-container matColumnDef="title">
@@ -50,7 +41,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button (click)="openDialog(element)" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+        <button (click)="openEditDialog(element)" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">

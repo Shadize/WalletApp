@@ -5,6 +5,7 @@ import {SkillCreatePayloadInterface} from "@shared/model/payload/create/SkillCre
 import {Employee} from "@shared/model/dto/employee.interface";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SkillDialogComponent} from "../../skill-dialog/skill-dialog.component";
+import {InsertSkillDialogComponent} from "../../dialog/insert-skill-dialog/insert-skill-dialog.component";
 
 @Component({
   selector: 'app-skills',
@@ -30,14 +31,7 @@ export class SkillsComponent implements OnInit{
      })
   }
 
-  insert(title: string, description: string){
-    const employees: Employee[] = []
-    const skill: SkillCreatePayloadInterface = {title, description, employees }
-    let result = this.skillService.create(skill);
-    result.subscribe(r => {
-      console.log(r)
-    })
-  }
+
 
   edit(skill: Skill){
     console.log(skill)
@@ -49,15 +43,19 @@ export class SkillsComponent implements OnInit{
     })
   }
 
-  openDialog(skill: Skill){
+  openInsertDialog(){
+    let dialogRef = this.dialog.open(InsertSkillDialogComponent )
+
+  }
+
+  openEditDialog(skill: Skill){
     let dialogRef = this.dialog.open(SkillDialogComponent, {width: '800px', height: '600px', data: {
-       skill: skill
+        skill: skill
       }})
     dialogRef.afterClosed().subscribe(result => {
       console.log("open")
       console.log(result)
     })
   }
-
 
 }

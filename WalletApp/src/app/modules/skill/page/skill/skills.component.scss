@@ -11,14 +11,27 @@ mat-table{
 
 
 
-.form {
-  max-width: 500px;
-  margin: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
 .mat-form-field{
   margin-bottom: -1.25em;
+}
+
+.insert-skill-button {
+  margin: 5px;
+}
+
+.insert-skill-button-container {
+  display: flex;
+  align-items: flex-end;
+  height: 100px;
+}
+
+.insert-skill-button {
+  margin: 5px;
+}
+
+.insert-skill-button-container {
+  display: flex;
+  align-items: flex-end;
+  height: 100px;
 }
 
