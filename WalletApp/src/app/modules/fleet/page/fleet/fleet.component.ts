@@ -1,10 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
 import {Subscription} from "rxjs";
-import {isNil} from "lodash";
-import {waitForAsync} from "@angular/core/testing";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-fleet',
@@ -21,13 +21,30 @@ export class FleetComponent implements OnInit, OnDestroy
   referenceColumns: string[] = ['fleetId','title','description','type','cost','employee','option'];
   displayedColumns: string[] = this.referenceColumns.slice();
 
+  test!:MatTableDataSource<Fleet>;
 
-  ngOnInit(): void {
+
+  @ViewChild('paginator') paginator!: MatPaginator;
+
+  // ngAfterViewInit()
+  // {
+  //   this.test = new MatTableDataSource<Fleet>(this.fleetList);
+  //   this.test.paginator = this.paginator;
+  // }
+
+  ngOnInit(): void
+  {
     this.subList.push(
       this.fleetService.fleetList$$.asObservable().subscribe(data => {
         this.fleetList = data;
+
       })
     )
+
+
+
+
+
     //console.log(this.fleetList);
 
     this.refreshList();
