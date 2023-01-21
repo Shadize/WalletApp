@@ -23,15 +23,10 @@
 
   <br>
 
-  <div id="columnSelectorDiv">
-    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Columns Edit" id="columnIcon" class="iconButton">
-      <mat-icon>inbox_customize</mat-icon>
-    </button>
-    <mat-menu #menu id="columnSelectorHideMenu">
-        <button *ngFor="let col of referenceColumns" mat-menu-item (click)="columnManage(col)">{{col}}</button>
-    </mat-menu>
-  </div>
 
+  <app-column-selector [referenceColumns]="referenceColumns"
+                       [displayedColumns]="displayedColumns">
+  </app-column-selector>
 
   <div id="tableau">
     <mat-table [dataSource]="fleetList" id="fleets-container" class="mat-elevation-z8">

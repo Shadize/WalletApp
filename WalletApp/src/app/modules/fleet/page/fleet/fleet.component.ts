@@ -13,15 +13,14 @@ import {waitForAsync} from "@angular/core/testing";
 })
 export class FleetComponent implements OnInit, OnDestroy
 {
+  constructor(public fleetService: FleetService) {
+  }
+
   fleetList: Fleet[] = [];
   subList: Subscription[] = [];
   referenceColumns: string[] = ['fleetId','title','description','type','cost','employee','option'];
   displayedColumns: string[] = this.referenceColumns.slice();
 
-  test: Fleet= {};
-
-  constructor(public fleetService: FleetService) {
-  }
 
   ngOnInit(): void {
     this.subList.push(
@@ -29,8 +28,7 @@ export class FleetComponent implements OnInit, OnDestroy
         this.fleetList = data;
       })
     )
-
-    console.log(this.fleetList);
+    //console.log(this.fleetList);
 
     this.refreshList();
     // console.log(this.fleetList);
@@ -46,47 +44,17 @@ export class FleetComponent implements OnInit, OnDestroy
     // }
   }
 
-
   // Fonction qui s'exécute lorsqu'on quitte la page, unscirbe à toutes les Subcriptions
   ngOnDestroy(): void {
     this.subList.forEach(e => {
       e.unsubscribe()
     })
   }
+
   // Fonction qui permet juste d'actualiser la liste des Fleets
   refreshList() {
     this.fleetService.list();
   }
-
-  columnManage(column: string){
-
-    console.log(this.referenceColumns, this.displayedColumns);
-
-    console.log(this.displayedColumns.indexOf(column));
-
-
-    let index = this.displayedColumns.indexOf(column);
-
-    if(!isNil(index) && index >= 0)
-    {
-      this.displayedColumns.splice(index,1);
-    }
-    else
-    {
-      let indexRef = this.referenceColumns.indexOf(column);
-
-      let temp = this.displayedColumns.slice(0,indexRef);
-      let temp2 = this.displayedColumns.slice(indexRef);
-
-      console.log("temp : " + temp + " _ " + temp2);
-
-      //this.displayedColumns = temp.concat(this.referenceColumns[indexRef], temp2);
-      //this.displayedColumns = this.displayedColumns.slice(0, indexRef).concat(this.referenceColumns[indexRef], temp2);
-      // this.displayedColumns.push(column);
-    }
-    console.log(this.referenceColumns, this.displayedColumns);
-  }
-
 
   insert(title: string, description: string, type: string, cost: string)
   {
@@ -103,12 +71,11 @@ export class FleetComponent implements OnInit, OnDestroy
 
   };
 
-
 // Fonction pour supprimer un fleet et refresh la page
   delete(fleet: Fleet){
-    console.log(fleet)
+    // console.log(fleet)
     this.fleetService.remove(fleet.fleetId!).subscribe( data => {
-      console.log(data);
+      // console.log(data);
       this.refreshList();
     });
 
