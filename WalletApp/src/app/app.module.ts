@@ -29,6 +29,7 @@ import { SalaryComponent } from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -40,33 +41,34 @@ import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
     FleetComponent,
     SalaryComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
 
-    //Material
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    CdkTableModule,
-    MatTooltipModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    SharedModule,
-    MatMenuModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+        //Material
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSlideToggleModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        CdkTableModule,
+        MatTooltipModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        SharedModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatPaginatorModule
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },

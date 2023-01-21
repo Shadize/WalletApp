@@ -3,6 +3,8 @@
     <mat-icon>inbox_customize</mat-icon>
   </button>
   <mat-menu #menu id="columnSelectorHideMenu">
-    <button *ngFor="let col of referenceColumns" mat-menu-item (click)="columnManage(col)">{{col}}</button>
+    <button mat-menu-item *ngFor="let col of referenceColumns"
+            (click)="columnManage(col)">{{col}}
+    </button>
   </mat-menu>
 </div>

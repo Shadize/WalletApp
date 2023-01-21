@@ -12,14 +12,6 @@
 }
 
 
-.iconButton{
-
-}
-
-#columnSelectorDiv{
-  display: flex;
-}
-
 #columnIcon{
   margin-right: 5%;
 }
@@ -31,22 +23,21 @@
 }
 
 #tableau{
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#menuDelete p{
-
-
-}
 .mat-form-field{
   margin-bottom: -1.25em;
 }
 
 ::ng-deep .mat-menu-panel p{
   padding: 10px 0 0 15px;
+}
 
+#paginator{
+  width: 95%;
+  margin-left: 2.5%;
 }
 
 
