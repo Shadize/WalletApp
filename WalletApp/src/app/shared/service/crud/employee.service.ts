@@ -8,7 +8,9 @@ import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
 import {EmployeeUpdatePayloadInterface} from "@shared/model/payload/update/EmployeeUpdatePayload.interface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EmployeeService extends ApiService implements CrudServiceInterface{
 
     detail(id: string | number): Observable<Employee> {

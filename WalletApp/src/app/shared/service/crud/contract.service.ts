@@ -9,7 +9,9 @@ import {
   ContractUpdatePayload
 } from "@shared/model/payload/update/ContractUpdatePayload.interface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ContractService extends ApiService implements CrudServiceInterface {
 
   list = () : Observable<Contract[]> =>  {

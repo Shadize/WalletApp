@@ -2,8 +2,8 @@ package ipeps.pwd.wallet.module.document.service.impl;
 
 import ipeps.pwd.wallet.module.document.entity.Document;
 import ipeps.pwd.wallet.module.document.entity.builder.DocumentBuilder;
-import ipeps.pwd.wallet.module.document.entity.payload.entity.payload.DocumentCreatePayload;
-import ipeps.pwd.wallet.module.document.entity.payload.entity.payload.DocumentUpdatePayload;
+import ipeps.pwd.wallet.module.document.entity.payload.DocumentCreatePayload;
+import ipeps.pwd.wallet.module.document.entity.payload.DocumentUpdatePayload;
 import ipeps.pwd.wallet.module.document.repository.DocumentRepository;
 import ipeps.pwd.wallet.module.document.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +31,23 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public Document create(DocumentCreatePayload payload) {
         try{
-            Document document = this.documentRepository.save(new DocumentBuilder()
+            DocumentBuilder builder = new DocumentBuilder()
                     .setTitle(payload.getTitle())
                     .setPath(payload.getPath())
                     .setContent(payload.getContent())
                     .setType(payload.getType())
-                    .setCreateDate(payload.getCreateDate())
-                    .setCompany(payload.getCompany())
-                    .setContract(payload.getContract())
-                    .setEmployee(payload.getEmployee())
-                    .build());
-            return this.detail(document.getDocumentId());
+                    .setCreateDate(payload.getCreateDate());
+
+                    if(payload.getCompany() != null)
+                        builder.setCompany(payload.getCompany());
+                    if(payload.getContract() != null)
+                        builder.setContract(payload.getContract());
+                    if(payload.getEmployee() != null)
+                        builder.setEmployee(payload.getEmployee());
+            Document document = this.documentRepository.save(builder.build());
+            return document;
         }catch(Exception e){
-            throw new RuntimeException("error with object");
+            throw new RuntimeException(e.getMessage());
         }
     }
 

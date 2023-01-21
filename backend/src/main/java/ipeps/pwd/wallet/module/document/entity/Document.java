@@ -23,25 +23,27 @@ public class Document {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "document_id", updatable = false, nullable = false)
     UUID documentId;
-
     String title;
     String path;
     String content;
     String type;
     Date createDate;
-    @JsonIgnoreProperties({"documents"})
+    @JsonIgnoreProperties({"documents", "employees", "organizations", "contractsBusiness", "contractsClient"})
     @ManyToOne()
-    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = true, foreignKey=@ForeignKey(name = "document_company_fk"))
+    // @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = true, foreignKey=@ForeignKey(name = "document_company_fk"))
+    @JoinColumn(name = "company_FK",referencedColumnName = "company_id")
     private Company company;
 
-    @JsonIgnoreProperties({"documents"})
+    @JsonIgnoreProperties({"documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @ManyToOne()
-    @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id",nullable = true, foreignKey=@ForeignKey(name = "document_contract_fk"))
+    // @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id",nullable = true, foreignKey=@ForeignKey(name = "document_contract_fk"))
+    @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id")
     private Contract contract;
 
-    @JsonIgnoreProperties({"documents"})
+    @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "document_employee_fk"))
+    // @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "document_employee_fk"))
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id")
     private Employee employee;
 
     public Document(String title, String path, String content, String type, Date createDate, Company company, Contract contract, Employee employee) {
@@ -55,3 +57,4 @@ public class Document {
         this.employee = employee;
     }
 }
+

@@ -25,13 +25,17 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {SkillDialogComponent} from "./modules/skill/skill-dialog/skill-dialog.component";
+import { SalaryComponent } from './modules/salary/page/salary/salary.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    SkillsComponent,
+    SalaryComponent,
     SkillsComponent,
     SkillDialogComponent
   ],
@@ -60,10 +64,13 @@ import {SkillDialogComponent} from "./modules/skill/skill-dialog/skill-dialog.co
     SharedModule,
     MatMenuModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true,
+    provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },
     AuthService],
   bootstrap: [AppComponent]
