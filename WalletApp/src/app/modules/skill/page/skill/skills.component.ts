@@ -6,6 +6,9 @@ import {Employee} from "@shared/model/dto/employee.interface";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SkillDialogComponent} from "../../skill-dialog/skill-dialog.component";
 import {InsertSkillDialogComponent} from "../../dialog/insert-skill-dialog/insert-skill-dialog.component";
+import {EditSkillDialogComponent} from "../../dialog/edit-skill-dialog/edit-skill-dialog.component";
+import {EmployeeService} from "@shared/service/crud/employee.service";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-skills',
@@ -17,40 +20,41 @@ import {InsertSkillDialogComponent} from "../../dialog/insert-skill-dialog/inser
 export class SkillsComponent implements OnInit{
 
   dataSource: Skill[] = [];
+  allEmployeeList: Employee[] = [];
   columnsToDisplay: string[] = ['title', 'description', 'employees', 'edit'];
 
-
-  constructor(private skillService: SkillService, public dialog: MatDialog ) {
+  constructor(private skillService: SkillService, public dialog: MatDialog, private employeeService: EmployeeService) {
   }
 
   ngOnInit(): void {
-    //Loading list
+    //Loading skills for datasource
+    this.skillService.list().subscribe(data => {
+      this.dataSource = data
+    })
 
-          this.skillService.list().subscribe(data => {
-          this.dataSource = data
-     })
+    //Loading employees for edit dialog
+    this.employeeService.list().subscribe(data => {
+      this.allEmployeeList = data
+    })
   }
 
-
-
-  edit(skill: Skill){
-    console.log(skill)
-  }
-
+  //Delete skill by passing the skill object
   delete(skill: Skill){
     this.skillService.remove(skill.skillId!).subscribe(response => {
       console.log(response)
     })
   }
 
+  //Open dialog for inserting new skill
   openInsertDialog(){
     let dialogRef = this.dialog.open(InsertSkillDialogComponent )
-
   }
 
+  //Open dialog for editing skill
   openEditDialog(skill: Skill){
-    let dialogRef = this.dialog.open(SkillDialogComponent, {width: '800px', height: '600px', data: {
-        skill: skill
+    let dialogRef = this.dialog.open(EditSkillDialogComponent, { data: {
+        skill: skill,
+        allEmployeeList: this.allEmployeeList
       }})
     dialogRef.afterClosed().subscribe(result => {
       console.log("open")

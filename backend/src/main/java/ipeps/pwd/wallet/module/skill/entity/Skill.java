@@ -21,14 +21,18 @@ public class Skill {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "skill_id", updatable = false, nullable = false)
+    @Column(name = "skill_id", updatable = true, nullable = false)
     UUID skillId;
 
     String title;
     String description;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
-    @ManyToMany(mappedBy = "skills")
+    @ManyToMany()
+    @JoinTable(
+            name = "Employee_Skill",
+            joinColumns = @JoinColumn(name = "skill_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     List<Employee> employees;
 
     public Skill(String title, String description, List<Employee> employees) {

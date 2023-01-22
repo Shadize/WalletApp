@@ -24,11 +24,12 @@
 
     <ng-container matColumnDef="employees">
       <mat-header-cell *matHeaderCellDef>
-        Employees
+        Owned By
       </mat-header-cell>
       <mat-cell *matCellDef="let skill" class="employees-cell">
         <mat-form-field appearance="fill" class="employees-form">
-          <mat-label>Employees</mat-label>
+
+          <mat-label>Employees List</mat-label>
           <mat-select class="employees-select" >
             <mat-option class="employees-option" *ngFor="let employee of skill.employees" [value]="employee.lastname">
               {{employee.lastname }} {{employee.firstname}}
@@ -41,12 +42,12 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button (click)="openEditDialog(element)" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+        <button  mat-icon-button type="button" [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <form>
-            <button mat-menu-item (click)="edit(element)">Edit</button>
+            <button mat-menu-item type="button" (click)="openEditDialog(element)">Edit</button>
             <button type="submit" mat-menu-item (click)="delete(element)">Delete</button>
           </form>
         </mat-menu>
