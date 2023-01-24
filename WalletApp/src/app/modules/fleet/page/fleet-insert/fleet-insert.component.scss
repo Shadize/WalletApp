@@ -1,0 +1,33 @@
+*{
+  width: 100%;
+}
+
+#test{
+  background: green;
+}
+
+
+#InsertContainer{
+  width: 100%;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  min-width: 400px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  margin-bottom: -1.25em;
+}
+
+#buttonDiv{
+  display: flex;
+  flex-direction: row;
+}
+
+
+

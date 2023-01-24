@@ -1,10 +1,30 @@
 <div id="columnSelectorDiv">
-  <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Columns Edit" id="columnIcon" class="iconButton">
-    <mat-icon>inbox_customize</mat-icon>
+  <button mat-icon-button
+          [matMenuTriggerFor]="menu"
+          matTooltip="Edit Columns"
+          id="columnIcon"
+          class="iconButton"
+  >
+    <mat-icon>list_alt</mat-icon>
   </button>
-  <mat-menu #menu id="columnSelectorHideMenu">
+  <mat-menu #menu
+            id="columnSelectorHideMenu"
+            xPosition="before"
+  >
     <button mat-menu-item *ngFor="let col of referenceColumns"
-            (click)="columnManage(col)">{{col}}
+            (click)="columnManage(col)">{{col.charAt(0).toUpperCase() + col.slice(1)}}
     </button>
   </mat-menu>
 </div>
+
+
+<!--<div id="columnSelectorDiv">-->
+<!--  <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Columns Edit" id="columnIcon" class="iconButton">-->
+<!--    <mat-icon>inbox_customize</mat-icon>-->
+<!--  </button>-->
+<!--  <mat-menu #menu id="columnSelectorHideMenu">-->
+<!--    <button mat-menu-item *ngFor="let col of referenceColumns"-->
+<!--            (click)="columnManage(col)">{{col}}-->
+<!--    </button>-->
+<!--  </mat-menu>-->
+<!--</div>-->

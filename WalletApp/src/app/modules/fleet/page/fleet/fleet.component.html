@@ -1,34 +1,14 @@
 <div id="main-container">
-  <div id="tableauInsert">
-    <h2>Insert</h2>
-
-    <label>title</label><br>
-    <input #boxTitle value="56"><br>
-
-
-    <label>description</label><br>
-    <input #boxDescription value="56"><br>
-
-
-    <label>type</label><br>
-    <input #boxType value="56"><br>
-
-
-    <label>cost</label><br>
-
-
-    <input #boxCost value="56"><br>
-    <button (click)="insert(boxTitle.value, boxDescription.value, boxType.value, boxCost.value  )">Click me</button>
-  </div>
-
-  <br>
-
-
-  <app-column-selector [referenceColumns]="referenceColumns"
-                       [displayedColumns]="displayedColumns">
-  </app-column-selector>
-
   <div id="tableau">
+
+    <mat-toolbar class="mat-elevation-z8">
+      <h2>Fleet List</h2>
+      <app-column-selector id="column_selector"
+                           [referenceColumns]="referenceColumns"
+                           [displayedColumns]="displayedColumns"
+      ></app-column-selector>
+    </mat-toolbar>
+
     <mat-table [dataSource]="dataSource" id="fleets-container" class="mat-elevation-z8">
 
       <ng-container matColumnDef="fleetId">
@@ -96,58 +76,13 @@
   </div>
 
 
+  <a [routerLink]="['insert']">
+    <button mat-raised-button color="primary"
+            id="AddButton"
+    >
+      Add
+    </button>
+  </a>
+
 </div>
 
-<!--<mat-icon class="iconButton">edit_square</mat-icon>-->
-
-
-
-
-<!--<div id="tableau">-->
-<!--  <table mat-table [dataSource]="fleetList" id="fleets-container" class="mat-elevation-z8">-->
-
-<!--    <ng-container matColumnDef="title">-->
-<!--      <th mat-header-cell *matHeaderCellDef>Title</th>-->
-<!--      <td mat-cell *matCellDef="let element"> {{element.title}} </td>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container matColumnDef="description">-->
-<!--      <th mat-header-cell *matHeaderCellDef>Description</th>-->
-<!--      <td mat-cell *matCellDef="let element"> {{element.description}} </td>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container matColumnDef="type">-->
-<!--      <th mat-header-cell *matHeaderCellDef>Type</th>-->
-<!--      <td mat-cell *matCellDef="let element"> {{element.type}} </td>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container matColumnDef="cost">-->
-<!--      <th mat-header-cell *matHeaderCellDef>Cost</th>-->
-<!--      <td mat-cell *matCellDef="let element"> {{element.cost}} </td>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container matColumnDef="employee">-->
-<!--      <th mat-header-cell *matHeaderCellDef>Employee</th>-->
-<!--      <td mat-cell *matCellDef="let element"> {{element.employee}} </td>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container matColumnDef="option">-->
-<!--      <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>-->
-<!--      <mat-cell *matCellDef="let element">-->
-<!--        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More">-->
-<!--          <mat-icon>more_horiz</mat-icon>-->
-<!--        </button>-->
-<!--        <mat-menu #menu="matMenu">-->
-<!--          <form>-->
-<!--            <button mat-menu-item>Edit</button>-->
-<!--            <button type="submit" mat-menu-item (click)="delete(element)">Delete</button>-->
-<!--          </form>-->
-<!--        </mat-menu>-->
-<!--      </mat-cell>-->
-<!--    </ng-container>-->
-
-<!--    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-<!--    <tr mat-row *matRowDef="let fleet; columns: displayedColumns;"></tr>-->
-<!--  </table>-->
-
-<!--</div>-->

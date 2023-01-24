@@ -37,7 +37,6 @@ export class FleetComponent implements OnInit, OnDestroy, AfterViewInit
         this.dataSource.paginator = this.paginator;
       })
     )
-
   }
   ngAfterViewInit(): void
   {
@@ -56,20 +55,7 @@ export class FleetComponent implements OnInit, OnDestroy, AfterViewInit
     this.fleetService.list();
   }
 
-  insert(title: string, description: string, type: string, cost: string)
-  {
-    let payload: FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost)};
-    this.subList.push(
-      this.fleetService.create(payload).subscribe(data => {
-      if(data.result)
-      {
-        // Afficher un truc "Success"
-      }
-      this.refreshList();
-      })
-    );
 
-  };
 
 // Fonction pour supprimer un fleet et refresh la page
   delete(fleet: Fleet){

@@ -23,8 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'fleets',
-        component: FleetComponent
-        //loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
+        loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
       },
       {
         path: 'salary',
