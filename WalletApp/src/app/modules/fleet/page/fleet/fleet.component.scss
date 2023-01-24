@@ -16,15 +16,18 @@
   margin-right: 5%;
 }
 
+#tableau{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 3%;
+}
+
 #fleets-container{
   display: table;
   table-layout: fixed;
   width: 95%;
-}
-
-#tableau{
-  display: flex;
-  justify-content: center;
+  margin-left: 2.5%;
 }
 
 .mat-form-field{

@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
 import {Subscription} from "rxjs";
-import {MatPaginator} from "@angular/material/paginator";
+import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
@@ -11,57 +11,40 @@ import {MatTableDataSource} from "@angular/material/table";
   templateUrl: './fleet.component.html',
   styleUrls: ['./fleet.component.scss']
 })
-export class FleetComponent implements OnInit, OnDestroy
+export class FleetComponent implements OnInit, OnDestroy, AfterViewInit
 {
   constructor(public fleetService: FleetService) {
   }
+
 
   fleetList: Fleet[] = [];
   subList: Subscription[] = [];
   referenceColumns: string[] = ['fleetId','title','description','type','cost','employee','option'];
   displayedColumns: string[] = this.referenceColumns.slice();
-
-  test!:MatTableDataSource<Fleet>;
-
-
+  dataSource!: MatTableDataSource<any>;
   @ViewChild('paginator') paginator!: MatPaginator;
 
-  // ngAfterViewInit()
-  // {
-  //   this.test = new MatTableDataSource<Fleet>(this.fleetList);
-  //   this.test.paginator = this.paginator;
-  // }
+
 
   ngOnInit(): void
   {
+    this.refreshList();
+
     this.subList.push(
       this.fleetService.fleetList$$.asObservable().subscribe(data => {
         this.fleetList = data;
-
+        this.dataSource = new MatTableDataSource<any>(this.fleetList);
+        this.dataSource.paginator = this.paginator;
       })
     )
 
+  }
+  ngAfterViewInit(): void
+  {
 
-
-
-
-    //console.log(this.fleetList);
-
-    this.refreshList();
-    // console.log(this.fleetList);
-    //
-    //
-    // // console.log(this.displayedColumns, this.referenceColumns);
-    // // console.log(this.fleetList);
-    //
-    // let test2 = Object.keys(this.fleetList[0]);
-    // if(!isNil(test2))
-    // {
-    //   console.log(test2)
-    // }
   }
 
-  // Fonction qui s'exécute lorsqu'on quitte la page, unscirbe à toutes les Subcriptions
+  // Fonction qui s'exécute lorsqu'on quitte la page, unsubscribe à toutes les Subcriptions
   ngOnDestroy(): void {
     this.subList.forEach(e => {
       e.unsubscribe()
@@ -91,7 +74,7 @@ export class FleetComponent implements OnInit, OnDestroy
 // Fonction pour supprimer un fleet et refresh la page
   delete(fleet: Fleet){
     // console.log(fleet)
-    this.fleetService.remove(fleet.fleetId!).subscribe( data => {
+    this.fleetService.remove(fleet.fleetId!).subscribe( () => {
       // console.log(data);
       this.refreshList();
     });
