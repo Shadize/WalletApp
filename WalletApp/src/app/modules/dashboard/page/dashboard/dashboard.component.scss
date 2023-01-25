@@ -13,6 +13,7 @@
 .drawer-container {
   width: 100%;
   height: calc(100vh - 64px);
+  flex: 1 1 auto;
 }
 
 .drawer-content {
@@ -26,3 +27,5 @@
 .sidenav-icon {
   margin-right: 20px;
 }
+
+

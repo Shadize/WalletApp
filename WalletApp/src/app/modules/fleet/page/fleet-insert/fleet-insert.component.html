@@ -1,57 +1,60 @@
-<div id="InsertContainer">
-
-  <div id="test">
-    <h1>sdfsdf</h1>
-    <p>test</p>
-  </div>
-
-</div>
-
-
-
-
-
-
-
-
 <!--<div id="InsertContainer">-->
-<!--  <form class="form">-->
-<!--    <h1>Insert a new Fleet</h1>-->
 
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label>Title</mat-label>-->
-<!--      <input #title matInput>-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label>Description</mat-label>-->
-<!--      <input #description matInput>-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label>Type</mat-label>-->
-<!--      <input #type matInput>-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label>Cost</mat-label>-->
-<!--      <input #cost matInput>-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label>Employee</mat-label>-->
-<!--      <input #employee matInput>-->
-<!--    </mat-form-field>-->
-
-
-<!--    <div id="buttonDiv">-->
-<!--      <button mat-raised-button type="submit" color="primary">Cancel</button>-->
-<!--      <button mat-raised-button type="submit" color="primary" (click)="insert('','','','56')">Insert Skill</button>-->
-<!--    </div>-->
-
-<!--  </form>-->
+<!--  <div id="test">-->
+<!--    <h1>sdfsdf</h1>-->
+<!--    <p>test</p>-->
+<!--  </div>-->
 
 <!--</div>-->
+
+
+
+
+
+
+
+
+<div id="InsertContainer">
+  <form class="form">
+    <h1>Insert a new Fleet</h1>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input #title matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input #description matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <input #type matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Cost</mat-label>
+      <input #cost matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Employee</mat-label>
+      <input #employee matInput>
+    </mat-form-field>
+
+
+    <div id="buttonDiv">
+      <a [routerLink]="['/dashboard/fleets']">
+        <button mat-raised-button type="submit" color="primary"> Cancel </button>
+      </a>
+
+      <button mat-raised-button type="submit" color="primary" (click)="insert('','','','56')">Insert Skill</button>
+    </div>
+
+  </form>
+
+</div>
 
 
 
