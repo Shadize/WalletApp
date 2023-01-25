@@ -1,22 +1,13 @@
-*{
-  width: 100%;
-}
-
-#test{
-  background: green;
-  width: 100%;
-}
-
 
 #InsertContainer{
+  display: flex;
   width: 100%;
   justify-content: center;
+  margin-top: 1.5%;
 }
 
 .form {
-  width: 100%;
-  min-width: 400px;
-  margin: 15px;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +19,10 @@
 #buttonDiv{
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
+
 
 
 
