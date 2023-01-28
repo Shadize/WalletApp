@@ -6,6 +6,8 @@ import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 import {SalaryCreatePayloadInterface} from "@shared/model/payload/create/SalaryCreatePayload.interface";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {SalaryCreateComponent} from "../../salary-create/salary-create.component";
 
 @Component({
   selector: 'app-salary',
@@ -25,7 +27,8 @@ export class SalaryComponent implements OnInit{
 
   constructor(private salaryService: SalaryService,
               private employeeService: EmployeeService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              public dialog: MatDialog) {
   }
 
 /*
@@ -111,4 +114,10 @@ export class SalaryComponent implements OnInit{
     this.edited = true;
 
   }
+
+
+  openCreateDialog(){
+    let dialogRef = this.dialog.open(SalaryCreateComponent)
+  }
+
 }

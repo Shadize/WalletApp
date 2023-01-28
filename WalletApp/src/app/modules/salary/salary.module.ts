@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SalaryRoutingModule } from './salary-routing.module';
 import {FormsModule} from "@angular/forms";
-import { SalaryCreateComponent } from './page/salary-create/salary-create.component';
+import { SalaryCreateComponent } from './salary-create/salary-create.component';
 
 
 @NgModule({
