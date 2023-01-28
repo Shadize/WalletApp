@@ -35,8 +35,8 @@ export class SalaryEditComponent implements OnInit{
     })
   }
 
-  edit(salary: Salary){
-    console.log(salary)
+  edit(){
+    
   }
 
 }
