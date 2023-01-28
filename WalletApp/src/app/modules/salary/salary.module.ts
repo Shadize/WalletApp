@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SalaryRoutingModule } from './salary-routing.module';
 import {FormsModule} from "@angular/forms";
+import { SalaryCreateComponent } from './page/salary-create/salary-create.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SalaryCreateComponent
+  ],
   imports: [
     FormsModule,
     CommonModule,

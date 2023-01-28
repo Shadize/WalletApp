@@ -21,8 +21,6 @@ export class SalaryComponent implements OnInit{
   editSalary!: Salary;
   edited!: boolean;
   formGroup!: FormGroup;
-  selected = new FormControl('employee', [Validators.required, Validators.pattern('employee')]);
-
 
 
   constructor(private salaryService: SalaryService,
@@ -50,9 +48,19 @@ export class SalaryComponent implements OnInit{
       this.salaries = data;
     })
     this.edited = false;
+
+
+    this.formGroup = new FormGroup({
+      createDate: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
+      comment: new FormControl('', Validators.required),
+      amount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      employee: new FormControl('', Validators.required),
+    })
   }
 
 
+  /*=== OPERATIONS INSERT / DELETE / UPDATE ===*/
 
   insert(newDate: string, title: string, comment: string, createdAmount: string, employee: Employee) {
     // Conversion du string en date
@@ -71,7 +79,6 @@ export class SalaryComponent implements OnInit{
 
   }
 
-
   edit(salary: Salary){
     console.log(salary)
   }
@@ -83,11 +90,16 @@ export class SalaryComponent implements OnInit{
     })
   }
 
+
+  /*=== Actualisation des datasource pour l'actualisation dynamique dans le template ===*/
+
   RefreshData(){
     this.salaryService.list().subscribe(data => {
       this.salaries = data;
     })
   }
+
+  /*=== METHODE DU FORMULAIRE ===*/
 
   cancelEdit() {
     this.edited = !this.edited;
