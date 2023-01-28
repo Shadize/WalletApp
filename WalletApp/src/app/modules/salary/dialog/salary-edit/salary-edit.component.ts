@@ -4,6 +4,9 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
+import {SkillUpdatePayloadInterface} from "@shared/model/payload/update/SkillUpdatePayload.interface";
+import {SalaryUpdatePayloadInterface} from "@shared/model/payload/update/SalaryUpdatePayload.interface";
+import {SalaryService} from "@shared/service/crud/salary.service";
 
 @Component({
   selector: 'app-salary-edit',
@@ -15,7 +18,7 @@ export class SalaryEditComponent implements OnInit{
   employees: Employee[] = [];
   formGroup!: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {salary: Salary}, private employeeService: EmployeeService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {salary: Salary}, private employeeService: EmployeeService, private salaryService: SalaryService) {
   }
 
   ngOnInit() {
@@ -36,7 +39,18 @@ export class SalaryEditComponent implements OnInit{
   }
 
   edit(){
-    
+    let updatedSalary: SalaryUpdatePayloadInterface = {
+      salaryId: this.editSalary.salaryId,
+      createDate: this.editSalary.createDate,
+      title: this.editSalary.title,
+      comment: this.editSalary.comment,
+      amount: this.editSalary.amount,
+      employee: this.editSalary.employee
+    }
+
+    this.salaryService.update(updatedSalary).subscribe(response => {
+        console.log(response)
+    })
   }
 
 }

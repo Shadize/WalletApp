@@ -12,7 +12,7 @@
       <mat-header-cell *matHeaderCellDef>
         Create Date
       </mat-header-cell>
-      <mat-cell *matCellDef="let salary">{{salary.createDate}}</mat-cell>
+      <mat-cell *matCellDef="let salary">{{salary.createDate | date: "MM/dd/yyyy"}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef>

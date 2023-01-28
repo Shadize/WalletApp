@@ -13,7 +13,7 @@
   <br>
   <mat-form-field appearance="fill">
     <mat-label>title</mat-label>
-    <input #title [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" formControlName="title" matInput>
+    <input #title [(ngModel)]="editSalary.title" [name]="editSalary.title" formControlName="title" matInput>
     <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
       Title is <strong>required</strong>
     </mat-error>
