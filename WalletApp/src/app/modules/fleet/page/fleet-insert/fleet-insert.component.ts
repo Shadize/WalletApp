@@ -23,23 +23,43 @@ export class FleetInsertComponent implements OnInit{
 
 
   ngOnInit() {
+    this.employeeService.list().subscribe(data => {
+      this.employeeList = data;
+      //this.employeeFiltered = ;
+    })
+
+    // this.employeeFiltered = this.employeeInput.valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => {
+    //     // const name = typeof value === 'string' ? value : value?.lastname;
+    //     const input = typeof value === 'string' ? value : '';
+    //     return input ? this._filter(input as string) : this.employeeList.slice();
+    //   }),
+    // );
+
     this.employeeFiltered = this.employeeInput.valueChanges.pipe(
       startWith(''),
       map(value => {
-        const name = typeof value === 'string' ? value : value?.lastname;
-        return name ? this._filter(name as string) : this.employeeList.slice();
+        // const name = typeof value === 'string' ? value : value?.lastname;
+        const input = typeof value === 'string' ? value : '';
+        return input ? this._filter(input) : this.employeeList.slice();
       }),
     );
   }
 
-  displayFn(employee: Employee): string {
+  display(employee: Employee): string {
+    console.log("Test :" +  employee, employee.lastname)
+    console.log("Test 2 : " + ( employee && employee.lastname))
     return employee && employee.lastname ? employee.lastname : '';
   }
 
   private _filter(name: string): Employee[] {
     const filterValue = name.toLowerCase();
 
-    return this.employeeList.filter(employee => employee.lastname.toLowerCase().includes(filterValue));
+    return this.employeeList.filter(employee => {
+      let fullName = employee.firstname + ' ' + employee.lastname;
+        fullName.toLowerCase().includes(filterValue)
+    });
   }
 
 

@@ -36,9 +36,9 @@
     <mat-form-field class="employeeInput" appearance="fill">
       <mat-label>Employee</mat-label>
       <input type="text" matInput [formControl]="employeeInput" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">
         <mat-option *ngFor="let employee of employeeFiltered | async" [value]="employee">
-          {{employee.lastname}}
+          {{employee.firstname}} {{employee.lastname}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
