@@ -1,3 +1,9 @@
+<mat-toolbar class="full-width">
+  <span>Salary Management</span>
+  <button mat-icon-button (click)="openCreateSalaryDialog()" mat-raised-button color = "primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
 
 <!-- Liste des Salaire -->
 <div class="salaries-container">
@@ -40,7 +46,7 @@
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="openEdition(element)">Edit</button>
-            <button mat-menu-item (click)="delete(element)">Delete</button>
+            <button mat-menu-item (click)="openDeleteConfirmationDialog()">Delete</button>
         </mat-menu>
       </mat-cell>
     </ng-container>
@@ -50,61 +56,6 @@
   </mat-table>
 </div>
 
-<!-- Formulaire de création de salaire -->
-
-
-<div class="form-container" *ngIf="!edited">
-  <form class="form" [formGroup]="formGroup" (submit)="insert(date.value, title.value, comment.value, amount.value, selectedEmployee ); $event.preventDefault()">
-    <h1>Insert a new salary</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
-      <input #date formControlName="createDate" matInput  [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="formGroup.get('createDate')?.hasError('required')">
-        Date is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>title</mat-label>
-      <input #title formControlName="title" matInput>
-      <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
-        Title is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>comment</mat-label>
-      <input #comment formControlName="comment" matInput>
-      <mat-error *ngIf="formGroup.get('comment')?.hasError('required')">
-        Comment is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>amount</mat-label>
-      <input #amount formControlName="amount" matInput>
-      <mat-error *ngIf="formGroup.get('amount')?.hasError('required')">
-        Amount is <strong>required</strong> and can be contain only <strong>number</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill" class="employees-form">
-      <mat-label>Employee</mat-label>
-      <mat-select class="employees-select" formControlName="employee"  [(value)]="selectedEmployee">
-        <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee">
-          {{employee.lastname }} {{employee.firstname}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="formGroup.get('employee')?.hasError('required')">
-        Employee is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <button mat-raised-button type="submit" [disabled]="!formGroup.valid" color="primary">Insert Salary</button>
-  </form>
-</div>
 
 <!-- Formulaire d'édition de salaire -->
 

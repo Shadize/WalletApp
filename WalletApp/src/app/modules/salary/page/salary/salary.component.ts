@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Skill} from "@shared/model/dto/skill.interface";
 import {SalaryService} from "@shared/service/crud/salary.service";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
@@ -8,6 +7,7 @@ import {SalaryCreatePayloadInterface} from "@shared/model/payload/create/SalaryC
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {SalaryCreateComponent} from "../../salary-create/salary-create.component";
+import {SalaryDeleteConfirmComponent} from "../../salary-delete-confirm/salary-delete-confirm.component";
 
 @Component({
   selector: 'app-salary',
@@ -116,8 +116,14 @@ export class SalaryComponent implements OnInit{
   }
 
 
-  openCreateDialog(){
+  openCreateSalaryDialog(){
     let dialogRef = this.dialog.open(SalaryCreateComponent)
   }
+
+  openDeleteConfirmationDialog(){
+    let dialogRef = this.dialog.open(SalaryDeleteConfirmComponent)
+  }
+
+
 
 }

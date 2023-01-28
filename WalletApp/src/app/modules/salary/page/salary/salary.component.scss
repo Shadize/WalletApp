@@ -1,6 +1,8 @@
 
 .salaries-container {
   width: 100%;
+  padding-right: 1em;
+  padding-left: 1em;
 }
 
 .form-container{
@@ -24,5 +26,11 @@ mat-table{
 
 .mat-form-field{
   margin-bottom: -1.25em;
+}
+
+.full-width {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 

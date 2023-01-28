@@ -28,6 +28,11 @@ import {MatMenuModule} from "@angular/material/menu";
 import { SalaryComponent } from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {SalaryCreateComponent} from "./modules/salary/salary-create/salary-create.component";
+import {
+  SalaryDeleteConfirmComponent
+} from "./modules/salary/salary-delete-confirm/salary-delete-confirm.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -35,36 +40,39 @@ import {MatNativeDateModule} from "@angular/material/core";
   declarations: [
     AppComponent,
     SkillsComponent,
-    SalaryComponent
+    SalaryComponent,
+    SalaryCreateComponent,
+    SalaryDeleteConfirmComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
 
-        //Material
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatSlideToggleModule,
-        MatButtonToggleModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatIconModule,
-        MatListModule,
-        MatTableModule,
-        CdkTableModule,
-        MatTooltipModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        SharedModule,
-        MatMenuModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        FormsModule,
-    ],
+    //Material
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    CdkTableModule,
+    MatTooltipModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    SharedModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    MatDialogModule,
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },
