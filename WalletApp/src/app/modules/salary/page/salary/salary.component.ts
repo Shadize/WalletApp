@@ -6,8 +6,10 @@ import {EmployeeService} from "@shared/service/crud/employee.service";
 import {SalaryCreatePayloadInterface} from "@shared/model/payload/create/SalaryCreatePayload.interface";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
-import {SalaryCreateComponent} from "../../salary-create/salary-create.component";
-import {SalaryDeleteConfirmComponent} from "../../salary-delete-confirm/salary-delete-confirm.component";
+import {SalaryCreateComponent} from "../../dialog/salary-create/salary-create.component";
+import {SalaryDeleteConfirmComponent} from "../../dialog/salary-delete-confirm/salary-delete-confirm.component";
+import {result} from "lodash";
+import {SalaryEditComponent} from "../../dialog/salary-edit/salary-edit.component";
 
 @Component({
   selector: 'app-salary',
@@ -18,30 +20,14 @@ export class SalaryComponent implements OnInit{
 
   salaries: Salary[] = [];
   employees: Employee[] = [];
-  selectedEmployee!: Employee;
   displayedColumns: string[] = ['createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
-  editSalary!: Salary;
-  edited!: boolean;
   formGroup!: FormGroup;
 
 
   constructor(private salaryService: SalaryService,
               private employeeService: EmployeeService,
-              private formBuilder: FormBuilder,
               public dialog: MatDialog) {
   }
-
-/*
-  this.formGroup = this.formBuilder.group({
-    createDate: [this.editSalary.createDate, Validators.required],
-    title: [this.editSalary.title, Validators.required],
-    comment: [this.editSalary.comment, Validators.required],
-    amount: [this.editSalary.amount, Validators.required],
-    employee: [this.editSalary.employee, Validators.required]
-  });
-
- */
-
 
   ngOnInit(): void {
     this.employeeService.list().subscribe(data => {
@@ -50,7 +36,6 @@ export class SalaryComponent implements OnInit{
     this.salaryService.list().subscribe(data => {
       this.salaries = data;
     })
-    this.edited = false;
 
 
     this.formGroup = new FormGroup({
@@ -61,39 +46,6 @@ export class SalaryComponent implements OnInit{
       employee: new FormControl('', Validators.required),
     })
   }
-
-
-  /*=== OPERATIONS INSERT / DELETE / UPDATE ===*/
-
-  insert(newDate: string, title: string, comment: string, createdAmount: string, employee: Employee) {
-    // Conversion du string en date
-
-    let createDate = new Date(newDate);
-
-    // Conversion du string en Number
-    const amount = parseInt(createdAmount);
-
-    const newSalary: SalaryCreatePayloadInterface = {createDate, title, comment, amount,employee}
-    let result = this.salaryService.create(newSalary);
-    result.subscribe(r =>{
-      console.log(r)
-      this.RefreshData()
-      })
-
-  }
-
-  edit(salary: Salary){
-    console.log(salary)
-  }
-
-  delete(salary: Salary){
-    this.salaryService.remove(salary.salaryId!).subscribe(response => {
-      console.log(response)
-      this.RefreshData()
-    })
-  }
-
-
   /*=== Actualisation des datasource pour l'actualisation dynamique dans le template ===*/
 
   RefreshData(){
@@ -102,26 +54,35 @@ export class SalaryComponent implements OnInit{
     })
   }
 
-  /*=== METHODE DU FORMULAIRE ===*/
 
-  cancelEdit() {
-    this.edited = !this.edited;
-  }
-
-  openEdition(element: Salary) {
-
-    this.editSalary = element;
-    this.edited = true;
-
-  }
+  /*=== Méthodes liées aux dialogues ===*/
 
 
   openCreateSalaryDialog(){
     let dialogRef = this.dialog.open(SalaryCreateComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
   }
 
-  openDeleteConfirmationDialog(){
-    let dialogRef = this.dialog.open(SalaryDeleteConfirmComponent)
+  openEditSalaryDialog(element: Salary){
+    let dialogRef = this.dialog.open(SalaryEditComponent, {
+      data: {salary: element}
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
+  }
+
+  openDeleteConfirmationDialog(element: Salary){
+    let dialogRef = this.dialog.open(SalaryDeleteConfirmComponent, {
+      data: {salary: element}
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
   }
 
 

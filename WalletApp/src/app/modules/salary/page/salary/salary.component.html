@@ -45,8 +45,8 @@
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="openEdition(element)">Edit</button>
-            <button mat-menu-item (click)="openDeleteConfirmationDialog()">Delete</button>
+            <button mat-menu-item (click)="openEditSalaryDialog(element)">Edit</button>
+            <button mat-menu-item (click)="openDeleteConfirmationDialog(element)">Delete</button>
         </mat-menu>
       </mat-cell>
     </ng-container>
@@ -55,137 +55,5 @@
     <mat-row *matRowDef="let salary; columns: displayedColumns"></mat-row>
   </mat-table>
 </div>
-
-
-<!-- Formulaire d'édition de salaire -->
-
-<div class="form-container" *ngIf="edited">
-  <form class="form" >
-    <h1>Edit Salary</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
-      <input [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input [(ngModel)]="editSalary.title" [name]="editSalary.title" matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Comment</mat-label>
-      <input [(ngModel)]="editSalary.comment" [name]="editSalary.comment" matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Employee</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let employee of employees" [value]="employee" >
-          {{employee.lastname }} {{employee.firstname}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button (click)="edit(editSalary)" mat-raised-button type="submit" color="primary">Update Salary</button>
-    <button (click)="cancelEdit()" mat-raised-button type="button" color="warn">Cancel</button>
-  </form>
-</div>
-
-<!-- Test Formulaire de création / d'édition de Salaire tout en un-->
-<!--
-<div class="edit-form-container">
-  <form class="form" >
-    <h1>Edit Salary</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
-      <input [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input [(ngModel)]="editSalary.title" [name]="editSalary.title" matInput [value]="edited ? editSalary.title : ''">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Comment</mat-label>
-      <input [(ngModel)]="editSalary.comment" [name]="editSalary.comment" matInput [value]="edited ? editSalary.comment : ''">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" matInput [value]="edited ? editSalary.amount.toString() : '' ">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Employee</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let employee of employees" [value]="employee" >
-          {{employee.lastname }} {{employee.firstname}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button (click)="edit(editSalary)" mat-raised-button type="submit" color="primary">Update Salary</button>
-    <button (click)="cancelEdit()" mat-raised-button type="button" color="warn">Cancel</button>
-  </form>
-</div>
--->
-
-
-
-
-<!--
-
-
-<div class="edit-form-container" *ngIf="edited">
-  <form class="form" [formGroup]="formGroup">
-    <h1>Edit Salary</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
-      <input formControlName="createDate" [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="formGroup.get('createDate').hasError('required')">
-        Date is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input formControlName="title" [(ngModel)]="editSalary.title" [name]="editSalary.title" matInput>
-      <mat-error *ngIf="formGroup.get('title').hasError('required')">
-        Title is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Comment</mat-label>
-      <input formControlName="comment" [(ngModel)]="editSalary.comment" [name]="editSalary.comment" matInput>
-      <mat-error *ngIf="formGroup.get('comment').hasError('required')">
-        Comment is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input formControlName="amount" [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" matInput>
-      <mat-error *ngIf="formGroup.get('amount').hasError('required')">
-        Amount is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Employees</mat-label>
-      <mat-select formControlName="employee">
-        <mat-option *ngFor="let employee of employees" [value]="employee" >
-          {{employee.lastname }} {{employee.firstname}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="formGroup.get('employee').hasError('required')">
-        Employee is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <button (click)="edit(editSalary)" mat-raised-button type="submit" color="primary">Update Salary</button>
-    <button (click)="cancelEdit()" mat-raised-button type="button" color="warn">Cancel</button>
-  </form>
-</div>
-
--->
-
 
 

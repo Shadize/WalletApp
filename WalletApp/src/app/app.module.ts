@@ -28,11 +28,12 @@ import {MatMenuModule} from "@angular/material/menu";
 import { SalaryComponent } from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {SalaryCreateComponent} from "./modules/salary/salary-create/salary-create.component";
+import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
 import {
   SalaryDeleteConfirmComponent
-} from "./modules/salary/salary-delete-confirm/salary-delete-confirm.component";
+} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
 
 
 
@@ -42,7 +43,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     SkillsComponent,
     SalaryComponent,
     SalaryCreateComponent,
-    SalaryDeleteConfirmComponent
+    SalaryDeleteConfirmComponent,
+    SalaryEditComponent
   ],
   imports: [
     BrowserModule,

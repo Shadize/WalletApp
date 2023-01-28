@@ -51,8 +51,8 @@
     </mat-form-field>
     <br>
     <div class="button-container">
-      <button mat-raised-button color="warn" class="cancel-button" (click)="dialogRef.close(); $event.preventDefault()">Cancel</button>
-      <button mat-raised-button type="submit" class="confirm-button" [disabled]="!formGroup.valid" color="accent">Insert Salary</button>
+      <button mat-raised-button color="warn" class="cancel-button" [mat-dialog-close]="true">Cancel</button>
+      <button mat-raised-button type="submit" class="confirm-button" [mat-dialog-close]="true" [disabled]="!formGroup.valid" color="accent">Insert Salary</button>
     </div>
 
   </form>

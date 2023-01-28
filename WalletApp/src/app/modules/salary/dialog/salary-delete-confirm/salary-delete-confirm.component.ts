@@ -10,25 +10,22 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 })
 export class SalaryDeleteConfirmComponent implements OnInit{
 
-  salary!: Salary;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Salary, private salaryService: SalaryService) {
-    this.salary = data;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {salary: Salary}, private salaryService: SalaryService) {
   }
 
   ngOnInit() {
   }
 
-  delete(salary: Salary){
-    console.log(salary)
-    /*
+  delete(){
+    console.log(this.data.salary)
 
-    this.salaryService.remove(salary.salaryId!).subscribe(response => {
+
+    this.salaryService.remove(this.data.salary.salaryId!).subscribe(response => {
       console.log(response)
     })
-
-     */
   }
 
 }
