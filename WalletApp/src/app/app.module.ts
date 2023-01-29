@@ -21,13 +21,19 @@ import {MatTableModule} from "@angular/material/table";
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
 import { SalaryComponent } from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
+import {
+  SalaryDeleteConfirmComponent
+} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
 
 
 
@@ -35,7 +41,10 @@ import {MatNativeDateModule} from "@angular/material/core";
   declarations: [
     AppComponent,
     SkillsComponent,
-    SalaryComponent
+    SalaryComponent,
+    SalaryCreateComponent,
+    SalaryDeleteConfirmComponent,
+    SalaryEditComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     SharedModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true

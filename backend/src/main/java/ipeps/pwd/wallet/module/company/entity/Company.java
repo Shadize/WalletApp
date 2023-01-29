@@ -41,7 +41,7 @@ public class Company {
     @OneToMany(mappedBy = "company")
     List<Organization> organizations;
     @JsonIgnoreProperties({"company", "contract", "employee"})
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Document> documents;
 
 //    @ManyToMany(mappedBy = "companies")

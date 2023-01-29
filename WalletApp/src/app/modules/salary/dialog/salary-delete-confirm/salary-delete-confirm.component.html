@@ -1,0 +1,9 @@
+<div class="supress">
+  <h2>Confirmer la suppression du salaire</h2>
+  <p>Voulez-vous vraiment supprimer ce salaire?</p>
+</div>
+
+<div class="button-container">
+  <button mat-raised-button color="warn" class="cancel-button" [mat-dialog-close]="true">Non</button>
+  <button mat-raised-button color="submit" class="confirm-button" [mat-dialog-close]="true" (click)="delete()">Oui</button>
+</div>
