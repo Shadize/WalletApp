@@ -1,0 +1,36 @@
+
+.salaries-container {
+  width: 100%;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-table{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.form {
+  max-width: 500px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  margin-bottom: -1.25em;
+}
+
+.full-width {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+

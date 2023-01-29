@@ -34,6 +34,10 @@ import {
 } from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
+import { DocumentComponent } from './modules/document/page/document/document.component';
+import { DocumentCreateComponent } from './modules/document/dialog/document-create/document-create.component';
+import { DocumentEditComponent } from './modules/document/dialog/document-edit/document-edit.component';
+import { DocumentDeleteConfirmComponent } from './modules/document/dialog/document-delete-confirm/document-delete-confirm.component';
 
 
 
@@ -44,7 +48,11 @@ import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-ed
     SalaryComponent,
     SalaryCreateComponent,
     SalaryDeleteConfirmComponent,
-    SalaryEditComponent
+    SalaryEditComponent,
+    DocumentComponent,
+    DocumentCreateComponent,
+    DocumentEditComponent,
+    DocumentDeleteConfirmComponent
   ],
   imports: [
     BrowserModule,

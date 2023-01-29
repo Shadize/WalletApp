@@ -1,0 +1,39 @@
+
+
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-table{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.form {
+  max-width: 500px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  margin-bottom: 0.5em;
+}
+
+.full-width {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm-button{
+  background-color: green;
+}
