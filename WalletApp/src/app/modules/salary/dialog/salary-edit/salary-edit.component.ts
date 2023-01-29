@@ -25,6 +25,7 @@ export class SalaryEditComponent implements OnInit{
 
     this.editSalary = this.data.salary;
 
+
     this.employeeService.list().subscribe(data => {
       this.employees = data
     })
@@ -36,6 +37,8 @@ export class SalaryEditComponent implements OnInit{
       amount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       employee: new FormControl('', Validators.required),
     })
+
+    //this.formGroup.get('employee')?.setValue(this.editSalary.employee);
   }
 
   edit(){
@@ -47,7 +50,7 @@ export class SalaryEditComponent implements OnInit{
       amount: this.editSalary.amount,
       employee: this.editSalary.employee
     }
-
+    console.log(this.editSalary.employee)
     this.salaryService.update(updatedSalary).subscribe(response => {
         console.log(response)
     })

@@ -8,6 +8,12 @@
 <!-- Liste des Salaire -->
 <div class="salaries-container">
   <mat-table [dataSource]="salaries" class="table-container">
+    <ng-container matColumnDef="salaryId">
+      <mat-header-cell *matHeaderCellDef >
+        ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let salary">{{salary.salaryId}}</mat-cell>
+    </ng-container>
     <ng-container matColumnDef="createDate">
       <mat-header-cell *matHeaderCellDef>
         Create Date

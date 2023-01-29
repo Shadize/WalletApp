@@ -17,6 +17,8 @@ export class SalaryCreateComponent implements OnInit{
   selectedEmployee!: Employee;
   edited!: boolean;
   formGroup!: FormGroup;
+  filteredEmployees!: Employee[];
+  searchTerm!: string;
 
 
   constructor(private salaryService: SalaryService,
@@ -53,6 +55,15 @@ export class SalaryCreateComponent implements OnInit{
       console.log(r)
     })
 
+  }
+
+  filterEmployees() {
+    this.filteredEmployees = this.employees.filter(employee => {
+      return (
+        employee.firstname.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1 ||
+        employee.lastname.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1
+      );
+    });
   }
 
 

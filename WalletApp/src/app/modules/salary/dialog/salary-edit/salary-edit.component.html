@@ -1,9 +1,10 @@
 <div class="form-container">
 <form class="form" [formGroup]="formGroup" >
-  <h1>Insert a new salary</h1>
+  <h1>Edition of the salary of:</h1>
+  <h2>{{editSalary.employee.firstname}} {{editSalary.employee.lastname}}</h2>
   <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
-    <input #date [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" formControlName="createDate" matInput  [matDatepicker]="picker">
+    <input  [(ngModel)]="editSalary.createDate" [name]="editSalary.createDate.toString()" formControlName="createDate" matInput  [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="formGroup.get('createDate')?.hasError('required')">
@@ -13,7 +14,7 @@
   <br>
   <mat-form-field appearance="fill">
     <mat-label>title</mat-label>
-    <input #title [(ngModel)]="editSalary.title" [name]="editSalary.title" formControlName="title" matInput>
+    <input  [(ngModel)]="editSalary.title" [name]="editSalary.title" formControlName="title" matInput>
     <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
       Title is <strong>required</strong>
     </mat-error>
@@ -21,7 +22,7 @@
   <br>
   <mat-form-field appearance="fill">
     <mat-label>comment</mat-label>
-    <input #comment [(ngModel)]="editSalary.comment" [name]="editSalary.comment" formControlName="comment" matInput>
+    <input  [(ngModel)]="editSalary.comment" [name]="editSalary.comment" formControlName="comment" matInput>
     <mat-error *ngIf="formGroup.get('comment')?.hasError('required')">
       Comment is <strong>required</strong>
     </mat-error>
@@ -29,15 +30,15 @@
   <br>
   <mat-form-field appearance="fill">
     <mat-label>amount</mat-label>
-    <input #amount [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" formControlName="amount" matInput>
-    <mat-error *ngIf="formGroup.get('amount')?.hasError('required')">
-      Amount is <strong>required</strong> and can be contain only <strong>number</strong>
+    <input  [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" formControlName="amount" matInput>
+    <mat-error *ngIf="formGroup.get('amount')?.hasError('required') || formGroup.get('amount')?.hasError('pattern')">
+      Amount is <strong>required</strong> and can only contain <strong>numbers</strong>
     </mat-error>
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill" class="employees-form">
     <mat-label>Employee</mat-label>
-    <mat-select class="employees-select" formControlName="employee">
+    <mat-select [(ngModel)]="editSalary.employee" class="employees-select" formControlName="employee">
       <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee">
         {{employee.lastname }} {{employee.firstname}}
       </mat-option>

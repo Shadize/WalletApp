@@ -20,7 +20,7 @@ export class SalaryComponent implements OnInit{
 
   salaries: Salary[] = [];
   employees: Employee[] = [];
-  displayedColumns: string[] = ['createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
+  displayedColumns: string[] = ['salaryId', 'createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
   formGroup!: FormGroup;
 
 

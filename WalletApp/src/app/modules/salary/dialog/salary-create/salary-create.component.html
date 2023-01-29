@@ -33,8 +33,8 @@
     <mat-form-field appearance="fill">
       <mat-label>amount</mat-label>
       <input #amount formControlName="amount" matInput>
-      <mat-error *ngIf="formGroup.get('amount')?.hasError('required')">
-        Amount is <strong>required</strong> and can be contain only <strong>number</strong>
+      <mat-error *ngIf="formGroup.get('amount')?.hasError('required') || formGroup.get('amount')?.hasError('pattern')">
+        Amount is <strong>required</strong> and can only contain <strong>numbers</strong>
       </mat-error>
     </mat-form-field>
     <br>
