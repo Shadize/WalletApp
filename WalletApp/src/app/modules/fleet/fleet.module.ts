@@ -6,6 +6,7 @@ import { FleetInsertComponent } from './page/fleet-insert/fleet-insert.component
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ]
 })
 export class FleetModule { }

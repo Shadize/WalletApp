@@ -35,10 +35,10 @@
 
     <mat-form-field class="employeeInput" appearance="fill">
       <mat-label>Employee</mat-label>
-      <input type="text" matInput [formControl]="employeeInput" [matAutocomplete]="auto">
+      <input matInput [formControl]="employeeInput" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">
         <mat-option *ngFor="let employee of employeeFiltered | async" [value]="employee">
-          {{employee.firstname}} {{employee.lastname}}
+         {{employee.firstname}} {{employee.lastname}} - (UUID : {{employee.employeeId}})
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -50,7 +50,7 @@
         <button mat-raised-button type="submit" color="primary"> Cancel </button>
       </a>
 
-      <button mat-raised-button type="submit" color="primary" (click)="insert('','','','56')">Insert Skill</button>
+      <button mat-raised-button type="submit" color="primary" (click)="insert(title.value,description.value,type.value,cost.value, employeeInput)">Insert Fleet</button>
     </div>
 
   </form>
