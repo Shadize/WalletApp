@@ -7,6 +7,7 @@ import {EmployeeService} from "@shared/service/crud/employee.service";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Router} from "@angular/router";
+import {isNil} from "lodash";
 @Component({
   selector: 'app-fleet-insert',
   templateUrl: './fleet-insert.component.html',
@@ -46,18 +47,23 @@ export class FleetInsertComponent implements OnInit{
   }
 
   display(employee: Employee): string {
-    console.log("Test :" +  employee, employee.lastname)
-    console.log("Test 2 : " + ( employee && employee.lastname))
-    return employee && employee.lastname ? employee.lastname : '';
+    return employee && (employee.lastname + employee.firstname + employee.employeeId)  ?
+      (employee.firstname + ' ' + employee.lastname + ' (UUID : ' + employee.employeeId + ')') : '';
+
+
+
   }
 
 
   insert(title: string, description: string, type: string, cost: string, employee: FormControl)
   {
+
     let paylaod : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: employee.value};
+    console.log("vroom :" + employee.value);
+
     this.fleetService.create(paylaod).subscribe(data => {
       console.log(data);
-      this.router.navigateByUrl('/dashboard/fleets');
+      this.router.navigateByUrl('/dashboard/fleet');
     });
 
 

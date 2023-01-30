@@ -22,7 +22,7 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'fleets',
+        path: 'fleet',
         loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
       },
       {
