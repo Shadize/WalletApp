@@ -1,1 +1,13 @@
-<button (click)="signin()">Signin</button>
+<!-- <button (click)="signin()">Signin</button> -->
+
+<div class="login-container">
+  <form [formGroup]="formGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>username</mat-label>
+      <input #username formControlName="username" matInput>
+      <mat-error *ngIf="formGroup.get('username')?.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
