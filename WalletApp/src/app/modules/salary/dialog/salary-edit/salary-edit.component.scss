@@ -1,9 +1,4 @@
 
-.salaries-container {
-  width: 100%;
-  padding-right: 1em;
-  padding-left: 1em;
-}
 
 .form-container{
   display: flex;
@@ -24,8 +19,12 @@ mat-table{
   flex-direction: column;
 }
 
+.form h2{
+  text-align: center;
+}
+
 .mat-form-field{
-  margin-bottom: -1.25em;
+  margin-bottom: -0.25em;
 }
 
 .full-width {
@@ -34,3 +33,11 @@ mat-table{
   justify-content: space-between;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm-button{
+  background-color: green;
+}

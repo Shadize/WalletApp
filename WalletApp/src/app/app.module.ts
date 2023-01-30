@@ -25,12 +25,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
-import { SalaryComponent } from './modules/salary/page/salary/salary.component';
+import {SalaryComponent} from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
+import { SalaryDeleteConfirmComponent} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
 import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
 import {MatPaginatorModule} from "@angular/material/paginator";
-
 
 
 
@@ -38,37 +41,42 @@ import {MatPaginatorModule} from "@angular/material/paginator";
   declarations: [
     AppComponent,
     SkillsComponent,
-    FleetComponent,
-    SalaryComponent
+    SalaryComponent,
+    SalaryCreateComponent,
+    SalaryDeleteConfirmComponent,
+    SalaryEditComponent,
+    FleetComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
 
-        //Material
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatSlideToggleModule,
-        MatButtonToggleModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatIconModule,
-        MatListModule,
-        MatTableModule,
-        CdkTableModule,
-        MatTooltipModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        SharedModule,
-        MatMenuModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatPaginatorModule
-    ],
+    //Material
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    CdkTableModule,
+    MatTooltipModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    SharedModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    MatDialogModule,
+    MatPaginatorModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },
