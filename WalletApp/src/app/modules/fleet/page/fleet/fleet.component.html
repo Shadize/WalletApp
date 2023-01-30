@@ -36,9 +36,11 @@
         <mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
       </ng-container>
 
+
+
       <ng-container matColumnDef="employee">
         <mat-header-cell *matHeaderCellDef>Employee</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.employee}} </mat-cell>
+        <mat-cell *matCellDef="let fleet"> {{fleet.employee.lastname}}  </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="option">

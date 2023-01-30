@@ -36,6 +36,7 @@ public class FleetServiceImpl implements FleetService {
                     .setDescription(payload.getDescription())
                     .setCost(payload.getCost())
                     .setType(payload.getType())
+                    .setEmployee(payload.getEmployee())
                     .build();
             return this.fleetRepository.save(fleet);
         }

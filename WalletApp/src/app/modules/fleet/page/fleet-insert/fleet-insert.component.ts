@@ -8,6 +8,7 @@ import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCre
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Router} from "@angular/router";
 import {isNil} from "lodash";
+import {MatOption} from "@angular/material/core";
 @Component({
   selector: 'app-fleet-insert',
   templateUrl: './fleet-insert.component.html',
@@ -25,6 +26,8 @@ export class FleetInsertComponent implements OnInit{
   employeeList: Employee[] = [];
   employeeFiltered?: Observable<Employee[]>;
 
+  employeeSelected: Employee | undefined;
+
   ngOnInit() {
     this.employeeService.list().subscribe(data => {
       this.employeeList = data;
@@ -37,6 +40,7 @@ export class FleetInsertComponent implements OnInit{
         }),
       );
     })
+
   }
 
   private _filter(name: string): Employee[] {
@@ -54,14 +58,31 @@ export class FleetInsertComponent implements OnInit{
 
   }
 
+  test(){
+    console.log("Test : " + this.employeeInput);
+  }
+
+  // selectedEmployee(option: MatOption) {
+  //   this.employeeSelected = option.value;
+  //   console.log("ixi : " + option.value)
+  // }
+
+  selectedEmployee(employee: Employee) {
+    //this.employeeSelected = e;
+    this.employeeSelected = employee;
+    console.log("ixi : " + this.employeeSelected)
+    console.log("ixi : " + JSON.stringify(this.employeeSelected))
+  }
+
 
   insert(title: string, description: string, type: string, cost: string, employee: FormControl)
   {
 
-    let paylaod : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: employee.value};
-    console.log("vroom :" + employee.value);
 
-    this.fleetService.create(paylaod).subscribe(data => {
+    let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee : this.employeeSelected};
+    console.log("vroom :" + this.employeeSelected);
+
+    this.fleetService.create(payload).subscribe(data => {
       console.log(data);
       this.router.navigateByUrl('/dashboard/fleet');
     });

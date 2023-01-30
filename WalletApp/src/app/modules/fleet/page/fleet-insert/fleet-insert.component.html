@@ -35,9 +35,13 @@
 
     <mat-form-field class="employeeInput" appearance="fill">
       <mat-label>Employee</mat-label>
+
       <input matInput [formControl]="employeeInput" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">
-        <mat-option *ngFor="let employee of employeeFiltered | async" [value]="employee">
+        <mat-option *ngFor="let employee of employeeFiltered | async"
+                    [value]="employee"
+                    (click)="selectedEmployee(employee)"
+        >
          {{employee.firstname}} {{employee.lastname}} - (UUID : {{employee.employeeId}})
         </mat-option>
       </mat-autocomplete>
@@ -50,10 +54,14 @@
         <button mat-raised-button type="submit" color="primary"> Cancel </button>
       </a>
 
-      <button mat-raised-button type="submit" color="primary" (click)="insert(title.value,description.value,type.value,cost.value, employeeInput)">Insert Fleet</button>
+      <button mat-raised-button type="submit" color="primary"
+              (click)="insert(title.value,description.value,type.value,cost.value, employeeInput)">
+        Insert Fleet
+      </button>
     </div>
 
   </form>
+  <button (click)="test()">test</button>
 
 </div>
 
@@ -64,26 +72,3 @@
 
 
 
-
-
-<!--<div id="tableauInsert">-->
-<!--  <h2>Insert</h2>-->
-
-<!--  <label>title</label><br>-->
-<!--  <input #boxTitle value="56"><br>-->
-
-
-<!--  <label>description</label><br>-->
-<!--  <input #boxDescription value="56"><br>-->
-
-
-<!--  <label>type</label><br>-->
-<!--  <input #boxType value="56"><br>-->
-
-
-<!--  <label>cost</label><br>-->
-
-
-<!--  <input #boxCost value="56"><br>-->
-<!--  <button (click)="insert(boxTitle.value, boxDescription.value, boxType.value, boxCost.value  )">Click me</button>-->
-<!--</div>-->

@@ -6,11 +6,17 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
-import { SkillsComponent } from './modules/skill/page/skill/skills.component';
+import {SkillsComponent} from './modules/skill/page/skill/skills.component';
+import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
+import {SalaryDeleteConfirmComponent} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
+import {SalaryComponent} from './modules/salary/page/salary/salary.component';
+import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
+import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
+import {SharedModule} from "@shared/shared.module";
 
 //Material
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -21,19 +27,14 @@ import {MatTableModule} from "@angular/material/table";
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
-import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
-import {SalaryComponent} from './modules/salary/page/salary/salary.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
-import { SalaryDeleteConfirmComponent} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {MatDialogModule} from "@angular/material/dialog";
-import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
-import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
 import {MatPaginatorModule} from "@angular/material/paginator";
+
 
 
 
