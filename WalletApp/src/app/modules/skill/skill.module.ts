@@ -9,6 +9,7 @@ import { InsertSkillDialogComponent } from './dialog/insert-skill-dialog/insert-
 import { EditSkillDialogComponent } from './dialog/edit-skill-dialog/edit-skill-dialog.component';
 import {MatSelectModule} from "@angular/material/select";
 
+
 @NgModule({
   declarations: [
 

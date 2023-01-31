@@ -2,13 +2,19 @@
 
 <div class="form-container">
   <form class="form">
-    <h1>Title: {{this.data.skill.title}}</h1>
-    <h1>Description: {{this.data.skill.description}}</h1>
-    <h1>Owning: </h1>
 
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput value="{{this.data.skill.title}}" type="text" [(ngModel)]="this.data.skill.title" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput value="{{this.data.skill.description}}" type="text" [(ngModel)]="this.data.skill.description" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>{{this.data.allEmployeeList[0].lastname}} {{this.data.allEmployeeList[0].firstname}}</mat-label>
+      <mat-label>Owners of this skill</mat-label>
       <mat-select [formControl]="toppings" class="employees-select" multiple #selectedValues (selectionChange)="handleEmployeeChange($event.value)" [compareWith]="compareToppings">
         <mat-option class="employees-option" *ngFor="let employee of this.data.allEmployeeList" [value]="employee">
           {{employee.lastname }} {{employee.firstname}}
@@ -16,6 +22,6 @@
       </mat-select>
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary" (click)="closeDialog()">Close</button>
+    <button type="submit" mat-raised-button color="primary" (click)="editSkill()">Apply</button>
   </form>
 </div>

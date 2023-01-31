@@ -20,13 +20,22 @@ mat-table{
 }
 
 .insert-skill-button-container {
-  display: flex;
-  align-items: flex-end;
-  height: 50px;
-  margin: 6px;
+  position: fixed;
+  bottom:40px;
+  right:40px;
+  opacity: 0.8;
 }
 
-.insert-skill-button {
+.insert-skill-button-container:hover {
+  cursor: pointer;
+  opacity: 1;
+
+}
+
+.insert-skill-button:hover {
+  cursor: pointer;
+  //Nice box shadow
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 

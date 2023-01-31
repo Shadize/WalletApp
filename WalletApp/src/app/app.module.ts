@@ -27,17 +27,18 @@ import {SharedModule} from "@shared/shared.module";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {SkillDialogComponent} from "./modules/skill/skill-dialog/skill-dialog.component";
 import {InsertSkillDialogComponent} from "./modules/skill/dialog/insert-skill-dialog/insert-skill-dialog.component";
 import {SalaryComponent} from "./modules/salary/page/salary/salary.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {EditSkillDialogComponent} from "./modules/skill/dialog/edit-skill-dialog/edit-skill-dialog.component";
+import {FormsModule} from "@angular/forms";
+import {TimesheetModule} from "./modules/timesheet/timesheet.module";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent,
     SkillsComponent,
-    SkillDialogComponent,
     InsertSkillDialogComponent,
     SalaryComponent,
     EditSkillDialogComponent
@@ -46,8 +47,10 @@ import {EditSkillDialogComponent} from "./modules/skill/dialog/edit-skill-dialog
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
 
     //Material
+    MatNativeDateModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
     MatIconModule,

@@ -12,6 +12,13 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./edit-skill-dialog.component.scss']
 })
 export class EditSkillDialogComponent implements OnInit{
+  updatedTitle: string = "";
+  updatedDescription: string = "";
+  updatedEmployeeList: Employee[] = []
+  //The form control for the employee list
+  toppings = new FormControl();
+
+
   ngOnInit(): void {
     //Setting the selected employees
     this.toppings.setValue(this.data.skill.employees.map(employee => employee))
@@ -21,13 +28,10 @@ export class EditSkillDialogComponent implements OnInit{
     public dialogRef: MatDialogRef<EditSkillDialogComponent>, private skillService: SkillService) {
   }
 
-  toppings = new FormControl();
+//Close the dialog
+  editSkill(){
 
-  updatedEmployeeList: Employee[] = []
 
-  closeDialog(){
-    //Close the dialog by using the ref injected, pass it value to handle it in the parent component
-    this.dialogRef.close()
     //Creating a new instance for the new skill object
     let updatedSkill: SkillUpdatePayloadInterface = {
       skillId: this.data.skill.skillId,
@@ -38,8 +42,10 @@ export class EditSkillDialogComponent implements OnInit{
 
     //Updating the skill
     this.skillService.update(updatedSkill).subscribe(response => {
-
     })
+
+    //Close the dialog by using the ref injected, pass it value to handle it in the parent component
+    this.dialogRef.close()
   }
   //Solve the problem of comparing the objects, because failed with the default compare function
   compareToppings(topping1: Employee, topping2: Employee) {

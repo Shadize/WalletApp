@@ -4,7 +4,9 @@
 
 <div class="skills-container">
   <div class="insert-skill-button-container">
-    <button class="insert-skill-button" mat-raised-button color="primary" (click)="openInsertDialog()">Add</button>
+    <button mat-fab class="insert-skill-button" color="primary" (click)="openInsertDialog()" aria-label="Example icon button with a delete icon">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
   <mat-table [dataSource]="dataSource" class="table-container">
 
@@ -28,7 +30,6 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let skill" class="employees-cell">
         <mat-form-field appearance="fill" class="employees-form">
-
           <mat-label>Employees List</mat-label>
           <mat-select class="employees-select" >
             <mat-option class="employees-option" *ngFor="let employee of skill.employees" [value]="employee.lastname">

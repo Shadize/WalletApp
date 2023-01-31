@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form class="form">
+  <form class="form" name="insert-form">
     <h1>Insert a new skill</h1>
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
@@ -9,6 +9,6 @@
       <mat-label>Description</mat-label>
       <input #description matInput>
     </mat-form-field>
-    <button mat-raised-button type="submit" color="primary" (click)="insert(title.value, description.value)">Insert Skill</button>
+    <button mat-raised-button name="insert-button" type="submit" color="primary" (click)="insert(title.value, description.value)">Insert Skill</button>
   </form>
 </div>

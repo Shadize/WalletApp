@@ -31,6 +31,7 @@ public class Contract {
     @JsonIgnoreProperties({"contract", "company", "contract", "employee"})
     @OneToMany(mappedBy = "contract")
     List<Document> documents;
+
     @JsonIgnoreProperties({"contract", "employee"})
     @OneToMany(mappedBy = "contract")
     List<Timesheet> timesheets;

@@ -4,7 +4,6 @@ import {SkillService} from "@shared/service/crud/skill.service";
 import {SkillCreatePayloadInterface} from "@shared/model/payload/create/SkillCreatePayload.interface"
 import {Employee} from "@shared/model/dto/employee.interface";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {SkillDialogComponent} from "../../skill-dialog/skill-dialog.component";
 import {InsertSkillDialogComponent} from "../../dialog/insert-skill-dialog/insert-skill-dialog.component";
 import {EditSkillDialogComponent} from "../../dialog/edit-skill-dialog/edit-skill-dialog.component";
 import {EmployeeService} from "@shared/service/crud/employee.service";
@@ -28,11 +27,18 @@ export class SkillsComponent implements OnInit{
 
   ngOnInit(): void {
     //Loading skills for datasource
+    this.fetchSkillList()
+    //Loading employees for edit dialog
+    this.fetchEmployeeList()
+  }
+
+  fetchSkillList(){
     this.skillService.list().subscribe(data => {
       this.dataSource = data
     })
+  }
 
-    //Loading employees for edit dialog
+  fetchEmployeeList(){
     this.employeeService.list().subscribe(data => {
       this.allEmployeeList = data
     })
@@ -41,14 +47,18 @@ export class SkillsComponent implements OnInit{
   //Delete skill by passing the skill object
   delete(skill: Skill){
     this.skillService.remove(skill.skillId!).subscribe(response => {
-      console.log(response)
+      this.fetchSkillList()
     })
   }
 
   //Open dialog for inserting new skill
   openInsertDialog(){
     let dialogRef = this.dialog.open(InsertSkillDialogComponent )
+    dialogRef.afterClosed().subscribe(result => {
+      this.fetchSkillList()
+    })
   }
+
 
   //Open dialog for editing skill
   openEditDialog(skill: Skill){
@@ -57,8 +67,7 @@ export class SkillsComponent implements OnInit{
         allEmployeeList: this.allEmployeeList
       }})
     dialogRef.afterClosed().subscribe(result => {
-      console.log("open")
-      console.log(result)
+      this.fetchSkillList()
     })
   }
 

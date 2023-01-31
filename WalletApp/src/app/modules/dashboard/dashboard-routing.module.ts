@@ -4,7 +4,7 @@ import {DashboardComponent} from './page';
 import {SkillsComponent} from "../skill/page/skill/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
 import {SalaryComponent} from "../salary/page/salary/salary.component";
-
+import {TimesheetModule} from "../timesheet/timesheet.module";
 
 const routes: Routes = [
   {
@@ -20,12 +20,16 @@ const routes: Routes = [
         component: HomeComponent
       } ,
       {
-        path: 'skills',
-        component: SkillsComponent
+        path: 'skill',
+        loadChildren: () => import('../skill/skill.module').then(m => m.SkillModule)
       },
       {
         path: 'salary',
         component: SalaryComponent
+      },
+      {
+        path: 'timesheet',
+        loadChildren: () => import('../timesheet/timesheet.module').then(m => m.TimesheetModule)
       }
     ]
   }
