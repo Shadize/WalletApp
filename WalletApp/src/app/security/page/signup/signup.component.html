@@ -1,1 +1,23 @@
-<p>signup works!</p>
+<div class="signup-container">
+  <form class="form" [formGroup]="formgroup">
+    <h1 class="title">Sign up</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input #username formControlName="username" matInput>
+      <mat-error *ngIf="formgroup.get('username')?.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input #password formControlName="password" matInput>
+      <mat-error *ngIf="formgroup.get('password')?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="formgroup.get('password')?.hasError('pattern')">
+        A password must contain at least 8 characters including at least one lowercase letter and one uppercase letter, one special character and one number
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" class="confirm-button" [disabled]="!formgroup.valid" color="accent" (click)="signup(username.value, password.value)">Login</button>
+  </form>
+</div>
