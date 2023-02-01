@@ -1,13 +1,26 @@
 <!-- <button (click)="signin()">Signin</button> -->
 
 <div class="login-container">
-  <form [formGroup]="formGroup">
+  <form [formGroup]="formGroup" class="form">
+    <h1 class="title">Login</h1>
     <mat-form-field appearance="fill">
-      <mat-label>username</mat-label>
-      <input #username formControlName="username" matInput>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
       <mat-error *ngIf="formGroup.get('username')?.hasError('required')">
-        Username is <strong>required</strong>
+        Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="formGroup.get('password')?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="bottom-text">
+      Don't have an account? <a href="#">Sign up</a>
+    </div>
+    <button mat-raised-button type="submit" class="confirm-button" [disabled]="!formGroup.valid" color="accent">Login</button>
   </form>
 </div>

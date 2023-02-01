@@ -10,6 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class SigninComponent implements OnInit {
 
   formGroup!: FormGroup;
+  hide: boolean = true;
 
   constructor(public auth: AuthService) {
   }

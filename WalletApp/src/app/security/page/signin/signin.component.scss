@@ -1,19 +1,39 @@
 .login-container {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 4px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+  border: 1px solid black;
 
-.login-form {
-  width: 50%;
-}
+  .title {
+    margin-top: 24px;
+    font-size: 36px;
+  }
 
-.login-form-field {
-  width: 100%;
-}
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.login-form-button {
-  width: 100%;
-  margin-top: 16px;
+  mat-form-field {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .bottom-text {
+    margin-top: 24px;
+    align-self: flex-start;
+  }
+
+  .confirm-button {
+    width: auto;
+    margin-top: 24px;
+    padding: 12px 24px;
+  }
 }
