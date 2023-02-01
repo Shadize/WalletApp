@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, startWith} from "rxjs";
 import {map} from "rxjs/operators";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
@@ -25,8 +25,9 @@ export class FleetInsertComponent implements OnInit{
   employeeInput = new FormControl <string | Employee>('');
   employeeList: Employee[] = [];
   employeeFiltered?: Observable<Employee[]>;
-
   employeeSelected: Employee | undefined;
+
+  formGroup !: FormGroup;
 
   ngOnInit() {
     this.employeeService.list().subscribe(data => {
@@ -41,6 +42,13 @@ export class FleetInsertComponent implements OnInit{
       );
     })
 
+    this.formGroup = new FormGroup({
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      cost: new FormControl('', Validators.required)
+      });
+
   }
 
   private _filter(name: string): Employee[] {
@@ -53,31 +61,22 @@ export class FleetInsertComponent implements OnInit{
   display(employee: Employee): string {
     return employee && (employee.lastname + employee.firstname + employee.employeeId)  ?
       (employee.firstname + ' ' + employee.lastname + ' (UUID : ' + employee.employeeId + ')') : '';
-
-
-
   }
 
-  test(){
-    console.log("Test : " + this.employeeInput);
-  }
+
 
   // selectedEmployee(option: MatOption) {
   //   this.employeeSelected = option.value;
   //   console.log("ixi : " + option.value)
   // }
 
+
+
   selectedEmployee(employee: Employee) {
-    //this.employeeSelected = e;
     this.employeeSelected = employee;
-    console.log("ixi : " + this.employeeSelected)
-    console.log("ixi : " + JSON.stringify(this.employeeSelected))
   }
-
-
-  insert(title: string, description: string, type: string, cost: string, employee: FormControl)
+  insert(title: string, description: string, type: string, cost: string)
   {
-
 
     let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee : this.employeeSelected};
     console.log("vroom :" + this.employeeSelected);

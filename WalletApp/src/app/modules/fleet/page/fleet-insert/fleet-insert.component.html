@@ -2,47 +2,55 @@
 
 
 
-
 <div id="InsertContainer">
-  <form class="form">
+
+  <form [formGroup]="formGroup" class="form" (submit)="insert(title.value,description.value,type.value,cost.value)">
+
     <h1>Insert a new Fleet</h1>
 
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
-      <input #title matInput>
+      <input #title matInput formControlName="title">
+      <mat-error *ngIf="formGroup.get('title')?.invalid">
+        Title is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
-      <input #description matInput>
+      <input #description matInput formControlName="description">
+      <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
-      <input #type matInput>
+      <input #type matInput formControlName="type">
+      <mat-error *ngIf="formGroup.get('type')?.hasError('required')">
+        Type is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Cost</mat-label>
-      <input #cost matInput>
+      <input #cost matInput formGroupName="cost">
+      <mat-error *ngIf="formGroup.get('cost')?.hasError('required')">
+        Cost is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
 
-<!--    <mat-form-field appearance="fill">-->
-<!--      <mat-label>Employee</mat-label>-->
-<!--      <input #employee matInput>-->
-<!--    </mat-form-field>-->
 
 
     <mat-form-field class="employeeInput" appearance="fill">
       <mat-label>Employee</mat-label>
-
-      <input matInput [formControl]="employeeInput" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">
+      <input matInput [formControl]="employeeInput" [matAutocomplete]="employee">
+      <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">
         <mat-option *ngFor="let employee of employeeFiltered | async"
                     [value]="employee"
                     (click)="selectedEmployee(employee)"
         >
-         {{employee.firstname}} {{employee.lastname}} - (UUID : {{employee.employeeId}})
+          {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -51,19 +59,84 @@
 
     <div id="buttonDiv">
       <a [routerLink]="['/dashboard/fleet']">
-        <button mat-raised-button type="submit" color="primary"> Cancel </button>
+        <button mat-raised-button color="warn"> Cancel </button>
       </a>
 
-      <button mat-raised-button type="submit" color="primary"
-              (click)="insert(title.value,description.value,type.value,cost.value, employeeInput)">
-        Insert Fleet
-      </button>
+      <button mat-raised-button type="submit" color="accent" [disabled]="!formGroup.valid"> Insert </button>
     </div>
 
   </form>
-  <button (click)="test()">test</button>
+
 
 </div>
+
+
+
+
+
+
+
+
+<!--<div id="InsertContainer">-->
+
+<!--  <form [formGroup]="formGroup" class="form">-->
+
+<!--    <h1>Insert a new Fleet</h1>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Title</mat-label>-->
+<!--      <input #title matInput>-->
+<!--      <mat-error *ngIf="formGroup.get('tittle')?.hasError('required')">-->
+<!--        Title is required-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Description</mat-label>-->
+<!--      <input #description matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Type</mat-label>-->
+<!--      <input #type matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Cost</mat-label>-->
+<!--      <input #cost matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field class="employeeInput" appearance="fill">-->
+<!--      <mat-label>Employee</mat-label>-->
+
+<!--      <input matInput [formControl]="employeeInput" [matAutocomplete]="auto">-->
+<!--      <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">-->
+<!--        <mat-option *ngFor="let employee of employeeFiltered | async"-->
+<!--                    [value]="employee"-->
+<!--                    (click)="selectedEmployee(employee)"-->
+<!--        >-->
+<!--         {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}-->
+<!--        </mat-option>-->
+<!--      </mat-autocomplete>-->
+<!--    </mat-form-field>-->
+
+
+
+<!--    <div id="buttonDiv">-->
+<!--      <a [routerLink]="['/dashboard/fleet']">-->
+<!--        <button mat-raised-button type="submit" color="primary"> Cancel </button>-->
+<!--      </a>-->
+
+<!--      <button mat-raised-button type="submit" color="primary"-->
+<!--              (click)="insert(title.value,description.value,type.value,cost.value)">-->
+<!--        Insert Fleet-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--  </form>-->
+
+
+<!--</div>-->
 
 
 
