@@ -65,7 +65,11 @@
         <button mat-raised-button color="warn"> Cancel </button>
       </a>
 
-      <button mat-raised-button type="submit" color="" [disabled]="!formGroup.valid"> Insert </button>
+      <button mat-raised-button type="submit"
+              class="insertButton"
+              color="primary"
+              [disabled]="!formGroup.valid"
+      > Insert </button>
     </div>
 
   </form>

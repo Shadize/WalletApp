@@ -1,0 +1,26 @@
+<div class="mainDiv">
+  <div class="headerDiv">
+    <h2>Fleet Detail</h2>
+    <button mat-icon-button
+            id="button"
+            (click)="dialog.closeAll()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="fleetDetail">
+    <pre>{{'Fleet ID    : ' + data.fleetId}}</pre>
+    <pre>{{'Title       : ' + data.title}}</pre>
+    <pre>{{'Description : ' + data.description}}</pre>
+    <pre>{{'Type        : ' + data.type}}</pre>
+    <pre>{{'Cost        : ' + data.cost}}</pre>
+    <pre *ngIf="data.employee">{{'Employee    : ' + data.employee?.firstname + ' ' + data.employee?.lastname + ' (UUID : ' + data.employee?.employeeId + ')'}}</pre>
+  </div>
+
+</div>
+
+
+
+
+

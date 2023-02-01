@@ -52,18 +52,27 @@
         <button mat-icon-button matTooltip="Detail">
           <mat-icon>edit_square</mat-icon>
         </button>
-        <mat-cell *matCellDef="let element">
+        <mat-cell *matCellDef="let fleet">
+
+          <button mat-icon-button matTooltip="Detail"
+                  (click)="openDetailFleetDialog(fleet)"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Edit">
+            <mat-icon>edit_square</mat-icon>
+          </button>
+
           <button mat-icon-button [matMenuTriggerFor]="menu_delete" matTooltip="Delete" id="iconList2" class="iconButton">
             <mat-icon>close</mat-icon>
           </button>
           <mat-menu #menu_delete="matMenu">
               <p >Confirm :</p>
-              <button mat-menu-item (click)="delete(element)">Yes</button>
+              <button mat-menu-item (click)="delete(fleet)"> Yes </button>
               <button mat-menu-item> No </button>
           </mat-menu>
-          <button mat-icon-button matTooltip="Edit">
-            <mat-icon>edit_square</mat-icon>
-          </button>
+
         </mat-cell>
       </ng-container>
 

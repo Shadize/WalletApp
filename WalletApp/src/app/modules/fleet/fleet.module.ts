@@ -7,20 +7,26 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatTableModule} from "@angular/material/table";
+import { FleetDetailComponent } from './page/fleet-detail/fleet-detail.component';
+import {MatIconModule} from "@angular/material/icon";
+import { FleetEditComponent } from './page/fleet-edit/fleet-edit.component';
 
 @NgModule({
   declarations: [
-    FleetInsertComponent
+    FleetInsertComponent,
+    FleetDetailComponent,
+    FleetEditComponent
   ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    FleetRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatTableModule
-  ]
+    imports: [
+        FormsModule,
+        CommonModule,
+        FleetRoutingModule,
+        MatInputModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatIconModule
+    ]
 })
 export class FleetModule { }
