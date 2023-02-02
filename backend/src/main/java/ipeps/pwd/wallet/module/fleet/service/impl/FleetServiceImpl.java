@@ -56,10 +56,7 @@ public class FleetServiceImpl implements FleetService {
             detail.setDescription(payload.getDescription());
             detail.setCost(payload.getCost());
             detail.setType(payload.getType());
-            if(payload.getEmployee() != null)
-                detail.setEmployee(payload.getEmployee());
-            else
-                detail.setEmployee(detail.getEmployee());
+            detail.setEmployee(payload.getEmployee());
             return this.fleetRepository.save(detail);
         }
         return detail;
