@@ -50,9 +50,9 @@ export class DocumentEditComponent implements OnInit{
       content: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       createDate: new FormControl('', Validators.required),
-      company: new FormControl('', Validators.required),
-      contract: new FormControl('', Validators.required),
-      employee: new FormControl('', Validators.required),
+      company: new FormControl(''),
+      contract: new FormControl(''),
+      employee: new FormControl('')
     })
   }
 

@@ -51,9 +51,6 @@
           {{company.name}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="formGroup.get('company')?.hasError('required')">
-        Company is <strong>required</strong>
-      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="contract-form">
       <mat-label>Contract</mat-label>
@@ -62,9 +59,6 @@
           {{contract.description}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="formGroup.get('company')?.hasError('required')">
-        Contract is <strong>required</strong>
-      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="employees-form">
       <mat-label>Employee</mat-label>
@@ -73,9 +67,6 @@
           {{employee.lastname }} {{employee.firstname}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="formGroup.get('employee')?.hasError('required')">
-        Employee is <strong>required</strong>
-      </mat-error>
     </mat-form-field>
     <br>
     <div class="button-container">

@@ -19,7 +19,9 @@
       <mat-header-cell *matHeaderCellDef>
         Title
       </mat-header-cell>
-      <mat-cell *matCellDef="let document">{{document.title}}</mat-cell>
+      <mat-cell *matCellDef="let document">
+        {{document.title}}
+      </mat-cell>
     </ng-container>
     <ng-container matColumnDef="path">
       <mat-header-cell *matHeaderCellDef>
@@ -49,19 +51,29 @@
       <mat-header-cell *matHeaderCellDef>
         Company
       </mat-header-cell>
-      <mat-cell *matCellDef="let document" class="company-cell">{{document.company.name}}</mat-cell>
+      <mat-cell *matCellDef="let document" class="company-cell">
+        <ng-container *ngIf="document.company">
+          {{document.company.name}}
+        </ng-container>
+        </mat-cell>
     </ng-container>
     <ng-container matColumnDef="contract">
       <mat-header-cell *matHeaderCellDef>
         Contract
       </mat-header-cell>
-      <mat-cell *matCellDef="let document" class="contract-cell">{{document.contract.description}}</mat-cell>
+      <mat-cell *matCellDef="let document" class="contract-cell"><ng-container *ngIf="document.contract">
+        {{document.contract.description}}
+      </ng-container></mat-cell>
     </ng-container>
     <ng-container matColumnDef="employee">
       <mat-header-cell *matHeaderCellDef>
         Employees
       </mat-header-cell>
-      <mat-cell *matCellDef="let document" class="employees-cell">{{document.employee.lastname +" "+document.employee.firstname}}</mat-cell>
+      <mat-cell *matCellDef="let document" class="employees-cell">
+        <ng-container *ngIf="document.employee">
+          {{document.employee.lastname +" "+document.employee.firstname}}
+        </ng-container>
+      </mat-cell>
     </ng-container>
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
