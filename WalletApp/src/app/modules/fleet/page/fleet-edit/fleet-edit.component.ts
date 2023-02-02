@@ -43,8 +43,6 @@ export class FleetEditComponent implements OnInit {
         cost: this.fleet.cost,
         employee: this.fleet.employee
       })
-
-      console.log(this.formGroup)
     })
 
 
