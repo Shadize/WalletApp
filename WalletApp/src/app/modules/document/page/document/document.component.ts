@@ -11,6 +11,7 @@ import {
   SalaryDeleteConfirmComponent
 } from "../../../salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {DocumentDeleteConfirmComponent} from "../../dialog/document-delete-confirm/document-delete-confirm.component";
+import {DocumentDetailComponent} from "../../dialog/document-detail/document-detail.component";
 
 @Component({
   selector: 'app-document',
@@ -60,6 +61,15 @@ export class DocumentComponent implements OnInit{
 
   openDeleteConfirmationDialog(element: Document) {
     let dialogRef = this.dialog.open(DocumentDeleteConfirmComponent, {
+      data: {document: element}
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
+  }
+
+  openDetailDialog(element: Document) {
+    let dialogRef = this.dialog.open(DocumentDetailComponent, {
       data: {document: element}
     })
     dialogRef.afterClosed().subscribe(result => {
