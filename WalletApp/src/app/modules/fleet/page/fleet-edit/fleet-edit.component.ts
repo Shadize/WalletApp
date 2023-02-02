@@ -19,7 +19,8 @@ export class FleetEditComponent implements OnInit {
   ngOnInit(): void {
     this.fleetId = this.route.snapshot.paramMap.get('id') || '';
     this.fleetService.detail(this.fleetId).subscribe(data => {
-      this.fleet = data;
+      this.fleet = data.data as Fleet;
+      console.log(this.fleet);
     })
 
   }
