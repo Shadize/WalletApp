@@ -1,0 +1,64 @@
+<script src="../../../../shared/model/dto/timesheet.interface.ts"></script>
+<div class="timesheet-container">
+  <mat-table [dataSource]="this.dataSource">
+
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef> StartDate </mat-header-cell>
+      <mat-cell *matCellDef="let timesheet"> {{timesheet.startDate.toLocaleDateString()}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startHours">
+      <mat-header-cell *matHeaderCellDef> StartHours </mat-header-cell>
+      <mat-cell *matCellDef="let timesheet"> {{timesheet.startHours.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endHours">
+      <mat-header-cell *matHeaderCellDef> EndHours </mat-header-cell>
+      <mat-cell *matCellDef="let timesheet"> {{timesheet.endHours.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <mat-header-cell *matHeaderCellDef> Comment </mat-header-cell>
+      <mat-cell *matCellDef="let timesheet"> {{timesheet.comment}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="timesheetType">
+      <mat-header-cell *matHeaderCellDef> TimesheetType </mat-header-cell>
+      <mat-cell *matCellDef="let timesheet"> {{timesheet.timesheetType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="employee">
+      <mat-header-cell *matHeaderCellDef> Employee </mat-header-cell>
+      <mat-cell *matCellDef="let timesheet"> {{timesheet.employee.firstname}} {{timesheet.employee.lastname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button  mat-icon-button type="button" [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <form>
+            <button mat-menu-item type="button" (click)="openEditDialog(element)">Edit</button>
+            <button type="submit" mat-menu-item (click)="delete(element)">Delete</button>
+          </form>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+  </mat-table>
+</div>
+
+<div class="skills-container">
+  <div class="insert-timesheet-button-container">
+    <button mat-fab class="insert-timesheet-button" color="primary" (click)="openInsertDialog()" aria-label="Example icon button with a delete icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
