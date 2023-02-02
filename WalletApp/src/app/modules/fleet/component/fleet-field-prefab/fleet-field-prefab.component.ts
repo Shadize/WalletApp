@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {Observable, startWith} from "rxjs";
 import {map} from "rxjs/operators";
-import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 
 @Component({
@@ -22,7 +21,16 @@ export class FleetFieldPrefabComponent {
   employeeSelected: Employee | undefined;
   formGroup !: FormGroup;
 
+  @Output() myOutputEvent = new EventEmitter<FormGroup>();
+
+  sendMessage(){
+    this.myOutputEvent.emit(this.formGroup)
+  }
+
   ngOnInit() {
+
+
+
     this.employeeService.list().subscribe(data => {
       this.employeeList = data;
 
@@ -41,6 +49,10 @@ export class FleetFieldPrefabComponent {
       type: new FormControl('', Validators.required),
       cost: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$")]),
     });
+
+    this.sendMessage();
+
+
 
   }
 

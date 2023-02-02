@@ -17,18 +17,16 @@ import {FleetFieldPrefabComponent} from "../../component/fleet-field-prefab/flee
   styleUrls: ['./fleet-insert.component.scss'],
   styles: ['element.style {width: 100%}']
 })
-export class FleetInsertComponent implements OnInit, AfterViewInit{
-  ngAfterViewInit(): void {
-    console.log(this.test)
-
-  }
+export class FleetInsertComponent implements OnInit{
 
   constructor(private employeeService: EmployeeService,
               private fleetService: FleetService,
               private router: Router) {
   }
 
-  @ViewChild('test') test?: FleetFieldPrefabComponent;
+  @ViewChild('prefab') prefab?: FleetFieldPrefabComponent;
+
+
 
 
 
@@ -39,50 +37,18 @@ export class FleetInsertComponent implements OnInit, AfterViewInit{
 
   formGroup !: FormGroup;
 
+  messageFromChild(event: any){
+    this.formGroup = event;
+    console.log(this.formGroup)
+  }
   ngOnInit() {
-    setTimeout(this.formGroup = this.test?.formGroup}, 1000)
-    // this.employeeService.list().subscribe(data => {
-    //   this.employeeList = data;
-    //
-    //   this.employeeFiltered = this.employeeInput.valueChanges.pipe(
-    //     startWith(''),
-    //     map(value => {
-    //       const input = typeof value === 'string' ? value : '';
-    //       return input ? this.filter(input) : this.employeeList.slice();
-    //     }),
-    //   );
-    // })
-    //
-    // this.formGroup = new FormGroup({
-    //   title: new FormControl('', Validators.required),
-    //   description: new FormControl('', Validators.required),
-    //   type: new FormControl('', Validators.required),
-    //   cost: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$")]),
-    //   });
-
-
 
   }
 
-  // filter(name: string): Employee[] {
-  //   const filterValue = name.toLowerCase();
-  //   return this.employeeList.filter(employee =>
-  //     (employee.firstname + ' ' + employee.lastname + ' ' + employee.employeeId).toLowerCase().includes(filterValue)
-  //   );
-  // }
-  //
-  // display(employee: Employee): string {
-  //   return employee && (employee.lastname + employee.firstname + employee.employeeId)  ?
-  //     (employee.firstname + ' ' + employee.lastname + ' (UUID : ' + employee.employeeId + ')') : '';
-  // }
-  //
-  //
-  // employeeSelectedClick(employee: Employee) {
-  //   this.employeeSelected = employee;
-  // }
+
   insert(title: string, description: string, type: string, cost: string)
   {
-    let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee : this.test?.employeeSelected};
+    let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
 
     this.fleetService.create(payload).subscribe(data => {
       this.router.navigateByUrl('/dashboard/fleet');
