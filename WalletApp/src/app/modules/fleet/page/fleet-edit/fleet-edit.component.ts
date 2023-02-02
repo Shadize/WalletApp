@@ -40,9 +40,14 @@ export class FleetEditComponent implements OnInit {
         title: this.fleet.title,
         description: this.fleet.description,
         type: this.fleet.type,
-        cost: this.fleet.cost
+        cost: this.fleet.cost,
+        employee: this.fleet.employee
       })
+
+      console.log(this.formGroup)
     })
+
+
   }
   update(title: string, description: string, type: string, cost: string){
 

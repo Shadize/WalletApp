@@ -40,6 +40,7 @@ export class FleetFieldPrefabComponent {
       description: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       cost: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$")]),
+      employee: this.employeeInput
     });
     this.sendFormGroup();
   }

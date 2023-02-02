@@ -40,7 +40,7 @@
 
 <mat-form-field class="employeeInput" appearance="fill">
   <mat-label>Employee</mat-label>
-  <input matInput [formControl]="employeeInput" [matAutocomplete]="employee">
+  <input matInput formControlName="employee" [matAutocomplete]="employee">
   <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">
     <mat-option *ngFor="let employee of employeeFiltered | async"
                 [value]="employee"
