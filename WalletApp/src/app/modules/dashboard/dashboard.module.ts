@@ -12,13 +12,15 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {TimesheetModule} from "../timesheet/timesheet.module";
 import {SkillModule} from "../skill/skill.module";
 import {MatTableModule} from "@angular/material/table";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
     HomeComponent
   ],
-  imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule, TimesheetModule, SkillModule, MatDatepickerModule, MatTableModule],
+  imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule],
   providers: []
 })
 export class DashboardModule {

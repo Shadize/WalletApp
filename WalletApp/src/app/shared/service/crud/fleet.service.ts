@@ -1,56 +1,75 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {ApiService} from "@shared/service";
-import {Employee} from "@shared/model/dto/employee.interface";
 import {map} from "rxjs/operators";
-import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
-import {EmployeeUpdatePayloadInterface} from "@shared/model/payload/update/EmployeeUpdatePayload.interface";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FleetCreatePayloadInterface} from "@shared/model/payload/create/FleetCreatePayload.interface";
 import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
 
-@Injectable()
-export class FleetService extends ApiService implements CrudServiceInterface{
 
-  detail(id: string | number): Observable<Fleet> {
-    return this.get(`fleet/detail/${id}`).pipe(
-      map((response: ApiResponse) => {
-        return (response.result) ? response.data as Fleet : {} as Fleet;
-      })
-    )
+@Injectable(
+  {providedIn: 'root'}
+)
+export class FleetService extends ApiService { //implements CrudServiceInterface{
+
+  fleetList$$: BehaviorSubject<Fleet[]> = new BehaviorSubject<Fleet[]>([]);
+  fleet$$: BehaviorSubject<Fleet> = new BehaviorSubject<Fleet>({});
+
+  list(): void{
+    this.get(`fleet/list`).subscribe( data => {
+      this.fleetList$$.next((data.data) ? data.data as Fleet[] : [] as Fleet[]);
+    })
   }
 
-  list() : Observable<Fleet[]>{
-    return this.get(`fleet/list`).pipe(
-      map((response: ApiResponse) => {
-        return (response.result) ? response.data as Fleet[] : [];
-      })
-    )
+  // list2() : Observable<Fleet[]>{
+  //   return this.get(`fleet/list`).pipe(
+  //     map((response: ApiResponse) => {
+  //       return (response.result) ? response.data as Fleet[] : [];
+  //     })
+  //   )
+  // }
+
+
+  detail(id: string | number): Observable<ApiResponse> {
+    return this.get(`fleet/detail/${id}`);
   }
 
-  create(addPayload: FleetCreatePayloadInterface): Observable<boolean>{
-    return this.post("fleet/create", addPayload).pipe(
-      map((response: ApiResponse) => {
-        return (response.result)
-      })
-    )
+  // detail2(id: string | number): Observable<Fleet> {
+  //   return this.get(`fleet/detail/${id}`).pipe(
+  //     map((response: ApiResponse) => {
+  //       return (response.result) ? response.data as Fleet : {} as Fleet;
+  //     })
+  //   )
+  // }
+
+
+  create(addPayload: FleetCreatePayloadInterface): Observable<ApiResponse>
+  {
+    this.fleet$$.next(addPayload);
+    return this.post("fleet/create", addPayload);
   }
 
-  update(updatePayload: FleetUpdatePayloadInterface): Observable<boolean> {
-    return this.put("fleet/update/", updatePayload).pipe(
-      map((response: ApiResponse) => {
-        return (response.result)
-      })
-    )
+  update(updatePayload: PayloadInterface): Observable<ApiResponse>
+  {
+    return this.put("fleet/update", updatePayload);
   }
 
-
-  remove(id: string | number): Observable<boolean> {
+  remove(id: string | number): Observable<ApiResponse>
+  {
     return this.delete(`fleet/delete/${id}`).pipe(
       map((response: ApiResponse) => {
-        return (response.result)
+        console.log(response.data);
+        return response;
       })
     )
   }
+
+  // remove2(id: string | number): Observable<boolean> {
+  //   return this.delete(`fleet/delete/${id}`).pipe(
+  //     map((response: ApiResponse) => {
+  //       return (response.result)
+  //     })
+  //   )
+  // }
 }

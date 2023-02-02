@@ -1,0 +1,98 @@
+
+<div id="InsertContainer">
+
+    <h1>Insert a new Fleet</h1>
+
+    <app-fleet-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-fleet-field-prefab>
+
+    <div id="buttonDiv">
+      <a [routerLink]="['/dashboard/fleet']">
+        <button mat-raised-button color="warn"> Cancel </button>
+      </a>
+
+      <button mat-raised-button type="submit"
+              class="insertButton"
+              color="primary"
+              (click)="insert(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
+              [disabled]="!formGroup.valid"
+
+      > Insert </button>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!--<div id="InsertContainer">-->
+
+<!--  <form [formGroup]="formGroup" class="form">-->
+
+<!--    <h1>Insert a new Fleet</h1>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Title</mat-label>-->
+<!--      <input #title matInput>-->
+<!--      <mat-error *ngIf="formGroup.get('tittle')?.hasError('required')">-->
+<!--        Title is required-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Description</mat-label>-->
+<!--      <input #description matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Type</mat-label>-->
+<!--      <input #type matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Cost</mat-label>-->
+<!--      <input #cost matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field class="employeeInput" appearance="fill">-->
+<!--      <mat-label>Employee</mat-label>-->
+
+<!--      <input matInput [formControl]="employeeInput" [matAutocomplete]="auto">-->
+<!--      <mat-autocomplete #auto="matAutocomplete" [displayWith]="display">-->
+<!--        <mat-option *ngFor="let employee of employeeFiltered | async"-->
+<!--                    [value]="employee"-->
+<!--                    (click)="selectedEmployee(employee)"-->
+<!--        >-->
+<!--         {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}-->
+<!--        </mat-option>-->
+<!--      </mat-autocomplete>-->
+<!--    </mat-form-field>-->
+
+
+
+<!--    <div id="buttonDiv">-->
+<!--      <a [routerLink]="['/dashboard/fleet']">-->
+<!--        <button mat-raised-button type="submit" color="primary"> Cancel </button>-->
+<!--      </a>-->
+
+<!--      <button mat-raised-button type="submit" color="primary"-->
+<!--              (click)="insert(title.value,description.value,type.value,cost.value)">-->
+<!--        Insert Fleet-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--  </form>-->
+
+
+<!--</div>-->
+
+
+
+
+
+
+
+

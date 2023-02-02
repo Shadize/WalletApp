@@ -1,0 +1,28 @@
+<div class="mainDiv">
+
+    <h1>Edit Fleet</h1>
+
+    <mat-form-field id="idField" appearance="fill">
+      <mat-label>Fleet ID</mat-label>
+      <input matInput [value]="this.fleetId" disabled>
+    </mat-form-field>
+
+    <app-fleet-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-fleet-field-prefab>
+
+    <div id="buttonDiv">
+      <button mat-raised-button color="warn"
+              [routerLink]="['/dashboard/fleet']"
+      >
+        Cancel
+      </button>
+      <button mat-raised-button class="btnUpdate"
+              color="accent"
+              (click)="update(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
+              [disabled]="!this.formGroup.valid"
+      >Update</button>
+    </div>
+
+</div>
+
+
+

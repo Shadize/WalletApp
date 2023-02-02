@@ -20,7 +20,8 @@ public class SalaryBuilder implements CreateBuilder {
     Employee employee;
 
     public SalaryBuilder setCreatedDate(Date create_date){
-        this.createDate = createDate;
+
+        this.createDate = create_date;
         return this;
     }
 

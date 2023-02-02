@@ -1,9 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Skill} from "@shared/model/dto/skill.interface";
 import {SalaryService} from "@shared/service/crud/salary.service";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
+import {SalaryCreatePayloadInterface} from "@shared/model/payload/create/SalaryCreatePayload.interface";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {SalaryCreateComponent} from "../../dialog/salary-create/salary-create.component";
+import {SalaryDeleteConfirmComponent} from "../../dialog/salary-delete-confirm/salary-delete-confirm.component";
+import {result} from "lodash";
+import {SalaryEditComponent} from "../../dialog/salary-edit/salary-edit.component";
 
 @Component({
   selector: 'app-salary',
@@ -12,100 +18,73 @@ import {EmployeeService} from "@shared/service/crud/employee.service";
 })
 export class SalaryComponent implements OnInit{
 
-  dataSource: Salary[] = [];
-  // employees: Employee[] = [];
+  salaries: Salary[] = [];
+  employees: Employee[] = [];
+  displayedColumns: string[] = ['salaryId', 'createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
+  formGroup!: FormGroup;
 
-  columnsToDisplay: string[] = ['date', 'title', 'comment', 'amount', 'employee', 'edit'];
 
-  constructor(private salaryService: SalaryService, private employeeService: EmployeeService) {
+  constructor(private salaryService: SalaryService,
+              private employeeService: EmployeeService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-/*
-      this.employeeService.list().subscribe(data => {
-        this.employees = data
+    this.employeeService.list().subscribe(data => {
+      this.employees = data
       })
+    this.salaryService.list().subscribe(data => {
+      this.salaries = data;
+    })
 
- */
+
+    this.formGroup = new FormGroup({
+      createDate: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
+      comment: new FormControl('', Validators.required),
+      amount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      employee: new FormControl('', Validators.required),
+    })
   }
+  /*=== Actualisation des datasource pour l'actualisation dynamique dans le template ===*/
 
-  edit(skill: Skill){
-    console.log(skill)
-  }
-
-  delete(skill: Skill){
-    this.salaryService.remove(skill.skillId!).subscribe(response => {
-      console.log(response)
+  RefreshData(){
+    this.salaryService.list().subscribe(data => {
+      this.salaries = data;
     })
   }
 
-  insert(date: string, title: string, comment: string, amount: string, employee: Employee) {
-      const newdate = new Date(date);
-      console.log(this.selectedEmployee.firstname);
+
+  /*=== Méthodes liées aux dialogues ===*/
+
+
+  openCreateSalaryDialog(){
+    let dialogRef = this.dialog.open(SalaryCreateComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
+  }
+
+  openEditSalaryDialog(element: Salary){
+    let dialogRef = this.dialog.open(SalaryEditComponent, {
+      data: {salary: element}
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
+  }
+
+  openDeleteConfirmationDialog(element: Salary){
+    let dialogRef = this.dialog.open(SalaryDeleteConfirmComponent, {
+      data: {salary: element}
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      this.RefreshData();
+    })
   }
 
 
-
-
-   employees: ({ birthday: Date; firstname: string; address: string; gender: string; documents: null; active: boolean; fleets: null; contracts: null; deletedBy: string; lastname: string; skills: null; ssin: string; deleted: boolean; salaries: null; timesheets: null; company: null; status: string } | { birthday: Date; firstname: string; address: string; gender: string; documents: null; active: boolean; fleets: null; contracts: null; deletedBy: string; lastname: string; skills: null; ssin: string; deleted: boolean; salaries: null; timesheets: null; company: null; status: string } | { birthday: Date; firstname: string; address: string; gender: string; documents: null; active: boolean; fleets: null; contracts: null; deletedBy: string; lastname: string; skills: null; ssin: string; deleted: boolean; salaries: null; timesheets: null; company: null; status: string })[] = [
-    {
-      lastname: "Smith",
-      firstname: "John",
-      active: true,
-      deletedBy: "",
-      address: "123 Main St",
-      gender: "male",
-      birthday: new Date("1990-01-01"),
-      ssin: "123-45-6789",
-      status: "active",
-      deleted: false,
-      company: null,
-      skills: null,
-      timesheets: null,
-      documents: null,
-      contracts: null,
-      fleets: null,
-      salaries: null
-    },
-    {
-      lastname: "Johnson",
-      firstname: "Jane",
-      active: true,
-      deletedBy: "",
-      address: "456 Park Ave",
-      gender: "female",
-      birthday: new Date("1995-07-07"),
-      ssin: "987-65-4321",
-      status: "active",
-      deleted: false,
-      company: null,
-      skills: null,
-      timesheets: null,
-      documents: null,
-      contracts: null,
-      fleets: null,
-      salaries: null
-    },
-    {
-      lastname: "Williams",
-      firstname: "Bob",
-      active: true,
-      deletedBy: "",
-      address: "789 Elm St",
-      gender: "male",
-      birthday: new Date("1985-12-12"),
-      ssin: "111-11-1111",
-      status: "active",
-      deleted: false,
-      company: null,
-      skills: null,
-      timesheets: null,
-      documents: null,
-      contracts: null,
-      fleets: null,
-      salaries: null
-    }
-  ];
-  selectedEmployee!: Employee;
 
 }

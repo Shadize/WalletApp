@@ -37,7 +37,7 @@ export class SkillService extends ApiService implements CrudServiceInterface{
   }
 
   update(updatePayload: SkillUpdatePayloadInterface): Observable<boolean> {
-    return this.put("skill/update/", updatePayload).pipe(
+    return this.put("skill/update", updatePayload).pipe(
       map((response: ApiResponse) => {
         console.log(response)
         return (response.result)

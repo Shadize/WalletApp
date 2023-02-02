@@ -5,6 +5,9 @@ import {SkillsComponent} from "../skill/page/skill/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
 import {SalaryComponent} from "../salary/page/salary/salary.component";
 import {TimesheetModule} from "../timesheet/timesheet.module";
+import {FleetComponent} from "../fleet/page/fleet/fleet.component";
+
+
 
 const routes: Routes = [
   {
@@ -21,7 +24,11 @@ const routes: Routes = [
       } ,
       {
         path: 'skill',
-        loadChildren: () => import('../skill/skill.module').then(m => m.SkillModule)
+        loadChildren: () => import('../skill/skill.module').then(m => m.SkillModule),
+      },
+      {
+        path: 'fleet',
+        loadChildren: () => import("../fleet/fleet.module").then(m => m.FleetModule)
       },
       {
         path: 'salary',
