@@ -22,21 +22,27 @@ export class FleetService extends ApiService { //implements CrudServiceInterface
     })
   }
 
-  detail(id: string | number): Observable<Fleet> {
-    return this.get(`fleet/detail/${id}`).pipe(
-      map((response: ApiResponse) => {
-        return (response.result) ? response.data as Fleet : {} as Fleet;
-      })
-    )
+  // list2() : Observable<Fleet[]>{
+  //   return this.get(`fleet/list`).pipe(
+  //     map((response: ApiResponse) => {
+  //       return (response.result) ? response.data as Fleet[] : [];
+  //     })
+  //   )
+  // }
+
+
+  detail(id: string | number): Observable<ApiResponse> {
+    return this.get(`fleet/detail/${id}`);
   }
 
-  list2() : Observable<Fleet[]>{
-    return this.get(`fleet/list`).pipe(
-      map((response: ApiResponse) => {
-        return (response.result) ? response.data as Fleet[] : [];
-      })
-    )
-  }
+  // detail2(id: string | number): Observable<Fleet> {
+  //   return this.get(`fleet/detail/${id}`).pipe(
+  //     map((response: ApiResponse) => {
+  //       return (response.result) ? response.data as Fleet : {} as Fleet;
+  //     })
+  //   )
+  // }
+
 
   create(addPayload: FleetCreatePayloadInterface): Observable<ApiResponse>{
     this.fleet$$.next(addPayload);
@@ -58,11 +64,11 @@ export class FleetService extends ApiService { //implements CrudServiceInterface
     )
   }
 
-  remove2(id: string | number): Observable<boolean> {
-    return this.delete(`fleet/delete/${id}`).pipe(
-      map((response: ApiResponse) => {
-        return (response.result)
-      })
-    )
-  }
+  // remove2(id: string | number): Observable<boolean> {
+  //   return this.delete(`fleet/delete/${id}`).pipe(
+  //     map((response: ApiResponse) => {
+  //       return (response.result)
+  //     })
+  //   )
+  // }
 }

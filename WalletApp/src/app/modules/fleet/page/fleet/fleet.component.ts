@@ -7,6 +7,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {MatDialog} from "@angular/material/dialog";
 import {FleetDetailComponent} from "../fleet-detail/fleet-detail.component";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,8 @@ import {FleetDetailComponent} from "../fleet-detail/fleet-detail.component";
 export class FleetComponent implements OnInit, OnDestroy
 {
   constructor(public fleetService: FleetService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              public router: Router) {
   }
 
   fleetList: Fleet[] = [];
@@ -57,10 +59,9 @@ export class FleetComponent implements OnInit, OnDestroy
       this.refreshList();
     });
   }
-  openDetailFleetDialog(element: Salary){
+  openDetailFleetDialog(element: Fleet){
     this.dialog.open(FleetDetailComponent,{
       width: '50%', data: element
     })
   }
-
 }
