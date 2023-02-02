@@ -1,0 +1,36 @@
+
+#InsertContainer{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1.5%;
+}
+
+.form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  margin-bottom: 0.3em;
+}
+
+#buttonDiv{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.insertButton{
+  background: green;
+}
+
+mat-option{
+  font-size : 14px;
+}
+
+
+
+

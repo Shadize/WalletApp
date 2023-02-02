@@ -4,59 +4,13 @@
 
 <div id="InsertContainer">
 
-  <form [formGroup]="formGroup" class="form" (submit)="insert(title.value,description.value,type.value,cost.value)">
+  <form [formGroup]="formGroup" class="form" (submit)="insert(test.formGroup.value.title.value,test.formGroup.value.description.value,test.formGroup.value.type.value,test.formGroup.value.cost.value)">
 
     <h1>Insert a new Fleet</h1>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input #title matInput formControlName="title">
-      <mat-error *ngIf="formGroup.get('title')?.invalid">
-        Title is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+    <app-fleet-field-prefab #test>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <input #description matInput formControlName="description">
-      <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
-        Description is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Type</mat-label>
-      <input #type matInput formControlName="type">
-      <mat-error *ngIf="formGroup.get('type')?.hasError('required')">
-        Type is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Cost</mat-label>
-      <input #cost matInput formControlName="cost">
-      <mat-error *ngIf="formGroup.get('cost')?.hasError('required')">
-        Cost is <strong>required</strong>
-      </mat-error>
-      <mat-error *ngIf="formGroup.get('cost')?.hasError('pattern')">
-        Cost <strong>must be a number</strong>
-      </mat-error>
-    </mat-form-field>
-
-
-
-    <mat-form-field class="employeeInput" appearance="fill">
-      <mat-label>Employee</mat-label>
-      <input matInput [formControl]="employeeInput" [matAutocomplete]="employee">
-      <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">
-        <mat-option *ngFor="let employee of employeeFiltered | async"
-                    [value]="employee"
-                    (click)="selectedEmployee(employee)"
-        >
-          {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    </app-fleet-field-prefab>
 
 
 

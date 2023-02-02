@@ -10,12 +10,14 @@ import {MatTableModule} from "@angular/material/table";
 import { FleetDetailComponent } from './page/fleet-detail/fleet-detail.component';
 import {MatIconModule} from "@angular/material/icon";
 import { FleetEditComponent } from './page/fleet-edit/fleet-edit.component';
+import { FleetFieldPrefabComponent } from './component/fleet-field-prefab/fleet-field-prefab.component';
 
 @NgModule({
   declarations: [
     FleetInsertComponent,
     FleetDetailComponent,
-    FleetEditComponent
+    FleetEditComponent,
+    FleetFieldPrefabComponent
   ],
     imports: [
         FormsModule,
