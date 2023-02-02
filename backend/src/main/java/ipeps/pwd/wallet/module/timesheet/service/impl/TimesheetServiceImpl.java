@@ -48,12 +48,14 @@ public class TimesheetServiceImpl implements TimesheetService {
 
     @Override
     public Timesheet update(TimesheetUpdatePayload payload) {
+
         Timesheet detail = this.detail(payload.getTimesheetId());
         if(detail != null){
             detail.setStartDate(payload.getStartDate());
             detail.setStartHours(payload.getStartHours());
             detail.setEndHours(payload.getEndHours());
             detail.setTimesheetType(payload.getTimesheetType());
+            detail.setComment(payload.getComment());
 
             if(payload.getEmployee() != null)
                 detail.setEmployee(payload.getEmployee());
