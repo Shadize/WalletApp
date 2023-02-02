@@ -5,7 +5,7 @@ import {TokenService} from '@security/service/token.service';
 import {ApiService, HttpService, NavigationService} from '@shared/service';
 import {map} from 'rxjs/operators';
 import {RefreshPayload} from '@security/model/payload/refresh.payload';
-import {SigninPayload, TokenDto} from '@security/model';
+import {SigninPayload, SignupPayload, TokenDto} from '@security/model';
 import {SigninResponse} from '@security/model/response/signin.response';
 
 @Injectable({
@@ -26,7 +26,13 @@ export class AuthService extends ApiService {
           this.tokenService.saveToken(signinResponse.token.access_token);
           this.tokenService.saveRefreshToken(signinResponse.token.refresh_token);
           this.isAuthenticated = true;
-          this.navigation.navigateToSecure();
+
+          // Pour une question esthétique je met une pause de 2 secondes avant la redirection
+          // vers l'écran d'accueil
+
+          setTimeout(()=>
+            this.navigation.navigateToSecure(), 2000)
+          //
         }
         return response;
       })
@@ -37,8 +43,23 @@ export class AuthService extends ApiService {
     return this.http.get(`${this.baseUrl}${ApiUriEnum.ME}`);
   }
 
-  signup(): Observable<ApiResponse> {
-    return of({result: true, data: null, error_code: null})
+  signup(payload: SignupPayload): Observable<ApiResponse> {
+
+    // return of({result: true, data: null, error_code: null})
+    return this.http.post(`${this.baseUrl}${ApiUriEnum.SIGNUP}`, payload).pipe(
+      map((response: ApiResponse) => {
+        if(response.result){
+
+          // Pour une question esthétique je met une pause de 2 secondes avant la redirection
+          // vers l'écran de login
+
+          setTimeout(()=>
+            this.navigation.navigate('account/signin'), 2000)
+        }
+        return response;
+        }
+      )
+    )
   }
 
   refreshToken(refresh: RefreshPayload): Observable<ApiResponse> {

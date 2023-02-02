@@ -1,1 +1,39 @@
-<p>signup works!</p>
+<header class="header">
+  <a [routerLink]="['/dashboard/home']" class="header-title">PronHub</a>
+</header>
+
+<div class="signup-container">
+  <form class="form" [formGroup]="formgroup">
+    <h1 class="title">Sign up</h1>
+    <mat-form-field appearance="fill" >
+      <mat-label>Username</mat-label>
+      <input  #username formControlName="username" matInput [ngClass]="{'success' : success}">
+      <mat-error *ngIf="formgroup.get('username')?.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+      <!-- Icone de réussite en cas de succès -->
+      <mat-icon matSuffix *ngIf="success" class="check-icon">check_circle</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <!-- Permet de masquer le mot de passe et de le démasquer si appuie sur le logo-->
+      <input #password matInput type="password" formControlName="password" [type]="hide ? 'password' : 'text'" >
+      <mat-icon matSuffix *ngIf="!success" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="formgroup.get('password')?.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="formgroup.get('password')?.hasError('pattern')">
+        A password must contain at least 8 characters including at least one lowercase letter and one uppercase letter, one special character and one number
+      </mat-error>
+      <mat-icon matSuffix *ngIf="success" class="check-icon">check_circle</mat-icon>
+    </mat-form-field>
+    <div class="success-message" *ngIf="success">
+      <mat-spinner class="spinner" [diameter]="30"></mat-spinner>
+      <p>Sign up successful! Redirecting...</p>
+    </div>
+    <div class="error-message" *ngIf="error">
+      <p>This username is already taken.</p>
+    </div>
+    <button mat-raised-button type="submit" class="confirm-button" [disabled]="!formgroup.valid || success" color="primary" (click)="signup(username.value, password.value)">Sign up</button>
+  </form>
+</div>

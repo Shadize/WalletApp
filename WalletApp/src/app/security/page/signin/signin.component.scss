@@ -1,19 +1,87 @@
 .login-container {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+
+  .title {
+    margin-top: 24px;
+    font-size: 36px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .bottom-text {
+    margin-top: 24px;
+    align-self: flex-start;
+  }
+
+  .confirm-button {
+    width: auto;
+    margin-top: 24px;
+    padding: 12px 24px;
+  }
+}
+
+.error{
+  margin-top: 1em;
+  color: red;
+}
+
+.spinner {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.success-message p{
+  color: green;
+}
+
+.check-icon{
+  color: green;
+}
+
+.header {
+  background-color: #3f51b5;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
-.login-form {
-  width: 50%;
+.header-title {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.login-form-field {
-  width: 100%;
+.disabled {
+  color: lightgray;
+  pointer-events: none;
+}
+.disabled a{
+  text-decoration: none;
+  color: lightgrey;
 }
 
-.login-form-button {
-  width: 100%;
-  margin-top: 16px;
-}
