@@ -1,0 +1,21 @@
+.document-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.close-button {
+  color: red;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+.close-button:hover{
+  background-color: red;
+  color: white;
+}
+
+.header {
+  margin-right: 36px;
+  text-align: center;
+}
