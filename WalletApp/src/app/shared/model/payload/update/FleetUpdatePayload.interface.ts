@@ -7,5 +7,5 @@ export interface FleetUpdatePayloadInterface extends PayloadInterface{
   description: string;
   type: string;
   cost: number;
-  employee: Employee;
+  employee?: Employee;
 }

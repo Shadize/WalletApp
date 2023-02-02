@@ -15,22 +15,14 @@ export class FleetFieldPrefabComponent {
   constructor(public employeeService : EmployeeService) {
   }
 
+  @Output() formGroupEmitter$ = new EventEmitter<FormGroup>();
+  formGroup !: FormGroup;
   employeeInput = new FormControl <string | Employee>('');
   employeeList: Employee[] = [];
   employeeFiltered?: Observable<Employee[]>;
   employeeSelected: Employee | undefined;
-  formGroup !: FormGroup;
-
-  @Output() myOutputEvent = new EventEmitter<FormGroup>();
-
-  sendMessage(){
-    this.myOutputEvent.emit(this.formGroup)
-  }
 
   ngOnInit() {
-
-
-
     this.employeeService.list().subscribe(data => {
       this.employeeList = data;
 
@@ -49,13 +41,14 @@ export class FleetFieldPrefabComponent {
       type: new FormControl('', Validators.required),
       cost: new FormControl('', [Validators.required,Validators.pattern("^[0-9]*$")]),
     });
-
-    this.sendMessage();
-
-
-
+    this.sendFormGroup();
   }
-
+  sendFormGroup(){
+    this.formGroupEmitter$.emit(this.formGroup)
+  }
+  employeeSelectedClick(employee: Employee) {
+    this.employeeSelected = employee;
+  }
   filter(name: string): Employee[] {
     const filterValue = name.toLowerCase();
     return this.employeeList.filter(employee =>
@@ -65,10 +58,6 @@ export class FleetFieldPrefabComponent {
   display(employee: Employee): string {
     return employee && (employee.lastname + employee.firstname + employee.employeeId)  ?
       (employee.firstname + ' ' + employee.lastname + ' (UUID : ' + employee.employeeId + ')') : '';
-  }
-
-  employeeSelectedClick(employee: Employee) {
-    this.employeeSelected = employee;
   }
 
 }

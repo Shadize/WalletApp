@@ -1,5 +1,5 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {ApiResponse, CrudServiceInterface} from "@shared/model";
+import {ApiResponse, CrudServiceInterface, PayloadInterface} from "@shared/model";
 import {BehaviorSubject, Observable} from "rxjs";
 import {ApiService} from "@shared/service";
 import {map} from "rxjs/operators";
@@ -44,18 +44,19 @@ export class FleetService extends ApiService { //implements CrudServiceInterface
   // }
 
 
-  create(addPayload: FleetCreatePayloadInterface): Observable<ApiResponse>{
+  create(addPayload: FleetCreatePayloadInterface): Observable<ApiResponse>
+  {
     this.fleet$$.next(addPayload);
     return this.post("fleet/create", addPayload);
-
-    // return this.post("fleet/create", addPayload).pipe(
-    //   map((response: ApiResponse) => {
-    //     return (response.result)
-    //   })
-    // )
   }
 
-  remove(id: string | number): Observable<ApiResponse>{
+  update(updatePayload: PayloadInterface): Observable<ApiResponse>
+  {
+    return this.put("fleet/update", updatePayload);
+  }
+
+  remove(id: string | number): Observable<ApiResponse>
+  {
     return this.delete(`fleet/delete/${id}`).pipe(
       map((response: ApiResponse) => {
         console.log(response.data);

@@ -19,33 +19,18 @@ import {FleetFieldPrefabComponent} from "../../component/fleet-field-prefab/flee
 })
 export class FleetInsertComponent implements OnInit{
 
-  constructor(private employeeService: EmployeeService,
-              private fleetService: FleetService,
+  constructor(private fleetService: FleetService,
               private router: Router) {
   }
 
-  @ViewChild('prefab') prefab?: FleetFieldPrefabComponent;
-
-
-
-
-
-  employeeInput = new FormControl <string | Employee>('');
-  employeeList: Employee[] = [];
-  employeeFiltered?: Observable<Employee[]>;
-  employeeSelected: Employee | undefined;
-
+  @ViewChild('prefab') prefab!: FleetFieldPrefabComponent;
   formGroup !: FormGroup;
-
-  messageFromChild(event: any){
+  formGroupFromChild(event: any){
     this.formGroup = event;
-    console.log(this.formGroup)
   }
   ngOnInit() {
 
   }
-
-
   insert(title: string, description: string, type: string, cost: string)
   {
     let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
@@ -54,25 +39,6 @@ export class FleetInsertComponent implements OnInit{
       this.router.navigateByUrl('/dashboard/fleet');
     });
 
-
   };
-
-  // insert(title: string, description: string, type: string, cost: string, employee: Employee)
-  // {
-  //   let payload: FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost)};
-  //   this.subList.push(
-  //     this.fleetService.create(payload).subscribe(data => {
-  //       if(data.result)
-  //       {
-  //         // Afficher un truc "Success"
-  //       }
-  //       this.refreshList();
-  //     })
-  //   );
-  //
-  // };
-
-
-
 }
 

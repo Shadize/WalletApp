@@ -1,62 +1,26 @@
 <div class="mainDiv">
 
-  <form [formGroup]="formGroup" class="form" (submit)="update()">
-
     <h1>Edit Fleet</h1>
 
-    <mat-form-field class="formField" appearance="fill">
+    <mat-form-field id="idField" appearance="fill">
       <mat-label>Fleet ID</mat-label>
-      <input #fleetId matInput formControlName="fleetId">
+      <input matInput [value]="this.fleetId" disabled>
     </mat-form-field>
 
-    <mat-form-field class="formField" appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput #title formControlName="title">
-      <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
-        Title is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="formField" appearance="fill">
-      <mat-label>Description</mat-label>
-      <input matInput #description formControlName="description">
-      <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
-        Description is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="formField" appearance="fill">
-      <mat-label>Type</mat-label>
-      <input matInput #type formControlName="type">
-      <mat-error *ngIf="formGroup.get('type')?.hasError('required')">
-        Type is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="formField" appearance="fill">
-      <mat-label>Cost</mat-label>
-      <input matInput #title formControlName="cost">
-      <mat-error *ngIf="formGroup.get('cost')?.hasError('required')">
-        Cost is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+    <app-fleet-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-fleet-field-prefab>
 
-    <mat-form-field class="formField" appearance="fill">
-    <mat-label>Employee</mat-label>
-    <input matInput [formControl]="employeeInput" [matAutocomplete]="employee">
-    <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">
-      <mat-option *ngFor="let employee of employeeFiltered | async"
-                  [value]="employee"
-                  (click)="employeeSelectedClick(employee)"
+    <div id="buttonDiv">
+      <button mat-raised-button color="warn"
+              [routerLink]="['/dashboard/fleet']"
       >
-        {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-
-
-    <div>
-      <button mat-raised-button color="warn">Cancel</button>
-      <button mat-raised-button class="btnUpdate" color="accent" [disabled]="!this.formGroup.valid">Update</button>
+        Cancel
+      </button>
+      <button mat-raised-button class="btnUpdate"
+              color="accent"
+              (click)="update(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
+              [disabled]="!this.formGroup.valid"
+      >Update</button>
     </div>
-  </form>
 
 </div>
 

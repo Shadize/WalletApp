@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -7,6 +7,8 @@ import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 import {Observable, startWith} from "rxjs";
 import {map} from "rxjs/operators";
+import {FleetFieldPrefabComponent} from "../../component/fleet-field-prefab/fleet-field-prefab.component";
+import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
 
 @Component({
   selector: 'app-fleet-edit',
@@ -17,24 +19,17 @@ export class FleetEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private fleetService : FleetService,
-              private employeeService : EmployeeService) { }
-
+              private router: Router) { }
   fleetId : string = '';
   fleet !: Fleet;
   formGroup!: FormGroup;
-  employeeInput = new FormControl <string | Employee>('');
-  employeeList: Employee[] = []
-  employeeFiltered?: Observable<Employee[]>;
-  employeeSelected: Employee | undefined;
+  @ViewChild('prefab') prefab!: FleetFieldPrefabComponent;
+
+  formGroupFromChild(event: any){
+    this.formGroup = event;
+  }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      fleetId: new FormControl(''),
-      title: new FormControl('',Validators.required),
-      description: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
-      cost: new FormControl('',[Validators.required, Validators.pattern("^[0-9]$")])
-    })
 
     this.fleetId = this.route.snapshot.paramMap.get('id') || '';
 
@@ -42,46 +37,20 @@ export class FleetEditComponent implements OnInit {
       this.fleet = data.data as Fleet;
 
       this.formGroup.setValue({
-        fleetId : this.fleetId,
         title: this.fleet.title,
         description: this.fleet.description,
         type: this.fleet.type,
         cost: this.fleet.cost
       })
     })
+  }
+  update(title: string, description: string, type: string, cost: string){
 
-    this.employeeService.list().subscribe(data => {
-      this.employeeList = data;
+    let payload: FleetUpdatePayloadInterface = {fleetId:this.fleetId, title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
 
-      this.employeeFiltered = this.employeeInput.valueChanges.pipe(
-        startWith(''),
-        map(value => {
-          const input = typeof value === 'string' ? value : '';
-          return input ? this.filter(input) : this.employeeList.slice();
-        }),
-      );
+    this.fleetService.update(payload).subscribe(data => {
+      this.router.navigateByUrl('/dashboard/fleet').then(r => console.log(r));
     })
-
-  }
-
-  employeeSelectedClick(employee: Employee) {
-    this.employeeSelected = employee;
-  }
-
-  display(employee: Employee): string {
-    return employee && (employee.lastname + employee.firstname + employee.employeeId)  ?
-      (employee.firstname + ' ' + employee.lastname + ' (UUID : ' + employee.employeeId + ')') : '';
-  }
-
-  filter(name: string): Employee[] {
-    const filterValue = name.toLowerCase();
-    return this.employeeList.filter(employee =>
-      (employee.firstname + ' ' + employee.lastname + ' ' + employee.employeeId).toLowerCase().includes(filterValue)
-    );
-  }
-
-  update(){
-
   }
 
 }

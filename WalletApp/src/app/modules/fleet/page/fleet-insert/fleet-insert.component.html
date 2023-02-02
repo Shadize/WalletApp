@@ -1,15 +1,9 @@
 
-
-
-
 <div id="InsertContainer">
 
     <h1>Insert a new Fleet</h1>
 
-
-
-    <app-fleet-field-prefab #prefab (myOutputEvent)="messageFromChild($event)"></app-fleet-field-prefab>
-
+    <app-fleet-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-fleet-field-prefab>
 
     <div id="buttonDiv">
       <a [routerLink]="['/dashboard/fleet']">
@@ -23,9 +17,7 @@
               [disabled]="!formGroup.valid"
 
       > Insert </button>
-
     </div>
-
 
 </div>
 
