@@ -42,3 +42,46 @@
   margin-top: 1em;
   color: red;
 }
+
+.spinner {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.success-message p{
+  color: green;
+}
+
+.check-icon{
+  color: green;
+}
+
+.header {
+  background-color: #3f51b5;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.disabled {
+  color: lightgray;
+  pointer-events: none;
+}
+.disabled a{
+  text-decoration: none;
+  color: lightgrey;
+}
+

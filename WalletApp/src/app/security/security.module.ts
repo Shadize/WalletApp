@@ -6,6 +6,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { CommonModule } from '@angular/common';
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     CommonModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatButtonModule,
   ],
   providers: []
 })

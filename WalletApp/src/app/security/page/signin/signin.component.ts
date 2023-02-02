@@ -10,8 +10,9 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class SigninComponent implements OnInit {
 
   formGroup!: FormGroup;
-  hide: boolean = true;
-  error: boolean = false;
+  hide: boolean = true;   // Indicateur de masquage pour le champ du mot de passe
+  error: boolean = false; // Indicateur d'erreur lors de la soumission du formulaire
+  success: boolean = false;
 
   constructor(public auth: AuthService) {
   }
@@ -24,22 +25,28 @@ export class SigninComponent implements OnInit {
   }
 
   signin(username: string, password: string) {
+    // Construction du payload à envoyer pour le login
     const payload: SigninPayload = {
-      /*
-      username: 'captain',
-      password: 'P@ssword'
-
-       */
       username: username,
       password: password
     };
+
+    // Tentative de login
+
     this.auth.signin(payload).subscribe(data =>{
-      if (!data.result) {
-        this.error = true;
-      } else {
+      // Si succes, on désactive le formulaire et affiche les messages de succes
+      if (data.result) {
+        this.success = true;
         this.error = false;
+        this.formGroup.disable();
+        console.log(data.result)
+
+        // Sinon on affiche les messages d'erreurs
+        console.log(data.result)
+      } else {
+        this.error = true;
+        console.log(data.result)
       }
-      this.auth.signup()
     })
   }
 }
