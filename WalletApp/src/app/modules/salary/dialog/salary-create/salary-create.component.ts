@@ -44,6 +44,8 @@ export class SalaryCreateComponent implements OnInit{
   insert(newDate: string, title: string, comment: string, createdAmount: string, employee: Employee) {
     // Conversion du string en date
 
+
+
     let createDate = new Date(newDate);
 
     // Conversion du string en Number

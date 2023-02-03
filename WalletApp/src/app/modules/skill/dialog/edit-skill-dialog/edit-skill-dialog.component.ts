@@ -4,7 +4,7 @@ import {Skill} from "@shared/model/dto/skill.interface";
 import {SkillService} from "@shared/service/crud/skill.service";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {SkillUpdatePayloadInterface} from "@shared/model/payload/update/SkillUpdatePayload.interface";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-skill-dialog',
@@ -17,11 +17,16 @@ export class EditSkillDialogComponent implements OnInit{
   updatedEmployeeList: Employee[] = []
   //The form control for the employee list
   toppings = new FormControl();
+  formGroup!: FormGroup;
 
 
   ngOnInit(): void {
     //Setting the selected employees
     this.toppings.setValue(this.data.skill.employees.map(employee => employee))
+    this.formGroup = new FormGroup({
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+    })
   }
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {skill: Skill, allEmployeeList: Employee[]},

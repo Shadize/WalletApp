@@ -1,16 +1,16 @@
 
 
 <div class="form-container">
-  <form class="form">
+  <form class="form" [formGroup]="formGroup">
 
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput value="{{this.data.skill.title}}" type="text" [(ngModel)]="this.data.skill.title" [ngModelOptions]="{standalone: true}">
+      <input formControlName="title" matInput value="{{this.data.skill.title}}" type="text" [(ngModel)]="this.data.skill.title">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Description</mat-label>
-      <input matInput value="{{this.data.skill.description}}" type="text" [(ngModel)]="this.data.skill.description" [ngModelOptions]="{standalone: true}">
+      <input formControlName="description" matInput value="{{this.data.skill.description}}" type="text" [(ngModel)]="this.data.skill.description">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -22,6 +22,6 @@
       </mat-select>
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary" (click)="editSkill()">Apply</button>
+    <button [disabled]="!formGroup.valid" type="submit" mat-raised-button color="primary" (click)="editSkill()">Apply</button>
   </form>
 </div>

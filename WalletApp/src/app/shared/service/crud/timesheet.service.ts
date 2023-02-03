@@ -44,7 +44,7 @@ export class TimesheetService extends ApiService implements CrudServiceInterface
     console.log(payload)
     return this.put('timesheet/update/', payload).pipe(
       map((response: ApiResponse) => {
-        console.log(response)
+
         return response.result
       })
     )
