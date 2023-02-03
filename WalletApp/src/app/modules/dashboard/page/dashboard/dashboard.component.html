@@ -38,17 +38,18 @@
           <mat-icon class="sidenav-icon">description</mat-icon>
           Contracts
         </mat-list-item>
+        <a [routerLink]="['/dashboard/document']">
         <mat-list-item>
           <mat-icon class="sidenav-icon">folder_open</mat-icon>
           Documents
         </mat-list-item>
+        </a>
         <a [routerLink]="['/dashboard/fleet']">
           <mat-list-item>
             <mat-icon class="sidenav-icon">groups</mat-icon>
             Fleets
           </mat-list-item>
         </a>
-
         <a [routerLink]="['/dashboard/timesheet']">
           <mat-list-item>
             <mat-icon class="sidenav-icon">schedule</mat-icon>

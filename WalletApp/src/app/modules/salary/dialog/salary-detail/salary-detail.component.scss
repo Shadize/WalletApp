@@ -1,0 +1,31 @@
+
+.salary-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.close-button {
+  color: #333;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 50%;
+  &:hover {
+    background-color: #333;
+    color: white;
+    transform: scale(1.05);
+  }
+}
+.close-button:hover{
+  background-color: red;
+  color: white;
+}
+
+.header {
+  margin-right: 36px;
+  text-align: center;
+}

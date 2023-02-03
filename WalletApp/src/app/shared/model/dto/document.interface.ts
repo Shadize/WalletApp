@@ -6,6 +6,7 @@ import {DtoInterface} from "@shared/model";
 export interface Document extends DtoInterface{
   documentId? : string;
   title : string;
+  path: string;
   content : string;
   type : string;
   createDate : Date;
