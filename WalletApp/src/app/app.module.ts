@@ -37,6 +37,11 @@ import {InsertSkillDialogComponent} from "./modules/skill/dialog/insert-skill-di
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { EmployeeComponent } from './modules/employee/page/employee/employee.component';
+import { EmployeeInsertComponent } from './modules/employee/page/employee-insert/employee-insert.component';
+import { EmployeeDetailComponent } from './modules/employee/page/employee-detail/employee-detail.component';
+import { EmployeeEditComponent } from './modules/employee/page/employee-edit/employee-edit.component';
+import {EmployeeModule} from "./modules/employee/employee.module";
 
 
 @NgModule({
@@ -50,40 +55,45 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     FleetComponent,
     InsertSkillDialogComponent,
     SalaryComponent,
-    EditSkillDialogComponent
+    EditSkillDialogComponent,
+    EmployeeComponent,
+    EmployeeInsertComponent,
+    EmployeeDetailComponent,
+    EmployeeEditComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
 
-    //Material
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    CdkTableModule,
-    MatTooltipModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    SharedModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    MatDialogModule,
-    MatPaginatorModule
-  ],
+        //Material
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSlideToggleModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        CdkTableModule,
+        MatTooltipModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        SharedModule,
+        MatMenuModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        MatDialogModule,
+        MatPaginatorModule,
+        EmployeeModule
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },

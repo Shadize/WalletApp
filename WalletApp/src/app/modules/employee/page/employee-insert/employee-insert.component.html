@@ -1,0 +1,21 @@
+<div id="InsertContainer">
+
+  <h1>Insert a new Employee</h1>
+
+  <app-employee-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-employee-field-prefab>
+
+  <div id="buttonDiv">
+    <a [routerLink]="['/dashboard/employee']">
+      <button mat-raised-button color="warn"> Cancel </button>
+    </a>
+
+    <button mat-raised-button type="submit"
+            class="insertButton"
+            color="primary"
+            (click)="insert()"
+            [disabled]="!formGroup.valid"
+
+    > Insert </button>
+  </div>
+
+</div>

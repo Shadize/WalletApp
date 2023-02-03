@@ -1,0 +1,129 @@
+
+
+<form [formGroup]="formGroup" class="form">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Lastname</mat-label>
+    <input #lastname matInput formControlName="lastname">
+    <mat-error *ngIf="formGroup.get('lastname')?.invalid">
+      Lastname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Firstname</mat-label>
+    <input #firstname matInput formControlName="firstname">
+    <mat-error *ngIf="formGroup.get('firstname')?.hasError('required')">
+      Firstname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Active</mat-label>
+    <input #active matInput formControlName="active">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Deleted By</mat-label>
+    <input #deletedBy matInput formControlName="deletedBy">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input #address matInput formControlName="address">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <input #gender matInput formControlName="gender">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Birthday</mat-label>
+    <input #birthday matInput formControlName="birthday">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ssin</mat-label>
+    <input #ssin matInput formControlName="ssin">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <input #status matInput formControlName="status">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Deleted</mat-label>
+    <input #deleted matInput formControlName="deleted">
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Company</mat-label>
+    <input #company matInput formControlName="company">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Skills</mat-label>
+    <input #skills matInput formControlName="skills">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Timesheets</mat-label>
+    <input #timesheets matInput formControlName="timesheets">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Documents</mat-label>
+    <input #documents matInput formControlName="documents">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contracts</mat-label>
+    <input #contracts matInput formControlName="contracts">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fleets</mat-label>
+    <input #fleets matInput formControlName="fleets">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Salaries</mat-label>
+    <input #salaries matInput formControlName="salaries">
+  </mat-form-field>
+
+
+
+</form>
+
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Cost</mat-label>-->
+<!--    <input #cost matInput formControlName="cost">-->
+<!--    <mat-error *ngIf="formGroup.get('cost')?.hasError('required')">-->
+<!--      Cost is <strong>required</strong>-->
+<!--    </mat-error>-->
+<!--    <mat-error *ngIf="formGroup.get('cost')?.hasError('pattern')">-->
+<!--      Cost <strong>must be a number</strong>-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+
+
+
+<!--  <mat-form-field class="employeeInput" appearance="fill">-->
+<!--    <mat-label>Employee</mat-label>-->
+<!--    <input matInput formControlName="employee" [matAutocomplete]="employee">-->
+<!--    <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">-->
+<!--      <mat-option *ngFor="let employee of employeeFiltered | async"-->
+<!--                  [value]="employee"-->
+<!--                  (click)="employeeSelectedClick(employee)"-->
+<!--      >-->
+<!--        {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}-->
+<!--      </mat-option>-->
+<!--    </mat-autocomplete>-->
+<!--  </mat-form-field>-->
+
+
