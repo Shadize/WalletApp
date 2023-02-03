@@ -54,10 +54,10 @@
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="openEditSalaryDialog(element)">Edit</button>
             <button mat-menu-item (click)="openDeleteConfirmationDialog(element)">Delete</button>
+            <button mat-menu-item (click)="openDetailDialog(element)">Detail</button>
         </mat-menu>
       </mat-cell>
     </ng-container>
-
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let salary; columns: displayedColumns"></mat-row>
   </mat-table>
