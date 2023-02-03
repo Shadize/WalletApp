@@ -16,8 +16,7 @@ export class DocumentDetailComponent implements OnInit {
   document!: Document
   dialog!: MatDialog;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {document: Document},
-              private documentService: DocumentService) {  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {document: Document}) {  }
 
   ngOnInit() {
     this.document = this.data.document;

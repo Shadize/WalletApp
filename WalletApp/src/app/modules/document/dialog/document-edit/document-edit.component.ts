@@ -32,6 +32,9 @@ export class DocumentEditComponent implements OnInit{
 
   ngOnInit() {
 
+    // Récupération de la liste des emloyee, company et contract pour
+    // La sélection lors de l'édition
+
     this.editDocument = this.data.document;
 
     this.companyService.list().subscribe(data =>{
@@ -44,6 +47,7 @@ export class DocumentEditComponent implements OnInit{
       this.employees = data;
     })
 
+    // Pas de validator pour company, contract et employee car ils ne sont pas obligatoire
     this.formGroup = new FormGroup({
       title: new FormControl('', Validators.required),
       path: new FormControl('', Validators.required),
@@ -56,6 +60,7 @@ export class DocumentEditComponent implements OnInit{
     })
   }
 
+  // Création d'un payload pour l'update
   edit() {
     let updatedDocument: DocumentUpdatePayloadInterface = {
       documentId: this.editDocument.documentId,

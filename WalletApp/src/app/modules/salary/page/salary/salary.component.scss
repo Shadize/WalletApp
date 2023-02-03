@@ -1,14 +1,5 @@
-
 .salaries-container {
   width: 100%;
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-.form-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 mat-table{
@@ -17,15 +8,20 @@ mat-table{
   width: 100%;
 }
 
-.form {
-  max-width: 500px;
-  margin: 15px;
-  display: flex;
-  flex-direction: column;
+.table-container {
+  width: 100%;
 }
 
-.mat-form-field{
-  margin-bottom: -1.25em;
+.mat-header-cell {
+  padding: 5px 10px;
+}
+
+.mat-cell {
+  padding: 5px 10px;
+}
+
+.employees-cell {
+  width: 200px;
 }
 
 .full-width {
@@ -33,4 +29,3 @@ mat-table{
   display: flex;
   justify-content: space-between;
 }
-

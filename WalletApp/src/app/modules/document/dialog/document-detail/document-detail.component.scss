@@ -1,3 +1,4 @@
+
 .document-container {
   display: flex;
   flex-direction: column;
@@ -5,10 +6,19 @@
 }
 
 .close-button {
-  color: red;
+  color: #333;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 0px;
+  right: 0px;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 50%;
+  &:hover {
+    background-color: #333;
+    color: white;
+    transform: scale(1.05);
+  }
 }
 .close-button:hover{
   background-color: red;

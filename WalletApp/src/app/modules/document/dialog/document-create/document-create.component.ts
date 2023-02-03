@@ -33,6 +33,9 @@ export class DocumentCreateComponent implements OnInit{
 
   ngOnInit() {
 
+    // Récupération de la liste des emloyee, company et contract pour
+    // La sélection lors de la création
+
     this.contractService.list().subscribe(data => {
       this.contracts = data;
     })
@@ -43,6 +46,7 @@ export class DocumentCreateComponent implements OnInit{
       this.employees = data;
     })
 
+    // Pas de validator pour company, contract et employee car ils ne sont pas obligatoire
     this.formGroup = new FormGroup({
       title: new FormControl('', Validators.required),
       path: new FormControl('', Validators.required),
@@ -59,8 +63,10 @@ export class DocumentCreateComponent implements OnInit{
 
   insert(title: string, path: string ,content: string, type: string, date: string, company: Company, contract: Contract, employee: Employee) {
 
+    //  Conversion du string de la date en date
     let createDate = new Date(date);
 
+    // Création d'un payload de Document et insert
     let newDocument: DocumentCreatePayloadInterface = { title, path ,content, type, createDate, company, contract, employee}
 
     let result = this.documentService.create(newDocument);
