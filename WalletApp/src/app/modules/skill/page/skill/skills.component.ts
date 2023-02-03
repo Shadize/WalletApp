@@ -7,7 +7,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {InsertSkillDialogComponent} from "../../dialog/insert-skill-dialog/insert-skill-dialog.component";
 import {EditSkillDialogComponent} from "../../dialog/edit-skill-dialog/edit-skill-dialog.component";
 import {EmployeeService} from "@shared/service/crud/employee.service";
-import {FormControl} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-skills',
@@ -21,6 +21,7 @@ export class SkillsComponent implements OnInit{
   dataSource: Skill[] = [];
   allEmployeeList: Employee[] = [];
   columnsToDisplay: string[] = ['title', 'description', 'employees', 'edit'];
+
 
   constructor(private skillService: SkillService, public dialog: MatDialog, private employeeService: EmployeeService) {
   }

@@ -5,7 +5,7 @@ import {TimesheetService} from "@shared/service/crud/timesheet.service";
 import {TimesheetCreatePayload} from "@shared/model/payload/create/TimesheetCreatePayload.interface";
 import {Contract} from "@shared/model/dto/contract.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 import {ContractService} from "@shared/service/crud/contract.service";
 
@@ -26,9 +26,7 @@ export class InsertTimesheetDialogComponent implements OnInit{
   selectedContract: Contract = {} as Contract;
   allEmployeeList: Employee[] = [];
   allContractList: Contract[] = [];
-  //The form control for the employee list
-  toppings = new FormControl();
-  toppings2 = new FormControl();
+  formGroup!: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {timesheet: Timesheet},
               private timesheetService: TimesheetService,
@@ -43,6 +41,16 @@ export class InsertTimesheetDialogComponent implements OnInit{
     this.employeeService.list().subscribe(data => {
       this.allEmployeeList = data
       this.initializeData()
+    })
+
+    this.formGroup = new FormGroup({
+      owner: new FormControl(this.selectedEmployee, Validators.required),
+      contract: new FormControl(this.selectedContract, Validators.required),
+      startDate: new FormControl(this.startDate, Validators.required),
+      startHours: new FormControl(this.startHoursString, Validators.required),
+      endHours: new FormControl(this.endHoursString, Validators.required),
+      comment: new FormControl(this.comment, Validators.required),
+      timesheetType: new FormControl(this.timesheetType, Validators.required)
     })
   }
 

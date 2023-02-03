@@ -3,11 +3,9 @@ import {NgModule} from '@angular/core';
 import {DashboardComponent} from './page';
 import {SkillsComponent} from "../skill/page/skill/skills.component";
 import {HomeComponent} from "@dashboard/page/home/home.component";
-import {SalaryComponent} from "../salary/page/salary/salary.component";
+
 import {TimesheetModule} from "../timesheet/timesheet.module";
 import {FleetComponent} from "../fleet/page/fleet/fleet.component";
-
-
 
 const routes: Routes = [
   {
@@ -32,7 +30,11 @@ const routes: Routes = [
       },
       {
         path: 'salary',
-        component: SalaryComponent
+        loadChildren: () => import('../salary/salary.module').then(m => m.SalaryModule)
+      },
+      {
+        path: 'document',
+        loadChildren: () => import('../document/document.module').then(m => m.DocumentModule)
       },
       {
         path: 'timesheet',

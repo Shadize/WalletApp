@@ -36,13 +36,16 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {InsertSkillDialogComponent} from "./modules/skill/dialog/insert-skill-dialog/insert-skill-dialog.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { DocumentComponent } from './modules/document/page/document/document.component';
+import { DocumentCreateComponent } from './modules/document/dialog/document-create/document-create.component';
+import { DocumentEditComponent } from './modules/document/dialog/document-edit/document-edit.component';
+import { DocumentDeleteConfirmComponent } from './modules/document/dialog/document-delete-confirm/document-delete-confirm.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { EmployeeComponent } from './modules/employee/page/employee/employee.component';
 import { EmployeeInsertComponent } from './modules/employee/page/employee-insert/employee-insert.component';
 import { EmployeeDetailComponent } from './modules/employee/page/employee-detail/employee-detail.component';
 import { EmployeeEditComponent } from './modules/employee/page/employee-edit/employee-edit.component';
 import {EmployeeModule} from "./modules/employee/employee.module";
-
 
 @NgModule({
   declarations: [
@@ -52,6 +55,10 @@ import {EmployeeModule} from "./modules/employee/employee.module";
     SalaryCreateComponent,
     SalaryDeleteConfirmComponent,
     SalaryEditComponent,
+    DocumentComponent,
+    DocumentCreateComponent,
+    DocumentEditComponent,
+    DocumentDeleteConfirmComponent,
     FleetComponent,
     InsertSkillDialogComponent,
     SalaryComponent,

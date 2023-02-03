@@ -33,21 +33,18 @@ public class Document {
     Date createDate;
     @JsonIgnoreProperties({"documents", "employees", "organizations", "contractsBusiness", "contractsClient"})
     @ManyToOne()
-    @Cascade(CascadeType.SAVE_UPDATE)
     // @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = true, foreignKey=@ForeignKey(name = "document_company_fk"))
     @JoinColumn(name = "company_FK",referencedColumnName = "company_id")
     private Company company;
 
     @JsonIgnoreProperties({"documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @ManyToOne()
-    @Cascade(CascadeType.SAVE_UPDATE)
     // @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id",nullable = true, foreignKey=@ForeignKey(name = "document_contract_fk"))
     @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id")
     private Contract contract;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
-    @Cascade(CascadeType.SAVE_UPDATE)
     // @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "document_employee_fk"))
     @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id")
     private Employee employee;

@@ -1,0 +1,94 @@
+<mat-toolbar class="full-width">
+  <span>Document Management</span>
+  <button mat-icon-button (click)="openCreateDocumentDialog()" mat-raised-button color = "primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Liste des Documents -->
+
+<div class="documents-container">
+  <mat-table [dataSource]="documents" class="table-container">
+    <ng-container matColumnDef="documentId">
+      <mat-header-cell *matHeaderCellDef>
+        ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document">{{document.documentId}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>
+        Title
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document">
+        {{document.title}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="path">
+      <mat-header-cell *matHeaderCellDef>
+        Path
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document">{{document.path}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="content">
+      <mat-header-cell *matHeaderCellDef>
+        Content
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document">{{document.content}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef>
+        Type
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document">{{document.type}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="createDate">
+      <mat-header-cell *matHeaderCellDef>
+        Create Date
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document">{{document.createDate | date: "MM/dd/yyyy"}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef>
+        Company
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document" class="company-cell">
+        <ng-container *ngIf="document.company">
+          {{document.company.name}}
+        </ng-container>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="contract">
+      <mat-header-cell *matHeaderCellDef>
+        Contract
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document" class="contract-cell"><ng-container *ngIf="document.contract">
+        {{document.contract.description}}
+      </ng-container></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="employee">
+      <mat-header-cell *matHeaderCellDef>
+        Employees
+      </mat-header-cell>
+      <mat-cell *matCellDef="let document" class="employees-cell">
+        <ng-container *ngIf="document.employee">
+          {{document.employee.lastname +" "+document.employee.firstname}}
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openEditDocumentDialog(element)">Edit</button>
+          <button mat-menu-item (click)="openDeleteConfirmationDialog(element)">Delete</button>
+          <button mat-menu-item (click)="openDetailDialog(element)">Detail</button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let salary; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

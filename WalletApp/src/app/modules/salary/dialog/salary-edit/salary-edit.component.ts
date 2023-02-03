@@ -20,16 +20,20 @@ export class SalaryEditComponent implements OnInit{
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {salary: Salary}, private employeeService: EmployeeService, private salaryService: SalaryService) {
   }
+  // Récupération par l'injection de MAT dialog data du salaire à éditer
+  // Qui à été envoyer par la méthode d'ouverture de dialogue du document.ts
 
   ngOnInit() {
-
     this.editSalary = this.data.salary;
 
+    // Récupération de la liste des employee pour l'edition
 
     this.employeeService.list().subscribe(data => {
       this.employees = data
     })
 
+    // Form group avec Validator
+    // Création d'un Validator Pattern pour amount pour obliger à mettre uniquement des chiffres
     this.formGroup = new FormGroup({
       createDate: new FormControl('', Validators.required),
       title: new FormControl('', Validators.required),
@@ -37,10 +41,9 @@ export class SalaryEditComponent implements OnInit{
       amount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       employee: new FormControl('', Validators.required),
     })
-
-    //this.formGroup.get('employee')?.setValue(this.editSalary.employee);
   }
 
+  // Création de payload d'update de Salary et Update du salaire
   edit(){
     let updatedSalary: SalaryUpdatePayloadInterface = {
       salaryId: this.editSalary.salaryId,

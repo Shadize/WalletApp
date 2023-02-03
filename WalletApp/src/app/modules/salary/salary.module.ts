@@ -10,10 +10,14 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { SalaryDeleteConfirmComponent } from './dialog/salary-delete-confirm/salary-delete-confirm.component';
 import { SalaryEditComponent } from './dialog/salary-edit/salary-edit.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { SalaryDetailComponent } from './dialog/salary-detail/salary-detail.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [
+
+    SalaryDetailComponent
   ],
     imports: [
         FormsModule,
@@ -23,7 +27,8 @@ import {MatDialogModule} from "@angular/material/dialog";
         MatSelectModule,
         MatDatepickerModule,
         ReactiveFormsModule,
-        MatDialogModule
+        MatDialogModule,
+        MatIconModule
     ]
 })
 export class SalaryModule { }

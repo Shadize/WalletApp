@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Employee} from "@shared/model/dto/employee.interface";
 import {Contract} from "@shared/model/dto/contract.interface";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Timesheet} from "@shared/model/dto/timesheet.interface";
 import {TimesheetService} from "@shared/service/crud/timesheet.service";
@@ -16,7 +16,7 @@ import {TimesheetUpdatePayload} from "@shared/model/payload/update/TimesheetUpda
   styleUrls: ['./edit-timesheet-dialog.component.scss']
 })
 export class EditTimesheetDialogComponent implements OnInit{
-
+  //Default values
   timesheetId?: string;
   startDate: Date = new Date();
   startHoursString: string = "08:00";
@@ -27,9 +27,7 @@ export class EditTimesheetDialogComponent implements OnInit{
   selectedContract: Contract = {} as Contract;
   allEmployeeList: Employee[] = [];
   allContractList: Contract[] = [];
-  //The form control for the employee list
-  toppings = new FormControl();
-  toppings2 = new FormControl();
+  formGroup!: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {timesheet: Timesheet},
               private timesheetService: TimesheetService,
@@ -52,11 +50,21 @@ export class EditTimesheetDialogComponent implements OnInit{
     this.timesheetType = timesheet.timesheetType
     this.selectedEmployee = timesheet.employee
     this.selectedContract = timesheet.contract
+
+    this.formGroup = new FormGroup({
+      owner: new FormControl(this.selectedEmployee, Validators.required),
+      contract: new FormControl(this.selectedContract, Validators.required),
+      startDate: new FormControl(this.startDate, Validators.required),
+      startHours: new FormControl(this.startHoursString, Validators.required),
+      endHours: new FormControl(this.endHoursString, Validators.required),
+      comment: new FormControl(this.comment, Validators.required),
+      timesheetType: new FormControl(this.timesheetType, Validators.required)
+    })
   }
 
   update(startDate: Date, startHoursString: string, endHoursString: string, comment: string, timesheetType: string, contractId: string, employeeId: string){
     console.log("Updating timesheet")
-    console.log(comment)
+    console.log(employeeId)
     const contract = {contractId: contractId} as Contract
     const employee = {employeeId: employeeId} as Employee
     const startHours: Date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), parseInt(startHoursString.substring(0, 2)), parseInt(startHoursString.substring(3, 5)))

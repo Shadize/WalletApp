@@ -6,6 +6,7 @@ import {Employee} from "@shared/model/dto/employee.interface";
 export interface DocumentUpdatePayloadInterface extends PayloadInterface{
   documentId? : string;
   title : string;
+  path: string;
   content : string;
   type : string;
   createDate : Date;
