@@ -1,27 +1,22 @@
-<div class="form-container">
-  <form class="form">
-    <h1>Insert a new skill</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input #title matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <input #description matInput>
-    </mat-form-field>
-    <button mat-raised-button type="submit" color="primary" (click)="insert(title.value, description.value)">Insert Skill</button>
-  </form>
-</div>
+
+
 
 
 <div class="skills-container">
+  <div class="insert-skill-button-container">
+    <button mat-fab class="insert-skill-button" color="primary" (click)="openInsertDialog()" aria-label="Example icon button with a delete icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
   <mat-table [dataSource]="dataSource" class="table-container">
+
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef>
         Title
       </mat-header-cell>
       <mat-cell *matCellDef="let skill">{{skill.title}}</mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>
         Description
@@ -31,11 +26,11 @@
 
     <ng-container matColumnDef="employees">
       <mat-header-cell *matHeaderCellDef>
-        Employees
+        Owned By
       </mat-header-cell>
       <mat-cell *matCellDef="let skill" class="employees-cell">
         <mat-form-field appearance="fill" class="employees-form">
-          <mat-label>Employees</mat-label>
+          <mat-label>Employees List</mat-label>
           <mat-select class="employees-select" >
             <mat-option class="employees-option" *ngFor="let employee of skill.employees" [value]="employee.lastname">
               {{employee.lastname }} {{employee.firstname}}
@@ -48,12 +43,12 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
+        <button  mat-icon-button type="button" [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <form>
-            <button mat-menu-item (click)="edit(element)">Edit</button>
+            <button mat-menu-item type="button" (click)="openEditDialog(element)">Edit</button>
             <button type="submit" mat-menu-item (click)="delete(element)">Delete</button>
           </form>
         </mat-menu>

@@ -43,7 +43,7 @@ public class SkillServiceImpl implements SkillService {
         }
         catch (Exception ex)
         {
-            return null;
+            throw new RuntimeException("error with object");
         }
     }
 

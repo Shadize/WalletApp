@@ -9,7 +9,11 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './page/home/home.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {TimesheetModule} from "../timesheet/timesheet.module";
+import {SkillModule} from "../skill/skill.module";
+import {MatTableModule} from "@angular/material/table";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+
 
 @NgModule({
   declarations: [

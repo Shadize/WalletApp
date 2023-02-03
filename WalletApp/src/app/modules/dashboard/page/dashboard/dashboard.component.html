@@ -44,30 +44,28 @@
           Documents
         </mat-list-item>
         </a>
-        <mat-list-item>
-          <mat-icon class="sidenav-icon">schedule</mat-icon>
-          Timesheet
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon class="sidenav-icon">groups</mat-icon>
-          Fleets
-        </mat-list-item>
+        <a [routerLink]="['/dashboard/fleet']">
+          <mat-list-item>
+            <mat-icon class="sidenav-icon">groups</mat-icon>
+            Fleets
+          </mat-list-item>
+        </a>
+        <a [routerLink]="['/dashboard/timesheet']">
+          <mat-list-item>
+            <mat-icon class="sidenav-icon">schedule</mat-icon>
+            Timesheet
+          </mat-list-item>
+        </a>
         <a [routerLink]="['/dashboard/salary']">
         <mat-list-item>
           <mat-icon class="sidenav-icon">paid</mat-icon>
           Salary
         </mat-list-item>
         </a>
-        <a [routerLink]="['/dashboard/skills']">
+        <a [routerLink]="['/dashboard/skill']">
           <mat-list-item>
             <mat-icon class="sidenav-icon">square_foot</mat-icon>
-            Skills
-          </mat-list-item>
-        </a>
-        <a [routerLink]="['/dashboard/test']">
-          <mat-list-item>
-            <mat-icon class="sidenav-icon">labs</mat-icon>
-            Test
+            Skill
           </mat-list-item>
         </a>
       </mat-nav-list>

@@ -37,21 +37,25 @@ public class TimesheetServiceImpl implements TimesheetService {
                     .setEndHours(payload.getEndHours())
                     .setTimesheetType(payload.getTimesheetType())
                     .setComment((payload.getComment()))
+                    .setContract(payload.getContract())
+                    .setEmployee(payload.getEmployee())
                     .build();
             return this.timesheetRepository.save(timesheet);
         }catch(Exception e){
-            return null;
+            throw new RuntimeException(e) ;
         }
     }
 
     @Override
     public Timesheet update(TimesheetUpdatePayload payload) {
+
         Timesheet detail = this.detail(payload.getTimesheetId());
         if(detail != null){
             detail.setStartDate(payload.getStartDate());
             detail.setStartHours(payload.getStartHours());
             detail.setEndHours(payload.getEndHours());
             detail.setTimesheetType(payload.getTimesheetType());
+            detail.setComment(payload.getComment());
 
             if(payload.getEmployee() != null)
                 detail.setEmployee(payload.getEmployee());

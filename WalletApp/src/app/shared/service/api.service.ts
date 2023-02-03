@@ -26,8 +26,6 @@ export class ApiService {
   }
 
   delete(partUrl: string): Observable<ApiResponse> {
-    console.log(`${this.baseUrl}${partUrl}`)
-    console.log("hey i'm deleting")
     return this.http.delete(`${this.baseUrl}${partUrl}`).pipe(map((response: any) => response as ApiResponse));
   }
 }

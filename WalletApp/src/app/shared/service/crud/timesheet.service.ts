@@ -22,23 +22,29 @@ export class TimesheetService extends ApiService implements CrudServiceInterface
 
   detail = (id: string | number) : Observable<Timesheet> => {
     return this.get(`timesheet/detail/${id}`).pipe(
+
       map((response: ApiResponse) => {
+
         return response.result ? response.data as Timesheet : {} as Timesheet;
       })
     )
   }
 
   create(payload: TimesheetCreatePayload): Observable<boolean> {
+
     return this.post(`timesheet/create/`, payload).pipe(
       map((response: ApiResponse) => {
+
         return response.result;
       })
     )
   }
 
   update(payload: TimesheetUpdatePayload): Observable<boolean> {
+    console.log(payload)
     return this.put('timesheet/update/', payload).pipe(
       map((response: ApiResponse) => {
+        console.log(response)
         return response.result
       })
     )

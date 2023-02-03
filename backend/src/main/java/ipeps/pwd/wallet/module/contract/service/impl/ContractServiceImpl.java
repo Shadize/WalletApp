@@ -30,20 +30,27 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public Contract create(ContractCreatePayload payload) {
         try{
-            Contract contract = new ContractBuilder()
+            ContractBuilder builder = new ContractBuilder()
                     .setDescription(payload.getDescription())
                     .setStartDate(payload.getStartDate())
                     .setEndDate(payload.getEndDate())
-                    .setNbHoursByWeek(payload.getNbHoursByWeek())
-                    .setDocuments(payload.getDocuments())
-                    .setTimesheets(payload.getTimesheets())
-                    .setEmployee(payload.getEmployee())
-                    .setCompanyBusiness(payload.getCompanyBusiness())
-                    .setCompanyClient(payload.getCompanyClient())
-                    .build();
-            return this.contractRepository.save(contract);
+                    .setNbHoursByWeek(payload.getNbHoursByWeek());
+
+            if(payload.getDocuments() != null)
+                builder.setDocuments(payload.getDocuments());
+
+            if(payload.getTimesheets() != null)
+                builder.setTimesheets(payload.getTimesheets());
+            if(payload.getEmployee() != null)
+                builder.setEmployee(payload.getEmployee());
+            if(payload.getCompanyBusiness() != null)
+                builder.setCompanyBusiness(payload.getCompanyBusiness());
+            if(payload.getCompanyClient() != null)
+                builder.setCompanyClient(payload.getCompanyClient());
+            return this.contractRepository.save(builder.build());
+
         }catch(Exception e){
-            return null;
+            throw new RuntimeException("error with object");
         }
     }
 

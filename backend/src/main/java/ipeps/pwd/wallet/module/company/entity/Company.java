@@ -23,7 +23,7 @@ public class Company {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "company_id", updatable = false, nullable = false)
+    @Column(name = "company_id", updatable = true, nullable = false)
     UUID companyId;
 
     String name;

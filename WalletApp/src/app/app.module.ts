@@ -6,11 +6,17 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorService} from '@shared/service/http.interceptor';
 import {AuthService} from '@security/service/auth.service';
-import { SkillsComponent } from './modules/skill/page/skill/skills.component';
+import {SkillsComponent} from './modules/skill/page/skill/skills.component';
+import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
+import {SalaryDeleteConfirmComponent} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
+import {SalaryComponent} from './modules/salary/page/salary/salary.component';
+import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
+import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
+import {SharedModule} from "@shared/shared.module";
 
 //Material
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -23,23 +29,18 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
-import {SharedModule} from "@shared/shared.module";
+import {EditSkillDialogComponent} from "./modules/skill/dialog/edit-skill-dialog/edit-skill-dialog.component";
 import {MatMenuModule} from "@angular/material/menu";
-import { SalaryComponent } from './modules/salary/page/salary/salary.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {InsertSkillDialogComponent} from "./modules/skill/dialog/insert-skill-dialog/insert-skill-dialog.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salary-create.component";
-import {
-  SalaryDeleteConfirmComponent
-} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
-import {MatDialogModule} from "@angular/material/dialog";
-import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
 import { DocumentComponent } from './modules/document/page/document/document.component';
 import { DocumentCreateComponent } from './modules/document/dialog/document-create/document-create.component';
 import { DocumentEditComponent } from './modules/document/dialog/document-edit/document-edit.component';
 import { DocumentDeleteConfirmComponent } from './modules/document/dialog/document-delete-confirm/document-delete-confirm.component';
-
-
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,11 @@ import { DocumentDeleteConfirmComponent } from './modules/document/dialog/docume
     DocumentComponent,
     DocumentCreateComponent,
     DocumentEditComponent,
-    DocumentDeleteConfirmComponent
+    DocumentDeleteConfirmComponent,
+    FleetComponent,
+    InsertSkillDialogComponent,
+    SalaryComponent,
+    EditSkillDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,10 +83,13 @@ import { DocumentDeleteConfirmComponent } from './modules/document/dialog/docume
     MatSelectModule,
     SharedModule,
     MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
     MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true

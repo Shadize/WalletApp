@@ -11,14 +11,32 @@ mat-table{
 
 
 
-.form {
-  max-width: 500px;
-  margin: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
 .mat-form-field{
   margin-bottom: -1.25em;
 }
+
+.insert-skill-button {
+  margin: 5px;
+}
+
+.insert-skill-button-container {
+  position: fixed;
+  bottom:40px;
+  right:40px;
+  opacity: 0.8;
+}
+
+.insert-skill-button-container:hover {
+  cursor: pointer;
+  opacity: 1;
+
+}
+
+.insert-skill-button:hover {
+  cursor: pointer;
+  //Nice box shadow
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
 
