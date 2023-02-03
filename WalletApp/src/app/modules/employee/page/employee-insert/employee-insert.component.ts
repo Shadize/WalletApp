@@ -25,6 +25,10 @@ export class EmployeeInsertComponent implements OnInit{
   }
 
   insert(){
-
+    // let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
+    //
+    // this.fleetService.create(payload).subscribe(data => {
+    //   this.router.navigateByUrl('/dashboard/fleet');
+    // });
   }
 }

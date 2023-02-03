@@ -60,10 +60,15 @@
   </mat-form-field>
 
 
-
   <mat-form-field appearance="fill">
     <mat-label>Company</mat-label>
     <input #company matInput formControlName="company">
+    <mat-error *ngIf="this.formGroup.get('company')?.hasError('required')">
+      Company is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="this.formGroup.get('company')?.hasError('pattern')">
+      Company shoulb be a <strong>UUID pattern</strong> (Example : f3501f5d-ebe5-4ba6-85d6-2e6050ac3dc5)
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">

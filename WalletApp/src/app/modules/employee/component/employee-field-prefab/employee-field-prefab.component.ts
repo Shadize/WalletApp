@@ -49,7 +49,7 @@ export class EmployeeFieldPrefabComponent {
       status: new FormControl(''),
       deleted: new FormControl(''),
 
-      company: new FormControl('', Validators.required),
+      company: new FormControl('', [Validators.required,Validators.pattern("^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$")]),
       skills: new FormControl(''),
       timesheets: new FormControl(''),
       documents: new FormControl(''),
