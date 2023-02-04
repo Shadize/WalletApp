@@ -141,12 +141,8 @@ export class EmployeeFieldPrefabComponent {
     return skill && (skill.title + skill.skillId)  ?
       (skill.title + ' (UUID : ' + skill.skillId + ')') : '';
   }
-  deleteSkill(skillId: string){
-    this.skillService.remove(skillId).subscribe(() => {
-      this.skillService.list().subscribe(data => {
-        this.skillList = data;
-      })
-    });
+  deleteSkill(skill: Skill){
+    this.skillAssigned = this.skillAssigned.splice(this.skillAssigned.indexOf(skill), 1);
   }
 
 
