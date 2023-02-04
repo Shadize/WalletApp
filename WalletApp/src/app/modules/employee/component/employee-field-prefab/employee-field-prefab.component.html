@@ -59,22 +59,66 @@
     <input #deleted matInput formControlName="deleted">
   </mat-form-field>
 
+<!--  Partie Company-->
 
-  <mat-form-field appearance="fill">
+  <mat-form-field class="companyInput" appearance="fill">
     <mat-label>Company</mat-label>
-    <input #company matInput formControlName="company">
+    <input matInput formControlName="company" [matAutocomplete]="company">
+    <mat-autocomplete #company="matAutocomplete" [displayWith]="companyDisplay">
+      <mat-option *ngFor="let company of companyFiltered | async"
+                  [value]="company"
+                  (click)="companySelectedClick(company)"
+      >
+        {{company.name + ' - (UUID : ' + company.companyId + ')' }}
+      </mat-option>
+    </mat-autocomplete>
     <mat-error *ngIf="this.formGroup.get('company')?.hasError('required')">
       Company is <strong>required</strong>
     </mat-error>
-    <mat-error *ngIf="this.formGroup.get('company')?.hasError('pattern')">
-      Company shoulb be a <strong>UUID pattern</strong> (Example : f3501f5d-ebe5-4ba6-85d6-2e6050ac3dc5)
-    </mat-error>
   </mat-form-field>
+
+
+<!--  Partie Skill-->
 
   <mat-form-field appearance="fill">
     <mat-label>Skills</mat-label>
-    <input #skills matInput formControlName="skills">
+    <input matInput formControlName="skills" [matAutocomplete]="skills">
+    <mat-autocomplete #skills="matAutocomplete" [displayWith]="skillDisplay">
+      <mat-option *ngFor="let skill of skillFiltered | async"
+                  [value]="skill"
+                  (click)="skillSelectedClick(skill)"
+      >
+        {{skill.title + ' - (UUID : ' + skill.skillId + ')' }}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
+
+  <table mat-table [dataSource]="skillAssigned">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let skill">{{skill.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="skillId">
+      <mat-header-cell *matHeaderCellDef> Skill ID </mat-header-cell>
+      <mat-cell *matCellDef="let skill">{{skill.skillId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="option">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let skill" >
+        <button mat-icon-button
+                (click)="deleteSkill(skill.skillId)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['skillId','title','option']"></mat-header-row>
+    <mat-row *matRowDef="let company; columns:['skillId', 'title','option'] "></mat-row>
+  </table>
+
+<!--  Partie Timesheets-->
 
   <mat-form-field appearance="fill">
     <mat-label>Timesheets</mat-label>

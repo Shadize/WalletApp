@@ -3,6 +3,13 @@ import {FleetService} from "@shared/service/crud/fleet.service";
 import {Router} from "@angular/router";
 import {FleetFieldPrefabComponent} from "../../../fleet/component/fleet-field-prefab/fleet-field-prefab.component";
 import {FormGroup} from "@angular/forms";
+import {Company} from "@shared/model/dto/company.interface";
+import {Skill} from "@shared/model/dto/skill.interface";
+import {Timesheet} from "@shared/model/dto/timesheet.interface";
+import {Document} from "@shared/model/dto/document.interface";
+import {Contract} from "@shared/model/dto/contract.interface";
+import {Fleet} from "@shared/model/dto/fleet.interface";
+import {Salary} from "@shared/model/dto/salary.interface";
 
 @Component({
   selector: 'app-employee-insert',
@@ -24,11 +31,11 @@ export class EmployeeInsertComponent implements OnInit{
 
   }
 
-  insert(){
-    // let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
-    //
-    // this.fleetService.create(payload).subscribe(data => {
-    //   this.router.navigateByUrl('/dashboard/fleet');
-    // });
-  }
+  insert(){}
+  // insert(lastname: string, firstname : string, active : boolean, deletedBy: string, address: string,
+  //        gender: string, birthday: Date, ssin: string, status: string, deleted: boolean, company: Company,
+  //        skills: Skill[], timesheets: Timesheet[], documents: Document[], contracts: Contract[], fleets: Fleet[], salaries: Salary[]) {
+  //
+  //   let payload = this.formGroup.value;
+  // }
 }

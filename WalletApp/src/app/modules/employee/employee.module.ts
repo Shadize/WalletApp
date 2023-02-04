@@ -6,6 +6,9 @@ import { EmployeeFieldPrefabComponent } from './component/employee-field-prefab/
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -15,12 +18,15 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     exports: [
         EmployeeFieldPrefabComponent
     ],
-    imports: [
-        CommonModule,
-        EmployeeRoutingModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule
-    ]
+  imports: [
+    CommonModule,
+    EmployeeRoutingModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
+  ]
 })
 export class EmployeeModule { }

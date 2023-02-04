@@ -16,7 +16,7 @@ export class EmployeeComponent implements OnInit {
   constructor(private employeeService:EmployeeService,
               private dialog: MatDialog) { }
   referenceColumns: string[] = ['employeeId','lastname', 'firstname', 'active','deletedBy','address','gender', 'birthday', 'ssin', 'status', 'deleted', 'company', 'skills', 'timesheets', 'documents', 'contracts', 'fleets', 'salaries'];
-  displayedColumns: string[] = ['employeeId','lastname', 'firstname', 'active','address','gender','company', 'skills', 'option'];
+  displayedColumns: string[] = ['lastname', 'firstname', 'active','address','gender','company', 'skills', 'option'];
   employeeList: Employee[] = [];
   dataSource !: MatTableDataSource<any>;
 

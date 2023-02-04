@@ -12,9 +12,13 @@
     <button mat-raised-button type="submit"
             class="insertButton"
             color="primary"
-            (click)="insert()"
-            [disabled]="!formGroup.valid"
-    >Insert</button>
+            (click)="insert()">
+<!--            (click)="insert(formGroup.value.lastname, formGroup.value.firstname, formGroup.value.active, formGroup.value.deletedBy, formGroup.value.address,-->
+<!--            formGroup.value.gender, formGroup.value.birthday, formGroup.value.ssin, formGroup.value.status, formGroup.value.deleted,)"-->
+
+<!--            [disabled]="!formGroup.valid"-->
+    Insert
+    </button>
   </div>
 
 </div>
