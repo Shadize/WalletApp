@@ -55,7 +55,7 @@ public class Employee {
     List<Timesheet> timesheets;
 
     @JsonIgnoreProperties({"employee", "company", "contract"})
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "employee")
     List<Document> documents;
 
     @JsonIgnoreProperties({"employee", "companyClient", "companyBusiness", "timesheets", "documents"})

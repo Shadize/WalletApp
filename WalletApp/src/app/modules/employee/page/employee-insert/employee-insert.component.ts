@@ -1,15 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FleetService} from "@shared/service/crud/fleet.service";
 import {Router} from "@angular/router";
-import {FleetFieldPrefabComponent} from "../../../fleet/component/fleet-field-prefab/fleet-field-prefab.component";
 import {FormGroup} from "@angular/forms";
 import {Company} from "@shared/model/dto/company.interface";
-import {Skill} from "@shared/model/dto/skill.interface";
-import {Timesheet} from "@shared/model/dto/timesheet.interface";
 import {Document} from "@shared/model/dto/document.interface";
-import {Contract} from "@shared/model/dto/contract.interface";
-import {Fleet} from "@shared/model/dto/fleet.interface";
-import {Salary} from "@shared/model/dto/salary.interface";
+import {EmployeeCreatePayloadInterface} from "@shared/model/payload/create/EmployeeCreatePayload.interface";
+import {EmployeeFieldPrefabComponent} from "../../component/employee-field-prefab/employee-field-prefab.component";
+import {EmployeeService} from "@shared/service/crud/employee.service";
 
 @Component({
   selector: 'app-employee-insert',
@@ -18,11 +14,11 @@ import {Salary} from "@shared/model/dto/salary.interface";
 })
 export class EmployeeInsertComponent implements OnInit{
 
-  constructor(private fleetService: FleetService,
+  constructor(private employeeService:EmployeeService,
               private router: Router) {
   }
 
-  @ViewChild('prefab') prefab!: FleetFieldPrefabComponent;
+  @ViewChild('prefab') prefab!: EmployeeFieldPrefabComponent;
   formGroup !: FormGroup;
   formGroupFromChild(event: any){
     this.formGroup = event;
@@ -31,11 +27,27 @@ export class EmployeeInsertComponent implements OnInit{
 
   }
 
-  insert(){}
+  //insert(){}
+
   // insert(lastname: string, firstname : string, active : boolean, deletedBy: string, address: string,
   //        gender: string, birthday: Date, ssin: string, status: string, deleted: boolean, company: Company,
   //        skills: Skill[], timesheets: Timesheet[], documents: Document[], contracts: Contract[], fleets: Fleet[], salaries: Salary[]) {
   //
   //   let payload = this.formGroup.value;
   // }
+  insert(lastname: string, firstname : string, active : boolean, deletedBy: string, address: string,
+         gender: string, birthday: Date, ssin: string, status: string, deleted: boolean, company: Company) {
+
+    let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active: true, deletedBy, address, gender,
+                                                    birthday: new Date(Date.now()), ssin, status, deleted: false, company, skills: this.prefab.skillAssigned,
+                                                    timesheets: this.prefab.timesheetAssigned, documents: this.prefab.documentAssigned,
+                                                    contracts: this.prefab.contractAssigned, fleets: this.prefab.fleetAssigned, salaries: this.prefab.salaryAssigned};
+
+    console.log(payload);
+
+    this.employeeService.create(payload).subscribe((data) => {
+      console.log(data);
+      this.router.navigateByUrl('/dashboard/employee');
+    });
+  }
 }

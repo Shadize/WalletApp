@@ -12,11 +12,11 @@
     <button mat-raised-button type="submit"
             class="insertButton"
             color="primary"
-            (click)="insert()">
-<!--            (click)="insert(formGroup.value.lastname, formGroup.value.firstname, formGroup.value.active, formGroup.value.deletedBy, formGroup.value.address,-->
-<!--            formGroup.value.gender, formGroup.value.birthday, formGroup.value.ssin, formGroup.value.status, formGroup.value.deleted,)"-->
+            (click)="insert(formGroup.value?.lastname, formGroup.value?.firstname, formGroup.value?.active, formGroup.value?.deletedBy,
+            formGroup.value?.address, formGroup.value?.gender, formGroup.value?.birthday, formGroup.value?.ssin, formGroup.value?.status,
+            formGroup.value?.deleted, formGroup.value?.company)"
 
-<!--            [disabled]="!formGroup.valid"-->
+            [disabled]="!formGroup.valid">
     Insert
     </button>
   </div>

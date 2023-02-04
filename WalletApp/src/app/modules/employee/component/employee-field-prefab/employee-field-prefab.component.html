@@ -83,11 +83,11 @@
     <legend>Skills</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
       <mat-label>Search a skill</mat-label>
-      <input matInput formControlName="skills" [matAutocomplete]="skills">
+      <input matInput formControlName="skills" [matAutocomplete]="skills" (keydown.enter)="skillEvent($event)">
       <mat-autocomplete #skills="matAutocomplete" [displayWith]="skillDisplay">
         <mat-option *ngFor="let skill of skillFiltered | async"
                     [value]="skill"
-                    (click)="skillSelectedClick(skill)"
+                    (click)="skillSelectedAdd(skill)"
         >
           {{skill.title + ' - (UUID : ' + skill.skillId + ')' }}
         </mat-option>
@@ -110,73 +110,228 @@
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let skill" >
           <button mat-icon-button
-                  (click)="deleteSkill(skill)">
+                  (click)="deleteSkill(skill, $event)">
             <mat-icon>remove</mat-icon>
           </button>
         </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="['skillId','title','option']"></mat-header-row>
-      <mat-row *matRowDef="let company; columns:['skillId', 'title','option'] "></mat-row>
+      <mat-row *matRowDef="let skill; columns:['skillId', 'title','option'] "></mat-row>
     </table>
-
   </fieldset>
 
 <!--  Partie Timesheets-->
 
-  <mat-form-field appearance="fill">
-    <mat-label>Timesheets</mat-label>
-    <input #timesheets matInput formControlName="timesheets">
-  </mat-form-field>
+  <fieldset>
+    <legend>Timesheets</legend>
+    <mat-form-field appearance="fill" class="formFieldInFieldset">
+      <mat-label>Search a timesheet</mat-label>
+      <input matInput formControlName="timesheets" [matAutocomplete]="timesheets" (keydown.enter)="timesheetEvent($event)">
+      <mat-autocomplete #timesheets="matAutocomplete" [displayWith]="timesheetDisplay">
+        <mat-option *ngFor="let timesheet of timesheetFiltered | async"
+                    [value]="timesheet"
+                    (click)="timesheetSelectedAdd(timesheet)"
+        >
+          {{timesheet.comment + ' - (UUID : ' + timesheet.timesheetId + ')' }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Documents</mat-label>
-    <input #documents matInput formControlName="documents">
-  </mat-form-field>
+    <table mat-table [dataSource]="timesheetAssigned">
+      <ng-container matColumnDef="comment">
+        <mat-header-cell *matHeaderCellDef> Comment </mat-header-cell>
+        <mat-cell *matCellDef="let timesheet">{{timesheet.comment}} </mat-cell>
+      </ng-container>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Contracts</mat-label>
-    <input #contracts matInput formControlName="contracts">
-  </mat-form-field>
+      <ng-container matColumnDef="timesheetId">
+        <mat-header-cell *matHeaderCellDef> Timesheet ID </mat-header-cell>
+        <mat-cell *matCellDef="let timesheet">{{timesheet.timesheetId}} </mat-cell>
+      </ng-container>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Fleets</mat-label>
-    <input #fleets matInput formControlName="fleets">
-  </mat-form-field>
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let timesheet" >
+          <button mat-icon-button
+                  (click)="deleteTimesheet(timesheet, $event)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Salaries</mat-label>
-    <input #salaries matInput formControlName="salaries">
-  </mat-form-field>
+      <mat-header-row *matHeaderRowDef="['timesheetId','comment','option']"></mat-header-row>
+      <mat-row *matRowDef="let timesheet; columns:['timesheetId', 'comment','option'] "></mat-row>
+    </table>
+  </fieldset>
+
+<!--  Partie Documents-->
+
+  <fieldset>
+    <legend>Documents</legend>
+    <mat-form-field appearance="fill" class="formFieldInFieldset">
+      <mat-label>Search a document</mat-label>
+      <input matInput formControlName="documents" [matAutocomplete]="documents" (keydown.enter)="documentEvent($event)">
+      <mat-autocomplete #documents="matAutocomplete" [displayWith]="documentDisplay">
+        <mat-option *ngFor="let document of documentFiltered | async"
+                    [value]="document"
+                    (click)="documentSelectedAdd(document)"
+        >
+          {{document.title + ' - (UUID : ' + document.documentId + ')' }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="documentAssigned">
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell *matCellDef="let document">{{document.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="documentId">
+        <mat-header-cell *matHeaderCellDef> Document ID </mat-header-cell>
+        <mat-cell *matCellDef="let document">{{document.documentId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let document" >
+          <button mat-icon-button
+                  (click)="deleteDocument(document, $event)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['documentId','title','option']"></mat-header-row>
+      <mat-row *matRowDef="let document; columns:['documentId', 'title','option'] "></mat-row>
+    </table>
+  </fieldset>
+
+<!--  Partie Contract-->
+  <fieldset>
+    <legend>Contracts</legend>
+    <mat-form-field appearance="fill" class="formFieldInFieldset">
+      <mat-label>Search a contract</mat-label>
+      <input matInput formControlName="contracts" [matAutocomplete]="contracts" (keydown.enter)="contractEvent($event)">
+      <mat-autocomplete #contracts="matAutocomplete" [displayWith]="contractDisplay">
+        <mat-option *ngFor="let contract of contractFiltered | async"
+                    [value]="contract"
+                    (click)="contractSelectedAdd(contract)"
+        >
+          {{contract.description + ' - (UUID : ' + contract.contractId + ')' }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <table mat-table [dataSource]="contractAssigned">
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let contract">{{contract.description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="contractId">
+        <mat-header-cell *matHeaderCellDef> Contract ID </mat-header-cell>
+        <mat-cell *matCellDef="let contract">{{contract.contractId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let contract" >
+          <button mat-icon-button
+                  (click)="deleteContract(contract, $event)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['contractId','description','option']"></mat-header-row>
+      <mat-row *matRowDef="let contract; columns:['contractId', 'description','option'] "></mat-row>
+    </table>
+  </fieldset>
+
+  <!--  Partie Fleet-->
+
+  <fieldset>
+    <legend>Fleets</legend>
+    <mat-form-field appearance="fill" class="formFieldInFieldset">
+      <mat-label>Search a fleet</mat-label>
+      <input matInput formControlName="fleets" [matAutocomplete]="fleets" (keydown.enter)="fleetEvent($event)">
+      <mat-autocomplete #fleets="matAutocomplete" [displayWith]="fleetDisplay">
+        <mat-option *ngFor="let fleet of fleetFiltered | async"
+                    [value]="fleet"
+                    (click)="fleetSelectedAdd(fleet)"
+        >
+          {{fleet.title + ' - (UUID : ' + fleet.fleetId + ')' }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <table mat-table [dataSource]="fleetAssigned">
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell *matCellDef="let fleet">{{fleet.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fleetId">
+        <mat-header-cell *matHeaderCellDef> Fleet ID </mat-header-cell>
+        <mat-cell *matCellDef="let fleet">{{fleet.fleetId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let fleet" >
+          <button mat-icon-button
+                  (click)="deleteFleet(fleet, $event)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['fleetId','title','option']"></mat-header-row>
+      <mat-row *matRowDef="let fleet; columns:['fleetId', 'title','option'] "></mat-row>
+    </table>
+  </fieldset>
 
 
+  <!--  Partie Salary-->
+
+  <fieldset>
+    <legend>Salaries</legend>
+    <mat-form-field appearance="fill" class="formFieldInFieldset">
+      <mat-label>Search a salary</mat-label>
+      <input matInput formControlName="salaries" [matAutocomplete]="salaries" (keydown.enter)="salaryEvent($event)">
+      <mat-autocomplete #salaries="matAutocomplete" [displayWith]="salaryDisplay">
+        <mat-option *ngFor="let salary of salaryFiltered | async"
+                    [value]="salary"
+                    (click)="salarySelectedAdd(salary)"
+        >
+          {{salary.title + ' - (UUID : ' + salary.salaryId + ')' }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <table mat-table [dataSource]="salaryAssigned">
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell *matCellDef="let salary">{{salary.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="salaryId">
+        <mat-header-cell *matHeaderCellDef> Salary ID </mat-header-cell>
+        <mat-cell *matCellDef="let salary">{{salary.salaryId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let salary" >
+          <button mat-icon-button
+                  (click)="deleteSalary(salary, $event)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['salaryId','title','option']"></mat-header-row>
+      <mat-row *matRowDef="let salary; columns:['salaryId', 'title','option'] "></mat-row>
+    </table>
+  </fieldset>
 
 </form>
-
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-label>Cost</mat-label>-->
-<!--    <input #cost matInput formControlName="cost">-->
-<!--    <mat-error *ngIf="formGroup.get('cost')?.hasError('required')">-->
-<!--      Cost is <strong>required</strong>-->
-<!--    </mat-error>-->
-<!--    <mat-error *ngIf="formGroup.get('cost')?.hasError('pattern')">-->
-<!--      Cost <strong>must be a number</strong>-->
-<!--    </mat-error>-->
-<!--  </mat-form-field>-->
-
-
-
-<!--  <mat-form-field class="employeeInput" appearance="fill">-->
-<!--    <mat-label>Employee</mat-label>-->
-<!--    <input matInput formControlName="employee" [matAutocomplete]="employee">-->
-<!--    <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">-->
-<!--      <mat-option *ngFor="let employee of employeeFiltered | async"-->
-<!--                  [value]="employee"-->
-<!--                  (click)="employeeSelectedClick(employee)"-->
-<!--      >-->
-<!--        {{employee.firstname + ' ' + employee.lastname + ' - (UUID : ' + employee.employeeId + ')' }}-->
-<!--      </mat-option>-->
-<!--    </mat-autocomplete>-->
-<!--  </mat-form-field>-->
-
 
