@@ -37,7 +37,7 @@ export class EmployeeFieldPrefabComponent {
 
 
   // Variables pour la partie Company
-  companyInput = new FormControl <string | Company>('');
+  companyInput = new FormControl <string | Company>('', Validators.required);
   companyList: Company[] = [];
   companyFiltered?: Observable<Company[]>;
   companySelected: Company | undefined;
@@ -187,16 +187,16 @@ export class EmployeeFieldPrefabComponent {
     this.formGroup = new FormGroup({
       lastname: new FormControl('', Validators.required),
       firstname: new FormControl('', Validators.required),
-      active: new FormControl(''),
-      deletedBy: new FormControl(''),
+      // active: new FormControl(''),
+      // deletedBy: new FormControl(''),
       address: new FormControl(''),
       gender: new FormControl(''),
       birthday: new FormControl(''),
-      ssin: new FormControl(''),
+      ssin: new FormControl('', Validators.pattern('^[0-9]{2}[.\\- ]{0,1}[0-9]{2}[.\\- ]{0,1}[0-9]{2}[.\\- ]{0,1}[0-9]{3}[.\\- ]{0,1}[0-9]{2}$')),
       status: new FormControl(''),
-      deleted: new FormControl(''),
+      // deleted: new FormControl(''),
 
-      company: new FormControl('', Validators.required), // AJOUTER VALIDATOR POUR PAS QU4ON PUISSE SUPPRIMER
+      company: this.companyInput, // AJOUTER VALIDATOR POUR PAS QU4ON PUISSE SUPPRIMER
       skills:  this.skillInput,
       timesheets: this.timesheetInput,
       documents: this.documentInput,
@@ -207,10 +207,9 @@ export class EmployeeFieldPrefabComponent {
 
     this.sendFormGroup();
   }  sendFormGroup(){
+
     this.formGroupEmitter$.emit(this.formGroup)
   }
-
-
 
 
 
@@ -229,6 +228,7 @@ export class EmployeeFieldPrefabComponent {
     return company && (company.name + company.companyId)  ?
       (company.name + ' (UUID : ' + company.companyId + ')') : '';
   }
+
 
   // Fonctions pour le champ skills
   skillSelectedAdd(skill: Skill){

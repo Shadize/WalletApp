@@ -4,7 +4,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Lastname</mat-label>
-    <input #lastname matInput formControlName="lastname">
+    <input matInput formControlName="lastname">
     <mat-error *ngIf="formGroup.get('lastname')?.invalid">
       Lastname is <strong>required</strong>
     </mat-error>
@@ -12,52 +12,57 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Firstname</mat-label>
-    <input #firstname matInput formControlName="firstname">
+    <input matInput formControlName="firstname">
     <mat-error *ngIf="formGroup.get('firstname')?.hasError('required')">
       Firstname is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Active</mat-label>
-    <input #active matInput formControlName="active">
-  </mat-form-field>
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Active</mat-label>-->
+<!--    <input #active matInput formControlName="active">-->
+<!--  </mat-form-field>-->
 
-  <mat-form-field appearance="fill">
-    <mat-label>Deleted By</mat-label>
-    <input #deletedBy matInput formControlName="deletedBy">
-  </mat-form-field>
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Deleted By</mat-label>-->
+<!--    <input #deletedBy matInput formControlName="deletedBy">-->
+<!--  </mat-form-field>-->
 
 
   <mat-form-field appearance="fill">
     <mat-label>Address</mat-label>
-    <input #address matInput formControlName="address">
+    <input matInput formControlName="address">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Gender</mat-label>
-    <input #gender matInput formControlName="gender">
+    <input matInput formControlName="gender">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Birthday</mat-label>
-    <input #birthday matInput formControlName="birthday">
+    <input matInput formControlName="birthday" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Ssin</mat-label>
-    <input #ssin matInput formControlName="ssin">
+    <mat-label>SSIN</mat-label>
+    <input matInput formControlName="ssin">
+    <mat-error *ngIf="formGroup.get('ssin')?.hasError('pattern')">
+      The SSIN pattern we're using is like this : <strong>87-11-15.327-96</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
-    <input #status matInput formControlName="status">
+    <input  matInput formControlName="status">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Deleted</mat-label>
-    <input #deleted matInput formControlName="deleted">
-  </mat-form-field>
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Deleted</mat-label>-->
+<!--    <input #deleted matInput formControlName="deleted">-->
+<!--  </mat-form-field>-->
 
 <!--  Partie Company-->
 

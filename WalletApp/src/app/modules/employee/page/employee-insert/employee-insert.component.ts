@@ -35,11 +35,11 @@ export class EmployeeInsertComponent implements OnInit{
   //
   //   let payload = this.formGroup.value;
   // }
-  insert(lastname: string, firstname : string, active : boolean, deletedBy: string, address: string,
-         gender: string, birthday: Date, ssin: string, status: string, deleted: boolean, company: Company) {
+  insert(lastname: string, firstname : string, address: string,
+         gender: string, birthday: string, ssin: string, status: string) {
 
-    let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active: true, deletedBy, address, gender,
-                                                    birthday: new Date(Date.now()), ssin, status, deleted: false, company, skills: this.prefab.skillAssigned,
+    let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active: true, deletedBy: '', address, gender,
+                                                    birthday: new Date(birthday), ssin, status, deleted: false, company: this.prefab.companySelected!, skills: this.prefab.skillAssigned,
                                                     timesheets: this.prefab.timesheetAssigned, documents: this.prefab.documentAssigned,
                                                     contracts: this.prefab.contractAssigned, fleets: this.prefab.fleetAssigned, salaries: this.prefab.salaryAssigned};
 
