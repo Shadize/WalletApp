@@ -79,44 +79,48 @@
 
 
 <!--  Partie Skill-->
+  <fieldset>
+    <legend>Skills</legend>
+    <mat-form-field appearance="fill" class="formFieldInFieldset">
+      <mat-label>Search a skill</mat-label>
+      <input matInput formControlName="skills" [matAutocomplete]="skills">
+      <mat-autocomplete #skills="matAutocomplete" [displayWith]="skillDisplay">
+        <mat-option *ngFor="let skill of skillFiltered | async"
+                    [value]="skill"
+                    (click)="skillSelectedClick(skill)"
+        >
+          {{skill.title + ' - (UUID : ' + skill.skillId + ')' }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Skills</mat-label>
-    <input matInput formControlName="skills" [matAutocomplete]="skills">
-    <mat-autocomplete #skills="matAutocomplete" [displayWith]="skillDisplay">
-      <mat-option *ngFor="let skill of skillFiltered | async"
-                  [value]="skill"
-                  (click)="skillSelectedClick(skill)"
-      >
-        {{skill.title + ' - (UUID : ' + skill.skillId + ')' }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
 
-  <table mat-table [dataSource]="skillAssigned">
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-      <mat-cell *matCellDef="let skill">{{skill.title}} </mat-cell>
-    </ng-container>
+    <table mat-table [dataSource]="skillAssigned">
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell *matCellDef="let skill">{{skill.title}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="skillId">
-      <mat-header-cell *matHeaderCellDef> Skill ID </mat-header-cell>
-      <mat-cell *matCellDef="let skill">{{skill.skillId}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="skillId">
+        <mat-header-cell *matHeaderCellDef> Skill ID </mat-header-cell>
+        <mat-cell *matCellDef="let skill">{{skill.skillId}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="option">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let skill" >
-        <button mat-icon-button
-                (click)="deleteSkill(skill)">
-          <mat-icon>remove</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="option">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let skill" >
+          <button mat-icon-button
+                  (click)="deleteSkill(skill)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="['skillId','title','option']"></mat-header-row>
-    <mat-row *matRowDef="let company; columns:['skillId', 'title','option'] "></mat-row>
-  </table>
+      <mat-header-row *matHeaderRowDef="['skillId','title','option']"></mat-header-row>
+      <mat-row *matRowDef="let company; columns:['skillId', 'title','option'] "></mat-row>
+    </table>
+
+  </fieldset>
 
 <!--  Partie Timesheets-->
 

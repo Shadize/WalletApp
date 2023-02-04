@@ -14,6 +14,7 @@ import {FleetService} from "@shared/service/crud/fleet.service";
 import {SalaryService} from "@shared/service/crud/salary.service";
 import {Skill} from "@shared/model/dto/skill.interface";
 import {MatTableDataSource} from "@angular/material/table";
+import {indexOf} from "lodash";
 
 @Component({
   selector: 'app-employee-field-prefab',
@@ -42,10 +43,10 @@ export class EmployeeFieldPrefabComponent {
   skillInput = new FormControl <string | Skill>('');
   skillList: Skill[] = [];
   skillAssigned: Skill[] = [];
+  skillAssigned$ !: Observable<Skill[]>
   skillFiltered?: Observable<Skill[]>;
   skillSelected: Skill | undefined;
 
-  test!: Observable<Skill[]>;
 
 
 
@@ -92,7 +93,7 @@ export class EmployeeFieldPrefabComponent {
       deleted: new FormControl(''),
 
       company: new FormControl('', Validators.required),
-      skills: new FormControl(''),
+      skills:  this.skillInput,
       timesheets: new FormControl(''),
       documents: new FormControl(''),
       contracts: new FormControl(''),
@@ -125,11 +126,22 @@ export class EmployeeFieldPrefabComponent {
 
   // Fonctions pour le champ skills
   skillSelectedClick(skill: Skill){
-    this.skillAssigned.push(skill);
+    if(!this.skillAssigned.includes(skill))
+    {
+      this.skillAssigned.push(skill);
+      this.skillAssigned$ = of(this.skillAssigned.slice());
 
-    of(this.skillAssigned.slice()).subscribe(data => {
-      this.skillAssigned = data;
-    });
+      this.skillAssigned$.subscribe(data => {
+        this.skillAssigned = data;
+        console.log(this.skillAssigned);
+      });
+
+      this.skillInput.setValue('');
+    }
+
+
+
+
   }
   skillFilter(name: string): Skill[] {
     const filterValue = name.toLowerCase();
@@ -142,7 +154,28 @@ export class EmployeeFieldPrefabComponent {
       (skill.title + ' (UUID : ' + skill.skillId + ')') : '';
   }
   deleteSkill(skill: Skill){
-    this.skillAssigned = this.skillAssigned.splice(this.skillAssigned.indexOf(skill), 1);
+    this.skillAssigned$.subscribe(data => {
+      this.skillAssigned = data;
+      console.log(this.skillAssigned);
+
+
+      if(this.skillAssigned.length == 1)
+        this.skillAssigned = [];
+      else
+        this.skillAssigned.splice(this.skillAssigned.indexOf(skill), 1);
+
+      console.log(this.skillAssigned);
+
+      this.skillAssigned$ = of(this.skillAssigned.slice());
+
+      this.skillAssigned$.subscribe(data => {
+        this.skillAssigned = data;
+        console.log(this.skillAssigned);
+      });
+
+    });
+
+
   }
 
 

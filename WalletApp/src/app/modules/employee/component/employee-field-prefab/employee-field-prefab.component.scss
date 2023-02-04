@@ -15,11 +15,15 @@ mat-option{
   font-size : 14px;
 }
 
+
 table{
   display: table;
   table-layout: fixed;
-  margin-bottom: 5%;
+  margin: -5% 2% 3% 2%;
+  width: 96%;
+
 }
+
 mat-cell:nth-child(1),
 mat-header-cell:nth-child(1) {
   flex: 0 0 55%;
@@ -35,3 +39,16 @@ mat-cell:nth-child(3),
    flex: 0 0 10%;
  }
 
+legend{
+  padding: 0 3%;
+  margin-left: 10%;
+}
+fieldset{
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.formFieldInFieldset{
+  width: 100%;
+  padding: 2%;
+}
