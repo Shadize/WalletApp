@@ -13,6 +13,10 @@ import {SalaryComponent} from './modules/salary/page/salary/salary.component';
 import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
 import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
 import {SharedModule} from "@shared/shared.module";
+// import ngx-translate and the http loader
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
 
 //Material
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -89,7 +93,17 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatNativeDateModule,
     FormsModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
@@ -98,4 +112,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
 }

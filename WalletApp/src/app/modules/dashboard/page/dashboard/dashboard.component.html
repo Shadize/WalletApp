@@ -6,10 +6,17 @@
     <a [routerLink]="['/dashboard/home']" id="title">
       <h1>PronHub</h1>
     </a>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="handleLanguageChange('fr')" >Français</button>
+      <button mat-menu-item (click)="handleLanguageChange('en')">English</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu">{{selectedLanguage}}</button>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>settings</mat-icon>
     </button>
+
+
     <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>logout</mat-icon>
     </button>
