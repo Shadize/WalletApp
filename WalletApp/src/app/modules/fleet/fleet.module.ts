@@ -11,24 +11,36 @@ import { FleetDetailComponent } from './page/fleet-detail/fleet-detail.component
 import {MatIconModule} from "@angular/material/icon";
 import { FleetEditComponent } from './page/fleet-edit/fleet-edit.component';
 import { FleetFieldPrefabComponent } from './component/fleet-field-prefab/fleet-field-prefab.component';
+import {FleetComponent} from "./page/fleet/fleet.component";
+import {SharedModule} from "@shared/shared.module";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
     FleetInsertComponent,
     FleetDetailComponent,
     FleetEditComponent,
-    FleetFieldPrefabComponent
+    FleetFieldPrefabComponent,
+    FleetComponent
   ],
-    imports: [
-        FormsModule,
-        CommonModule,
-        FleetRoutingModule,
-        MatInputModule,
-        MatButtonModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatIconModule
-    ]
+  imports: [
+    FormsModule,
+    CommonModule,
+    FleetRoutingModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatIconModule,
+    SharedModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatPaginatorModule
+  ]
 })
 export class FleetModule { }

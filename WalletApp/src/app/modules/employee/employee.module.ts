@@ -18,6 +18,11 @@ import {EmployeeEditComponent} from "./page/employee-edit/employee-edit.componen
 import {EmployeeInsertComponent} from "./page/employee-insert/employee-insert.component";
 import {EmployeeDetailComponent} from "./page/employee-detail/employee-detail.component";
 import {ColumnSelectorComponent} from "@shared/component/column-selector/column-selector.component";
+import {SharedModule} from "@shared/shared.module";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -28,24 +33,26 @@ import {ColumnSelectorComponent} from "@shared/component/column-selector/column-
         EmployeeInsertComponent,
         EmployeeDetailComponent
     ],
-    exports: [
-        EmployeeFieldPrefabComponent
-    ],
-    imports: [
-        FormsModule,
-        CommonModule,
-        FleetRoutingModule,
-        MatInputModule,
-        MatButtonModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatIconModule,
-        MatDatepickerModule,
-        FormsModule,
-        MatFormFieldModule,
-        MatSelectModule
+  imports: [
+    FormsModule,
+    CommonModule,
+    FleetRoutingModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatIconModule,
+    MatDatepickerModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    SharedModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatPaginatorModule
 
-    ]
+  ]
 })
 export class EmployeeModule { }
