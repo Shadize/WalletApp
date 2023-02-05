@@ -12,23 +12,34 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {FleetRoutingModule} from "../fleet/fleet-routing.module";
+import {EmployeeComponent} from "./page/employee/employee.component";
+import {EmployeeEditComponent} from "./page/employee-edit/employee-edit.component";
+import {EmployeeInsertComponent} from "./page/employee-insert/employee-insert.component";
+import {EmployeeDetailComponent} from "./page/employee-detail/employee-detail.component";
+import {ColumnSelectorComponent} from "@shared/component/column-selector/column-selector.component";
 
 
 @NgModule({
     declarations: [
-        EmployeeFieldPrefabComponent
+        EmployeeFieldPrefabComponent,
+        EmployeeComponent,
+        EmployeeEditComponent,
+        EmployeeInsertComponent,
+        EmployeeDetailComponent
     ],
     exports: [
         EmployeeFieldPrefabComponent
     ],
     imports: [
+        FormsModule,
         CommonModule,
-        EmployeeRoutingModule,
+        FleetRoutingModule,
         MatInputModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        MatTableModule,
         MatButtonModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatTableModule,
         MatIconModule,
         MatDatepickerModule,
         FormsModule,
