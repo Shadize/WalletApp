@@ -63,7 +63,8 @@ public class EmployeeServiceImpl  implements EmployeeService {
     {
         try
         {
-            System.out.println("payload: " + payload.getDocuments());
+            System.out.println("payload: " + payload.getFleets());
+
             Employee detail = this.detail(payload.getEmployeeId());
             if(detail != null)
             {
@@ -88,9 +89,15 @@ public class EmployeeServiceImpl  implements EmployeeService {
                 detail.setFleets(payload.getFleets());
                 detail.setSalaries(payload.getSalaries());
 
+                System.out.println("detail: " + detail);
+
                 return this.employeeRepository.save(detail);
             }
+
+
             return detail;
+
+
         }
         catch (Exception e)
         {

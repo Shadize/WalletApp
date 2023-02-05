@@ -35,22 +35,42 @@ public class Company {
     String deletedBy;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
-    @OneToMany(mappedBy = "company")
+    @OneToMany()
+    @JoinTable(
+        name = "Employee_Company",
+        joinColumns = @JoinColumn(name = "company_id"),
+        inverseJoinColumns = @JoinColumn(name = "employee_id"))
     List<Employee> employees;
     @JsonIgnoreProperties({"company"})
-    @OneToMany(mappedBy = "company")
+    @OneToMany()
+    @JoinTable(
+        name = "Organization_Company",
+        joinColumns = @JoinColumn(name = "company_id"),
+        inverseJoinColumns = @JoinColumn(name = "organization_id"))
     List<Organization> organizations;
     @JsonIgnoreProperties({"company", "contract", "employee"})
-    @OneToMany(mappedBy = "company")
+    @OneToMany()
+    @JoinTable(
+        name = "Document_Company",
+        joinColumns = @JoinColumn(name = "company_id"),
+        inverseJoinColumns = @JoinColumn(name = "document_id"))
     List<Document> documents;
 
 //    @ManyToMany(mappedBy = "companies")
 //    List<Contract> contracts;
     @JsonIgnoreProperties({"company", "documents", "timesheets", "companyBusiness", "companyClient", "employee"})
-    @OneToMany(mappedBy = "companyBusiness")
+    @OneToMany()
+    @JoinTable(
+        name = "Contract_Company",
+        joinColumns = @JoinColumn(name = "company_id"),
+        inverseJoinColumns = @JoinColumn(name = "contract_id"))
     List<Contract> contractsBusiness;
     @JsonIgnoreProperties({"company",  "documents", "timesheets", "companyBusiness", "companyClient", "employee"})
-    @OneToMany(mappedBy = "companyClient")
+    @OneToMany()
+    @JoinTable(
+        name = "Contract_Company",
+        joinColumns = @JoinColumn(name = "company_id"),
+        inverseJoinColumns = @JoinColumn(name = "contract_id"))
     List<Contract> contractsClient;
 
     public Company(String name, String description, String address, boolean isManaged,

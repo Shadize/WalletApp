@@ -29,11 +29,19 @@ public class Contract {
     Date endDate;
     Integer nbHoursByWeek;
     @JsonIgnoreProperties({"contract", "company", "contract", "employee"})
-    @OneToMany(mappedBy = "contract", cascade = CascadeType.REMOVE)
+    @OneToMany()
+            @JoinTable(
+            name = "Contract_Document",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "document_id"))
     List<Document> documents;
 
     @JsonIgnoreProperties({"contract", "employee"})
-    @OneToMany(mappedBy = "contract")
+    @OneToMany()
+            @JoinTable(
+            name = "Contract_Timesheet",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "timesheet_id"))
     List<Timesheet> timesheets;
 
     @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})

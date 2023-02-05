@@ -95,7 +95,7 @@ export class EmployeeEditComponent implements OnInit{
       ssin: this.formGroup.value.ssin,
       status: this.formGroup.value.status,
       deleted: this.formGroup.value.deleted,
-      company: this.prefab.companySelected!,
+      company: this.formGroup.value.company,
       skills: this.prefab.skillAssigned,
       timesheets: this.prefab.timesheetAssigned,
       documents: this.prefab.documentAssigned,
@@ -104,9 +104,11 @@ export class EmployeeEditComponent implements OnInit{
       salaries: this.prefab.salaryAssigned
     };
 
+    console.log(payload);
+
     this.employeeService.update(payload).subscribe(data => {
       console.log(data);
-      console.log(payload)
+
       this.router.navigateByUrl('/dashboard/employee');
     });
   }

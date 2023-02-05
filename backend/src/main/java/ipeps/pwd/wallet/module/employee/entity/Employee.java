@@ -51,23 +51,43 @@ public class Employee {
     private Company company;
 
     @JsonIgnoreProperties({"employee"})
-    @OneToMany(mappedBy = "employee")
+    @OneToMany()
+    @JoinTable(
+            name = "Employee_Skill",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id"))
     List<Timesheet> timesheets;
 
     @JsonIgnoreProperties({"employee", "company", "contract"})
-    @OneToMany(mappedBy = "employee")
+    @OneToMany()
+    @JoinTable(
+            name = "Employee_Document",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "document_id"))
     List<Document> documents;
 
     @JsonIgnoreProperties({"employee", "companyClient", "companyBusiness", "timesheets", "documents"})
-    @OneToMany(mappedBy = "employee")
+    @OneToMany()
+    @JoinTable(
+            name = "Employee_Contract",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "contract_id"))
     List<Contract> contracts;
 
     @JsonIgnoreProperties({"employee"})
-    @OneToMany(mappedBy = "employee")
+    @OneToMany()
+    @JoinTable(
+            name = "Employee_Fleet",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "fleet_id"))
     List<Fleet> fleets;
 
     @JsonIgnoreProperties({"employee"})
-    @OneToMany(mappedBy = "employee")
+    @OneToMany()
+    @JoinTable(
+            name = "Employee_Salary",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "salary_id"))
     List<Salary> salaries;
 
     //@JsonIgnoreProperties({"employess","title","description"})

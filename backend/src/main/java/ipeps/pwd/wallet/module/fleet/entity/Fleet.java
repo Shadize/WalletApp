@@ -5,6 +5,7 @@ import ipeps.pwd.wallet.module.employee.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -25,8 +26,9 @@ public class Fleet {
     String type;
     Float cost;
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
-    @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "fleet_employee_fk"))
+    @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     public Fleet(String title, String description, String type, Float cost, Employee employee) {
