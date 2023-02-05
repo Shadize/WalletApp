@@ -34,19 +34,13 @@ public class ContractServiceImpl implements ContractService {
                     .setDescription(payload.getDescription())
                     .setStartDate(payload.getStartDate())
                     .setEndDate(payload.getEndDate())
-                    .setNbHoursByWeek(payload.getNbHoursByWeek());
-
-            if(payload.getDocuments() != null)
-                builder.setDocuments(payload.getDocuments());
-
-            if(payload.getTimesheets() != null)
-                builder.setTimesheets(payload.getTimesheets());
+                    .setNbHoursByWeek(payload.getNbHoursByWeek())
+                    .setDocuments(payload.getDocuments())
+                    .setTimesheets(payload.getTimesheets())
+                    .setCompanyBusiness(payload.getCompanyBusiness())
+                    .setCompanyClient(payload.getCompanyClient());
             if(payload.getEmployee() != null)
                 builder.setEmployee(payload.getEmployee());
-            if(payload.getCompanyBusiness() != null)
-                builder.setCompanyBusiness(payload.getCompanyBusiness());
-            if(payload.getCompanyClient() != null)
-                builder.setCompanyClient(payload.getCompanyClient());
             return this.contractRepository.save(builder.build());
 
         }catch(Exception e){

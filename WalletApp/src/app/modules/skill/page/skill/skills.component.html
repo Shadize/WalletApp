@@ -12,25 +12,25 @@
 
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef>
-        Title
+        {{'skill.title' | translate}}
       </mat-header-cell>
       <mat-cell *matCellDef="let skill">{{skill.title}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>
-        Description
+        {{'skill.description' | translate}}
       </mat-header-cell>
       <mat-cell *matCellDef="let skill">{{skill.description}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="employees">
       <mat-header-cell *matHeaderCellDef>
-        Owned By
+        {{'skill.owner' | translate}}
       </mat-header-cell>
       <mat-cell *matCellDef="let skill" class="employees-cell">
         <mat-form-field appearance="fill" class="employees-form">
-          <mat-label>Employees List</mat-label>
+          <mat-label>{{'skill.employeeList' | translate}}</mat-label>
           <mat-select class="employees-select" >
             <mat-option class="employees-option" *ngFor="let employee of skill.employees" [value]="employee.lastname">
               {{employee.lastname }} {{employee.firstname}}
@@ -41,15 +41,15 @@
     </ng-container>
 
     <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> {{'skill.edit-skill' | translate}} </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button  mat-icon-button type="button" [matMenuTriggerFor]="menu" matTooltip="More" class="iconbutton" color="primary">
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <form>
-            <button mat-menu-item type="button" (click)="openEditDialog(element)">Edit</button>
-            <button type="submit" mat-menu-item (click)="delete(element)">Delete</button>
+            <button mat-menu-item type="button" (click)="openEditDialog(element)">{{'skill.edit-skill' | translate}}</button>
+            <button type="submit" mat-menu-item (click)="delete(element)">{{'skill.delete-skill' | translate}}</button>
           </form>
         </mat-menu>
       </mat-cell>

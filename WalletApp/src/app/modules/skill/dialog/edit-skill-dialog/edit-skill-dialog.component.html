@@ -4,24 +4,24 @@
   <form class="form" [formGroup]="formGroup">
 
     <mat-form-field>
-      <mat-label>Title</mat-label>
+      <mat-label>{{'skill.title' | translate}}</mat-label>
       <input formControlName="title" matInput value="{{this.data.skill.title}}" type="text" [(ngModel)]="this.data.skill.title">
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Description</mat-label>
+      <mat-label>{{'skill.description' | translate}}</mat-label>
       <input formControlName="description" matInput value="{{this.data.skill.description}}" type="text" [(ngModel)]="this.data.skill.description">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Owners of this skill</mat-label>
-      <mat-select [formControl]="toppings" class="employees-select" multiple #selectedValues (selectionChange)="handleEmployeeChange($event.value)" [compareWith]="compareToppings">
+      <mat-label>{{'skill.owner' | translate}}</mat-label>
+      <mat-select [formControl]="toppings" class="employees-select" multiple (selectionChange)="handleEmployeeChange($event.value)" [compareWith]="compareToppings">
         <mat-option class="employees-option" *ngFor="let employee of this.data.allEmployeeList" [value]="employee">
           {{employee.lastname }} {{employee.firstname}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button [disabled]="!formGroup.valid" type="submit" mat-raised-button color="primary" (click)="editSkill()">Apply</button>
+    <button [disabled]="!formGroup.valid" type="submit" mat-raised-button color="primary" (click)="editSkill()">{{'skill.save' | translate}}</button>
   </form>
 </div>
