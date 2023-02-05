@@ -35,6 +35,8 @@ export class EmployeeFieldPrefabComponent {
   @Output() formGroupEmitter$ = new EventEmitter<FormGroup>();
   formGroup !: FormGroup;
 
+  boolTab: boolean[] = [true, false];
+
 
   // Variables pour la partie Company
   companyInput = new FormControl <string | Company>('', Validators.required);
@@ -116,6 +118,8 @@ export class EmployeeFieldPrefabComponent {
       );
     });
 
+
+
     this.timesheetService.list().subscribe(data => {
       this.timesheetList = data;
 
@@ -180,10 +184,6 @@ export class EmployeeFieldPrefabComponent {
       );
     });
 
-
-
-
-
     this.formGroup = new FormGroup({
       lastname: new FormControl('', Validators.required),
       firstname: new FormControl('', Validators.required),
@@ -196,7 +196,7 @@ export class EmployeeFieldPrefabComponent {
       status: new FormControl(''),
       deleted: new FormControl(''),
 
-      company: this.companyInput, // AJOUTER VALIDATOR POUR PAS QU4ON PUISSE SUPPRIMER
+      company: this.companyInput,
       skills:  this.skillInput,
       timesheets: this.timesheetInput,
       documents: this.documentInput,
@@ -210,9 +210,6 @@ export class EmployeeFieldPrefabComponent {
 
     this.formGroupEmitter$.emit(this.formGroup)
   }
-
-
-
 
   // Fonctions pour le champ company
   companySelectedClick(company: Company){
@@ -230,11 +227,20 @@ export class EmployeeFieldPrefabComponent {
   }
 
 
+  skillAssign(skills: Skill[]){
+    this.skillAssigned = skills;
+    this.skillAssigned$ = of(this.skillAssigned.slice());
+  }
+
+
+
   // Fonctions pour le champ skills
   skillSelectedAdd(skill: Skill){
+
     if(!this.skillAssigned.includes(skill))
     {
       this.skillAssigned.push(skill);
+
       this.skillAssigned$ = of(this.skillAssigned.slice());
 
       this.skillAssigned$.subscribe(data => {
@@ -243,6 +249,25 @@ export class EmployeeFieldPrefabComponent {
 
       this.skillInput.setValue('');
     }
+
+
+
+
+    // {
+    // this.skillAssigned$.subscribe(data => {
+    //   if(!this.skillAssigned.includes(skill))
+    //
+    //     this.skillAssigned = data;
+    //     this.skillAssigned.push(skill);
+    //     this.skillAssigned$ = of(this.skillAssigned.slice());
+    //   }
+    // });
+    //
+    // this.skillAssigned$.subscribe(data => {
+    //   this.skillAssigned = data;
+    // })
+
+
   }
   skillFilter(name: string): Skill[] {
     const filterValue = name.toLowerCase();
@@ -256,6 +281,7 @@ export class EmployeeFieldPrefabComponent {
   }
   deleteSkill(skill: Skill, event: any){
 
+    console.log(this.skillAssigned);
     if(event.pointerType === 'mouse')
     {
       this.skillAssigned$.subscribe(data => {

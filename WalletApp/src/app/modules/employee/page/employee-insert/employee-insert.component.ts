@@ -27,16 +27,8 @@ export class EmployeeInsertComponent implements OnInit{
 
   }
 
-  //insert(){}
-
-  // insert(lastname: string, firstname : string, active : boolean, deletedBy: string, address: string,
-  //        gender: string, birthday: Date, ssin: string, status: string, deleted: boolean, company: Company,
-  //        skills: Skill[], timesheets: Timesheet[], documents: Document[], contracts: Contract[], fleets: Fleet[], salaries: Salary[]) {
-  //
-  //   let payload = this.formGroup.value;
-  // }
-  insert(lastname: string, firstname : string, address: string,
-         gender: string, birthday: string, ssin: string, status: string) {
+  insert(lastname: string, firstname : string, active: string,deletedBy : string, address: string,
+         gender: string, birthday: string, ssin: string, status: string, deleted: string) {
 
     let newDate;
     if(birthday === '')
@@ -46,7 +38,7 @@ export class EmployeeInsertComponent implements OnInit{
 
 
 
-    let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active: true, deletedBy: '', address, gender,
+    let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active:  true, deletedBy: '', address, gender,
                                                     birthday: newDate, ssin, status, deleted: false, company: this.prefab.companySelected!, skills: this.prefab.skillAssigned,
                                                     timesheets: this.prefab.timesheetAssigned, documents: this.prefab.documentAssigned,
                                                     contracts: this.prefab.contractAssigned, fleets: this.prefab.fleetAssigned, salaries: this.prefab.salaryAssigned};
@@ -54,7 +46,6 @@ export class EmployeeInsertComponent implements OnInit{
     console.log(payload);
 
     this.employeeService.create(payload).subscribe((data) => {
-      console.log(data);
       this.router.navigateByUrl('/dashboard/employee');
     });
   }

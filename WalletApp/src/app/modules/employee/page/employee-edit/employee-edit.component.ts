@@ -2,12 +2,13 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {Fleet} from "@shared/model/dto/fleet.interface";
-import {FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FleetFieldPrefabComponent} from "../../../fleet/component/fleet-field-prefab/fleet-field-prefab.component";
 import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 import {EmployeeFieldPrefabComponent} from "../../component/employee-field-prefab/employee-field-prefab.component";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-employee-edit',
@@ -35,20 +36,50 @@ export class EmployeeEditComponent implements OnInit{
     this.employeeService.detail(this.employeeId).subscribe(data => {
       this.employee = data as Employee;
 
+      console.log(this.employee);
+
+      this.prefab.skillAssign(this.employee.skills);
+
       this.formGroup.setValue({
         lastname: this.employee.lastname,
         firstname: this.employee.firstname,
-        address: this.employee.address
-        
+        address: this.employee.address,
+        active: this.employee.active,
+        deletedBy: this.employee.deletedBy,
+        gender: this.employee.gender,
+        birthday: this.employee.birthday,
+        ssin: this.employee.ssin,
+        status: this.employee.status,
+        deleted: this.employee.deleted,
+        company: this.employee.company,
 
-        //AJOUTER LA SUITE
+        skills: new FormControl(''),
+        timesheets:  this.employee.timesheets,
+        documents: this.employee.documents,
+        contracts: this.employee.contracts,
+        fleets: this.employee.fleets,
+        salaries: this.employee.salaries
 
-      })
-    })
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    });
 
 
   }
   update(){
+
 
 
   }

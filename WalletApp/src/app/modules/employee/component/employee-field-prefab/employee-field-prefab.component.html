@@ -18,15 +18,17 @@
     </mat-error>
   </mat-form-field>
 
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-label>Active</mat-label>-->
-<!--    <input #active matInput formControlName="active">-->
-<!--  </mat-form-field>-->
+  <mat-form-field appearance="fill">
+    <mat-label>Active</mat-label>
+    <mat-select formControlName="active">
+      <mat-option *ngFor="let bool of boolTab" [value]="bool">{{bool}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-label>Deleted By</mat-label>-->
-<!--    <input #deletedBy matInput formControlName="deletedBy">-->
-<!--  </mat-form-field>-->
+  <mat-form-field appearance="fill">
+    <mat-label>Deleted By</mat-label>
+    <input #deletedBy matInput formControlName="deletedBy">
+  </mat-form-field>
 
 
   <mat-form-field appearance="fill">
@@ -59,10 +61,13 @@
     <input  matInput formControlName="status">
   </mat-form-field>
 
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-label>Deleted</mat-label>-->
-<!--    <input #deleted matInput formControlName="deleted">-->
-<!--  </mat-form-field>-->
+  <mat-form-field appearance="fill">
+    <mat-label>Deleted</mat-label>
+    <mat-select>
+      <mat-option [value]="true"> True </mat-option>
+      <mat-option [value]="false"> False </mat-option>
+    </mat-select>
+  </mat-form-field>
 
 <!--  Partie Company-->
 
