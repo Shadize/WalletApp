@@ -39,6 +39,7 @@ export class EmployeeEditComponent implements OnInit{
         lastname: this.employee.lastname,
         firstname: this.employee.firstname,
         address: this.employee.address
+        
 
         //AJOUTER LA SUITE
 
