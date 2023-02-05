@@ -60,8 +60,14 @@ public class ContractServiceImpl implements ContractService {
                 detail.setEmployee(payload.getEmployee());
             else
                 detail.setEmployee(detail.getEmployee());
-            detail.setCompanyBusiness(payload.getCompanyBusiness());
-            detail.setCompanyClient(payload.getCompanyClient());
+            if(payload.getCompanyBusiness() != null)
+                detail.setCompanyBusiness(payload.getCompanyBusiness());
+            else
+                detail.setCompanyBusiness(detail.getCompanyBusiness());
+            if(payload.getCompanyClient() != null)
+                detail.setCompanyClient(payload.getCompanyClient());
+            else
+                detail.setCompanyClient(detail.getCompanyClient());
             return this.contractRepository.save(detail);
         }
         return detail;

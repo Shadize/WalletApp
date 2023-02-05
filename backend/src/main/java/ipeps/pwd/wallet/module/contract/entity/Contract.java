@@ -33,7 +33,7 @@ public class Contract {
     List<Document> documents;
 
     @JsonIgnoreProperties({"contract", "employee"})
-    @OneToMany(mappedBy = "contract")
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.REMOVE)
     List<Timesheet> timesheets;
 
     @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
