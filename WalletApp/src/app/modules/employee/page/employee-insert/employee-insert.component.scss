@@ -1,0 +1,29 @@
+
+#InsertContainer{
+  display: flex;
+  width: 100%;
+  margin-top: 2.5%;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+app-employee-field-prefab{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#buttonDiv{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.insertButton{
+  background: green;
+}
+
+

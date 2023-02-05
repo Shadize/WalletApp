@@ -11,7 +11,7 @@ import {SalaryCreateComponent} from "./modules/salary/dialog/salary-create/salar
 import {SalaryDeleteConfirmComponent} from "./modules/salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {SalaryComponent} from './modules/salary/page/salary/salary.component';
 import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
-import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
+
 import {SharedModule} from "@shared/shared.module";
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -44,7 +44,7 @@ import { DocumentComponent } from './modules/document/page/document/document.com
 import { DocumentCreateComponent } from './modules/document/dialog/document-create/document-create.component';
 import { DocumentEditComponent } from './modules/document/dialog/document-edit/document-edit.component';
 import { DocumentDeleteConfirmComponent } from './modules/document/dialog/document-delete-confirm/document-delete-confirm.component';
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {EmployeeModule} from "./modules/employee/employee.module";
 
 @NgModule({
   declarations: [
@@ -58,7 +58,6 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     DocumentCreateComponent,
     DocumentEditComponent,
     DocumentDeleteConfirmComponent,
-    FleetComponent,
     InsertSkillDialogComponent,
     SalaryComponent,
     EditSkillDialogComponent
@@ -67,6 +66,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    SharedModule,
 
     //Material
     BrowserAnimationsModule,
@@ -85,7 +85,6 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    SharedModule,
     MatMenuModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -93,7 +92,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatNativeDateModule,
     FormsModule,
     MatDialogModule,
-    MatPaginatorModule,
+
+
+
 
     // ngx-translate and the loader module
     HttpClientModule,

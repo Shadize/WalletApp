@@ -25,7 +25,7 @@ export class FleetComponent implements OnInit, OnDestroy
   fleetList: Fleet[] = [];
   subList: Subscription[] = [];
   referenceColumns: string[] = ['fleetId','title','description','type','cost','employee','option'];
-  displayedColumns: string[] = this.referenceColumns.slice();
+  displayedColumns: string[] = ['title','description','type','cost','employee','option'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator!: MatPaginator;

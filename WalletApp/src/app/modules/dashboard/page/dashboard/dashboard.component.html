@@ -44,10 +44,12 @@
           <mat-icon class="sidenav-icon">apartment</mat-icon>
           Enterprise
         </mat-list-item>
-        <mat-list-item>
-          <mat-icon class="sidenav-icon">diversity_3</mat-icon>
-          Employees
-        </mat-list-item>
+        <a [routerLink]="['/dashboard/employee']">
+          <mat-list-item>
+            <mat-icon class="sidenav-icon">diversity_3</mat-icon>
+            Employees
+          </mat-list-item>
+        </a>
         <mat-list-item>
           <mat-icon class="sidenav-icon">description</mat-icon>
           Contracts
@@ -58,25 +60,25 @@
           Documents
         </mat-list-item>
         </a>
-        <a [routerLink]="['/dashboard/fleet']">
+        <a [routerLink]="['fleet']">
           <mat-list-item>
             <mat-icon class="sidenav-icon">groups</mat-icon>
             Fleets
           </mat-list-item>
         </a>
-        <a [routerLink]="['/dashboard/timesheet']">
+        <a [routerLink]="['timesheet']">
           <mat-list-item>
             <mat-icon class="sidenav-icon">schedule</mat-icon>
             Timesheet
           </mat-list-item>
         </a>
-        <a [routerLink]="['/dashboard/salary']">
+        <a [routerLink]="['salary']">
         <mat-list-item>
           <mat-icon class="sidenav-icon">paid</mat-icon>
           Salary
         </mat-list-item>
         </a>
-        <a [routerLink]="['/dashboard/skill']">
+        <a [routerLink]="['skill']">
           <mat-list-item>
             <mat-icon class="sidenav-icon">square_foot</mat-icon>
             Skill
