@@ -17,7 +17,6 @@ import {EmployeeComponent} from "./page/employee/employee.component";
 import {EmployeeEditComponent} from "./page/employee-edit/employee-edit.component";
 import {EmployeeInsertComponent} from "./page/employee-insert/employee-insert.component";
 import {EmployeeDetailComponent} from "./page/employee-detail/employee-detail.component";
-import {ColumnSelectorComponent} from "@shared/component/column-selector/column-selector.component";
 import {SharedModule} from "@shared/shared.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
@@ -36,7 +35,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
   imports: [
     FormsModule,
     CommonModule,
-    FleetRoutingModule,
+    EmployeeRoutingModule,
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,

@@ -66,7 +66,6 @@ import {EmployeeModule} from "./modules/employee/employee.module";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    EmployeeModule,
     SharedModule,
 
     //Material

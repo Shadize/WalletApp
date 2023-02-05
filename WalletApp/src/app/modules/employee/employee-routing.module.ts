@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {EmployeeComponent} from "./page/employee/employee.component";
 import {EmployeeInsertComponent} from "./page/employee-insert/employee-insert.component";
 import {EmployeeEditComponent} from "./page/employee-edit/employee-edit.component";
+import {HomeComponent} from "@dashboard/page/home/home.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: `edit/:id`,
     component: EmployeeEditComponent
+
   }
 ];
 @NgModule({
