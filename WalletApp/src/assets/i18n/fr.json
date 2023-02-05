@@ -1,0 +1,28 @@
+{
+  "skill": {
+    "insert-new-skill": "Insérer une nouvelle compétence",
+    "title": "Titre",
+    "description": "Description",
+    "save": "Sauvegarder",
+    "edit-skill": "Modifier la compétence",
+    "delete-skill": "Supprimer la compétence",
+    "owner": "Propriétaire de cette compétence",
+    "employeeList": "Liste des employés"
+  },
+  "timesheet": {
+    "title": "Titre",
+    "description": "Description",
+    "save": "Sauvegarder",
+    "edit-timesheet": "Modifier la feuille de temps",
+    "delete-timesheet": "Supprimer la feuille de temps",
+    "owner": "Propriétaire de cette feuille de temps",
+    "contract": "Contrat associé",
+    "employeeList": "Liste des employés",
+    "insert-new-timesheet": "Insérer une nouvelle feuille de temps",
+    "startDateTime": "Date de début",
+    "startHours": "Heure de début",
+    "endHours": "Heure de fin",
+    "comment": "Commentaire",
+    "timesheetType": "Type de feuille de temps"
+  }
+}

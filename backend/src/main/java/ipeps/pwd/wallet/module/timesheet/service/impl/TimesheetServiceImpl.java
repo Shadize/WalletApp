@@ -48,7 +48,7 @@ public class TimesheetServiceImpl implements TimesheetService {
 
     @Override
     public Timesheet update(TimesheetUpdatePayload payload) {
-
+        System.out.println(payload);
         Timesheet detail = this.detail(payload.getTimesheetId());
         if(detail != null){
             detail.setStartDate(payload.getStartDate());
