@@ -187,14 +187,14 @@ export class EmployeeFieldPrefabComponent {
     this.formGroup = new FormGroup({
       lastname: new FormControl('', Validators.required),
       firstname: new FormControl('', Validators.required),
-      // active: new FormControl(''),
-      // deletedBy: new FormControl(''),
+      active: new FormControl(''),
+      deletedBy: new FormControl(''),
       address: new FormControl(''),
       gender: new FormControl(''),
       birthday: new FormControl(''),
       ssin: new FormControl('', Validators.pattern('^[0-9]{2}[.\\- ]{0,1}[0-9]{2}[.\\- ]{0,1}[0-9]{2}[.\\- ]{0,1}[0-9]{3}[.\\- ]{0,1}[0-9]{2}$')),
       status: new FormControl(''),
-      // deleted: new FormControl(''),
+      deleted: new FormControl(''),
 
       company: this.companyInput, // AJOUTER VALIDATOR POUR PAS QU4ON PUISSE SUPPRIMER
       skills:  this.skillInput,

@@ -38,8 +38,16 @@ export class EmployeeInsertComponent implements OnInit{
   insert(lastname: string, firstname : string, address: string,
          gender: string, birthday: string, ssin: string, status: string) {
 
+    let newDate;
+    if(birthday === '')
+      newDate = undefined;
+    else
+      newDate = new Date(birthday);
+
+
+
     let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active: true, deletedBy: '', address, gender,
-                                                    birthday: new Date(birthday), ssin, status, deleted: false, company: this.prefab.companySelected!, skills: this.prefab.skillAssigned,
+                                                    birthday: newDate, ssin, status, deleted: false, company: this.prefab.companySelected!, skills: this.prefab.skillAssigned,
                                                     timesheets: this.prefab.timesheetAssigned, documents: this.prefab.documentAssigned,
                                                     contracts: this.prefab.contractAssigned, fleets: this.prefab.fleetAssigned, salaries: this.prefab.salaryAssigned};
 
