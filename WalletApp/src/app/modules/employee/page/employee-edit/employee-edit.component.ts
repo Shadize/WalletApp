@@ -5,9 +5,6 @@ import {Fleet} from "@shared/model/dto/fleet.interface";
 import {FormGroup} from "@angular/forms";
 import {FleetFieldPrefabComponent} from "../../../fleet/component/fleet-field-prefab/fleet-field-prefab.component";
 import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpdatePayload.interface";
-import {Employee} from "@shared/model/dto/employee.interface";
-import {EmployeeService} from "@shared/service/crud/employee.service";
-import {EmployeeFieldPrefabComponent} from "../../component/employee-field-prefab/employee-field-prefab.component";
 
 @Component({
   selector: 'app-employee-edit',
@@ -17,12 +14,12 @@ import {EmployeeFieldPrefabComponent} from "../../component/employee-field-prefa
 export class EmployeeEditComponent implements OnInit{
 
   constructor(private route: ActivatedRoute,
-              private employeeService : EmployeeService,
+              private fleetService : FleetService,
               private router: Router) { }
-  employeeId : string = '';
-  employee !: Employee;
+  fleetId : string = '';
+  fleet !: Fleet;
   formGroup!: FormGroup;
-  @ViewChild('prefab') prefab!: EmployeeFieldPrefabComponent;
+  @ViewChild('prefab') prefab!: FleetFieldPrefabComponent;
 
   formGroupFromChild(event: any){
     this.formGroup = event;
@@ -30,25 +27,28 @@ export class EmployeeEditComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.employeeId = this.route.snapshot.paramMap.get('id') || '';
+    this.fleetId = this.route.snapshot.paramMap.get('id') || '';
 
-    this.employeeService.detail(this.employeeId).subscribe(data => {
-      this.employee = data as Employee;
+    this.fleetService.detail(this.fleetId).subscribe(data => {
+      this.fleet = data.data as Fleet;
 
       this.formGroup.setValue({
-        lastname: this.employee.lastname,
-        firstname: this.employee.firstname,
-        address: this.employee.address
-
-        //AJOUTER LA SUITE
-
+        title: this.fleet.title,
+        description: this.fleet.description,
+        type: this.fleet.type,
+        cost: this.fleet.cost,
+        employee: this.fleet.employee
       })
     })
 
 
   }
-  update(){
+  update(title: string, description: string, type: string, cost: string){
 
+    let payload: FleetUpdatePayloadInterface = {fleetId:this.fleetId, title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
 
+    this.fleetService.update(payload).subscribe(data => {
+      this.router.navigateByUrl('/dashboard/fleet').then(r => console.log(r));
+    })
   }
 }

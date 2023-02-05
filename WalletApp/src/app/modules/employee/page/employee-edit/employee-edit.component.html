@@ -3,21 +3,21 @@
   <h1>Employee Edit</h1>
 
   <mat-form-field id="idField" appearance="fill">
-    <mat-label>Employee ID</mat-label>
-    <input matInput [value]="this.employeeId" disabled>
+    <mat-label>Fleet ID</mat-label>
+    <input matInput [value]="this.fleetId" disabled>
   </mat-form-field>
 
   <app-employee-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-employee-field-prefab>
 
   <div id="buttonDiv">
     <button mat-raised-button color="warn"
-            [routerLink]="['/dashboard/employee']"
+            [routerLink]="['/dashboard/fleet']"
     >
       Cancel
     </button>
     <button mat-raised-button class="btnUpdate"
             color="accent"
-            (click)="update()"
+            (click)="update(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
             [disabled]="!this.formGroup.valid"
     >Update</button>
   </div>
