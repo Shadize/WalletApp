@@ -38,10 +38,25 @@ export class EmployeeInsertComponent implements OnInit{
 
 
 
-    let payload: EmployeeCreatePayloadInterface = {lastname, firstname, active:  true, deletedBy: '', address, gender,
-                                                    birthday: newDate, ssin, status, deleted: false, company: this.prefab.companySelected!, skills: this.prefab.skillAssigned,
-                                                    timesheets: this.prefab.timesheetAssigned, documents: this.prefab.documentAssigned,
-                                                    contracts: this.prefab.contractAssigned, fleets: this.prefab.fleetAssigned, salaries: this.prefab.salaryAssigned};
+    let payload: EmployeeCreatePayloadInterface = {
+      lastname,
+      firstname,
+      active:  true,
+      deletedBy: '',
+      address,
+      gender,
+      birthday: newDate,
+      ssin,
+      status,
+      deleted: false,
+      company: this.prefab.companySelected!,
+      skills: this.prefab.skillAssigned,
+      timesheets: this.prefab.timesheetAssigned,
+      documents: this.prefab.documentAssigned,
+      contracts: this.prefab.contractAssigned,
+      fleets: this.prefab.fleetAssigned,
+      salaries: this.prefab.salaryAssigned
+    };
 
     console.log(payload);
 

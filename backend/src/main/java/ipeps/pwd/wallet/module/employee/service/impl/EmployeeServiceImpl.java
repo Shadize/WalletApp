@@ -63,6 +63,7 @@ public class EmployeeServiceImpl  implements EmployeeService {
     {
         try
         {
+            System.out.println("payload: " + payload.getDocuments());
             Employee detail = this.detail(payload.getEmployeeId());
             if(detail != null)
             {

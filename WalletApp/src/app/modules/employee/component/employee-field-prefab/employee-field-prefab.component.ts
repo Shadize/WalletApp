@@ -11,7 +11,7 @@ import {ContractService} from "@shared/service/crud/contract.service";
 import {FleetService} from "@shared/service/crud/fleet.service";
 import {SalaryService} from "@shared/service/crud/salary.service";
 import {Skill} from "@shared/model/dto/skill.interface";
-import {isNil} from "lodash";
+import {indexOf, isNil} from "lodash";
 import {Fleet} from "@shared/model/dto/fleet.interface";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {Document} from "@shared/model/dto/document.interface";
@@ -227,20 +227,18 @@ export class EmployeeFieldPrefabComponent {
   }
 
 
-  skillAssign(skills: Skill[]){
-    this.skillAssigned = skills;
-    this.skillAssigned$ = of(this.skillAssigned.slice());
-  }
-
-
-
   // Fonctions pour le champ skills
   skillSelectedAdd(skill: Skill){
 
-    if(!this.skillAssigned.includes(skill))
+    let isDuplicated = false;
+    for(let e in this.skillAssigned){
+      if(this.skillAssigned[e].skillId == skill.skillId)
+        isDuplicated = true;
+    }
+
+    if(!this.skillAssigned.includes(skill) && !isDuplicated)
     {
       this.skillAssigned.push(skill);
-
       this.skillAssigned$ = of(this.skillAssigned.slice());
 
       this.skillAssigned$.subscribe(data => {
@@ -249,24 +247,6 @@ export class EmployeeFieldPrefabComponent {
 
       this.skillInput.setValue('');
     }
-
-
-
-
-    // {
-    // this.skillAssigned$.subscribe(data => {
-    //   if(!this.skillAssigned.includes(skill))
-    //
-    //     this.skillAssigned = data;
-    //     this.skillAssigned.push(skill);
-    //     this.skillAssigned$ = of(this.skillAssigned.slice());
-    //   }
-    // });
-    //
-    // this.skillAssigned$.subscribe(data => {
-    //   this.skillAssigned = data;
-    // })
-
 
   }
   skillFilter(name: string): Skill[] {
@@ -312,7 +292,13 @@ export class EmployeeFieldPrefabComponent {
 
   // Fonctions pour le champ timesheets
   timesheetSelectedAdd(timesheet: Timesheet){
-    if(!this.timesheetAssigned.includes(timesheet))
+    let isDuplicated = false;
+    for(let e in this.timesheetAssigned){
+      if(this.timesheetAssigned[e].timesheetId == timesheet.timesheetId)
+        isDuplicated = true;
+    }
+
+    if(!this.timesheetAssigned.includes(timesheet) && !isDuplicated)
     {
       this.timesheetAssigned.push(timesheet);
       this.timesheetAssigned$ = of(this.timesheetAssigned.slice());
@@ -365,7 +351,13 @@ export class EmployeeFieldPrefabComponent {
 
   // Fonctions pour le champ Documents
   documentSelectedAdd(document: Document){
-    if(!this.documentAssigned.includes(document))
+    let isDuplicated = false;
+    for(let e in this.documentAssigned){
+      if(this.documentAssigned[e].documentId == document.documentId)
+        isDuplicated = true;
+    }
+
+    if(!this.documentAssigned.includes(document) && !isDuplicated)
     {
       this.documentAssigned.push(document);
       this.documentAssigned$ = of(this.documentAssigned.slice());
@@ -418,7 +410,13 @@ export class EmployeeFieldPrefabComponent {
 
   // Fonctions pour le champ Constracts
   contractSelectedAdd(contract: Contract){
-    if(!this.contractAssigned.includes(contract))
+    let isDuplicated = false;
+    for(let e in this.contractAssigned){
+      if(this.contractAssigned[e].contractId == contract.contractId)
+        isDuplicated = true;
+    }
+
+    if(!this.contractAssigned.includes(contract) && !isDuplicated)
     {
       this.contractAssigned.push(contract);
       this.contractAssigned$ = of(this.contractAssigned.slice());
@@ -471,7 +469,13 @@ export class EmployeeFieldPrefabComponent {
   }
   // Fonctions pour le champ fleets
   fleetSelectedAdd(fleet: Fleet){
-    if(!this.fleetAssigned.includes(fleet))
+    let isDuplicated = false;
+    for(let e in this.fleetAssigned){
+      if(this.fleetAssigned[e].fleetId == fleet.fleetId)
+        isDuplicated = true;
+    }
+
+    if(!this.fleetAssigned.includes(fleet) && !isDuplicated)
     {
       this.fleetAssigned.push(fleet);
       this.fleetAssigned$ = of(this.fleetAssigned.slice());
@@ -525,7 +529,13 @@ export class EmployeeFieldPrefabComponent {
   // Fonctions pour le champ salaries
 
   salarySelectedAdd(salary: Salary){
-    if(!this.salaryAssigned.includes(salary))
+    let isDuplicated = false;
+    for(let e in this.salaryAssigned){
+      if(this.salaryAssigned[e].salaryId == salary.salaryId)
+        isDuplicated = true;
+    }
+
+    if(!this.salaryAssigned.includes(salary) && !isDuplicated)
     {
       this.salaryAssigned.push(salary);
       this.salaryAssigned$ = of(this.salaryAssigned.slice());
