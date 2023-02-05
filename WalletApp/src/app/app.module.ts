@@ -13,10 +13,6 @@ import {SalaryComponent} from './modules/salary/page/salary/salary.component';
 import {SalaryEditComponent} from "./modules/salary/dialog/salary-edit/salary-edit.component";
 import {FleetComponent} from "./modules/fleet/page/fleet/fleet.component";
 import {SharedModule} from "@shared/shared.module";
-// import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient} from '@angular/common/http';
 
 //Material
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -45,6 +41,10 @@ import { DocumentCreateComponent } from './modules/document/dialog/document-crea
 import { DocumentEditComponent } from './modules/document/dialog/document-edit/document-edit.component';
 import { DocumentDeleteConfirmComponent } from './modules/document/dialog/document-delete-confirm/document-delete-confirm.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { EmployeeComponent } from './modules/employee/page/employee/employee.component';
+import { EmployeeInsertComponent } from './modules/employee/page/employee-insert/employee-insert.component';
+import { EmployeeDetailComponent } from './modules/employee/page/employee-detail/employee-detail.component';
+import { EmployeeEditComponent } from './modules/employee/page/employee-edit/employee-edit.component';
 import {EmployeeModule} from "./modules/employee/employee.module";
 
 @NgModule({
@@ -62,51 +62,45 @@ import {EmployeeModule} from "./modules/employee/employee.module";
     FleetComponent,
     InsertSkillDialogComponent,
     SalaryComponent,
-    EditSkillDialogComponent
+    EditSkillDialogComponent,
+    EmployeeComponent,
+    EmployeeInsertComponent,
+    EmployeeDetailComponent,
+    EmployeeEditComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
 
-    //Material
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    CdkTableModule,
-    MatTooltipModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    SharedModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    MatDialogModule,
-    MatPaginatorModule,
-    EmployeeModule
-
-    // ngx-translate and the loader module
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
-  ],
+        //Material
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatSlideToggleModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        CdkTableModule,
+        MatTooltipModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        SharedModule,
+        MatMenuModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        MatDialogModule,
+        MatPaginatorModule,
+        EmployeeModule
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true
   },
@@ -114,9 +108,4 @@ import {EmployeeModule} from "./modules/employee/employee.module";
   bootstrap: [AppComponent]
 })
 export class AppModule {
-}
-
-// required for AOT compilation
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
 }

@@ -8,8 +8,11 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './page/home/home.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatMenuModule} from "@angular/material/menu";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {TimesheetModule} from "../timesheet/timesheet.module";
+import {SkillModule} from "../skill/skill.module";
+import {MatTableModule} from "@angular/material/table";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -17,7 +20,7 @@ import {MatMenuModule} from "@angular/material/menu";
     DashboardComponent,
     HomeComponent
   ],
-  imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule, MatMenuModule],
+  imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule],
   providers: []
 })
 export class DashboardModule {

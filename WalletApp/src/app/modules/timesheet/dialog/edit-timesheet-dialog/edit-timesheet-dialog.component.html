@@ -1,9 +1,9 @@
 
 <div class="form-container">
   <form class="form" name="insert-form" [formGroup]="formGroup">
-    <h1>{{'timesheet.edit-timesheet' | translate}}</h1>
+    <h1>Edit an existing timesheet</h1>
     <mat-form-field appearance="fill">
-      <mat-label>{{'timesheet.owner' | translate}}</mat-label>
+      <mat-label>Owner Employee</mat-label>
       <mat-select formControlName="owner" class="employees-select" [compareWith]="compareToppings" [(ngModel)]="selectedEmployee">
         <mat-option class="employees-option" *ngFor="let employee of this.allEmployeeList" [value]="employee">
           {{employee.lastname }} {{employee.firstname}}
@@ -11,7 +11,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>{{'timesheet.contract' | translate}}</mat-label>
+      <mat-label>SelectedContract</mat-label>
       <mat-select formControlName="contract" class="employees-select" [compareWith]="compareToppings2" [(ngModel)]="selectedContract">
         <mat-option class="employees-option" *ngFor="let contract of this.allContractList" [value]="contract">
           {{contract.description}} ({{contract.contractId }})
@@ -19,27 +19,27 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label  >{{'timesheet.startDateTime' | translate}}</mat-label>
+      <mat-label  >Timesheet Start Date</mat-label>
       <input matInput [matDatepicker]="picker" name="startDatePicker" formControlName="startDate" [(ngModel)]="startDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="time" name="{{'timesheet.startHours' | translate}}" placeholder="{{'timesheet.startHours' | translate}}" value="8:30" formControlName="startHours" [(ngModel)]="startHoursString">
+      <input matInput type="time" name="startHours" placeholder="Starting Time" value="8:30" formControlName="startHours" [(ngModel)]="startHoursString">
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="time" name="endHours"  placeholder="{{'timesheet.endHours' | translate}}" value="16:30" formControlName="endHours" [(ngModel)]="endHoursString">
+      <input matInput type="time" name="endHours"  placeholder="End Time" value="16:30" formControlName="endHours" [(ngModel)]="endHoursString">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>{{'timesheet.timesheetType' | translate}}</mat-label>
+      <mat-label>Timesheet Type</mat-label>
       <input matInput formControlName="timesheetType" name="timesheetType" [(ngModel)]="timesheetType">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>{{'timesheet.comment' | translate}}</mat-label>
+      <mat-label>Comment</mat-label>
       <textarea formControlName="comment" name="comment" matInput [(ngModel)]="comment"></textarea>
     </mat-form-field>
 
-    <button [disabled]="!formGroup.valid" mat-raised-button name="insert-button" type="submit" color="primary" (click)="update(startDate, startHoursString, endHoursString, comment, timesheetType, selectedContract.contractId!, selectedEmployee.employeeId!)">{{'timesheet.save' | translate}}</button>
+    <button [disabled]="!formGroup.valid" mat-raised-button name="insert-button" type="submit" color="primary" (click)="update(startDate, startHoursString, endHoursString, comment, timesheetType, selectedContract.contractId!, selectedEmployee.employeeId!)">Edit Skill</button>
   </form>
 </div>

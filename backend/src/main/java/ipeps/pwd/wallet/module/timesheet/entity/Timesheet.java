@@ -43,12 +43,12 @@ public class Timesheet {
 
     @JsonIgnoreProperties({"timesheets", "documents","companyBusiness","companyClient", "employee"})
     @ManyToOne()
-    @JoinColumn(name = "contract_fk", referencedColumnName = "contract_id", nullable = false, foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
+    @JoinColumn(name = "contract_fk", referencedColumnName = "contract_id", nullable = true, foreignKey=@ForeignKey(name = "timesheet_contract_fk" ))
     Contract contract;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "timesheet_employee_fk"))
+    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "timesheet_employee_fk"))
     Employee employee;
 
 

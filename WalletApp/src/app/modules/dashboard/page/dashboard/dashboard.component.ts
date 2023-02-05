@@ -3,7 +3,6 @@ import {AuthService} from '@security/service/auth.service';
 import {ApiResponse} from '@shared/model';
 import {Credential, CredentialDto} from '@security/model';
 import {CredentialHelper} from '@security/helper';
-  import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +11,11 @@ import {CredentialHelper} from '@security/helper';
 })
 export class DashboardComponent implements OnInit {
   credential?: Credential;
-  selectedLanguage: string = "EN";
 
-  constructor(public auth: AuthService, private translate: TranslateService) {
+  constructor(public auth: AuthService) {
   }
 
   ngOnInit(): void {
-    console.log(this.translate.currentLang)
   }
 
   me(): void {
@@ -30,10 +27,5 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {
     this.auth.logout();
-  }
-
-  handleLanguageChange(language: string): void {
-    this.selectedLanguage = language.toUpperCase()
-    this.translate.use(language);
   }
 }

@@ -16,7 +16,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -40,7 +39,6 @@ import {TranslateModule} from "@ngx-translate/core";
     MatNativeDateModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    TranslateModule,
   ]
 })
 export class TimesheetModule { }

@@ -1,14 +1,14 @@
 <div class="form-container">
   <form [formGroup]="formGroup" class="form" name="insert-form">
-    <h1>{{'skill.insert-new-skill' | translate}}</h1>
+    <h1>Insert a new skill</h1>
     <mat-form-field appearance="fill">
-      <mat-label>{{'skill.title' | translate}}</mat-label>
+      <mat-label>Title</mat-label>
       <input #title matInput formControlName="title">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>{{'skill.description' | translate}}</mat-label>
+      <mat-label>Description</mat-label>
       <input #description matInput formControlName="description">
     </mat-form-field>
-    <button [disabled]="!formGroup.valid" mat-raised-button name="insert-button" type="submit" color="primary" (click)="insert(title.value, description.value)">{{'skill.save' | translate}}</button>
+    <button [disabled]="!formGroup.valid" mat-raised-button name="insert-button" type="submit" color="primary" (click)="insert(title.value, description.value)">Insert Skill</button>
   </form>
 </div>
