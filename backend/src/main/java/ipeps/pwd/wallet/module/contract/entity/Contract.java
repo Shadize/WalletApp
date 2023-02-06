@@ -47,7 +47,7 @@ public class Contract {
     @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
     @ManyToOne()
     @JoinTable(
-            name = "ContractBusiness_Company",
+            name = "contractbusiness_company",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id"))
     Company companyBusiness;
@@ -55,7 +55,7 @@ public class Contract {
     @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
     @ManyToOne()
     @JoinTable(
-            name = "ContractClient_Company",
+            name = "contractclient_company",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "company_id"))
     Company companyClient;
