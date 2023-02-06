@@ -9,6 +9,7 @@ import {SkillService} from "@shared/service/crud/skill.service";
 import {CompanyService} from "@shared/service/crud/company.service";
 import {Employee} from "@shared/model/dto/employee.interface";
 import {isNil} from "lodash";
+import {Contract} from "@shared/model/dto/contract.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,15 @@ export class EntityManagerService {
     if(!isNil(salaries)){
       for(let salary of salaries){
         this.salaryService.remove(salary.salaryId!).subscribe();
+      }
+    }
+  }
+
+  onContractDelete(contract: Contract) {
+    let timesheets = contract.timesheets;
+    if(!isNil(timesheets)){
+      for(let timesheet of timesheets){
+        this.timesheetService.remove(timesheet.timesheetId!).subscribe();
       }
     }
   }
