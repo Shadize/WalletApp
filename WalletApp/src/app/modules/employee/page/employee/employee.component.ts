@@ -5,6 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {EmployeeDetailComponent} from "../employee-detail/employee-detail.component";
+import {EntityManagerService} from "@shared/service/crud/common/entity-manager.service";
 
 @Component({
   selector: 'app-employee',
@@ -14,6 +15,7 @@ import {EmployeeDetailComponent} from "../employee-detail/employee-detail.compon
 export class EmployeeComponent implements OnInit {
 
   constructor(private employeeService:EmployeeService,
+              private entityManager: EntityManagerService,
               private dialog: MatDialog) { }
   referenceColumns: string[] = ['employeeId','lastname', 'firstname', 'active','deletedBy','address','gender', 'birthday', 'ssin', 'status', 'deleted', 'company', 'skills', 'timesheets', 'documents', 'contracts', 'fleets', 'salaries'];
   displayedColumns: string[] = ['lastname', 'firstname', 'active','address','gender','company', 'skills', 'option'];
@@ -44,7 +46,9 @@ export class EmployeeComponent implements OnInit {
   }
 
   delete(employee: Employee) {
+
     this.employeeService.remove(employee.employeeId!).subscribe(() => {
+      this.entityManager.onEmployeeDelete(employee);
       this.refreshList();
     });
   }

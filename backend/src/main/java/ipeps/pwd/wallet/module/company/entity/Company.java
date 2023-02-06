@@ -51,7 +51,7 @@ public class Company {
     @JsonIgnoreProperties({"company", "contract", "employee"})
     @OneToMany()
     @JoinTable(
-        name = "Document_Company",
+        name = "document_company",
         joinColumns = @JoinColumn(name = "company_id"),
         inverseJoinColumns = @JoinColumn(name = "document_id"))
     List<Document> documents;
@@ -61,14 +61,14 @@ public class Company {
     @JsonIgnoreProperties({"company", "documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @OneToMany()
     @JoinTable(
-        name = "Contract_Company",
+        name = "ContractBusiness_Company",
         joinColumns = @JoinColumn(name = "company_id"),
         inverseJoinColumns = @JoinColumn(name = "contract_id"))
     List<Contract> contractsBusiness;
     @JsonIgnoreProperties({"company",  "documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @OneToMany()
     @JoinTable(
-        name = "Contract_Company",
+        name = "ContractClient_Company",
         joinColumns = @JoinColumn(name = "company_id"),
         inverseJoinColumns = @JoinColumn(name = "contract_id"))
     List<Contract> contractsClient;

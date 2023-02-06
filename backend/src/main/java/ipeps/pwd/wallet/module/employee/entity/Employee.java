@@ -53,15 +53,15 @@ public class Employee {
     @JsonIgnoreProperties({"employee"})
     @OneToMany()
     @JoinTable(
-            name = "Employee_Skill",
+            name = "employee_timesheet",
             joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "skill_id"))
+            inverseJoinColumns = @JoinColumn(name = "timesheet_id"))
     List<Timesheet> timesheets;
 
     @JsonIgnoreProperties({"employee", "company", "contract"})
     @OneToMany()
     @JoinTable(
-            name = "Employee_Document",
+            name = "employee_document",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "document_id"))
     List<Document> documents;
@@ -69,7 +69,7 @@ public class Employee {
     @JsonIgnoreProperties({"employee", "companyClient", "companyBusiness", "timesheets", "documents"})
     @OneToMany()
     @JoinTable(
-            name = "Employee_Contract",
+            name = "employee_contract",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "contract_id"))
     List<Contract> contracts;
@@ -77,7 +77,7 @@ public class Employee {
     @JsonIgnoreProperties({"employee"})
     @OneToMany()
     @JoinTable(
-            name = "Employee_Fleet",
+            name = "employee_fleet",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "fleet_id"))
     List<Fleet> fleets;
@@ -85,7 +85,7 @@ public class Employee {
     @JsonIgnoreProperties({"employee"})
     @OneToMany()
     @JoinTable(
-            name = "Employee_Salary",
+            name = "employee_salary",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "salary_id"))
     List<Salary> salaries;
@@ -94,7 +94,7 @@ public class Employee {
     @JsonIgnoreProperties({"employees"})
     @ManyToMany()
     @JoinTable(
-            name = "Employee_Skill",
+            name = "employee_skill",
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id"))
     List<Skill> skills;

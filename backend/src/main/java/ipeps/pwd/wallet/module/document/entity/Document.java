@@ -34,19 +34,27 @@ public class Document {
     @JsonIgnoreProperties({"documents", "employees", "organizations", "contractsBusiness", "contractsClient"})
     @ManyToOne()
     // @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = true, foreignKey=@ForeignKey(name = "document_company_fk"))
-    @JoinColumn(name = "company_FK",referencedColumnName = "company_id")
+    @JoinTable(
+            name = "document_company",
+            joinColumns = @JoinColumn(name = "document_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id"))
     private Company company;
 
     @JsonIgnoreProperties({"documents", "timesheets", "companyBusiness", "companyClient", "employee"})
     @ManyToOne()
     // @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id",nullable = true, foreignKey=@ForeignKey(name = "document_contract_fk"))
-    @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id")
+    @JoinTable(
+            name = "contract_document",
+            joinColumns = @JoinColumn(name = "document_id"),
+            inverseJoinColumns = @JoinColumn(name = "contract_id"))
     private Contract contract;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
-    // @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = true, foreignKey=@ForeignKey(name = "document_employee_fk"))
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id")
+    @JoinTable(
+            name = "employee_document",
+            joinColumns = @JoinColumn(name = "document_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private Employee employee;
 
     public Document(String title, String path, String content, String type, Date createDate, Company company, Contract contract, Employee employee) {

@@ -27,8 +27,10 @@ public class Fleet {
     Float cost;
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinColumn(name = "employee_id")
+    @JoinTable(
+            name = "employee_fleet",
+            joinColumns = @JoinColumn(name = "fleet_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private Employee employee;
 
     public Fleet(String title, String description, String type, Float cost, Employee employee) {

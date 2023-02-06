@@ -20,6 +20,7 @@ export class ContractService extends ApiService implements CrudServiceInterface 
         return response.result ? response.data as Contract[] : [];
       })
     )
+
   }
 
   detail = (id: string | number) : Observable<Contract> => {

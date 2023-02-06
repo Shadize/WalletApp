@@ -31,7 +31,7 @@ public class Contract {
     @JsonIgnoreProperties({"contract", "company", "contract", "employee"})
     @OneToMany()
     @JoinTable(
-            name = "Contract_Document",
+            name = "contract_document",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "document_id"))
     List<Document> documents;
@@ -39,24 +39,33 @@ public class Contract {
     @JsonIgnoreProperties({"contract", "employee"})
     @OneToMany()
     @JoinTable(
-            name = "Contract_Timesheet",
+            name = "contract_timesheet",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "timesheet_id"))
     List<Timesheet> timesheets;
 
     @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
     @ManyToOne()
-    @JoinColumn(name = "company_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "contract_business_fk"))
+    @JoinTable(
+            name = "ContractBusiness_Company",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id"))
     Company companyBusiness;
 
     @JsonIgnoreProperties({"contracts", "employees", "organizations", "documents", "contractsBusiness", "contractsClient"})
     @ManyToOne()
-    @JoinColumn(name = "client_FK",referencedColumnName = "company_id",nullable = false, foreignKey=@ForeignKey(name = "contract_client_fk"))
+    @JoinTable(
+            name = "ContractClient_Company",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id"))
     Company companyClient;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "contract_employee_fk"))
+    @JoinTable(
+            name = "employee_contract",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     Employee employee;
 
 

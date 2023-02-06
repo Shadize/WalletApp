@@ -29,7 +29,10 @@ public class Salary {
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
     @ManyToOne()
-    @JoinColumn(name = "employee_FK",referencedColumnName = "employee_id",nullable = false, foreignKey=@ForeignKey(name = "salary_employee_fk"))
+    @JoinTable(
+            name = "employee_salary",
+            joinColumns = @JoinColumn(name = "salary_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private Employee employee;
 
     public Salary(Date createDate, String title, String comment, Float amount, Employee employee) {
