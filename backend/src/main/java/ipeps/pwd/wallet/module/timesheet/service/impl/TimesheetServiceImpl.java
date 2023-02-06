@@ -31,6 +31,7 @@ public class TimesheetServiceImpl implements TimesheetService {
     @Override
     public Timesheet create(TimesheetCreatePayload payload) {
         try{
+            System.out.println(payload);
             Timesheet timesheet = new TimesheetBuilder()
                     .setStartDate(payload.getStartDate())
                     .setStartHours(payload.getStartHours())

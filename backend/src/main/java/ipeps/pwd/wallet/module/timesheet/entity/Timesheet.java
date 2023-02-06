@@ -43,10 +43,7 @@ public class Timesheet {
 
     @JsonIgnoreProperties({"timesheets", "documents","companyBusiness","companyClient", "employee"})
     @ManyToOne()
-    @JoinTable(
-            name = "contract_timesheet",
-            joinColumns = @JoinColumn(name = "timesheet_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id"))
+    @JoinColumn(name = "contract_FK",referencedColumnName = "contract_id")
     Contract contract;
 
     @JsonIgnoreProperties({"skills","company","timesheets","documents","contracts","fleets","salaries"})
