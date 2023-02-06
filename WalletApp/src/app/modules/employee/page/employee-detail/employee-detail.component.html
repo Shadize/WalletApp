@@ -1,1 +1,31 @@
-<p>employee-detail works!</p>
+<div class="mainDiv">
+  <div class="headerDiv">
+    <h2>Fleet Detail</h2>
+    <button mat-icon-button
+            id="button"
+            (click)="dialog.closeAll()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="fleetDetail">
+    <pre>{{'Employee ID : ' + employee.employeeId}}</pre>
+    <pre>{{'Lastnane    : ' + employee.lastname}}</pre>
+    <pre>{{'Firstname   : ' + employee.firstname}}</pre>
+    <pre>{{'Active      : ' + employee.active}}</pre>
+    <pre>{{'Deleted By  : ' + employee.deletedBy}}</pre>
+    <pre>{{'Address     : ' + employee.address}}</pre>
+    <pre>{{'Gender      : ' + employee.gender}}</pre>
+    <pre>{{'Birthday    : ' + employee.birthday}}</pre>
+    <pre>{{'SSIN        : ' + employee.ssin}}</pre>
+    <pre>{{'Status      : ' + employee.status}}</pre>
+    <pre>{{'Deleted     : ' + employee.deleted}}</pre>
+    <pre *ngIf="employee.company">
+         {{'Employee    : ' + employee.company.name  + ' (UUID : ' + employee.company.companyId + ')'}}
+    </pre>
+
+
+  </div>
+
+</div>
