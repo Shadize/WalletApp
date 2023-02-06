@@ -25,6 +25,40 @@
     "endHours": "End hours",
     "comment": "Comment",
     "timesheetType": "Timesheet type"
+  },
+  "document": {
+
+  },
+  "salary": {
+    "id": "Salary ID",
+    "date": "Create date",
+    "title": "Title",
+    "comment": "Comment",
+    "amount": "Amount",
+    "employee": "Associated employee",
+    "employeeName": "Employee",
+    "edit": " Edit",
+    "delete": "Delete",
+    "detail": "Detail",
+    "cancel": "Cancel",
+    "insert": "Insert Salary",
+    "salaryManagement": "Salary Management",
+    "newSalary": "Insert a new Salary",
+    "salaryDetail" : "Salary Detail",
+    "editSalary" : "Edit Salary",
+    "editionOf": "Edition of the salary of:",
+    "no": "No",
+    "yes": "Yes",
+    "confirmDelete": "Delete Confirmation",
+    "wantToDelete?": "Do you really want to remove this salary?",
+    "onlyContainNumber": "and can only contain",
+    "dateIs": "Date is",
+    "titleIs": "Title is",
+    "commentIs": "Comment is",
+    "amountIs": "Amount is",
+    "numbers" : "numbers",
+    "employeeIs": "Employee is",
+    "required": "required"
   }
 
 }
