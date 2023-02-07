@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocumentService} from "@shared/service/crud/document.service";
 import {Document} from "@shared/model/dto/document.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -12,27 +12,32 @@ import {
 } from "../../../salary/dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {DocumentDeleteConfirmComponent} from "../../dialog/document-delete-confirm/document-delete-confirm.component";
 import {DocumentDetailComponent} from "../../dialog/document-detail/document-detail.component";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',
   styleUrls: ['./document.component.scss']
 })
-export class DocumentComponent implements OnInit{
+export class DocumentComponent implements OnInit, OnDestroy{
 
   documents: Document[] = [];
   displayedColumns: string[] = ['documentId', 'title', 'path', 'content', 'type','createDate', 'company','contract', 'employee', 'edit'];
+  subscription: Subscription[] = [];
 
   constructor(private documentService: DocumentService,
               public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.subscription.push(
     this.documentService.list().subscribe(data => {
       this.documents = data
     })
-
-
+    )
+  }
+  ngOnDestroy(): void {
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 
   RefreshData(){
@@ -44,9 +49,9 @@ export class DocumentComponent implements OnInit{
   openCreateDocumentDialog() {
     let dialogRef = this.dialog.open(DocumentCreateComponent)
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push( dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 
   openEditDocumentDialog(element : Document) {
@@ -54,26 +59,26 @@ export class DocumentComponent implements OnInit{
       data: {document: element}
     })
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push( dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 
   openDeleteConfirmationDialog(element: Document) {
     let dialogRef = this.dialog.open(DocumentDeleteConfirmComponent, {
       data: {document: element}
     })
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push( dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 
   openDetailDialog(element: Document) {
     let dialogRef = this.dialog.open(DocumentDetailComponent, {
       data: {document: element}
     })
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push( dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 }

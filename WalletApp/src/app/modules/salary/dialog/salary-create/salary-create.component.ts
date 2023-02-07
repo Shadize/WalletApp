@@ -14,7 +14,7 @@ import {Subscription} from "rxjs";
 })
 export class SalaryCreateComponent implements OnInit, OnDestroy {
 
-  subscription!: Subscription;
+  subscription: Subscription[] = [];
   employees: Employee[] = [];
   selectedEmployee!: Employee;
   edited!: boolean;
@@ -27,10 +27,10 @@ export class SalaryCreateComponent implements OnInit, OnDestroy {
   // Récupération de la liste des employee pour la création de salaire
   ngOnInit(): void {
 
-    this.subscription =
+    this.subscription.push(
       this.employeeService.list().subscribe(data => {
       this.employees = data
-    })
+    }))
 
     // Form group avec Validator
     // Création d'un Validator Pattern pour amount pour obliger à mettre uniquement des chiffres
@@ -45,7 +45,7 @@ export class SalaryCreateComponent implements OnInit, OnDestroy {
 
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 
   insert(newDate: string, title: string, comment: string, createdAmount: string, employee: Employee) {
@@ -59,11 +59,6 @@ export class SalaryCreateComponent implements OnInit, OnDestroy {
 
     // Création d'un payload pour le insert et récupération du résultat dans la console
     const newSalary: SalaryCreatePayloadInterface = {createDate, title, comment, amount, employee}
-    let result = this.salaryService.create(newSalary);
-    result.subscribe(r => {
-      console.log(r)
-    })
+    this.subscription.push(this.salaryService.create(newSalary).subscribe());
   }
-
-
 }

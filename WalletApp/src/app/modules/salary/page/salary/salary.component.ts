@@ -16,7 +16,7 @@ import {Subscription} from "rxjs";
 })
 export class SalaryComponent implements OnInit, OnDestroy{
 
-  subscription!: Subscription;
+  subscription: Subscription[] = [];
   salaries: Salary[] = [];
   employees: Employee[] = [];
   displayedColumns: string[] = ['salaryId', 'createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
@@ -27,14 +27,14 @@ export class SalaryComponent implements OnInit, OnDestroy{
 
   // Récupération de la liste des salaires pour les afficher
   ngOnInit(): void {
-    this.subscription=
+    this.subscription.push(
       this.salaryService.list().subscribe(data => {
       this.salaries = data;
-    })
+    }))
   }
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-   this.subscription.unsubscribe();
+   this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 
 
@@ -51,9 +51,9 @@ export class SalaryComponent implements OnInit, OnDestroy{
     let dialogRef = this.dialog.open(SalaryCreateComponent)
 
     // Refresh  des données après chaque fermeture de dialog
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push(dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 
   openEditSalaryDialog(element: Salary){
@@ -61,18 +61,18 @@ export class SalaryComponent implements OnInit, OnDestroy{
       data: {salary: element}
     })
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push(dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 
   openDeleteConfirmationDialog(element: Salary){
     let dialogRef = this.dialog.open(SalaryDeleteConfirmComponent, {
       data: {salary: element}
     })
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push(dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
 
 
@@ -80,10 +80,8 @@ export class SalaryComponent implements OnInit, OnDestroy{
     let dialogRef = this.dialog.open(SalaryDetailComponent, {
       data: {salary: element}
     })
-    dialogRef.afterClosed().subscribe(result => {
+    this.subscription.push(dialogRef.afterClosed().subscribe(result => {
       this.RefreshData();
-    })
+    }))
   }
-
-
 }
