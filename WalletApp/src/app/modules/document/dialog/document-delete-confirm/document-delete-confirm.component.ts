@@ -17,7 +17,7 @@ export class DocumentDeleteConfirmComponent implements OnInit ,OnDestroy{
   constructor(@Inject(MAT_DIALOG_DATA) public data: {document: Document},
               private documentService: DocumentService) {
   }
-  
+
   ngOnInit(): void {
     this.document = this.data.document;
   }
@@ -25,7 +25,7 @@ export class DocumentDeleteConfirmComponent implements OnInit ,OnDestroy{
   delete(){
     this.subscription=
     this.documentService.remove(this.document.documentId!).subscribe(response => {
-      console.log(response)
+
     })
   }
 

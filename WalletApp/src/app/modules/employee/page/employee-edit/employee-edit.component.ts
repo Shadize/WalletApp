@@ -40,8 +40,6 @@ export class EmployeeEditComponent implements OnInit{
     this.employeeService.detail(this.employeeId).subscribe(data => {
       this.employee = data as Employee;
 
-
-
       this.formGroup.setValue({
         lastname: this.employee.lastname,
         firstname: this.employee.firstname,
@@ -54,16 +52,15 @@ export class EmployeeEditComponent implements OnInit{
         status: this.employee.status,
         deleted: this.employee.deleted,
         company: this.employee.company,
-
         skills: (''),
         timesheets:  (''),
         documents: (''),
         contracts:(''),
         fleets: (''),
         salaries: ('')
-
       });
 
+      // Pour pouvoir rafrachir les listes
       this.prefab.skillAssigned = this.employee.skills.slice();
       this.prefab.skillAssigned$ = of(this.prefab.skillAssigned.slice());
       this.prefab.timesheetAssigned = this.employee.timesheets.slice();
@@ -76,13 +73,11 @@ export class EmployeeEditComponent implements OnInit{
       this.prefab.fleetAssigned$ = of(this.prefab.fleetAssigned.slice());
       this.prefab.salaryAssigned = this.employee.salaries.slice();
       this.prefab.salaryAssigned$ = of(this.prefab.salaryAssigned.slice());
-
     });
-
-
   }
-  update() {
 
+  // On update l'employee
+  update() {
     let payload: EmployeeUpdatePayloadInterface = {
       employeeId: this.employeeId,
       lastname: this.formGroup.value.lastname,
@@ -104,11 +99,7 @@ export class EmployeeEditComponent implements OnInit{
       salaries: this.prefab.salaryAssigned
     };
 
-
-
-    this.employeeService.update(payload).subscribe(data => {
-
-
+    this.employeeService.update(payload).subscribe(() => {
       this.router.navigateByUrl('/dashboard/employee');
     });
   }
