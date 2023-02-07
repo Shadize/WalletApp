@@ -185,7 +185,8 @@
     "fleet": "Fleet",
     "timesheet": "Timesheet",
     "salary": "Salary",
-    "skill": "Skill"
+    "skill": "Skill",
+    "welcome": "Welcome to Wallet"
   },
   "login": {
     "loginFail": "Incorrect credentials, please check your username and password.",

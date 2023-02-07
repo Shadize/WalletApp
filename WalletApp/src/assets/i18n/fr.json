@@ -184,7 +184,8 @@
     "fleet": "Véhicules",
     "timesheet": "Emplois du temps",
     "salary": "Salaires",
-    "skill": "Compétences"
+    "skill": "Compétences",
+    "welcome": "Bienvenue sur Wallet"
   },
   "login": {
     "login": "Se connecter",
