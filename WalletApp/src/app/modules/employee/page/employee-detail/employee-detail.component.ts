@@ -9,6 +9,8 @@ import {Employee} from "@shared/model/dto/employee.interface";
   styleUrls: ['./employee-detail.component.scss']
 })
 export class EmployeeDetailComponent {
+
+  // On injecte le data dans le constructeur pour pouvoir l'utiliser dans le template
   constructor(@Inject(MAT_DIALOG_DATA) public employee: Employee,
               public dialog: MatDialog) { }
 

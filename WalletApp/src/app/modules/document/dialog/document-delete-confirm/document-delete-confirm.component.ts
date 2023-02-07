@@ -25,7 +25,7 @@ export class DocumentDeleteConfirmComponent implements OnInit ,OnDestroy{
   delete(){
     this.subscription=
     this.documentService.remove(this.document.documentId!).subscribe(response => {
-      console.log(response)
+
     })
   }
 

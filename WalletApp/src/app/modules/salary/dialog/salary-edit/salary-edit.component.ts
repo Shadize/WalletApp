@@ -64,10 +64,10 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
       amount: this.editSalary.amount,
       employee: this.editSalary.employee
     }
-    console.log(this.editSalary.employee)
+
     this.subscription.push(
       this.salaryService.update(updatedSalary).subscribe(response => {
-        console.log(response)
+
     }))
   }
 

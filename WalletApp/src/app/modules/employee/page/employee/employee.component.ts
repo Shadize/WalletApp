@@ -17,6 +17,8 @@ export class EmployeeComponent implements OnInit {
   constructor(private employeeService:EmployeeService,
               private entityManager: EntityManagerService,
               private dialog: MatDialog) { }
+
+  // Déclaration du nom des colonnes de la table affichées et celle de références
   referenceColumns: string[] = ['employeeId','lastname', 'firstname', 'active','deletedBy','address','gender', 'birthday', 'ssin', 'status', 'deleted', 'company', 'skills', 'timesheets', 'documents', 'contracts', 'fleets', 'salaries'];
   displayedColumns: string[] = ['lastname', 'firstname', 'active','address','gender','company', 'skills', 'option'];
   employeeList: Employee[] = [];
@@ -31,6 +33,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
+  // Fonction pour ouvrir le dialog de détail d'un employé
   openDetailEmployeeDialog(employee: Employee){
     this.dialog.open(EmployeeDetailComponent, {
       width: '50%',
@@ -38,6 +41,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
+  // Rafraichir la liste des employés
   refreshList(){
     this.employeeService.list().subscribe(data => {
       this.employeeList = data;
@@ -45,6 +49,8 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
+  // Supprimer un employé et l'envoie dans l'entity manager pour supprimé les références qui ont
+  // des relations 1-1 ou 1-n avec employee
   delete(employee: Employee) {
 
     this.employeeService.remove(employee.employeeId!).subscribe(() => {

@@ -20,13 +20,14 @@ export class EmployeeInsertComponent implements OnInit{
 
   @ViewChild('prefab') prefab!: EmployeeFieldPrefabComponent;
   formGroup !: FormGroup;
+
+  // On récupère le formGroup de l'enfant
   formGroupFromChild(event: any){
     this.formGroup = event;
   }
-  ngOnInit() {
+  ngOnInit() { }
 
-  }
-
+  // On insert un employee
   insert(lastname: string, firstname : string, active: string,deletedBy : string, address: string,
          gender: string, birthday: string, ssin: string, status: string, deleted: string) {
 
@@ -35,8 +36,6 @@ export class EmployeeInsertComponent implements OnInit{
       newDate = undefined;
     else
       newDate = new Date(birthday);
-
-
 
     let payload: EmployeeCreatePayloadInterface = {
       lastname,
@@ -57,9 +56,6 @@ export class EmployeeInsertComponent implements OnInit{
       fleets: this.prefab.fleetAssigned,
       salaries: this.prefab.salaryAssigned
     };
-
-
-
     this.employeeService.create(payload).subscribe((data) => {
       this.router.navigateByUrl('/dashboard/employee');
     });
