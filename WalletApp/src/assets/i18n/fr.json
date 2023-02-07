@@ -24,5 +24,8 @@
     "endHours": "Heure de fin",
     "comment": "Commentaire",
     "timesheetType": "Type de feuille de temps"
+  },
+  "logout": {
+    "test": "Déconnexion"
   }
 }

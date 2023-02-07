@@ -25,6 +25,9 @@
     "endHours": "End hours",
     "comment": "Comment",
     "timesheetType": "Timesheet type"
+  },
+  "logout": {
+    "test": "Logout"
   }
 
 }
