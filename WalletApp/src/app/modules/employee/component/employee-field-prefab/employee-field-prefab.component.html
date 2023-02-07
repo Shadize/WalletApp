@@ -3,46 +3,47 @@
 <form [formGroup]="formGroup" class="form">
 
   <mat-form-field appearance="fill">
-    <mat-label>Lastname</mat-label>
+    <mat-label>{{'employee.lastname' | translate}}</mat-label>
     <input matInput formControlName="lastname">
     <mat-error *ngIf="formGroup.get('lastname')?.invalid">
-      Lastname is <strong>required</strong>
+      {{'employee.lastname' | translate}} <strong>{{'employee.validatorRequired' | translate}}</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Firstname</mat-label>
+    <mat-label>{{'employee.firstname' | translate}}</mat-label>
     <input matInput formControlName="firstname">
     <mat-error *ngIf="formGroup.get('firstname')?.hasError('required')">
-      Firstname is <strong>required</strong>
+      {{'employee.firstname' | translate}}<strong>{{'employee.validatorRequired' | translate}}</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Active</mat-label>
+    <mat-label>{{'employee.active' | translate}}</mat-label>
     <mat-select formControlName="active">
-      <mat-option *ngFor="let bool of boolTab" [value]="bool">{{bool}}</mat-option>
+      <mat-option [value]="true"> {{'employee.true' | translate}} </mat-option>
+      <mat-option [value]="false"> {{'employee.false' | translate}} </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Deleted By</mat-label>
+    <mat-label>{{'employee.deletedBy' | translate}}</mat-label>
     <input #deletedBy matInput formControlName="deletedBy">
   </mat-form-field>
 
 
   <mat-form-field appearance="fill">
-    <mat-label>Address</mat-label>
+    <mat-label>{{'employee.address' | translate}}</mat-label>
     <input matInput formControlName="address">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Gender</mat-label>
+    <mat-label>{{'employee.gender' | translate}}</mat-label>
     <input matInput formControlName="gender">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Birthday</mat-label>
+    <mat-label>{{'employee.birthday' | translate}}</mat-label>
     <input matInput formControlName="birthday" [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -52,27 +53,27 @@
     <mat-label>SSIN</mat-label>
     <input matInput formControlName="ssin">
     <mat-error *ngIf="formGroup.get('ssin')?.hasError('pattern')">
-      The SSIN pattern we're using is like this : <strong>87-11-15.327-96</strong>
+      SSIN <strong>{{'employee.validatorSSIN' | translate}}</strong> (Ex: 87-11-15.327-96)
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Status</mat-label>
+    <mat-label>{{'employee.status' | translate}}</mat-label>
     <input  matInput formControlName="status">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Deleted</mat-label>
-    <mat-select>
-      <mat-option [value]="true"> True </mat-option>
-      <mat-option [value]="false"> False </mat-option>
+    <mat-label>{{'employee.deleted' | translate}}</mat-label>
+    <mat-select formControlName="deleted">
+      <mat-option [value]="true"> {{'employee.true' | translate}} </mat-option>
+      <mat-option [value]="false"> {{'employee.false' | translate}} </mat-option>
     </mat-select>
   </mat-form-field>
 
 <!--  Partie Company-->
 
   <mat-form-field class="companyInput" appearance="fill">
-    <mat-label>Company</mat-label>
+    <mat-label>{{'employee.company' | translate}}</mat-label>
     <input matInput formControlName="company" [matAutocomplete]="company">
     <mat-autocomplete #company="matAutocomplete" [displayWith]="companyDisplay">
       <mat-option *ngFor="let company of companyFiltered | async"
@@ -83,16 +84,16 @@
       </mat-option>
     </mat-autocomplete>
     <mat-error *ngIf="this.formGroup.get('company')?.hasError('required')">
-      Company is <strong>required</strong>
+      {{'employee.company' | translate}} <strong>{{'employee.validatorRequired' | translate}}</strong>
     </mat-error>
   </mat-form-field>
 
 
 <!--  Partie Skill-->
   <fieldset>
-    <legend>Skills</legend>
+    <legend>{{'employee.skills' | translate}}</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
-      <mat-label>Search a skill</mat-label>
+      <mat-label>{{'employee.searchSkill' | translate}}</mat-label>
       <input matInput formControlName="skills" [matAutocomplete]="skills" (keydown.enter)="skillEvent($event)">
       <mat-autocomplete #skills="matAutocomplete" [displayWith]="skillDisplay">
         <mat-option *ngFor="let skill of skillFiltered | async"
@@ -107,12 +108,12 @@
 
     <table mat-table [dataSource]="skillAssigned">
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.title' | translate}} </mat-header-cell>
         <mat-cell *matCellDef="let skill">{{skill.title}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="skillId">
-        <mat-header-cell *matHeaderCellDef> Skill ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.skills' | translate}} ID </mat-header-cell>
         <mat-cell *matCellDef="let skill">{{skill.skillId}} </mat-cell>
       </ng-container>
 
@@ -134,9 +135,9 @@
 <!--  Partie Timesheets-->
 
   <fieldset>
-    <legend>Timesheets</legend>
+    <legend>{{'employee.timesheets' | translate}}</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
-      <mat-label>Search a timesheet</mat-label>
+      <mat-label>{{'employee.searchTimesheet' | translate}}</mat-label>
       <input matInput formControlName="timesheets" [matAutocomplete]="timesheets" (keydown.enter)="timesheetEvent($event)">
       <mat-autocomplete #timesheets="matAutocomplete" [displayWith]="timesheetDisplay">
         <mat-option *ngFor="let timesheet of timesheetFiltered | async"
@@ -150,12 +151,12 @@
 
     <table mat-table [dataSource]="timesheetAssigned">
       <ng-container matColumnDef="comment">
-        <mat-header-cell *matHeaderCellDef> Comment </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'timesheet.comment' | translate}} </mat-header-cell>
         <mat-cell *matCellDef="let timesheet">{{timesheet.comment}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="timesheetId">
-        <mat-header-cell *matHeaderCellDef> Timesheet ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.timesheets' | translate}} ID </mat-header-cell>
         <mat-cell *matCellDef="let timesheet">{{timesheet.timesheetId}} </mat-cell>
       </ng-container>
 
@@ -177,9 +178,9 @@
 <!--  Partie Documents-->
 
   <fieldset>
-    <legend>Documents</legend>
+    <legend>{{'employee.documents' | translate}}</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
-      <mat-label>Search a document</mat-label>
+      <mat-label>{{'employee.searchDocument' | translate}}</mat-label>
       <input matInput formControlName="documents" [matAutocomplete]="documents" (keydown.enter)="documentEvent($event)">
       <mat-autocomplete #documents="matAutocomplete" [displayWith]="documentDisplay">
         <mat-option *ngFor="let document of documentFiltered | async"
@@ -193,12 +194,12 @@
 
     <table mat-table [dataSource]="documentAssigned">
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.title' | translate}} </mat-header-cell>
         <mat-cell *matCellDef="let document">{{document.title}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="documentId">
-        <mat-header-cell *matHeaderCellDef> Document ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.documents' | translate}} ID </mat-header-cell>
         <mat-cell *matCellDef="let document">{{document.documentId}} </mat-cell>
       </ng-container>
 
@@ -219,9 +220,9 @@
 
 <!--  Partie Contract-->
   <fieldset>
-    <legend>Contracts</legend>
+    <legend>{{'employee.contracts' | translate}}</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
-      <mat-label>Search a contract</mat-label>
+      <mat-label>{{'employee.searchContract' | translate}}</mat-label>
       <input matInput formControlName="contracts" [matAutocomplete]="contracts" (keydown.enter)="contractEvent($event)">
       <mat-autocomplete #contracts="matAutocomplete" [displayWith]="contractDisplay">
         <mat-option *ngFor="let contract of contractFiltered | async"
@@ -234,12 +235,12 @@
     </mat-form-field>
     <table mat-table [dataSource]="contractAssigned">
       <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.description' | translate}} </mat-header-cell>
         <mat-cell *matCellDef="let contract">{{contract.description}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="contractId">
-        <mat-header-cell *matHeaderCellDef> Contract ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.contracts' | translate}} ID </mat-header-cell>
         <mat-cell *matCellDef="let contract">{{contract.contractId}} </mat-cell>
       </ng-container>
 
@@ -261,9 +262,9 @@
   <!--  Partie Fleet-->
 
   <fieldset>
-    <legend>Fleets</legend>
+    <legend>{{'employee.fleets' | translate}}</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
-      <mat-label>Search a fleet</mat-label>
+      <mat-label>{{'employee.searchFleet' | translate}}</mat-label>
       <input matInput formControlName="fleets" [matAutocomplete]="fleets" (keydown.enter)="fleetEvent($event)">
       <mat-autocomplete #fleets="matAutocomplete" [displayWith]="fleetDisplay">
         <mat-option *ngFor="let fleet of fleetFiltered | async"
@@ -276,12 +277,12 @@
     </mat-form-field>
     <table mat-table [dataSource]="fleetAssigned">
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.title' | translate}} </mat-header-cell>
         <mat-cell *matCellDef="let fleet">{{fleet.title}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="fleetId">
-        <mat-header-cell *matHeaderCellDef> Fleet ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.fleets' | translate}} ID </mat-header-cell>
         <mat-cell *matCellDef="let fleet">{{fleet.fleetId}} </mat-cell>
       </ng-container>
 
@@ -304,9 +305,9 @@
   <!--  Partie Salary-->
 
   <fieldset>
-    <legend>Salaries</legend>
+    <legend>{{'employee.salaries' | translate}}</legend>
     <mat-form-field appearance="fill" class="formFieldInFieldset">
-      <mat-label>Search a salary</mat-label>
+      <mat-label>{{'employee.searchSalary' | translate}}</mat-label>
       <input matInput formControlName="salaries" [matAutocomplete]="salaries" (keydown.enter)="salaryEvent($event)">
       <mat-autocomplete #salaries="matAutocomplete" [displayWith]="salaryDisplay">
         <mat-option *ngFor="let salary of salaryFiltered | async"
@@ -319,12 +320,12 @@
     </mat-form-field>
     <table mat-table [dataSource]="salaryAssigned">
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.title' | translate}} </mat-header-cell>
         <mat-cell *matCellDef="let salary">{{salary.title}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="salaryId">
-        <mat-header-cell *matHeaderCellDef> Salary ID </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{'employee.salaries' | translate}} ID </mat-header-cell>
         <mat-cell *matCellDef="let salary">{{salary.salaryId}} </mat-cell>
       </ng-container>
 

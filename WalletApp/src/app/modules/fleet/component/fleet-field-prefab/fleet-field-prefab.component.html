@@ -2,44 +2,44 @@
 <form [formGroup]="formGroup" class="form">
 
 <mat-form-field appearance="fill">
-  <mat-label>Title</mat-label>
+  <mat-label>{{'fleet.title' | translate}}</mat-label>
   <input #title matInput formControlName="title">
   <mat-error *ngIf="formGroup.get('title')?.invalid">
-    Title is <strong>required</strong>
+    {{'fleet.title' | translate}} <strong>{{'fleet.validatorRequired' | translate}}</strong>
   </mat-error>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Description</mat-label>
+  <mat-label>{{'fleet.description' | translate}}</mat-label>
   <input #description matInput formControlName="description">
   <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
-    Description is <strong>required</strong>
+    {{'fleet.description' | translate}} <strong>{{'fleet.validatorRequired' | translate}}</strong>
   </mat-error>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Type</mat-label>
+  <mat-label>{{'fleet.type' | translate}}</mat-label>
   <input #type matInput formControlName="type">
   <mat-error *ngIf="formGroup.get('type')?.hasError('required')">
-    Type is <strong>required</strong>
+    {{'fleet.type' | translate}} <strong>{{'fleet.validatorRequired' | translate}}</strong>
   </mat-error>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <mat-label>Cost</mat-label>
+  <mat-label>{{'fleet.cost' | translate}}</mat-label>
   <input #cost matInput formControlName="cost">
   <mat-error *ngIf="formGroup.get('cost')?.hasError('required')">
-    Cost is <strong>required</strong>
+    {{'fleet.cost' | translate}} <strong>{{'fleet.validatorRequired' | translate}}</strong>
   </mat-error>
   <mat-error *ngIf="formGroup.get('cost')?.hasError('pattern')">
-    Cost <strong>must be a number</strong>
+    {{'fleet.cost' | translate}} <strong>{{'fleet.validatorNumber' | translate}}</strong>
   </mat-error>
 </mat-form-field>
 
 
 
 <mat-form-field class="employeeInput" appearance="fill">
-  <mat-label>Employee</mat-label>
+  <mat-label>{{'fleet.employee' | translate}}</mat-label>
   <input matInput formControlName="employee" [matAutocomplete]="employee">
   <mat-autocomplete #employee="matAutocomplete" [displayWith]="display">
     <mat-option *ngFor="let employee of employeeFiltered | async"

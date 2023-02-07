@@ -1,6 +1,6 @@
 <div class="mainDiv">
   <div class="headerDiv">
-    <h2>Fleet Detail</h2>
+    <h2>{{'employee.employeeDetail' | translate}}</h2>
     <button mat-icon-button
             id="button"
             (click)="dialog.closeAll()"
@@ -9,52 +9,54 @@
     </button>
   </div>
 
-  <div class="fleetDetail">
-    <pre>{{'Employee ID : ' + employee.employeeId}}</pre>
-    <pre>{{'Lastnane    : ' + employee.lastname}}</pre>
-    <pre>{{'Firstname   : ' + employee.firstname}}</pre>
-    <pre>{{'Active      : ' + employee.active}}</pre>
-    <pre>{{'Deleted By  : ' + employee.deletedBy}}</pre>
-    <pre>{{'Address     : ' + employee.address}}</pre>
-    <pre>{{'Gender      : ' + employee.gender}}</pre>
-    <pre>{{'Birthday    : ' + employee.birthday}}</pre>
-    <pre>{{'SSIN        : ' + employee.ssin}}</pre>
-    <pre>{{'Status      : ' + employee.status}}</pre>
-    <pre>{{'Deleted     : ' + employee.deleted}}</pre>
-    <pre *ngIf="employee.company">{{'Company     : ' + employee.company.name + ' (UUID : ' + employee.company.companyId + ')'}}</pre>
+  <div class="employeeDetail">
+
+    <pre>{{'employee.employeeId' | translate}}{{' : ' + employee.employeeId}}</pre>
+    <pre>{{'employee.lastname' | translate}}{{' : ' + employee.lastname}}</pre>
+    <pre>{{'employee.firstname' | translate}}{{' : ' + employee.firstname}}</pre>
+    <pre>{{'employee.active' | translate}}{{' : ' + employee.active}}</pre>
+    <pre>{{'employee.deletedBy' | translate}}{{' : ' + employee.deletedBy}}</pre>
+    <pre>{{'employee.address' | translate}}{{' : ' + employee.address}}</pre>
+    <pre>{{'employee.gender' | translate}}{{' : ' + employee.gender}}</pre>
+    <pre>{{'employee.birthday' | translate}}{{' : ' + employee.birthday}}</pre>
+    <pre>{{'SSIN         : ' + employee.ssin}}</pre>
+    <pre>{{'employee.status' | translate}}{{' : ' + employee.status}}</pre>
+    <pre>{{'employee.deleted' | translate}}{{' : ' + employee.deleted}}</pre>
+    <pre *ngIf="employee.company">{{'employee.company' | translate}}{{' : ' + employee.company.name + ' (UUID : ' + employee.company.companyId + ')'}}</pre>
+
     <ng-container *ngIf="employee.skills">
         <ng-container *ngFor="let skill of employee.skills">
-          <pre *ngIf="skill == employee.skills[0]">{{'Skills      : ' + skill.title + ' (UUID : ' + skill.skillId + ')'}}</pre>
+          <pre *ngIf="skill == employee.skills[0]">{{'employee.skills' | translate}}{{' : ' + skill.title + ' (UUID : ' + skill.skillId + ')'}}</pre>
           <pre *ngIf="skill != employee.skills[0]">{{'            : ' + skill.title + ' (UUID : ' + skill.skillId + ')'}}</pre>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="employee.timesheets">
         <ng-container *ngFor="let timesheet of employee.timesheets">
-          <pre *ngIf="timesheet == employee.timesheets[0]">{{'Timesheets  : ' + timesheet.comment + ' (UUID : ' + timesheet.timesheetId + ')'}}</pre>
+          <pre *ngIf="timesheet == employee.timesheets[0]">{{'employee.timesheets' | translate}}{{' : ' + timesheet.comment + ' (UUID : ' + timesheet.timesheetId + ')'}}</pre>
           <pre *ngIf="timesheet != employee.timesheets[0]">{{'            : ' + timesheet.comment + ' (UUID : ' + timesheet.timesheetId + ')'}}</pre>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="employee.documents">
         <ng-container *ngFor="let document of employee.documents">
-          <pre *ngIf="document == employee.documents[0]">{{'Documents   : ' + document.title + ' (UUID : ' + document.documentId + ')'}}</pre>
+          <pre *ngIf="document == employee.documents[0]">{{'employee.documents' | translate}}{{' : ' + document.title + ' (UUID : ' + document.documentId + ')'}}</pre>
           <pre *ngIf="document != employee.documents[0]">{{'            : ' + document.title + ' (UUID : ' + document.documentId + ')'}}</pre>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="employee.contracts">
         <ng-container *ngFor="let contract of employee.contracts">
-          <pre *ngIf="contract == employee.contracts[0]">{{'Contracts   : ' + contract.description + ' (UUID : ' + contract.contractId + ')'}}</pre>
+          <pre *ngIf="contract == employee.contracts[0]">{{'employee.contracts' | translate}}{{' : ' + contract.description + ' (UUID : ' + contract.contractId + ')'}}</pre>
           <pre *ngIf="contract != employee.contracts[0]">{{'            : ' + contract.description + ' (UUID : ' + contract.contractId + ')'}}</pre>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="employee.fleets">
         <ng-container *ngFor="let fleet of employee.fleets">
-          <pre *ngIf="fleet == employee.fleets[0]">{{'Fleets      : ' + fleet.title + ' (UUID : ' + fleet.fleetId + ')'}}</pre>
+          <pre *ngIf="fleet == employee.fleets[0]">{{'employee.fleets' | translate}}{{'   : ' + fleet.title + ' (UUID : ' + fleet.fleetId + ')'}}</pre>
           <pre *ngIf="fleet != employee.fleets[0]">{{'            : ' + fleet.title + ' (UUID : ' + fleet.fleetId + ')'}}</pre>
         </ng-container>
     </ng-container>
     <ng-container *ngIf="employee.salaries">
         <ng-container *ngFor="let salary of employee.salaries">
-          <pre *ngIf="salary == employee.salaries[0]">{{'Salaries    : ' + salary.title + ' (UUID : ' + salary.salaryId + ')'}}</pre>
+          <pre *ngIf="salary == employee.salaries[0]">{{'employee.salaries' | translate}}{{' : ' + salary.title + ' (UUID : ' + salary.salaryId + ')'}}</pre>
           <pre *ngIf="salary != employee.salaries[0]">{{'            : ' + salary.title + ' (UUID : ' + salary.salaryId + ')'}}</pre>
         </ng-container>
     </ng-container>

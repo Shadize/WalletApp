@@ -6,6 +6,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatIconModule} from "@angular/material/icon";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         MatMenuModule,
         MatTooltipModule,
         MatIconModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        TranslateModule
     ],
   providers: [],
   exports: [

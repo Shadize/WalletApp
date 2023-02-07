@@ -54,7 +54,4 @@ public class Timesheet {
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
     Employee employee;
 
-
-// coommentaire
-
 }
