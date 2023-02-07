@@ -27,13 +27,14 @@ export class SalaryComponent implements OnInit, OnDestroy{
 
   // Récupération de la liste des salaires pour les afficher
   ngOnInit(): void {
-    this.subscription=  this.salaryService.list().subscribe(data => {
+    //this.subscription=
+      this.salaryService.list().subscribe(data => {
       this.salaries = data;
     })
   }
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+   // this.subscription.unsubscribe();
   }
 
 

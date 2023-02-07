@@ -3,17 +3,18 @@
     <mat-icon>close</mat-icon>
   </button>
   <div class="header">
-    <h2>Document Detail</h2>
+    <h2>{{"document.documentDetail" | translate}}</h2>
   </div>
   <div class="DocumentDetail">
-    <pre class="mat">{{'Document ID : ' + this.document.documentId}}</pre>
-    <pre class="mat">{{'Title       : ' + this.document.title}}</pre>
-    <pre class="mat">{{'Path        : ' + this.document.path}}</pre>
-    <pre class="mat">{{'Content     : ' + this.document.content}}</pre>
-    <pre class="mat">{{'Type        : ' + this.document.type}}</pre>
-    <pre class="mat" *ngIf="this.document.employee">{{'Employee    : ' + this.document.employee.firstname + ' ' + this.document.employee.lastname +' '+ '(UUID : ' + this.document.employee.employeeId + ')'}}</pre>
-    <pre class="mat" *ngIf="this.document.company">{{'Company     : ' + this.document.company.name + ' ' +  '(UUID : ' + this.document.company.companyId + ')'}}</pre>
-    <pre class="mat" *ngIf="this.document.contract">{{'Contract    : ' + this.document.contract.description + ' ' + '(UUID : ' + this.document.contract.contractId + ')'}}</pre>
+    <pre>{{"document.id" | translate}}{{" : " + this.document.documentId!.toString()}}</pre>
+    <pre>{{"document.title" | translate}}{{"       : " + this.document.title}}</pre>
+    <pre>{{"document.path" | translate}}{{"        : " + this.document.path}}</pre>
+    <pre>{{"document.content" | translate}}{{"     : " + this.document.content}}</pre>
+    <pre>{{"document.type" | translate}}{{"       : " + this.document.type}}</pre>
+    <pre>{{"document.createDate" | translate}}{{" : " }}{{this.document.createDate | date: "MM/dd/yyyy"}}</pre>
+    <pre  *ngIf="this.document.employee">{{"document.employeeName" | translate}}{{'    : ' + this.document.employee.firstname + ' ' + this.document.employee.lastname +' '+ '(UUID : ' + this.document.employee.employeeId + ')'}}</pre>
+    <pre  *ngIf="this.document.company">{{"document.companyName" | translate}}{{'     : ' + this.document.company.name + ' ' +  '(UUID : ' + this.document.company.companyId + ')'}}</pre>
+    <pre  *ngIf="this.document.contract">{{"document.contractDesc" | translate}}{{'    : ' + this.document.contract.description + ' ' + '(UUID : ' + this.document.contract.contractId + ')'}}</pre>
   </div>
 </div>
 

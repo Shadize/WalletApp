@@ -29,11 +29,12 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
   ngOnInit() {
     this.editSalary = this.data.salary;
 
-    this.subscription.push(
+    //this.subscription.push()
       // Récupération de la liste des employee pour l'edition
       this.employeeService.list().subscribe(data => {
         this.employees = data
-      }))
+      })
+
 
     // Form group avec Validator
     // Création d'un Validator Pattern pour amount pour obliger à mettre uniquement des chiffres
@@ -48,7 +49,7 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
 
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-    this.subscription.forEach(subscription => subscription.unsubscribe());
+    //this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 
   // Création de payload d'update de Salary et Update du salaire
@@ -62,9 +63,10 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
       employee: this.editSalary.employee
     }
     console.log(this.editSalary.employee)
-    this.subscription.push( this.salaryService.update(updatedSalary).subscribe(response => {
+    //this.subscription.push()
+      this.salaryService.update(updatedSalary).subscribe(response => {
         console.log(response)
-    }))
+    })
   }
 
 

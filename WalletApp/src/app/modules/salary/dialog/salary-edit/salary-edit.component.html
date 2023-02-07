@@ -8,7 +8,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="formGroup.get('createDate')?.hasError('required')">
-      {{"salary.dateIs" | translate}}&nbsp;<strong>{{"salary.required" | translate}}</strong>
+      {{"salary.dateIs" | translate}}<strong>{{"salary.required" | translate}}</strong>
     </mat-error>
   </mat-form-field>
   <br>
@@ -32,7 +32,7 @@
     <mat-label>{{"salary.amount" | translate}}</mat-label>
     <input  [(ngModel)]="editSalary.amount" [name]="editSalary.amount.toString()" formControlName="amount" matInput>
     <mat-error *ngIf="formGroup.get('amount')?.hasError('required') || formGroup.get('amount')?.hasError('pattern')">
-      {{"salary.amountIs" | translate}}&nbsp;<strong>{{"salary.required" | translate}}</strong>&nbsp;{{"salary.onlyContainNumber" | translate}}&nbsp;<strong>{{"salary.numbers" | translate}}</strong>
+      {{"salary.amountIs" | translate}}&nbsp;<strong>{{"salary.required" | translate}}</strong>&{{"salary.onlyContainNumber" | translate}}<strong>{{"salary.numbers" | translate}}</strong>
     </mat-error>
   </mat-form-field>
   <br>

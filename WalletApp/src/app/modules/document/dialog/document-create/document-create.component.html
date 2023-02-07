@@ -1,45 +1,45 @@
 <div class="form-container">
   <form class="form" [formGroup]="formGroup" (submit)="insert(title.value, path.value,content.value, type.value, date.value, selectedCompany, selectedContract, selectedEmployee); $event.preventDefault()">
-    <h1>Insert a new Document</h1>
+    <h1> <span>{{"document.insertDocument" | translate}}</span></h1>
     <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
+      <mat-label>{{"document.title" | translate}}</mat-label>
       <input #title formControlName="title" matInput>
       <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
-        Title is <strong>required</strong>
+        {{"document.titleIs" | translate}}<strong>{{"document.required" | translate}}</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Path</mat-label>
+      <mat-label>{{"document.path" | translate}}</mat-label>
       <input #path formControlName="path" matInput>
       <mat-error *ngIf="formGroup.get('path')?.hasError('required')">
-        Path is <strong>required</strong>
+        {{"document.pathIs" | translate}}<strong>{{"document.required" | translate}}</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Content</mat-label>
+      <mat-label>{{"document.content" | translate}}</mat-label>
       <input #content formControlName="content" matInput>
       <mat-error *ngIf="formGroup.get('content')?.hasError('required')">
-        Content is <strong>required</strong>
+        {{"document.contentIs" | translate}}<strong>{{"document.required" | translate}}</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Type</mat-label>
+      <mat-label>{{"document.type" | translate}}</mat-label>
       <input #type formControlName="type" matInput>
       <mat-error *ngIf="formGroup.get('type')?.hasError('required')">
-        Type is <strong>required</strong>
+        {{"document.typeIs" | translate}}<strong>{{"document.required" | translate}}</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
+      <mat-label>{{"document.createDate" | translate}}</mat-label>
       <input #date formControlName="createDate" matInput  [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="formGroup.get('createDate')?.hasError('required')">
-        Date is <strong>required</strong>
+        {{"document.dateIs" | translate}}<strong>{{"document.required" | translate}}</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="company-form">
-      <mat-label>Company</mat-label>
+      <mat-label>{{"document.company" | translate}}</mat-label>
       <mat-select class="company-select" formControlName="company"  [(value)]="selectedCompany">
         <mat-option class="employees-option" *ngFor="let company of companies" [value]="company">
           {{company.name}}
@@ -47,7 +47,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" class="contract-form">
-      <mat-label>Contract</mat-label>
+      <mat-label>{{"document.contract" | translate}}</mat-label>
       <mat-select class="employees-select" formControlName="contract"  [(value)]="selectedContract">
         <mat-option class="employees-option" *ngFor="let contract of contracts" [value]="contract">
           {{contract.description}}
@@ -55,7 +55,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" class="employees-form">
-      <mat-label>Employee</mat-label>
+      <mat-label>{{"document.employee" | translate}}</mat-label>
       <mat-select class="employees-select" formControlName="employee"  [(value)]="selectedEmployee">
         <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee">
           {{employee.lastname }} {{employee.firstname}}
@@ -64,8 +64,8 @@
     </mat-form-field>
     <br>
     <div class="button-container">
-      <button mat-raised-button color="warn" class="cancel-button" [mat-dialog-close]="true">Cancel</button>
-      <button mat-raised-button type="submit" class="confirm-button" [mat-dialog-close]="true" [disabled]="!formGroup.valid" color="accent">Insert Document</button>
+      <button mat-raised-button color="warn" class="cancel-button" [mat-dialog-close]="true">{{"document.cancel" | translate}}</button>
+      <button mat-raised-button type="submit" class="confirm-button" [mat-dialog-close]="true" [disabled]="!formGroup.valid" color="accent">{{"document.insertDocument" | translate}}</button>
     </div>
   </form>
 </div>

@@ -27,7 +27,8 @@ export class SalaryCreateComponent implements OnInit, OnDestroy {
   // Récupération de la liste des employee pour la création de salaire
   ngOnInit(): void {
 
-    this.subscription = this.employeeService.list().subscribe(data => {
+   // this.subscription =
+      this.employeeService.list().subscribe(data => {
       this.employees = data
     })
 
@@ -44,7 +45,7 @@ export class SalaryCreateComponent implements OnInit, OnDestroy {
 
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    //this.subscription.unsubscribe();
   }
 
   insert(newDate: string, title: string, comment: string, createdAmount: string, employee: Employee) {
