@@ -1,18 +1,20 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {Salary} from "@shared/model/dto/salary.interface";
 import {SalaryService} from "@shared/service/crud/salary.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-salary-delete-confirm',
   templateUrl: './salary-delete-confirm.component.html',
   styleUrls: ['./salary-delete-confirm.component.scss']
 })
-export class SalaryDeleteConfirmComponent implements OnInit{
+export class SalaryDeleteConfirmComponent implements OnInit, OnDestroy {
 
+  subscription!: Subscription;
   salary!: Salary;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {salary: Salary}, private salaryService: SalaryService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { salary: Salary }, private salaryService: SalaryService) {
   }
 
   // Récupération via l'injection du mat dialog data du salaire que j'ai envoyer
@@ -23,10 +25,15 @@ export class SalaryDeleteConfirmComponent implements OnInit{
 
 
   // Suppression du salaire
-  delete(){
-    this.salaryService.remove(this.salary.salaryId!).subscribe(response => {
+  delete() {
+    this.subscription = this.salaryService.remove(this.salary.salaryId!).subscribe(response => {
       console.log(response)
     })
+  }
+
+  // Unsubscribe aux souscription pour éviter les fuites de mémoires
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

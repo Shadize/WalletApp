@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {Salary} from "@shared/model/dto/salary.interface";
@@ -7,13 +7,16 @@ import {EmployeeService} from "@shared/service/crud/employee.service";
 import {SkillUpdatePayloadInterface} from "@shared/model/payload/update/SkillUpdatePayload.interface";
 import {SalaryUpdatePayloadInterface} from "@shared/model/payload/update/SalaryUpdatePayload.interface";
 import {SalaryService} from "@shared/service/crud/salary.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-salary-edit',
   templateUrl: './salary-edit.component.html',
   styleUrls: ['./salary-edit.component.scss']
 })
-export class SalaryEditComponent implements OnInit{
+export class SalaryEditComponent implements OnInit, OnDestroy{
+
+  subscription!: Subscription[];
   editSalary!: Salary;
   employees: Employee[] = [];
   formGroup!: FormGroup;
@@ -26,11 +29,11 @@ export class SalaryEditComponent implements OnInit{
   ngOnInit() {
     this.editSalary = this.data.salary;
 
-    // Récupération de la liste des employee pour l'edition
-
-    this.employeeService.list().subscribe(data => {
-      this.employees = data
-    })
+    this.subscription.push(
+      // Récupération de la liste des employee pour l'edition
+      this.employeeService.list().subscribe(data => {
+        this.employees = data
+      }))
 
     // Form group avec Validator
     // Création d'un Validator Pattern pour amount pour obliger à mettre uniquement des chiffres
@@ -41,6 +44,11 @@ export class SalaryEditComponent implements OnInit{
       amount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       employee: new FormControl('', Validators.required),
     })
+  }
+
+  // Unsubscribe aux souscription pour éviter les fuites de mémoires
+  ngOnDestroy(): void {
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 
   // Création de payload d'update de Salary et Update du salaire
@@ -54,9 +62,11 @@ export class SalaryEditComponent implements OnInit{
       employee: this.editSalary.employee
     }
     console.log(this.editSalary.employee)
-    this.salaryService.update(updatedSalary).subscribe(response => {
+    this.subscription.push( this.salaryService.update(updatedSalary).subscribe(response => {
         console.log(response)
-    })
+    }))
   }
+
+
 
 }

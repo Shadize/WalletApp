@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SalaryService} from "@shared/service/crud/salary.service";
 import {Salary} from "@shared/model/dto/salary.interface";
 import {Employee} from "@shared/model/dto/employee.interface";
@@ -7,14 +7,16 @@ import {SalaryCreateComponent} from "../../dialog/salary-create/salary-create.co
 import {SalaryDeleteConfirmComponent} from "../../dialog/salary-delete-confirm/salary-delete-confirm.component";
 import {SalaryEditComponent} from "../../dialog/salary-edit/salary-edit.component";
 import {SalaryDetailComponent} from "../../dialog/salary-detail/salary-detail.component";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-salary',
   templateUrl: './salary.component.html',
   styleUrls: ['./salary.component.scss']
 })
-export class SalaryComponent implements OnInit{
+export class SalaryComponent implements OnInit, OnDestroy{
 
+  subscription!: Subscription;
   salaries: Salary[] = [];
   employees: Employee[] = [];
   displayedColumns: string[] = ['salaryId', 'createDate', 'title', 'comment', 'amount', 'employees', 'edit'];
@@ -25,10 +27,15 @@ export class SalaryComponent implements OnInit{
 
   // Récupération de la liste des salaires pour les afficher
   ngOnInit(): void {
-    this.salaryService.list().subscribe(data => {
+    this.subscription=  this.salaryService.list().subscribe(data => {
       this.salaries = data;
     })
   }
+  // Unsubscribe aux souscription pour éviter les fuites de mémoires
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 
   /*=== Actualisation des datasource pour l'actualisation dynamique dans le template ===*/
   RefreshData(){
@@ -76,4 +83,6 @@ export class SalaryComponent implements OnInit{
       this.RefreshData();
     })
   }
+
+
 }
