@@ -20,6 +20,7 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
   editSalary!: Salary;
   employees: Employee[] = [];
   formGroup!: FormGroup;
+  name!: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {salary: Salary}, private employeeService: EmployeeService, private salaryService: SalaryService) {
   }
@@ -28,6 +29,7 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.editSalary = this.data.salary;
+    this.name = this.editSalary.employee.lastname + " " +this.editSalary.employee.firstname;
 
     //this.subscription.push()
       // Récupération de la liste des employee pour l'edition

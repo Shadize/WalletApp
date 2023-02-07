@@ -41,6 +41,7 @@
     <mat-form-field appearance="fill" class="company-form">
       <mat-label>{{"document.company" | translate}}</mat-label>
       <mat-select class="company-select" formControlName="company"  [(value)]="selectedCompany">
+        <mat-option [value]="null">{{"document.none" | translate}}</mat-option>
         <mat-option class="employees-option" *ngFor="let company of companies" [value]="company">
           {{company.name}}
         </mat-option>
@@ -49,6 +50,7 @@
     <mat-form-field appearance="fill" class="contract-form">
       <mat-label>{{"document.contract" | translate}}</mat-label>
       <mat-select class="employees-select" formControlName="contract"  [(value)]="selectedContract">
+        <mat-option [value]="null">{{"document.none" | translate}}</mat-option>
         <mat-option class="employees-option" *ngFor="let contract of contracts" [value]="contract">
           {{contract.description}}
         </mat-option>
@@ -57,6 +59,7 @@
     <mat-form-field appearance="fill" class="employees-form">
       <mat-label>{{"document.employee" | translate}}</mat-label>
       <mat-select class="employees-select" formControlName="employee"  [(value)]="selectedEmployee">
+        <mat-option [value]="null">{{"document.none" | translate}}</mat-option>
         <mat-option class="employees-option" *ngFor="let employee of employees" [value]="employee">
           {{employee.lastname }} {{employee.firstname}}
         </mat-option>

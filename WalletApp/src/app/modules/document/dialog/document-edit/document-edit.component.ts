@@ -22,6 +22,7 @@ export class DocumentEditComponent implements OnInit{
   companies: Company[] = [];
   contracts: Contract[] = [];
   employees: Employee[] = [];
+  title!: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {document: Document},
               private documentService: DocumentService,
@@ -36,6 +37,7 @@ export class DocumentEditComponent implements OnInit{
     // La sélection lors de l'édition
 
     this.editDocument = this.data.document;
+    this.title = this.editDocument.title
 
     this.companyService.list().subscribe(data =>{
       this.companies = data;

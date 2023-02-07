@@ -87,6 +87,7 @@
     "companyName": "Entreprise",
     "contractDesc": "Contrat",
     "editDocument": "Modifier le document",
-    "editionDocument": "Modification du document:"
+    "editionDocument": "Modification du document:",
+    "none": "Aucun"
   }
 }

@@ -91,7 +91,8 @@
     "companyName": "Company",
     "contractDesc": "Contract",
     "editDocument": "Edit document",
-    "editionDocument": "Edition of the document:"
+    "editionDocument": "Edition of the document:",
+    "none": "None"
   }
 
 }
