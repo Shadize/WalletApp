@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {Fleet} from "@shared/model/dto/fleet.interface";
+import {Employee} from "@shared/model/dto/employee.interface";
 
 @Component({
   selector: 'app-employee-detail',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-detail.component.scss']
 })
 export class EmployeeDetailComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public employee: Employee,
+              public dialog: MatDialog) { }
 
+  ngOnInit(): void {
+
+  }
 }

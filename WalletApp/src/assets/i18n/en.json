@@ -26,9 +26,6 @@
     "comment": "Comment",
     "timesheetType": "Timesheet type"
   },
-  "document": {
-
-  },
   "salary": {
     "id": "Salary ID",
     "date": "Create date",
@@ -93,8 +90,92 @@
     "editDocument": "Edit document",
     "editionDocument": "Edition of the document:",
     "none": "None"
+    },
+  "logout": {
+    "logout": "Logout"
+  },
+  "language": {
+    "selection": "Language selection"
+  },
+  "fleet": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "cost": "Cost",
+    "delete": "Delete",
+    "description": "Description",
+    "detail": "Detail",
+    "edit": "Edit",
+    "employee": "Employee",
+    "fleet": "Fleet",
+    "fleetId": "Fleet ID",
+    "fleetDetail": "Fleet details",
+    "fleetEdit": "Fleet edit",
+    "fleetInsert": "Fleet insert",
+    "fleetList": "Fleet list",
+    "insert": "Insert",
+    "insertNewFleet": "Insert new fleet",
+    "itemsPerPage": "Items per page",
+    "no": "No",
+    "title": "Title",
+    "type": "Type",
+    "update": "Update",
+    "validatorRequired": "is required",
+    "validatorNumber": " must be a number",
+    "yes": "Yes"
+  },
+  "columnSelector": {
+    "editColumns": "Edit columns"
+  },
+  "employee": {
+    "active": "Active",
+    "add": "Add",
+    "address": "Address",
+    "birthday": "Birth date",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "contracts": "Contracts",
+    "company": "Company",
+    "delete": "Delete",
+    "deleted": "Deleted",
+    "deletedBy": "Deleted by",
+    "description": "Description",
+    "detail": "Detail",
+    "documents": "Documents",
+    "edit": "Edit",
+    "employee": "Employee",
+    "employeeDetail": "Employee details",
+    "employeeEdit": "Employee edit",
+    "employeeId": "Employee ID",
+    "employeeInsert": "Employee insert",
+    "employeeList": "Employee list",
+    "false": "False",
+    "firstname": "Firstname",
+    "fleets": "Fleets",
+    "gender": "Gender",
+    "insert": "Insert",
+    "insertNewEmployee": "Insert new employee",
+    "itemsPerPage": "Items per page",
+    "lastname": "Name",
+    "no": "No",
+    "salaries": "Salaries",
+    "searchSkill": "Search skill",
+    "searchTimesheet": "Search timesheet",
+    "searchContract": "Search contract",
+    "searchFleet": "Search fleet",
+    "searchSalary": "Search salary",
+    "searchDocument": "Search document",
+    "skills": "Skills",
+    "status": "Status",
+    "timesheets": "Timesheets",
+    "title": "Title",
+    "true": "True",
+    "update": "Update",
+    "validatorRequired": "is required",
+    "validatorNumber": " must be a number",
+    "validatorSSIN": " must have a valid pattern",
+    "yes": "Yes"
   }
-
 }
 
 

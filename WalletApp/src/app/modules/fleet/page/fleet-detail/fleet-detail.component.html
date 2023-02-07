@@ -1,6 +1,6 @@
 <div class="mainDiv">
   <div class="headerDiv">
-    <h2>Fleet Detail</h2>
+    <h2>{{'fleet.fleetDetail' | translate}}</h2>
     <button mat-icon-button
             id="button"
             (click)="dialog.closeAll()"
@@ -10,12 +10,12 @@
   </div>
 
   <div class="fleetDetail">
-    <pre>{{'Fleet ID    : ' + data.fleetId}}</pre>
-    <pre>{{'Title       : ' + data.title}}</pre>
-    <pre>{{'Description : ' + data.description}}</pre>
-    <pre>{{'Type        : ' + data.type}}</pre>
-    <pre>{{'Cost        : ' + data.cost}}</pre>
-    <pre *ngIf="data.employee">{{'Employee    : ' + data.employee.firstname + ' ' + data.employee.lastname + ' (UUID : ' + data.employee.employeeId + ')'}}</pre>
+    <pre>{{'fleet.fleetId' | translate}}{{'    : ' + data.fleetId}}</pre>
+    <pre>{{'fleet.title' | translate}}{{'       : ' + data.title}}</pre>
+    <pre>{{'fleet.description' | translate}}{{' : ' + data.description}}</pre>
+    <pre>{{'fleet.type' | translate}}{{'        : ' + data.type}}</pre>
+    <pre>{{'fleet.cost' | translate}}{{'        : ' + data.cost}}</pre>
+    <pre *ngIf="data.employee">{{'fleet.employee' | translate}}{{'    : ' + data.employee.firstname + ' ' + data.employee.lastname + ' (UUID : ' + data.employee.employeeId + ')'}}</pre>
   </div>
 
 </div>

@@ -1,13 +1,13 @@
 
 <div id="InsertContainer">
 
-    <h1>Insert a new Fleet</h1>
+    <h1>{{'fleet.fleetInsert' | translate}}</h1>
 
     <app-fleet-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-fleet-field-prefab>
 
     <div id="buttonDiv">
       <a [routerLink]="['/dashboard/fleet']">
-        <button mat-raised-button color="warn"> Cancel </button>
+        <button mat-raised-button color="warn"> {{'fleet.cancel' | translate}} </button>
       </a>
 
       <button mat-raised-button type="submit"
@@ -16,7 +16,7 @@
               (click)="insert(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
               [disabled]="!formGroup.valid"
 
-      > Insert </button>
+      > {{'fleet.fleetInsert' | translate}} </button>
     </div>
 
 </div>

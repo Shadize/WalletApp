@@ -4,18 +4,20 @@
       <mat-icon>menu</mat-icon>
     </button>
     <a [routerLink]="['/dashboard/home']" id="title">
-      <h1>PronHub</h1>
+      <h1>Wallet</h1>
     </a>
 
 
     <span class="example-spacer"></span>
-    <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>settings</mat-icon>
+    <button [matMenuTriggerFor]="languageMenu" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" matTooltip="{{'language.selection' | translate}}">
+      <mat-icon>language</mat-icon>
     </button>
 
+    <!--
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="languageMenu">Languages</button>
+      <button mat-menu-item [matMenuTriggerFor]="languageMenu" >Languages</button>
     </mat-menu>
+    -->
 
     <mat-menu #languageMenu="matMenu">
       <button mat-menu-item (click)="handleLanguageChange('fr')">Français</button>
@@ -24,7 +26,7 @@
 
 
 
-    <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" matTooltip="{{'logout.logout' | translate}}">
       <mat-icon>logout</mat-icon>
     </button>
   </mat-toolbar>

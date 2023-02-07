@@ -59,9 +59,9 @@ export class FleetComponent implements OnInit, OnDestroy
       this.refreshList();
     });
   }
-  openDetailFleetDialog(element: Fleet){
+  openDetailFleetDialog(fleet: Fleet){
     this.dialog.open(FleetDetailComponent,{
-      width: '50%', data: element
+      width: '50%', data: fleet
     })
   }
 }

@@ -10,6 +10,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './page/home/home.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -17,7 +19,7 @@ import {MatMenuModule} from "@angular/material/menu";
     DashboardComponent,
     HomeComponent
   ],
-  imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule, MatMenuModule],
+  imports: [DashboardRoutingModule, CommonModule, MatListModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatDialogModule, MatMenuModule, MatTooltipModule, TranslateModule],
   providers: []
 })
 export class DashboardModule {
