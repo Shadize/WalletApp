@@ -71,7 +71,7 @@ export class DocumentCreateComponent implements OnInit{
 
     let result = this.documentService.create(newDocument);
     result.subscribe(r =>{
-      console.log(r)
+
     })
   }
 }

@@ -39,7 +39,6 @@ export class SkillService extends ApiService implements CrudServiceInterface{
   update(updatePayload: SkillUpdatePayloadInterface): Observable<boolean> {
     return this.put("skill/update", updatePayload).pipe(
       map((response: ApiResponse) => {
-        console.log(response)
         return (response.result)
       })
     )
@@ -49,7 +48,6 @@ export class SkillService extends ApiService implements CrudServiceInterface{
   remove(id: string | number): Observable<boolean> {
     return this.delete(`skill/delete/${id}`).pipe(
       map((response: ApiResponse) => {
-        console.log(response)
         return (response.result)
       })
     )

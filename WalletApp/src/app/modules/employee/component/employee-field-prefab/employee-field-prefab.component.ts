@@ -261,7 +261,7 @@ export class EmployeeFieldPrefabComponent {
   }
   deleteSkill(skill: Skill, event: any){
 
-    console.log(this.skillAssigned);
+
     if(event.pointerType === 'mouse')
     {
       this.skillAssigned$.subscribe(data => {

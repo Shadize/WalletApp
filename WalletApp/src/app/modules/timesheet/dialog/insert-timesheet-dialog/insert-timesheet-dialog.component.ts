@@ -55,7 +55,7 @@ export class InsertTimesheetDialogComponent implements OnInit{
   }
 
   insert(startDate: Date, startHoursString: string, endHoursString: string, comment: string, timesheetType: string, contractId: string, employeeId: string){
-    console.log("Inserting timesheet")
+
     const contract = {contractId: contractId} as Contract
     const employee = {employeeId: employeeId} as Employee
     const startHours: Date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), parseInt(startHoursString.substring(0, 2)), parseInt(startHoursString.substring(3, 5)))
@@ -63,7 +63,7 @@ export class InsertTimesheetDialogComponent implements OnInit{
     let timesheet: TimesheetCreatePayload = {startDate, startHours, endHours, comment, timesheetType, contract, employee}
     let result = this.timesheetService.create(timesheet);
     result.subscribe(r => {
-      console.log(r)
+
     })
     this.dialogRef.close()
   }
@@ -88,11 +88,11 @@ export class InsertTimesheetDialogComponent implements OnInit{
   }
 
   handleEmployeeChange(employeeId: string){
-    console.log(employeeId)
+
   }
 
   changeTime(time: any)
   {
-    console.log(time)
+
   }
 }

@@ -53,9 +53,8 @@ export class SalaryEditComponent implements OnInit{
       amount: this.editSalary.amount,
       employee: this.editSalary.employee
     }
-    console.log(this.editSalary.employee)
     this.salaryService.update(updatedSalary).subscribe(response => {
-        console.log(response)
+
     })
   }
 

@@ -74,7 +74,7 @@ export class DocumentEditComponent implements OnInit{
       employee: this.editDocument.employee
     }
     this.documentService.update(updatedDocument).subscribe(response => {
-      console.log(response)
+
     })
   }
 }

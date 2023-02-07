@@ -63,8 +63,8 @@ export class EditTimesheetDialogComponent implements OnInit{
   }
 
   update(startDate: Date, startHoursString: string, endHoursString: string, comment: string, timesheetType: string, contractId: string, employeeId: string){
-    console.log("Updating timesheet")
-    console.log(employeeId)
+
+
     const contract = {contractId: contractId} as Contract
     const employee = {employeeId: employeeId} as Employee
     const startHours: Date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), parseInt(startHoursString.substring(0, 2)), parseInt(startHoursString.substring(3, 5)))
@@ -72,7 +72,7 @@ export class EditTimesheetDialogComponent implements OnInit{
     let timesheet: TimesheetUpdatePayload = {timesheetId: this.timesheetId ,startDate, startHours, endHours, comment, timesheetType, contract, employee}
     let result = this.timesheetService.update(timesheet);
     result.subscribe(r => {
-      console.log(r)
+
     })
     this.dialogRef.close()
   }

@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
       } else {
         this.error = true;
       }
-      console.log(data.result);
+
     });
   }
 

@@ -17,11 +17,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class FleetComponent implements OnInit, OnDestroy
 {
+
+  /* Dans ce component j'ai implémenté un liste Subscripion à laquelle j'ajoute chaque subscription.
+  *  Lorsque je quitte la page, j'unsubscribe à toutes les Subscriptions.
+  * */
   constructor(public fleetService: FleetService,
               public dialog: MatDialog,
               public router: Router) {
   }
-
   fleetList: Fleet[] = [];
   subList: Subscription[] = [];
   referenceColumns: string[] = ['fleetId','title','description','type','cost','employee','option'];
@@ -53,12 +56,14 @@ export class FleetComponent implements OnInit, OnDestroy
   refreshList() {
     this.fleetService.list();
   }
-// Fonction pour supprimer un fleet et refresh la page
+// Fonction pour supprimer un fleet et refresh la list des fleets
   delete(fleet: Fleet){
     this.fleetService.remove(fleet.fleetId!).subscribe( () => {
       this.refreshList();
     });
   }
+
+  // ouvre une fenetre de dialog pour voir les details d'un fleet
   openDetailFleetDialog(fleet: Fleet){
     this.dialog.open(FleetDetailComponent,{
       width: '50%', data: fleet

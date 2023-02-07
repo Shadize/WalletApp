@@ -16,25 +16,22 @@ import {Contract} from "@shared/model/dto/contract.interface";
 })
 export class EntityManagerService {
 
+  // Ce service sert à la supprission des entités liées à un employé afin de ne pas avoir un champ null
+  // dans les entités liées à un employé qui ont une relation 1-1 ou 1-n avec l'entité employé
+
   constructor(private employeeService: EmployeeService,
               private salaryService: SalaryService,
               private timesheetService: TimesheetService,
-              private contractService: ContractService,
-              private fleetService: FleetService,
-              private documentService: DocumentService,
-              private skillService: SkillService,
-              private companyService: CompanyService) { }
+              private contractService: ContractService) { }
 
-
+  // A la supression d'un employee ont supprime toutes ses timesheets, ses contracts et ses salaries
   onEmployeeDelete(employee: Employee){
-    console.log(employee);
     let timesheets = employee.timesheets;
     let contracts = employee.contracts;
     let salaries = employee.salaries;
 
     if(!isNil(timesheets)){
       for(let timesheet of timesheets){
-
         this.timesheetService.remove(timesheet.timesheetId!).subscribe();
       }
     }
@@ -49,40 +46,5 @@ export class EntityManagerService {
       }
     }
   }
-
-  onContractDelete(contract: Contract) {
-    let timesheets = contract.timesheets;
-    if(!isNil(timesheets)){
-      for(let timesheet of timesheets){
-        this.timesheetService.remove(timesheet.timesheetId!).subscribe();
-      }
-    }
-  }
-
-  onEmployeeUpdate(employee: Employee){
-    let timesheets = employee.timesheets;
-    let contracts = employee.contracts;
-    let salaries = employee.salaries;
-
-    if(!isNil(timesheets)){
-      for(let timesheet of timesheets){
-        this.timesheetService.update(timesheet);
-      }
-    }
-    if(!isNil(contracts)){
-      for(let contract of contracts){
-        this.contractService.update(contract);
-      }
-    }
-    if(!isNil(salaries)){
-      for(let salary of salaries){
-        this.salaryService.update(salary);
-      }
-    }
-  }
-
-
-
-
 
 }

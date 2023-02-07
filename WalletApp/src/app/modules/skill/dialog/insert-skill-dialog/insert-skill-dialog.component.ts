@@ -25,12 +25,12 @@ export class InsertSkillDialogComponent implements OnInit {
 
 
   insert(title: string, description: string) {
-    console.log(this.formGroup)
+
     const employees: Employee[] = []
     const skill: SkillCreatePayloadInterface = {title, description, employees}
     let result = this.skillService.create(skill);
     result.subscribe(r => {
-      console.log(r)
+
     })
     this.dialogRef.close()
   }

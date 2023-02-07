@@ -1,27 +1,25 @@
 <div class="mainDiv">
-
     <h1>{{'fleet.fleetEdit' | translate}}</h1>
 
     <mat-form-field id="idField" appearance="fill">
       <mat-label>{{'fleet.fleetId' | translate}}</mat-label>
       <input matInput [value]="this.fleetId" disabled>
     </mat-form-field>
-
+<!--    On bind la fonction à l'emitter du child pour récuprer le formGroup et pouvoir intéragir dessus-->
     <app-fleet-field-prefab #prefab (formGroupEmitter$)="formGroupFromChild($event)"></app-fleet-field-prefab>
 
     <div id="buttonDiv">
       <button mat-raised-button color="warn"
-              [routerLink]="['/dashboard/fleet']"
-      >
+              [routerLink]="['/dashboard/fleet']">
         {{'fleet.cancel' | translate}}
       </button>
       <button mat-raised-button class="btnUpdate"
               color="accent"
               (click)="update(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
-              [disabled]="!this.formGroup.valid"
-      >{{'fleet.update' | translate}}</button>
+              [disabled]="!this.formGroup.valid">
+        {{'fleet.update' | translate}}
+      </button>
     </div>
-
 </div>
 
 

@@ -16,7 +16,7 @@ export class DocumentDeleteConfirmComponent {
 
   delete(){
     this.documentService.remove(this.data.document.documentId!).subscribe(response => {
-      console.log(response)
+
     })
   }
 }

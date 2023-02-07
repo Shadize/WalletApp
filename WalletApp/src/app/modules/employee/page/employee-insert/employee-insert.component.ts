@@ -58,7 +58,7 @@ export class EmployeeInsertComponent implements OnInit{
       salaries: this.prefab.salaryAssigned
     };
 
-    console.log(payload);
+
 
     this.employeeService.create(payload).subscribe((data) => {
       this.router.navigateByUrl('/dashboard/employee');

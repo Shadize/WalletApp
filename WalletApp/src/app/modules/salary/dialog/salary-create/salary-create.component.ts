@@ -54,7 +54,7 @@ export class SalaryCreateComponent implements OnInit{
     const newSalary: SalaryCreatePayloadInterface = {createDate, title, comment, amount,employee}
     let result = this.salaryService.create(newSalary);
     result.subscribe(r =>{
-      console.log(r)
+
     })
   }
 }

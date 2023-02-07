@@ -40,7 +40,7 @@ export class EmployeeEditComponent implements OnInit{
     this.employeeService.detail(this.employeeId).subscribe(data => {
       this.employee = data as Employee;
 
-      console.log(this.employee);
+
 
       this.formGroup.setValue({
         lastname: this.employee.lastname,
@@ -104,10 +104,10 @@ export class EmployeeEditComponent implements OnInit{
       salaries: this.prefab.salaryAssigned
     };
 
-    console.log(payload);
+
 
     this.employeeService.update(payload).subscribe(data => {
-      console.log(data);
+
 
       this.router.navigateByUrl('/dashboard/employee');
     });

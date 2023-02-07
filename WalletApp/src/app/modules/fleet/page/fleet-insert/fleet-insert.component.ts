@@ -22,7 +22,7 @@ export class FleetInsertComponent implements OnInit{
   constructor(private fleetService: FleetService,
               private router: Router) {
   }
-
+  // On utilise le ViewChild pour récupérer le FieldPrefab pour avoir accès à certaines valeurs lors de l'insert
   @ViewChild('prefab') prefab!: FleetFieldPrefabComponent;
   formGroup !: FormGroup;
   formGroupFromChild(event: any){
@@ -31,11 +31,13 @@ export class FleetInsertComponent implements OnInit{
   ngOnInit() {
 
   }
+
+  // On insert la data
   insert(title: string, description: string, type: string, cost: string)
   {
     let payload : FleetCreatePayloadInterface = {title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
 
-    this.fleetService.create(payload).subscribe(data => {
+    this.fleetService.create(payload).subscribe(() => {
       this.router.navigateByUrl('/dashboard/fleet');
     });
 

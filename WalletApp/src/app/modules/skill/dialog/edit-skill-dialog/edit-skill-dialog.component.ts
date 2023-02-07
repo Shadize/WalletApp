@@ -59,7 +59,7 @@ export class EditSkillDialogComponent implements OnInit{
 
   //Triggered when the employee list is changed on view
   handleEmployeeChange(updatedEmployeeList: Employee[]){
-    console.log(updatedEmployeeList)
+
     this.updatedEmployeeList = updatedEmployeeList
   }
 }

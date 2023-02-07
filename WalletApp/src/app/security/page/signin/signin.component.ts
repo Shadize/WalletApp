@@ -45,13 +45,13 @@ export class SigninComponent implements OnInit {
         this.success = true;
         this.error = false;
         this.formGroup.disable();
-        console.log(data.result)
+
 
         // Sinon on affiche les messages d'erreurs
-        console.log(data.result)
+
       } else {
         this.error = true;
-        console.log(data.result)
+
       }
     })
   }

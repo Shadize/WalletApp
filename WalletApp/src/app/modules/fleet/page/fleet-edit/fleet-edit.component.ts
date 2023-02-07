@@ -16,26 +16,27 @@ import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpd
   styleUrls: ['./fleet-edit.component.scss']
 })
 export class FleetEditComponent implements OnInit {
-
   constructor(private route: ActivatedRoute,
               private fleetService : FleetService,
               private router: Router) { }
   fleetId : string = '';
   fleet !: Fleet;
   formGroup!: FormGroup;
+
+  // On utilise le ViewChild pour récupérer le FieldPrefab pour avoir accès à certaines valeurs
   @ViewChild('prefab') prefab!: FleetFieldPrefabComponent;
 
+  // On récupère le FormGroup du émit par le FieldPrefab pour lui assigner les valeurs du Fleet (un peu plus bas)
   formGroupFromChild(event: any){
     this.formGroup = event;
   }
-
   ngOnInit(): void {
-
     this.fleetId = this.route.snapshot.paramMap.get('id') || '';
 
     this.fleetService.detail(this.fleetId).subscribe(data => {
       this.fleet = data.data as Fleet;
 
+      // On assigne les valeurs du Fleet à notre FormGroup
       this.formGroup.setValue({
         title: this.fleet.title,
         description: this.fleet.description,
@@ -44,15 +45,13 @@ export class FleetEditComponent implements OnInit {
         employee: this.fleet.employee
       })
     })
-
-
   }
   update(title: string, description: string, type: string, cost: string){
 
     let payload: FleetUpdatePayloadInterface = {fleetId:this.fleetId, title, description, type, cost: parseFloat(cost), employee: this.prefab?.employeeSelected};
 
-    this.fleetService.update(payload).subscribe(data => {
-      this.router.navigateByUrl('/dashboard/fleet').then(r => console.log(r));
+    this.fleetService.update(payload).subscribe(() => {
+      this.router.navigateByUrl('/dashboard/fleet');
     })
   }
 

@@ -9,9 +9,14 @@ import {count} from "rxjs";
 })
 export class ColumnSelectorComponent{
 
+  // Implementation de ColumnSelector pour pouvoir ajouter ou enlever une colonne dans un tableau
+  // Permet de faciliter les recherches
+
   @Input() referenceColumns!: string[];
   @Input() displayedColumns!: string[];
 
+  // Cette fonction permet d'afficher à la bonne place dans le tableau. Les colonnes ne peuvent pas être
+  // interverties et auront toujours le meme ordre
   columnManage(column: string)
   {
     let index = this.displayedColumns.indexOf(column);

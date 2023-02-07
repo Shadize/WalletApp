@@ -18,13 +18,13 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.translate.currentLang)
+
   }
 
   me(): void {
     this.auth.me().subscribe((response: ApiResponse) => {
       this.credential = CredentialHelper.credentialFromDto(response.data as CredentialDto);
-      console.log('this.credential', this.credential);
+
     })
   }
 

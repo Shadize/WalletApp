@@ -13,63 +13,44 @@ import {FleetUpdatePayloadInterface} from "@shared/model/payload/update/FleetUpd
 )
 export class FleetService extends ApiService { //implements CrudServiceInterface{
 
-  fleetList$$: BehaviorSubject<Fleet[]> = new BehaviorSubject<Fleet[]>([]);
-  fleet$$: BehaviorSubject<Fleet> = new BehaviorSubject<Fleet>({});
+  /*J'ai implementé ce service de tel manière à ce qu'il colle au modèle de Crud qu'on avait à la base
+  * Etant donné que j'ai implmenté le module employee et fleet, ce changement ne pouvait impacté que mon travail.
+  * Donc ce service n'implémente donc pas le CrudServiceInterface*/
 
+  // Stockage du retour API dans un BehaviorSubject pour la list car la fonction list() retourne un void
+  fleetList$$: BehaviorSubject<Fleet[]> = new BehaviorSubject<Fleet[]>([]);
+
+  // Liste tous les fleets dans le fleetList$$
   list(): void{
     this.get(`fleet/list`).subscribe( data => {
       this.fleetList$$.next((data.data) ? data.data as Fleet[] : [] as Fleet[]);
     })
   }
 
-  // list2() : Observable<Fleet[]>{
-  //   return this.get(`fleet/list`).pipe(
-  //     map((response: ApiResponse) => {
-  //       return (response.result) ? response.data as Fleet[] : [];
-  //     })
-  //   )
-  // }
-
-
+  // Récupère un fleet par son id et retourne un objet ApiResponse
   detail(id: string | number): Observable<ApiResponse> {
     return this.get(`fleet/detail/${id}`);
   }
 
-  // detail2(id: string | number): Observable<Fleet> {
-  //   return this.get(`fleet/detail/${id}`).pipe(
-  //     map((response: ApiResponse) => {
-  //       return (response.result) ? response.data as Fleet : {} as Fleet;
-  //     })
-  //   )
-  // }
-
-
+  // Créer un fleet et retourne un objet ApiResponse
   create(addPayload: FleetCreatePayloadInterface): Observable<ApiResponse>
   {
-    this.fleet$$.next(addPayload);
     return this.post("fleet/create", addPayload);
   }
 
+  // Met à jour un fleet et retourne un objet ApiResponse
   update(updatePayload: PayloadInterface): Observable<ApiResponse>
   {
     return this.put("fleet/update", updatePayload);
   }
 
+  // Supprime un fleet et retourne un objet ApiResponse
   remove(id: string | number): Observable<ApiResponse>
   {
     return this.delete(`fleet/delete/${id}`).pipe(
       map((response: ApiResponse) => {
-        console.log(response.data);
         return response;
       })
     )
   }
-
-  // remove2(id: string | number): Observable<boolean> {
-  //   return this.delete(`fleet/delete/${id}`).pipe(
-  //     map((response: ApiResponse) => {
-  //       return (response.result)
-  //     })
-  //   )
-  // }
 }

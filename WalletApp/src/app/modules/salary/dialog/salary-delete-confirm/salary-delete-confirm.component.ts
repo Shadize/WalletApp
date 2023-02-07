@@ -25,7 +25,7 @@ export class SalaryDeleteConfirmComponent implements OnInit{
   // Suppression du salaire
   delete(){
     this.salaryService.remove(this.salary.salaryId!).subscribe(response => {
-      console.log(response)
+
     })
   }
 

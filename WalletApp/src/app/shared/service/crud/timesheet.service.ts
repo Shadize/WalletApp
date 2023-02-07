@@ -41,10 +41,8 @@ export class TimesheetService extends ApiService implements CrudServiceInterface
   }
 
   update(payload: TimesheetUpdatePayload): Observable<boolean> {
-    console.log(payload)
     return this.put('timesheet/update/', payload).pipe(
       map((response: ApiResponse) => {
-
         return response.result
       })
     )
