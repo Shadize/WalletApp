@@ -16,7 +16,7 @@ import {Subscription} from "rxjs";
 })
 export class SalaryEditComponent implements OnInit, OnDestroy{
 
-  subscription!: Subscription[];
+  subscription: Subscription[] =[];
   editSalary!: Salary;
   employees: Employee[] = [];
   formGroup!: FormGroup;
@@ -31,11 +31,11 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
     this.editSalary = this.data.salary;
     this.name = this.editSalary.employee.lastname + " " +this.editSalary.employee.firstname;
 
-    //this.subscription.push()
+    this.subscription.push(
       // Récupération de la liste des employee pour l'edition
       this.employeeService.list().subscribe(data => {
         this.employees = data
-      })
+      }))
 
 
     // Form group avec Validator
@@ -51,7 +51,7 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
 
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-    //this.subscription.forEach(subscription => subscription.unsubscribe());
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 
   // Création de payload d'update de Salary et Update du salaire
@@ -65,10 +65,10 @@ export class SalaryEditComponent implements OnInit, OnDestroy{
       employee: this.editSalary.employee
     }
     console.log(this.editSalary.employee)
-    //this.subscription.push()
+    this.subscription.push(
       this.salaryService.update(updatedSalary).subscribe(response => {
         console.log(response)
-    })
+    }))
   }
 
 

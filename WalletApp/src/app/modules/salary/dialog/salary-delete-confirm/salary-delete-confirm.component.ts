@@ -26,7 +26,7 @@ export class SalaryDeleteConfirmComponent implements OnInit, OnDestroy {
 
   // Suppression du salaire
   delete() {
-    //this.subscription =
+    this.subscription =
       this.salaryService.remove(this.salary.salaryId!).subscribe(response => {
       console.log(response)
     })
@@ -34,7 +34,7 @@ export class SalaryDeleteConfirmComponent implements OnInit, OnDestroy {
 
   // Unsubscribe aux souscription pour éviter les fuites de mémoires
   ngOnDestroy(): void {
-    //this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
 }
