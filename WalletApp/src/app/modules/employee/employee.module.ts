@@ -22,6 +22,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -32,26 +33,27 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         EmployeeInsertComponent,
         EmployeeDetailComponent
     ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    EmployeeRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatIconModule,
-    MatDatepickerModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    SharedModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatTooltipModule,
-    MatPaginatorModule
+    imports: [
+        FormsModule,
+        CommonModule,
+        EmployeeRoutingModule,
+        MatInputModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatIconModule,
+        MatDatepickerModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        SharedModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatTooltipModule,
+        MatPaginatorModule,
+        TranslateModule
 
-  ]
+    ]
 })
 export class EmployeeModule { }

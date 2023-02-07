@@ -17,6 +17,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatToolbarModule,
     MatTooltipModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    TranslateModule
   ]
 })
 export class FleetModule { }

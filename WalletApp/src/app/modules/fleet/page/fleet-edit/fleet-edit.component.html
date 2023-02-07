@@ -1,9 +1,9 @@
 <div class="mainDiv">
 
-    <h1>Edit Fleet</h1>
+    <h1>{{'fleet.fleetEdit' | translate}}</h1>
 
     <mat-form-field id="idField" appearance="fill">
-      <mat-label>Fleet ID</mat-label>
+      <mat-label>{{'fleet.fleetId' | translate}}</mat-label>
       <input matInput [value]="this.fleetId" disabled>
     </mat-form-field>
 
@@ -13,13 +13,13 @@
       <button mat-raised-button color="warn"
               [routerLink]="['/dashboard/fleet']"
       >
-        Cancel
+        {{'fleet.cancel' | translate}}
       </button>
       <button mat-raised-button class="btnUpdate"
               color="accent"
               (click)="update(formGroup.value.title,formGroup.value.description, formGroup.value.type, formGroup.value.cost)"
               [disabled]="!this.formGroup.valid"
-      >Update</button>
+      >{{'fleet.update' | translate}}</button>
     </div>
 
 </div>
