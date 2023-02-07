@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocumentService} from "@shared/service/crud/document.service";
 import {CompanyService} from "@shared/service/crud/company.service";
 import {ContractService} from "@shared/service/crud/contract.service";
@@ -8,13 +8,14 @@ import {Employee} from "@shared/model/dto/employee.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmployeeService} from "@shared/service/crud/employee.service";
 import {DocumentCreatePayloadInterface} from "@shared/model/payload/create/DocumentCreatePayload.interface";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-document-create',
   templateUrl: './document-create.component.html',
   styleUrls: ['./document-create.component.scss']
 })
-export class DocumentCreateComponent implements OnInit{
+export class DocumentCreateComponent implements OnInit, OnDestroy{
 
 
   employees: Employee[]=[];
@@ -24,6 +25,7 @@ export class DocumentCreateComponent implements OnInit{
   selectedEmployee!: Employee;
   selectedCompany!: Company;
   selectedContract!: Contract;
+  subscription: Subscription[] = [];
 
   constructor(private documentService: DocumentService,
               private companyService: CompanyService,
@@ -36,15 +38,17 @@ export class DocumentCreateComponent implements OnInit{
     // Récupération de la liste des emloyee, company et contract pour
     // La sélection lors de la création
 
+    this.subscription.push(
     this.contractService.list().subscribe(data => {
       this.contracts = data;
-    })
+    }),
     this.companyService.list().subscribe(data => {
       this.companies = data;
-    })
+    }),
     this.employeeService.list().subscribe(data => {
       this.employees = data;
     })
+    )
 
     // Pas de validator pour company, contract et employee car ils ne sont pas obligatoire
     this.formGroup = new FormGroup({
@@ -69,9 +73,11 @@ export class DocumentCreateComponent implements OnInit{
     // Création d'un payload de Document et insert
     let newDocument: DocumentCreatePayloadInterface = { title, path ,content, type, createDate, company, contract, employee}
 
-    let result = this.documentService.create(newDocument);
-    result.subscribe(r =>{
+    this.documentService.create(newDocument).subscribe();
 
-    })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(subscription => subscription.unsubscribe());
   }
 }

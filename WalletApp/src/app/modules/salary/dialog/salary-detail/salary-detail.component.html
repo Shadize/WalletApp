@@ -3,15 +3,15 @@
     <mat-icon>close</mat-icon>
   </button>
   <div class="header">
-    <h2>Salary Detail</h2>
+    <h2>{{"salary.salaryDetail" | translate}}</h2>
   </div>
   <div class="SalaryDetail">
-    <pre class="mat">{{'Salary ID   : ' + this.salary.salaryId}}</pre>
-    <pre class="mat">{{'Create date : ' + this.salary.createDate.toString()}}</pre>
-    <pre class="mat">{{'Title       : ' + this.salary.title}}</pre>
-    <pre class="mat">{{'Comment     : ' + this.salary.comment}}</pre>
-    <pre class="mat">{{'Amount      : ' + this.salary.amount.toString()}}</pre>
-    <pre class="mat" *ngIf="this.salary.employee">{{'Employee    : ' + this.salary.employee.firstname + ' ' + this.salary.employee.lastname +' '+ '(UUID : ' + this.salary.employee.employeeId + ')'}}</pre>
+    <pre>{{"salary.id" | translate}}{{"   : " +this.salary.salaryId!.toString()}}</pre>
+    <pre>{{"salary.date" | translate}}{{ " : " }}{{this.salary.createDate | date: "MM/dd/yyyy"}}</pre>
+    <pre>{{"salary.title" | translate}}{{"       : " +this.salary.title}}</pre>
+    <pre>{{"salary.comment" | translate}}{{"     : " +this.salary.comment}}</pre>
+    <pre>{{"salary.amount" | translate}}{{"      : " +this.salary.amount.toString()}}</pre>
+    <pre *ngIf="this.salary.employee">{{"salary.employeeName" | translate}}{{"    : " +this.salary.employee.firstname + ' ' + this.salary.employee.lastname +' '+ '(UUID : ' + this.salary.employee.employeeId + ')'}}</pre>
   </div>
 </div>
 

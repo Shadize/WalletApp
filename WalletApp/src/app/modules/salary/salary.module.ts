@@ -12,6 +12,7 @@ import { SalaryEditComponent } from './dialog/salary-edit/salary-edit.component'
 import {MatDialogModule} from "@angular/material/dialog";
 import { SalaryDetailComponent } from './dialog/salary-detail/salary-detail.component';
 import {MatIconModule} from "@angular/material/icon";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatIconModule} from "@angular/material/icon";
         MatDatepickerModule,
         ReactiveFormsModule,
         MatDialogModule,
-        MatIconModule
+        MatIconModule,
+        TranslateModule
     ]
 })
 export class SalaryModule { }
