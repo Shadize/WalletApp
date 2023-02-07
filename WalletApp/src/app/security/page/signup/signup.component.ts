@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SigninPayload, SignupPayload} from "@security/model";
 import {AuthService} from "@security/service/auth.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-signup',
@@ -13,8 +14,9 @@ export class SignupComponent implements OnInit {
   error: boolean = false;   // Indicateur d'erreur lors de la soumission du formulaire
   hide: boolean = true;     // Indicateur de masquage pour le champ du mot de passe
   success: boolean = false; // Indicateur de succs pour la soumission du formulaire
+  private selectedLanguage: string ="EN";
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService, private translate: TranslateService) { }
 
   ngOnInit(): void {
 
@@ -56,4 +58,8 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  handleLanguageChange(language: string): void {
+    this.selectedLanguage = language.toUpperCase()
+    this.translate.use(language);
+  }
 }

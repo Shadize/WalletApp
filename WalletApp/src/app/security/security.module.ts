@@ -9,6 +9,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import {TranslateModule} from "@ngx-translate/core";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatProgressSpinnerModule,
     MatMenuModule,
     MatButtonModule,
+    TranslateModule,
+    MatTooltipModule,
   ],
   providers: []
 })

@@ -175,6 +175,33 @@
     "validatorNumber": " must be a number",
     "validatorSSIN": " must have a valid pattern",
     "yes": "Yes"
+  },
+  "dashboard": {
+    "home": "Home",
+    "company": "Company",
+    "employee": "Employee",
+    "contract": "Contract",
+    "document": "Document",
+    "fleet": "Fleet",
+    "timesheet": "Timesheet",
+    "salary": "Salary",
+    "skill": "Skill"
+  },
+  "login": {
+    "loginFail": "Incorrect credentials, please check your username and password.",
+    "login": "Login",
+    "loginSuccess": "Login success ! Redirection...",
+    "dontHaveAccount": "Don't have an account? ",
+    "create": "Sign up",
+    "username": "Username",
+    "signup": "Sign up",
+    "password": "Password",
+    "alreadyTaken": "This username is already taken.",
+    "signupSuccess": "Sign up success ! Redirection...",
+    "required": "required",
+    "usernameIs": "Username is ",
+    "passwordIs": "Password is  ",
+    "passwordRequirement": "A password must contain at least 8 characters including at least one lowercase letter and one uppercase letter, one special character and one number"
   }
 }
 

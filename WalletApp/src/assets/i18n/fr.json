@@ -174,5 +174,32 @@
     "validatorNumber": " doit être un nombre",
     "validatorSSIN": " doit être un numéro de registre nationale valide",
     "yes": "Oui"
+  },
+  "dashboard": {
+    "home": "Accueil",
+    "company": "Entreprises",
+    "employee": "Employés",
+    "contract": "Contrats",
+    "document": "Documents",
+    "fleet": "Véhicules",
+    "timesheet": "Emplois du temps",
+    "salary": "Salaires",
+    "skill": "Compétences"
+  },
+  "login": {
+    "login": "Se connecter",
+    "loginSuccess": "Connexion réussie ! Redirection...",
+    "loginFail": "Nom d'utilisateur ou mot de passe incorrect.",
+    "dontHaveAccount": "Vous n'avez pas de compte? ",
+    "create": "Créez-en un",
+    "username": "Nom d'utilisateur",
+    "signup": "Inscription",
+    "password": "Mot de passe",
+    "alreadyTaken": "Ce nom d'utilisateur est déjà pris.",
+    "signupSuccess": "Inscription réussie ! Redirection...",
+    "required": "Nécessaire",
+    "usernameIs": "Nom d'utilisateur ",
+    "passwordIs": "Mot de passe ",
+    "passwordRequirement": "Un mot de passe doit contenir au moins 8 caractères dont au moins une lettre minuscule et une lettre majuscule, un caractère spécial et un chiffre"
   }
 }

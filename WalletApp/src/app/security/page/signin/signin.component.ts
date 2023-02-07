@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '@security/service/auth.service';
 import {SigninPayload} from '@security/model';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -13,8 +14,9 @@ export class SigninComponent implements OnInit {
   hide: boolean = true;   // Indicateur de masquage pour le champ du mot de passe
   error: boolean = false; // Indicateur d'erreur lors de la soumission du formulaire
   success: boolean = false;
+  private selectedLanguage: string ="EN";
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private translate: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -54,5 +56,10 @@ export class SigninComponent implements OnInit {
 
       }
     })
+  }
+
+  handleLanguageChange(language: string): void {
+    this.selectedLanguage = language.toUpperCase()
+    this.translate.use(language);
   }
 }

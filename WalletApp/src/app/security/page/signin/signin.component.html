@@ -1,40 +1,50 @@
 <header class="header">
   <a [routerLink]="['/dashboard/home']" class="header-title">Wallet</a>
+
+  <span class="example-spacer"></span>
+  <button [matMenuTriggerFor]="languageMenu" mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" matTooltip="{{'language.selection' | translate}}">
+    <mat-icon>language</mat-icon>
+  </button>
+
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item (click)="handleLanguageChange('fr')">Français</button>
+    <button mat-menu-item (click)="handleLanguageChange('en')">English</button>
+  </mat-menu>
 </header>
 
 
 <div class="login-container">
   <form [formGroup]="formGroup" class="form">
-    <h1 class="title">Login</h1>
+    <h1 class="title">{{'login.login' | translate}}</h1>
     <mat-form-field appearance="fill">
-      <mat-label>Username</mat-label>
+      <mat-label>{{'login.username' | translate}}</mat-label>
       <input #username matInput type="text" formControlName="username" >
       <mat-error *ngIf="formGroup.get('username')?.hasError('required')">
-        Password is <strong>required</strong>
+        {{'login.usernameIs' | translate}}<strong>{{'login.required' | translate}}</strong>
       </mat-error>
       <!-- Icone de réussite en cas de succès -->
       <mat-icon matSuffix *ngIf="success" class="check-icon">check_circle</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
+      <mat-label>{{'login.password' | translate}}</mat-label>
       <!-- Permet de masquer le mot de passe et de le démasquer si appuie sur le logo-->
       <input #password matInput type="password" formControlName="password" [type]="hide ? 'password' : 'text'">
       <mat-icon matSuffix *ngIf="!success" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       <mat-error *ngIf="formGroup.get('password')?.hasError('required')">
-        Password is <strong>required</strong>
+        {{'login.passwordIs' | translate}}<strong>{{'login.required' | translate}}</strong>
       </mat-error>
       <mat-icon matSuffix *ngIf="success" class="check-icon">check_circle</mat-icon>
     </mat-form-field>
     <div class="bottom-text" *ngIf="!success"  [ngClass]="{'disabled': success}">
-      Don't have an account? <a [routerLink]="['/account/signup']">Sign up</a>
+      {{'login.dontHaveAccount' | translate}}<a [routerLink]="['/account/signup']">{{'login.create' | translate}}</a>
     </div>
     <div class="success-message" *ngIf="success">
       <mat-spinner class="spinner" [diameter]="30"></mat-spinner>
-      <p>Login successful! Redirecting...</p>
+      <p>{{'login.loginSuccess' | translate}}</p>
     </div>
     <div *ngIf="error" class="error">
-      Incorrect credentials, please check your username and password.
+      {{'login.loginFail' | translate}}
     </div>
-    <button mat-raised-button type="submit" class="confirm-button" [disabled]="!formGroup.valid" color="primary" (click)="signin(username.value, password.value)">Login</button>
+    <button mat-raised-button type="submit" class="confirm-button" [disabled]="!formGroup.valid" color="primary" (click)="signin(username.value, password.value)">{{'login.login' | translate}}</button>
   </form>
 </div>
