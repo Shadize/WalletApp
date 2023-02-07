@@ -27,7 +27,10 @@
     "timesheetType": "Timesheet type"
   },
   "logout": {
-    "test": "Logout"
+    "logout": "Logout"
+  },
+  "language": {
+    "selection": "Language selection"
   },
   "fleet": {
     "add": "Add",

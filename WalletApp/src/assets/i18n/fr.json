@@ -26,7 +26,10 @@
     "timesheetType": "Type de feuille de temps"
   },
   "logout": {
-    "test": "Déconnexion"
+    "logout": "Déconnexion"
+  },
+  "language": {
+    "selection": "Sélection de la langue"
   },
   "fleet": {
     "add": "Ajouter",
