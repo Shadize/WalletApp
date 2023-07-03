@@ -1,3 +1,5 @@
+OUVRIR LE README DANS UN EDITEUR DE TEXTE (Style VSCode) POUR UNE MEILLEUR LISIBILITE !
+
 DESCRIPTION
 
 Ce projet est une application web de gestion de ressources humaines d'entreprises. Il offre plusieurs modules pour gérer de manière centralisée des aspects divers tels que la gestion des employés, des contrats, des documents, des timesheets, des flottes de véhicules, des salaires et des compétences des employés.
