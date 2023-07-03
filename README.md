@@ -14,6 +14,9 @@ LANCEMENT DE L'APPLICATION
 - Le back-end s'exécute avec le bouton d'exécution lorsque vous vous trouver dans "WalletApplication.java". Se trouve facilement sur IntelliJ. Pour VS Code il faudrait installer le Extension Pack for Java et le Spring boot Extension pack pour le voir. Il vous faudra aussi lier votre éditeur avec une base de données (PostgreSQL dans notre cas) avec votre editeur ou avec Intellij (Avec DataGrip par exemple)
 - Le front-end s'exécute ensuite avec la commande "ng serve"
 
+
+
+
 TABLE DES MATIÈRES
 
 DEMANDE INITIALE
