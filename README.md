@@ -1,4 +1,3 @@
-OUVRIR LE README DANS UN EDITEUR DE TEXTE (Style VSCode) POUR UNE MEILLEUR LISIBILITE !
 
 DESCRIPTION
 
@@ -11,6 +10,7 @@ Le Back-end de l'application à été créer avec Srping boot.
 Dans ce projet collaboratif je me suis occuper des modules Document et Salary. Accessoirement dans le Front-end je me suis aussi occuper du Login, Register et Logout
 Veuillez aussi noter que dans l'application finale tous les modules n'ont pas été fait à cause de notre limitation de 2 modules par personnes.
 
+#
 LANCEMENT DE L'APPLICATION
 - Avant toute choses, exécuté la commande "npm install" dans un terminal afin d'obtenir et mettre à jour toutes les dépnedances et packages
 - Le back-end s'exécute avec le bouton d'exécution lorsque vous vous trouver dans "WalletApplication.java". Se trouve facilement sur IntelliJ. Pour VS Code il faudrait installer le Extension Pack for Java et le Spring boot Extension pack pour le voir. Il vous faudra aussi lier votre éditeur avec une base de données (PostgreSQL dans notre cas) avec votre editeur ou avec Intellij (Avec DataGrip par exemple)
@@ -18,7 +18,7 @@ LANCEMENT DE L'APPLICATION
 
 
 
-
+#
 TABLE DES MATIÈRES
 
 DEMANDE INITIALE
@@ -44,13 +44,14 @@ MODULE 6 : GESTION DES FLEETS
 MODULE 7 : GESTION DES SALAIRES
 
 MODULE 8 : GESTION DES SKILLS DE L’EMPLOYÉS
-
+#
+#
 
 DEMANDE INITIALE
 
 Le client souhaite une application permettant la gestion des entreprises qui souscrivent à leurs services. Le service devra permettre de gérer l’entreprise, les employés, les contrats des différents consultants, les compagnies liées à l’entreprise ainsi que la gestion des documents.
 
-
+#
 
 SERVICE À DÉVELOPPER
 
@@ -74,20 +75,20 @@ Module 7: gestion complète des salaires
 Module 8: gestion complète des skills des employés
 
 
-
+#
 CONTRAINTE CLIENT
 
 Développement d'une solution web design et moderne, les écrans devront avoir une cohérence entre eux.
 
 Les listes, les formulaires et les écrans de détail doivent se ressembler.
 
-
+#
 CAHIER DES CHARGES
 
 Afin de vous aider, voici un début de cahier des charges. Pour ne pas vous cadenasser, je n’ai mis que très peu de règles de gestion. Vous n’aurez aucune consigne sur le design de l’application si ce n’est qu’elle doit être moderne et cohérente.
 
 
-
+#
 Remarques très importantes:
 
 
@@ -102,7 +103,7 @@ Des push réguliers sur le repo Git tous les jours de travail.
 Des branches par personne/fonctionnalité.
 
 
-
+#
 MODULE 1 : GESTION DES ENTREPRISES
 
 Description
@@ -132,7 +133,7 @@ Organization
 Vous devrez également implémenter des écrans permettant de les lier.
 
 
-
+#
 MODULE 2 : GESTION DES EMPLOYÉS
 
 Description
@@ -156,7 +157,7 @@ Employee
 Par la suite, au travers des différents modules, vous lierez les différentes entités. Il serait intéressant de développer depuis l'écran détail les différents liens (pouvoir naviguer vers les autres détails, par exemple un contrat ou autre).
 
 
-
+#
 MODULE 3 : GESTION DES CONTRATS
 
 Description
@@ -179,7 +180,7 @@ Vous devrez développer les opérations CRUD pour l'entité suivante :
 Contract
 
 
-
+#
 MODULE 4 : GESTION DES DOCUMENTS
 
 Description
@@ -207,7 +208,7 @@ Document
 Idéalement, il faudrait pouvoir générer une sorte d'explorateur de fichiers.
 
 
-
+#
 MODULE 5 : GESTION DES TIMESHEETS
 
 Description
@@ -232,7 +233,7 @@ Timesheet
 Il faut générer un agenda pour chaque employé sur lequel on afficherait les prestations effectuées par l'employé.
 
 
-
+#
 MODULE 6 : GESTION DES FLEETS
 
 Description
@@ -254,7 +255,7 @@ Vous devrez développer les opérations CRUD pour l'entité suivante :
 
 Fleet
 
-
+#
 MODULE 7 : GESTION DES SALAIRES
 
 Description
@@ -274,7 +275,7 @@ Vous devrez développer les opérations CRUD pour l'entité suivante :
 
 Salary
 
-
+#
 MODULE 8 : GESTION DES SKILLS DES EMPLOYÉS
 
 Description
